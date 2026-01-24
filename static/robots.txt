@@ -1,0 +1,5 @@
+# SDK.ac - AI Tools
+User-agent: *
+Allow: /
+
+Sitemap: https://sdk.ac/sitemap.xml
