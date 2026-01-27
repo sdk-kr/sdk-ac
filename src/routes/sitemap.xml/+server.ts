@@ -1,4 +1,5 @@
 import type { RequestHandler } from './$types';
+import { getAllBlogPosts } from '$lib/data/blog-posts';
 
 const SITE = 'https://sdk.ac';
 const LANGS = ['en', 'ko', 'ja', 'zh'];
@@ -26,7 +27,9 @@ const PAGES = [
 	'/guide/code',
 	'/guide/email',
 	'/guide/hashtag',
-	'/guide/writing'
+	'/guide/writing',
+	'/blog',
+	...getAllBlogPosts().map(p => `/blog/${p.slug}`)
 ];
 
 export const GET: RequestHandler = async () => {
