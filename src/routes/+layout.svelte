@@ -38,10 +38,40 @@
 </script>
 
 <svelte:head>
+	<!-- Canonical -->
+	<link rel="canonical" href="https://sdk.ac{$page.url.pathname}" />
 	{#each locales as loc}
 		<link rel="alternate" hreflang={loc} href="https://sdk.ac/{loc}{$page.url.pathname.replace(/^\/(en|ko|ja|zh)/, '')}" />
 	{/each}
 	<link rel="alternate" hreflang="x-default" href="https://sdk.ac/en{$page.url.pathname.replace(/^\/(en|ko|ja|zh)/, '')}" />
+	<!-- JSON-LD -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": "https://sdk.ac/#website",
+				"url": "https://sdk.ac",
+				"name": "SDK.ac",
+				"description": "Free AI-powered tools",
+				"inLanguage": ["en", "ko", "ja", "zh"],
+				"publisher": { "@id": "https://sdk.ac/#organization" }
+			},
+			{
+				"@type": "Organization",
+				"@id": "https://sdk.ac/#organization",
+				"name": "SDKLABS",
+				"url": "https://sdk.ac",
+				"sameAs": ["https://javascript.ac", "https://sd.gy"]
+			},
+			{
+				"@type": "WebPage",
+				"@id": `https://sdk.ac${$page.url.pathname}#webpage`,
+				"url": `https://sdk.ac${$page.url.pathname}`,
+				"isPartOf": { "@id": "https://sdk.ac/#website" }
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-gray-50 dark:bg-dark-950 transition-colors">
