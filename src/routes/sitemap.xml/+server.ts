@@ -2,7 +2,7 @@ import type { RequestHandler } from './$types';
 import { getAllBlogPosts } from '$lib/data/blog-posts';
 
 const SITE = 'https://sdk.ac';
-const LANGS = ['en', 'ko', 'ja', 'zh'];
+const LANGS = ['en', 'ko', 'ja', 'zh', 'es', 'pt', 'de', 'fr', 'hi'];
 
 const PAGES = [
 	'',
