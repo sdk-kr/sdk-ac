@@ -6,6 +6,7 @@
 	import { common } from '$lib/i18n/translations';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
+	import CookieConsent from '$lib/components/CookieConsent.svelte';
 
 	$: t = (key: string) => common[$locale]?.[key] || common['en'][key] || key;
 
@@ -21,7 +22,7 @@
 
 	function selectLocale(loc: Locale) {
 		const currentPath = $page.url.pathname;
-		const pathWithoutLang = currentPath.replace(/^\/(en|ko|ja|zh)/, '');
+		const pathWithoutLang = currentPath.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '');
 		const newPath = `/${loc}${pathWithoutLang || ''}`;
 
 		locale.set(loc);
@@ -41,9 +42,9 @@
 	<!-- Canonical -->
 	<link rel="canonical" href="https://sdk.ac{$page.url.pathname}" />
 	{#each locales as loc}
-		<link rel="alternate" hreflang={loc} href="https://sdk.ac/{loc}{$page.url.pathname.replace(/^\/(en|ko|ja|zh)/, '')}" />
+		<link rel="alternate" hreflang={loc} href="https://sdk.ac/{loc}{$page.url.pathname.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '')}" />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href="https://sdk.ac/en{$page.url.pathname.replace(/^\/(en|ko|ja|zh)/, '')}" />
+	<link rel="alternate" hreflang="x-default" href="https://sdk.ac/en{$page.url.pathname.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '')}" />
 	<!-- JSON-LD -->
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		"@context": "https://schema.org",
@@ -54,7 +55,7 @@
 				"url": "https://sdk.ac",
 				"name": "SDK.ac",
 				"description": "Free AI-powered tools",
-				"inLanguage": ["en", "ko", "ja", "zh"],
+				"inLanguage": ["en", "ko", "ja", "zh", "es", "pt", "de", "fr", "hi"],
 				"publisher": { "@id": "https://sdk.ac/#organization" }
 			},
 			{
@@ -155,5 +156,7 @@
 		</div>
 	</footer>
 </div>
+
+<CookieConsent />
 
 <svelte:window on:click={handleClickOutside} />
