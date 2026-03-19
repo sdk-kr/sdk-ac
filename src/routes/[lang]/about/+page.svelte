@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; sections: { heading: string; text: string }[] }> = {
+	type AboutContent = { title: string; sections: { heading: string; text: string }[] };
+	const content: Partial<Record<Locale, AboutContent>> & { en: AboutContent } = {
 		en: {
 			title: 'About SDK.ac',
 			sections: [

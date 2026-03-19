@@ -4,7 +4,7 @@
 	import { getAllBlogPosts } from '$lib/data/blog-posts';
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: posts = getAllBlogPosts();
-	const labels = { en: { title: 'Blog', subtitle: 'AI tools guides and tips', readMore: 'Read more' }, ko: { title: '블로그', subtitle: 'AI 도구 가이드 및 팁', readMore: '자세히 보기' }, ja: { title: 'ブログ', subtitle: 'AIツールガイドとヒント', readMore: '続きを読む' }, zh: { title: '博客', subtitle: 'AI工具指南和技巧', readMore: '阅读更多' } };
+	const labels: Partial<Record<Locale, { title: string; subtitle: string; readMore: string }>> & { en: { title: string; subtitle: string; readMore: string } } = { en: { title: 'Blog', subtitle: 'AI tools guides and tips', readMore: 'Read more' }, ko: { title: '블로그', subtitle: 'AI 도구 가이드 및 팁', readMore: '자세히 보기' }, ja: { title: 'ブログ', subtitle: 'AIツールガイドとヒント', readMore: '続きを読む' }, zh: { title: '博客', subtitle: 'AI工具指南和技巧', readMore: '阅读更多' }, es: { title: 'Blog', subtitle: 'Guias y consejos de herramientas IA', readMore: 'Leer mas' } };
 	$: t = labels[lang] || labels.en;
 </script>
 <svelte:head><title>{t.title} - SDK.ac</title><meta name="description" content={t.subtitle} /></svelte:head>

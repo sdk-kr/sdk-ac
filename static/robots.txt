@@ -1,5 +1,10 @@
-# SDK.ac - AI Tools
 User-agent: *
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
 Allow: /
 
 Sitemap: https://sdk.ac/sitemap.xml

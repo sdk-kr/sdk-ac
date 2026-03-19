@@ -8,7 +8,8 @@
 
 	let code = '';
 	let language = 'JavaScript';
-	let level: 'beginner' | 'intermediate' | 'advanced' = 'beginner';
+	type LevelType = 'beginner' | 'intermediate' | 'advanced';
+	let level: LevelType = 'beginner';
 	let output = '';
 	let copied = false;
 
@@ -89,7 +90,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each ['beginner', 'intermediate', 'advanced'] as lv}
 					<button
-						on:click={() => level = lv}
+						on:click={() => level = lv as LevelType}
 						class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {level === lv
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"

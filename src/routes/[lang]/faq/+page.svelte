@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; subtitle: string; faqs: { q: string; a: string }[] }> = {
+	type FaqContent = { title: string; subtitle: string; faqs: { q: string; a: string }[] };
+	const content: Partial<Record<Locale, FaqContent>> & { en: FaqContent } = {
 		en: {
 			title: 'Frequently Asked Questions',
 			subtitle: 'Find answers to common questions about SDK.ac',

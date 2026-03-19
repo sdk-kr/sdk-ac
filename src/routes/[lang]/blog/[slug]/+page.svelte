@@ -3,16 +3,43 @@
 	import type { Locale } from '$lib/i18n';
 	import { getBlogPost, getAllBlogPosts } from '$lib/data/blog-posts';
 	$: lang = ($page.params.lang || 'en') as Locale;
-	$: slug = $page.params.slug;
+	$: slug = ($page.params as Record<string, string>).slug;
 	$: post = getBlogPost(slug);
 	$: allPosts = getAllBlogPosts();
 	$: currentIndex = allPosts.findIndex((p) => p.slug === slug);
 	$: prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 	$: nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
-	const labels = { en: { backToBlog: 'Back to Blog', prevPost: 'Previous', nextPost: 'Next', notFound: 'Post not found', notFoundDesc: 'The blog post does not exist.' }, ko: { backToBlog: '블로그로 돌아가기', prevPost: '이전 글', nextPost: '다음 글', notFound: '글을 찾을 수 없습니다', notFoundDesc: '블로그 글이 존재하지 않습니다.' }, ja: { backToBlog: 'ブログに戻る', prevPost: '前の記事', nextPost: '次の記事', notFound: '記事が見つかりません', notFoundDesc: 'ブログ記事は存在しません。' }, zh: { backToBlog: '返回博客', prevPost: '上一篇', nextPost: '下一篇', notFound: '文章未找到', notFoundDesc: '博客文章不存在。' } };
+	type BlogLabels = { backToBlog: string; prevPost: string; nextPost: string; notFound: string; notFoundDesc: string };
+	const labels: Partial<Record<Locale, BlogLabels>> & { en: BlogLabels } = { en: { backToBlog: 'Back to Blog', prevPost: 'Previous', nextPost: 'Next', notFound: 'Post not found', notFoundDesc: 'The blog post does not exist.' }, ko: { backToBlog: '블로그로 돌아가기', prevPost: '이전 글', nextPost: '다음 글', notFound: '글을 찾을 수 없습니다', notFoundDesc: '블로그 글이 존재하지 않습니다.' }, ja: { backToBlog: 'ブログに戻る', prevPost: '前の記事', nextPost: '次の記事', notFound: '記事が見つかりません', notFoundDesc: 'ブログ記事は存在しません。' }, zh: { backToBlog: '返回博客', prevPost: '上一篇', nextPost: '下一篇', notFound: '文章未找到', notFoundDesc: '博客文章不存在。' }, es: { backToBlog: 'Volver al Blog', prevPost: 'Anterior', nextPost: 'Siguiente', notFound: 'Articulo no encontrado', notFoundDesc: 'El articulo del blog no existe.' } };
 	$: t = labels[lang] || labels.en;
 </script>
-<svelte:head>{#if post}<title>{post.title[lang] || post.title.en} - SDK.ac</title><meta name="description" content={post.description[lang] || post.description.en} />{:else}<title>{t.notFound}</title>{/if}</svelte:head>
+<svelte:head>
+	{#if post}
+		<title>{post.title[lang] || post.title.en} - SDK.ac</title>
+		<meta name="description" content={post.description[lang] || post.description.en} />
+		{@html `<script type="application/ld+json">${JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			"headline": post.title[lang] || post.title.en,
+			"description": post.description[lang] || post.description.en,
+			"datePublished": post.date,
+			"author": { "@type": "Organization", "name": "SDKLABS" },
+			"publisher": { "@type": "Organization", "name": "SDKLABS" },
+			"mainEntityOfPage": { "@type": "WebPage", "@id": `https://sdk.ac/${lang}/blog/${slug}` }
+		})}</script>`}
+		{@html `<script type="application/ld+json">${JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": `https://sdk.ac/${lang}` },
+				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": `https://sdk.ac/${lang}/blog` },
+				{ "@type": "ListItem", "position": 3, "name": post.title[lang] || post.title.en, "item": `https://sdk.ac/${lang}/blog/${slug}` }
+			]
+		})}</script>`}
+	{:else}
+		<title>{t.notFound}</title>
+	{/if}
+</svelte:head>
 <div class="max-w-3xl mx-auto px-4 py-12">
 	{#if post}
 		<a href="/{lang}/blog" class="inline-flex items-center gap-2 text-gray-600 dark:text-dark-400 hover:text-primary-500 transition-colors mb-8"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>{t.backToBlog}</a>

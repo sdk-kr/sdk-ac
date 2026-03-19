@@ -14,5 +14,7 @@ export const load: PageServerLoad = ({ request }) => {
 		}
 	}
 
-	throw redirect(301, `/${detectedLang}`);
+	// Use 302 (temporary) instead of 301 (permanent) to allow crawlers to
+	// discover all language variants rather than caching a single redirect
+	throw redirect(302, `/${detectedLang}`);
 };

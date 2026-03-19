@@ -7,8 +7,10 @@
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
 	let subject = '';
-	let style: 'photorealistic' | 'digital' | 'anime' | 'oil' | 'watercolor' | '3d' = 'photorealistic';
-	let mood: 'dramatic' | 'peaceful' | 'mysterious' | 'vibrant' = 'dramatic';
+	type ImageStyle = 'photorealistic' | 'digital' | 'anime' | 'oil' | 'watercolor' | '3d';
+	type MoodType = 'dramatic' | 'peaceful' | 'mysterious' | 'vibrant';
+	let style: ImageStyle = 'photorealistic';
+	let mood: MoodType = 'dramatic';
 	let output = '';
 	let copied = false;
 
@@ -80,7 +82,7 @@
 			<div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
 				{#each ['photorealistic', 'digital', 'anime', 'oil', 'watercolor', '3d'] as s}
 					<button
-						on:click={() => style = s}
+						on:click={() => style = s as ImageStyle}
 						class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {style === s
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"
@@ -99,7 +101,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each ['dramatic', 'peaceful', 'mysterious', 'vibrant'] as m}
 					<button
-						on:click={() => mood = m}
+						on:click={() => mood = m as MoodType}
 						class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {mood === m
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"

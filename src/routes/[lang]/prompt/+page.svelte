@@ -8,7 +8,8 @@
 
 	let task = '';
 	let context = '';
-	let style: 'detailed' | 'concise' | 'creative' | 'professional' = 'detailed';
+	type StyleType = 'detailed' | 'concise' | 'creative' | 'professional';
+	let style: StyleType = 'detailed';
 	let output = '';
 	let copied = false;
 
@@ -92,7 +93,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each ['detailed', 'concise', 'creative', 'professional'] as s}
 					<button
-						on:click={() => style = s}
+						on:click={() => style = s as StyleType}
 						class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {style === s
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"

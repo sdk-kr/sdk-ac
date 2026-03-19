@@ -5,7 +5,8 @@
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: basePath = `/${lang}`;
 
-	const content: Record<Locale, { title: string; subtitle: string; guides: { title: string; desc: string; href: string }[] }> = {
+	type GuideIndex = { title: string; subtitle: string; guides: { title: string; desc: string; href: string }[] };
+	const content: Partial<Record<Locale, GuideIndex>> & { en: GuideIndex } = {
 		en: {
 			title: 'Guides & Tutorials',
 			subtitle: 'Learn how to use SDK.ac AI tools effectively',

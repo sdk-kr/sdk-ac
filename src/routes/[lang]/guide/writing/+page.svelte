@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; description: string; cta: string; sections: { heading: string; text: string }[] }> = {
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Writing Assistant Guide',
 			description: 'Discover how to improve your writing with our AI writing assistant. Get help with grammar, style, clarity, and creating compelling content.',

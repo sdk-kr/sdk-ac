@@ -7,7 +7,8 @@
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
 	let input = '';
-	let action: 'improve' | 'grammar' | 'simplify' | 'formal' | 'casual' = 'improve';
+	type ActionType = 'improve' | 'grammar' | 'simplify' | 'formal' | 'casual';
+	let action: ActionType = 'improve';
 	let output = '';
 	let copied = false;
 
@@ -70,7 +71,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each ['improve', 'grammar', 'simplify', 'formal', 'casual'] as a}
 					<button
-						on:click={() => action = a}
+						on:click={() => action = a as ActionType}
 						class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {action === a
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"

@@ -6,10 +6,12 @@
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
-	let emailType: 'business' | 'followup' | 'apology' | 'thankyou' | 'request' | 'introduction' = 'business';
+	type EmailType = 'business' | 'followup' | 'apology' | 'thankyou' | 'request' | 'introduction';
+	type ToneType = 'formal' | 'friendly' | 'casual';
+	let emailType: EmailType = 'business';
 	let recipient = '';
 	let topic = '';
-	let tone: 'formal' | 'friendly' | 'casual' = 'formal';
+	let tone: ToneType = 'formal';
 	let output = '';
 	let copied = false;
 
@@ -76,7 +78,7 @@
 			<div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
 				{#each ['business', 'followup', 'apology', 'thankyou', 'request', 'introduction'] as type}
 					<button
-						on:click={() => emailType = type}
+						on:click={() => emailType = type as EmailType}
 						class="px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors {emailType === type
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"
@@ -120,7 +122,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each ['formal', 'friendly', 'casual'] as t}
 					<button
-						on:click={() => tone = t}
+						on:click={() => tone = t as ToneType}
 						class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {tone === t
 							? 'bg-primary-400 text-dark-900'
 							: 'bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-dark-300 hover:bg-gray-200 dark:hover:bg-dark-600'}"

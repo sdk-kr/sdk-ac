@@ -14,7 +14,7 @@
 
 	const platforms = ['Instagram', 'Twitter', 'TikTok', 'LinkedIn', 'YouTube'];
 
-	const platformTips = {
+	const platformTips: Record<string, string> = {
 		Instagram: 'Mix popular and niche hashtags. Use 20-30 for maximum reach.',
 		Twitter: 'Use 1-3 relevant hashtags. More can reduce engagement.',
 		TikTok: 'Trending hashtags boost visibility. Mix broad and specific.',

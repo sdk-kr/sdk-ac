@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; description: string; cta: string; sections: { heading: string; text: string }[] }> = {
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Hashtag Generator Guide',
 			description: 'Learn how to generate effective hashtags for social media using AI. Boost your content visibility with optimized hashtags for Instagram, Twitter, TikTok and more.',

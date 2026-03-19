@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; lastUpdated: string; sections: { heading: string; text: string }[] }> = {
+	type PrivacyContent = { title: string; lastUpdated: string; sections: { heading: string; text: string }[] };
+	const content: Partial<Record<Locale, PrivacyContent>> & { en: PrivacyContent } = {
 		en: {
 			title: 'Privacy Policy',
 			lastUpdated: 'Last updated: January 2025',

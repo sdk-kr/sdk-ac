@@ -4,7 +4,8 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	const content: Record<Locale, { title: string; description: string; cta: string; sections: { heading: string; text: string }[] }> = {
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Text Summarizer Guide',
 			description: 'Learn how to effectively summarize any text using AI. Our text summarizer helps you condense long documents, articles, and content into concise summaries.',
