@@ -14,6 +14,11 @@
 	$: currentLang = $page.params.lang as Locale || 'en';
 	$: basePath = `/${currentLang}`;
 
+	// 검색엔진에 노출할 언어(실제 번역이 있는 언어)만 hreflang으로 선언.
+	// es/pt/de/fr/hi는 영어 폴백 중복 페이지라서 noindex 처리한다.
+	const indexedLocales: Locale[] = ['en', 'ko', 'ja', 'zh'];
+	$: isNoindexLang = !indexedLocales.includes(currentLang);
+
 	let showLangMenu = false;
 
 	onMount(() => {
@@ -41,7 +46,10 @@
 <svelte:head>
 	<!-- Canonical -->
 	<link rel="canonical" href="https://sdk.ac{$page.url.pathname}" />
-	{#each locales as loc}
+	{#if isNoindexLang}
+		<meta name="robots" content="noindex, follow" />
+	{/if}
+	{#each indexedLocales as loc}
 		<link rel="alternate" hreflang={loc} href="https://sdk.ac/{loc}{$page.url.pathname.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '')}" />
 	{/each}
 	<link rel="alternate" hreflang="x-default" href="https://sdk.ac/en{$page.url.pathname.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '')}" />
@@ -55,7 +63,7 @@
 				"url": "https://sdk.ac",
 				"name": "SDK.ac",
 				"description": "Free AI-powered tools",
-				"inLanguage": ["en", "ko", "ja", "zh", "es", "pt", "de", "fr", "hi"],
+				"inLanguage": ["en", "ko", "ja", "zh"],
 				"publisher": { "@id": "https://sdk.ac/#organization" }
 			},
 			{

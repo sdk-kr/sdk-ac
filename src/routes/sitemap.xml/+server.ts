@@ -2,7 +2,9 @@ import type { RequestHandler } from './$types';
 import { getAllBlogPosts } from '$lib/data/blog-posts';
 
 const SITE = 'https://sdk.ac';
-const LANGS = ['en', 'ko', 'ja', 'zh', 'es', 'pt', 'de', 'fr', 'hi'];
+// es/pt/de/fr/hi are English-fallback duplicates — deliberately excluded
+// from the sitemap (and noindexed in the layout) to avoid duplicate content.
+const LANGS = ['en', 'ko', 'ja', 'zh'];
 
 const TOOL_PAGES = [
 	'/prompt',
