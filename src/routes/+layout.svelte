@@ -14,10 +14,18 @@
 	$: currentLang = $page.params.lang as Locale || 'en';
 	$: basePath = `/${currentLang}`;
 
-	// 검색엔진에 노출할 언어(실제 번역이 있는 언어)만 hreflang으로 선언.
-	// es/pt/de/fr/hi는 영어 폴백 중복 페이지라서 noindex 처리한다.
-	const indexedLocales: Locale[] = ['en', 'ko', 'ja', 'zh'];
+	// 검색엔진에 노출할 언어만 hreflang으로 선언.
+	// es/pt/de/fr/hi는 영어 폴백 중복 페이지라서 noindex 처리한다(2026-07).
+	// ja/zh도 2026-10-16 전수 측정에서 95%·93%가 400단어 미만(중앙값 109·113단어)으로
+	// en/ko 대비 번역본이 크게 짧아 제외했다. 번역이 보강되면 다시 추가한다.
+	const indexedLocales: Locale[] = ['en', 'ko'];
 	$: isNoindexLang = !indexedLocales.includes(currentLang);
+
+	// blog 172편은 2026-07 라운드에서 최신 8편만 확장했고 나머지는 얇다(중앙값 197단어,
+	// en 기준으로도 580단어). guide 36편도 중앙값 171단어로 얇다.
+	// 사용자에게는 그대로 제공하되 색인 대상에서만 제외한다. sitemap.xml 에서도 같은 범위를 뺀다.
+	$: pathWithoutLocale = $page.url.pathname.replace(/^\/(en|ko|ja|zh|es|pt|de|fr|hi)/, '');
+	$: isNoindexSection = pathWithoutLocale === '/blog' || pathWithoutLocale.startsWith('/blog/');
 
 	let showLangMenu = false;
 
@@ -46,7 +54,7 @@
 <svelte:head>
 	<!-- Canonical -->
 	<link rel="canonical" href="https://sdk.ac{$page.url.pathname}" />
-	{#if isNoindexLang}
+	{#if isNoindexLang || isNoindexSection}
 		<meta name="robots" content="noindex, follow" />
 	{/if}
 	{#each indexedLocales as loc}

@@ -1,10 +1,11 @@
 import type { RequestHandler } from './$types';
-import { getAllBlogPosts } from '$lib/data/blog-posts';
 
 const SITE = 'https://sdk.ac';
 // es/pt/de/fr/hi are English-fallback duplicates — deliberately excluded
 // from the sitemap (and noindexed in the layout) to avoid duplicate content.
-const LANGS = ['en', 'ko', 'ja', 'zh'];
+// 2026-10-16 전수 측정: /ja 95%, /zh 93% 가 400단어 미만(중앙값 109·113단어)이다.
+// en/ko 대비 번역본이 크게 짧아 색인 대상에서 제외한다. 번역 보강 시 다시 추가.
+const LANGS = ['en', 'ko'];
 
 const TOOL_PAGES = [
 	'/prompt',
@@ -55,14 +56,11 @@ function getChangeFreq(page: string): string {
 export const GET: RequestHandler = async () => {
 	const today = new Date().toISOString().split('T')[0];
 
-	const blogPages = getAllBlogPosts().map(p => `/blog/${p.slug}`);
 	const ALL_PAGES = [
 		'',
 		...TOOL_PAGES,
 		...GUIDE_PAGES,
-		...INFO_PAGES,
-		'/blog',
-		...blogPages
+		...INFO_PAGES
 	];
 
 	const urls = LANGS.flatMap((lang) =>
