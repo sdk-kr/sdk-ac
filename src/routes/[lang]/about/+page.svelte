@@ -7,12 +7,11 @@
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
 	const CONTACT_EMAIL = 'contact@sdklabs.org';
-	const COMPANY_NAME = 'SDKLABS Co., Ltd.';
+	const COMPANY_NAME = 'SDKLabs Co., Ltd.';
 	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
-	const BUSINESS_NUMBER = '871-81-03242';
-	const ECOMMERCE_NUMBER = '2024-고양일산서-1820';
-	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60';
-	const COMPANY_ADDRESS_EN = '60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
+	const BUSINESS_NUMBER = '424-86-03401';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60, 542호(우면동, 황금빌딩)';
+	const COMPANY_ADDRESS_EN = 'Suite 542, 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 
 	type AboutContent = {
 		title: string;
@@ -31,8 +30,6 @@
 		focusArea: string;
 		businessNumberLabel: string;
 		businessNumberValue: string;
-		ecommerceNumberLabel: string;
-		ecommerceNumberValue: string;
 		addressLabel: string;
 		addressValue: string;
 		catalogHeading: string;
@@ -80,19 +77,17 @@
 
 			whoWeAreHeading: 'Who We Are',
 			whoWeAreParagraphs: [
-				`${SITE_NAME} is operated by ${COMPANY_NAME}, a Korean software company founded in 2024 that builds free online utilities and developer-focused tools. Our team has shipped consumer and developer web products used by millions of people, and we apply the same standards for UX, accuracy, and speed to every tool on this site.`,
+				`${SITE_NAME} is operated by ${COMPANY_NAME}, a Korean software company founded in 2025 that builds free online utilities and developer-focused tools. Our team has shipped consumer and developer web products used by millions of people, and we apply the same standards for UX, accuracy, and speed to every tool on this site.`,
 				`Beyond ${SITE_NAME}, the same team operates SDK.is (developer utilities), JavaScript.ac (interactive JavaScript learning), SDK.bz (financial and crypto calculators), and SD.gy (everyday calculators). Lessons learned on one site — accessibility patterns, performance budgets, ad-density thresholds — get applied across all of them.`
 			],
 			company: 'Company',
 			companyName: COMPANY_NAME,
 			founded: 'Founded',
-			foundedYear: '2024',
+			foundedYear: '2025',
 			focus: 'Focus',
 			focusArea: 'AI tools, prompt utilities, free web tools',
 			businessNumberLabel: 'Business Registration',
 			businessNumberValue: BUSINESS_NUMBER,
-			ecommerceNumberLabel: 'E-Commerce Registration',
-			ecommerceNumberValue: ECOMMERCE_NUMBER,
 			addressLabel: 'Address',
 			addressValue: COMPANY_ADDRESS_EN,
 
@@ -150,7 +145,7 @@
 			],
 
 			legalHeading: 'Legal & Operator Information',
-			legalNote: `${SITE_NAME} is operated by ${COMPANY_NAME}, a Korean corporation registered with the competent authorities of the Republic of Korea (business registration ${BUSINESS_NUMBER}, e-commerce registration ${ECOMMERCE_NUMBER}).`,
+			legalNote: `${SITE_NAME} is operated by ${COMPANY_NAME}, a Korean corporation registered with the competent authorities of the Republic of Korea (business registration ${BUSINESS_NUMBER}).`,
 
 			linksHeading: 'Legal',
 			linkPrivacy: 'Privacy Policy',
@@ -178,19 +173,17 @@
 
 			whoWeAreHeading: '운영 정보',
 			whoWeAreParagraphs: [
-				`${SITE_NAME}는 2024년 설립된 한국 소프트웨어 회사 ${COMPANY_NAME_KO}이 운영합니다. 무료 온라인 유틸리티와 개발자 도구를 만드는 회사로, 수백만 명이 쓰는 컨슈머·개발자 웹 제품을 출시한 팀이 UX·정확성·속도에 대한 동일한 기준을 이 사이트의 모든 도구에 적용합니다.`,
+				`${SITE_NAME}는 2025년 설립된 한국 소프트웨어 회사 ${COMPANY_NAME_KO}이 운영합니다. 무료 온라인 유틸리티와 개발자 도구를 만드는 회사로, 수백만 명이 쓰는 컨슈머·개발자 웹 제품을 출시한 팀이 UX·정확성·속도에 대한 동일한 기준을 이 사이트의 모든 도구에 적용합니다.`,
 				`${SITE_NAME} 외에도 같은 팀이 SDK.is(개발자 유틸리티), JavaScript.ac(인터랙티브 JavaScript 학습), SDK.bz(금융·암호화폐 계산기), SD.gy(일상 계산기)를 운영합니다. 한 사이트에서 얻은 교훈 — 접근성 패턴, 성능 예산, 광고 밀도 임계치 — 이 모든 사이트에 적용됩니다.`
 			],
 			company: '회사',
 			companyName: COMPANY_NAME_KO,
 			founded: '설립',
-			foundedYear: '2024',
+			foundedYear: '2025',
 			focus: '주력 분야',
 			focusArea: 'AI 도구, 프롬프트 유틸리티, 무료 웹 도구',
 			businessNumberLabel: '사업자등록번호',
 			businessNumberValue: BUSINESS_NUMBER,
-			ecommerceNumberLabel: '통신판매업 신고번호',
-			ecommerceNumberValue: ECOMMERCE_NUMBER,
 			addressLabel: '주소',
 			addressValue: COMPANY_ADDRESS,
 
@@ -248,7 +241,7 @@
 			],
 
 			legalHeading: '법적·운영자 정보',
-			legalNote: `${SITE_NAME}는 대한민국 관계 기관에 등록된 한국 법인 ${COMPANY_NAME_KO}이 운영합니다(사업자등록번호 ${BUSINESS_NUMBER}, 통신판매업 신고번호 ${ECOMMERCE_NUMBER}).`,
+			legalNote: `${SITE_NAME}는 대한민국 관계 기관에 등록된 한국 법인 ${COMPANY_NAME_KO}이 운영합니다(사업자등록번호 ${BUSINESS_NUMBER}).`,
 
 			linksHeading: '법적 고지',
 			linkPrivacy: '개인정보 처리방침',
@@ -276,7 +269,7 @@
 
 			whoWeAreHeading: '運営情報',
 			whoWeAreParagraphs: [
-				`${SITE_NAME} は、2024 年に設立された韓国のソフトウェア会社 ${COMPANY_NAME} が運営しています。無料オンラインユーティリティと開発者向けツールを作る会社で、数百万人が使うコンシューマー・開発者向け Web プロダクトを世に出してきたチームが、同じ UX・正確性・速度の基準をこのサイトのすべてのツールに適用しています。`,
+				`${SITE_NAME} は、2025 年に設立された韓国のソフトウェア会社 ${COMPANY_NAME} が運営しています。無料オンラインユーティリティと開発者向けツールを作る会社で、数百万人が使うコンシューマー・開発者向け Web プロダクトを世に出してきたチームが、同じ UX・正確性・速度の基準をこのサイトのすべてのツールに適用しています。`,
 				`${SITE_NAME} のほかにも、同じチームが SDK.is（開発者ユーティリティ）、JavaScript.ac（インタラクティブな JavaScript 学習）、SDK.bz（金融・暗号資産計算機）、SD.gy（日常計算機）を運営しています。1 つのサイトで得た学び — アクセシビリティパターン、パフォーマンス予算、広告密度のしきい値 — がすべてのサイトに反映されます。`
 			],
 			company: '会社',
@@ -287,8 +280,6 @@
 			focusArea: 'AI ツール、プロンプトユーティリティ、無料 Web ツール',
 			businessNumberLabel: '事業者登録番号',
 			businessNumberValue: BUSINESS_NUMBER,
-			ecommerceNumberLabel: '通信販売業申告番号',
-			ecommerceNumberValue: ECOMMERCE_NUMBER,
 			addressLabel: '住所',
 			addressValue: COMPANY_ADDRESS,
 
@@ -346,7 +337,7 @@
 			],
 
 			legalHeading: '法的・運営者情報',
-			legalNote: `${SITE_NAME} は、大韓民国の関係当局に登録された韓国法人 ${COMPANY_NAME} が運営しています（事業者登録番号 ${BUSINESS_NUMBER}、通信販売業申告番号 ${ECOMMERCE_NUMBER}）。`,
+			legalNote: `${SITE_NAME} は、大韓民国の関係当局に登録された韓国法人 ${COMPANY_NAME} が運営しています（事業者登録番号 ${BUSINESS_NUMBER}）。`,
 
 			linksHeading: '法的事項',
 			linkPrivacy: 'プライバシーポリシー',
@@ -374,7 +365,7 @@
 
 			whoWeAreHeading: '运营信息',
 			whoWeAreParagraphs: [
-				`${SITE_NAME} 由 2024 年成立的韩国软件公司 ${COMPANY_NAME} 运营。我们的团队曾交付服务过数百万用户的消费者与开发者 Web 产品，并将同样的 UX、准确性与速度标准应用到本站的每一个工具上。`,
+				`${SITE_NAME} 由 2025 年成立的韩国软件公司 ${COMPANY_NAME} 运营。我们的团队曾交付服务过数百万用户的消费者与开发者 Web 产品，并将同样的 UX、准确性与速度标准应用到本站的每一个工具上。`,
 				`除 ${SITE_NAME} 外，同一团队还运营 SDK.is（开发者实用工具）、JavaScript.ac（交互式 JavaScript 学习）、SDK.bz（金融与加密计算器）和 SD.gy（日常计算器）。在一个站点学到的经验 —— 无障碍模式、性能预算、广告密度阈值 —— 会应用到所有站点。`
 			],
 			company: '公司',
@@ -385,8 +376,6 @@
 			focusArea: 'AI 工具、提示词实用工具、免费网页工具',
 			businessNumberLabel: '营业执照编号',
 			businessNumberValue: BUSINESS_NUMBER,
-			ecommerceNumberLabel: '电子商务备案编号',
-			ecommerceNumberValue: ECOMMERCE_NUMBER,
 			addressLabel: '地址',
 			addressValue: COMPANY_ADDRESS,
 
@@ -444,7 +433,7 @@
 			],
 
 			legalHeading: '法律与运营者信息',
-			legalNote: `${SITE_NAME} 由在大韩民国有关当局注册的韩国法人 ${COMPANY_NAME} 运营（营业执照编号 ${BUSINESS_NUMBER}，电子商务备案编号 ${ECOMMERCE_NUMBER}）。`,
+			legalNote: `${SITE_NAME} 由在大韩民国有关当局注册的韩国法人 ${COMPANY_NAME} 运营（营业执照编号 ${BUSINESS_NUMBER}）。`,
 
 			linksHeading: '法律信息',
 			linkPrivacy: '隐私政策',
@@ -501,10 +490,6 @@
 			<div>
 				<dt class="text-xs text-primary-500 uppercase tracking-wide mb-1">{t.businessNumberLabel}</dt>
 				<dd class="text-gray-900 dark:text-dark-100 font-semibold">{t.businessNumberValue}</dd>
-			</div>
-			<div>
-				<dt class="text-xs text-primary-500 uppercase tracking-wide mb-1">{t.ecommerceNumberLabel}</dt>
-				<dd class="text-gray-900 dark:text-dark-100 font-semibold">{t.ecommerceNumberValue}</dd>
 			</div>
 			<div>
 				<dt class="text-xs text-primary-500 uppercase tracking-wide mb-1">{t.addressLabel}</dt>

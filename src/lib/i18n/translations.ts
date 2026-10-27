@@ -9,7 +9,7 @@ export const common: Record<Locale, Record<string, string>> = {
 		'footer.terms': 'Terms of Service',
 		'footer.faq': 'FAQ',
 		'footer.contact': 'Contact',
-		'footer.operator': 'Operated by SDKLABS Co., Ltd., 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea',
+		'footer.operator': 'Operated by SDKLabs Co., Ltd. · Suite 542, 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea · Business Registration No. 424-86-03401',
 		// Home
 		'home.title': 'AI Creator Tools',
 		'home.subtitle': 'Free AI-powered tools for creators and developers',
@@ -144,7 +144,7 @@ export const common: Record<Locale, Record<string, string>> = {
 		'footer.terms': '이용약관',
 		'footer.faq': '자주 묻는 질문',
 		'footer.contact': '문의',
-		'footer.operator': '운영: 주식회사 에스디케이랩스 · 서울특별시 서초구 태봉로 60',
+		'footer.operator': '운영: 주식회사 에스디케이랩스 · 서울특별시 서초구 태봉로 60, 542호(우면동, 황금빌딩) · 사업자등록번호 424-86-03401',
 		// Home
 		'home.title': 'AI 크리에이터 도구',
 		'home.subtitle': '크리에이터와 개발자를 위한 무료 AI 도구',

@@ -7,10 +7,10 @@
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
 	const CONTACT_EMAIL = 'contact@sdklabs.org';
-	const COMPANY_NAME = 'SDKLABS Co., Ltd.';
+	const COMPANY_NAME = 'SDKLabs Co., Ltd.';
 	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
-	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60';
-	const COMPANY_ADDRESS_EN = '60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60, 542호(우면동, 황금빌딩)';
+	const COMPANY_ADDRESS_EN = 'Suite 542, 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 	const ADS_OPTOUT_URL = 'https://www.google.com/settings/ads';
 	const EFFECTIVE_DATE = '2025-01-15';
 	const LAST_UPDATED = '2026-10-28';
