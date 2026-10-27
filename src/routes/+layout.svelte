@@ -82,7 +82,7 @@
 			{
 				"@type": "Organization",
 				"@id": "https://sdk.ac/#organization",
-				"name": "SDKLABS",
+				"name": "SDKLabs",
 				"url": "https://sdk.ac",
 				"sameAs": ["https://javascript.ac", "https://sd.gy"]
 			},
