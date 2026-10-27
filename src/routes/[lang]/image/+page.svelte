@@ -241,6 +241,56 @@ Two verification notes worth taking seriously. Style tokens borrowed from a buil
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "The builder produces a text prompt for an image service. It appends a fixed style phrase, a fixed mood phrase, and a quality suffix to your subject. It does not render an image or inspect whether the phrases agree. Put visible decisions in the subject: what occupies the frame, where it sits, and what should remain empty. This gives you something concrete to evaluate later. Choosing a mood supplies descriptive words; it does not set exposure, lighting equipment, or any other image service parameter.",
+				"ko": "이 빌더는 이미지 서비스용 텍스트 프롬프트를 만듭니다. 주제 뒤에 고정된 스타일 문구, 분위기 문구, 품질 수식어를 붙입니다. 이미지를 렌더링하거나 문구들이 서로 맞는지 검사하지 않습니다. 프레임에 무엇을 담고 어디에 놓으며 어느 부분을 비워둘지처럼 눈으로 확인할 결정을 주제에 적으세요. 그래야 나중에 구체적으로 평가할 수 있습니다. 분위기 선택은 묘사하는 단어를 제공하며 노출, 조명 장비 등 이미지 서비스의 매개변수를 설정하지 않습니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "For a quiet reading illustration, enter the subject shown below, select Watercolor and Peaceful, and generate. The exact output preserves the order of the subject, style, mood, and suffix. The phrase “soft edges” comes from the style, while “soft lighting” comes from the mood. When reviewing an image made elsewhere, check the window and the placement of the chair before debating whether the overall atmosphere feels peaceful.",
+				"ko": "조용한 독서 공간 그림을 만들려면 아래 주제를 입력하고 수채화와 평화로운 분위기를 선택한 다음 생성하세요. 실제 출력은 주제, 스타일, 분위기, 접미 문구의 순서를 유지합니다. “soft edges”는 스타일에서, “soft lighting”은 분위기에서 나옵니다. 다른 서비스에서 만든 이미지를 검토할 때는 전체 분위기가 평화로운지 논하기 전에 창문과 의자의 위치부터 확인하세요."
+			},
+			"code": {
+				"example": "Input and selections\nSubject: A reading chair beside a tall window\nStyle: Watercolor\nMood: Peaceful\n\nExact tool output\nA reading chair beside a tall window, watercolor painting, soft edges, flowing colors, artistic, delicate, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality"
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not treat words such as “best quality” as measured quality settings. The builder cannot enforce resolution, aspect ratio, accurate lettering, or a particular composition. Different image services may interpret the same words differently. If the subject asks for hard shadows while the mood asks for soft lighting, edit that conflict before rendering. For a diagram requiring exact labels or geometry, use a drawing workflow where you can inspect and control those elements.",
+				"ko": "“best quality” 같은 단어를 측정 가능한 품질 설정으로 해석하지 마세요. 빌더는 해상도, 화면 비율, 정확한 글자 표현, 특정 구도를 강제할 수 없습니다. 이미지 서비스마다 같은 단어를 다르게 해석할 수 있습니다. 주제에서 강한 그림자를 요구하고 분위기에서는 부드러운 조명을 요구한다면 렌더링 전에 충돌을 고치세요. 정확한 라벨이나 도형이 필요한 도식에는 각 요소를 직접 검사하고 제어할 수 있는 그리기 작업 방식을 사용하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Will this page create a downloadable image? No. Its output is text for you to copy.\n\nDoes Photorealistic set an actual resolution? No. Resolution language is included as prompt text only.\n\nCan I add a negative prompt separately? There is no separate negative prompt field on this page.\n\nWhy can “masterpiece” appear twice? Some style phrases already contain it, and the fixed suffix adds it again.\n\nHow should I compare variations? Keep the subject and destination service settings stable, change one style or mood choice, and compare the visible feature you intended to change.",
+				"ko": "이 페이지가 다운로드할 이미지를 만드나요? 아니요. 복사할 텍스트를 출력합니다.\n\n사진 같은 스타일을 선택하면 실제 해상도가 설정되나요? 아니요. 해상도 관련 표현도 프롬프트 텍스트일 뿐입니다.\n\n부정 프롬프트를 별도로 넣을 수 있나요? 이 페이지에는 별도의 부정 프롬프트 필드가 없습니다.\n\n“masterpiece”가 두 번 나오는 이유는 무엇인가요? 일부 스타일 문구에 이미 들어 있고 고정 접미 문구가 다시 추가하기 때문입니다.\n\n변형 결과는 어떻게 비교하나요? 주제와 사용할 서비스의 설정을 유지한 채 스타일이나 분위기 하나만 바꾸고, 바꾸려던 시각적 요소를 비교하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n주제: A reading chair beside a tall window\n스타일: 수채화\n분위기: 평화로움\n\n실제 도구 출력\nA reading chair beside a tall window, watercolor painting, soft edges, flowing colors, artistic, delicate, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality" : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -388,5 +438,17 @@ Two verification notes worth taking seriously. Style tokens borrowed from a buil
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더 실습 읽기" : "Read the image prompt builder tutorial"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag prompt builder"}</a>
+		</nav>
+	{/if}
+
 </div>

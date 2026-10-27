@@ -211,6 +211,56 @@ Finally, mind the compounding problem: summaries of summaries degrade fast. Each
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "This is an extractive preview of the beginning of your text. The function finds chunks ending in a period, exclamation mark, or question mark, then keeps the first chunks rather than ranking their importance. Short keeps up to two; Medium keeps thirty percent rounded up, capped at five; Long keeps half rounded up, capped at ten. At least one chunk is kept. The useful question is therefore whether your opening already contains the information a reader needs.",
+				"ko": "이 도구는 텍스트의 앞부분을 추출해 보여줍니다. 함수는 마침표, 느낌표, 물음표로 끝나는 구간을 찾고 중요도를 매기는 대신 앞 구간을 남깁니다. 짧음은 최대 두 구간, 중간은 전체의 30%를 올림하여 최대 다섯 구간, 김은 절반을 올림하여 최대 열 구간을 남깁니다. 적어도 한 구간은 유지합니다. 따라서 중요한 질문은 도입부에 독자가 필요한 정보가 이미 들어 있는지입니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "Paste the three sentences below and select Medium. Three matched sentences produce one retained sentence. The displayed statistics count whitespace-separated tokens: twelve in the input and four in the retained sentence, giving a rounded reduction of sixty-seven percent. The output below includes the statistics exactly. Copy removes that statistics footer. This example is deliberately easy to audit: compare the retained sentence with the original before trying a longer document.",
+				"ko": "아래 세 문장을 붙여넣고 중간 길이를 선택하세요. 일치하는 세 문장에서 한 문장이 남습니다. 표시되는 통계는 공백으로 구분한 토큰을 셉니다. 입력은 열두 개, 남긴 문장은 네 개이므로 감소율을 반올림하면 67%입니다. 아래에는 통계를 포함한 실제 출력을 제시했습니다. 복사 기능은 통계 꼬리말을 제거합니다. 검토하기 쉬운 예제이므로 긴 문서를 시험하기 전에 남은 문장과 원문을 비교하세요."
+			},
+			"code": {
+				"example": "Input and selections\nText: The prototype passed inspection. Packaging still needs revision. Shipping awaits final approval.\nLength: Medium\n\nExact tool output\nThe prototype passed inspection.\n\n---\nOriginal: 12 words | Summary: 4 words | Reduced by 67%"
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not use this tool to discover an important conclusion buried at the end of a document. It does not assess importance, rewrite prose, or reconcile contradictions. Abbreviations and decimal points can split chunks unexpectedly. If matched sentences exist, an unfinished trailing sentence can disappear. Text without any matching punctuation falls back to the whole input. These behaviors make it unsuitable as the sole review of contracts, safety instructions, or other material where an omitted qualification changes meaning.",
+				"ko": "문서 끝에 묻힌 중요한 결론을 찾는 데 사용하지 마세요. 중요도를 평가하거나 문장을 다시 쓰거나 모순을 해소하지 않습니다. 약어와 소수점 때문에 구간이 예상과 다르게 나뉠 수 있습니다. 일치하는 문장이 있으면 문장부호 없이 끝난 마지막 문장은 사라질 수 있습니다. 일치하는 문장부호가 전혀 없으면 입력 전체를 사용합니다. 이런 동작 때문에 조건 하나의 누락으로 뜻이 바뀌는 계약서, 안전 지침 등의 유일한 검토 수단으로는 적합하지 않습니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Why can Short be longer than Medium? Short keeps up to two sentences, while Medium may select only one for a small input.\n\nDoes it write new sentences? No. It copies the opening matched chunks.\n\nAre the word counts linguistic measurements? No. They are whitespace splits, so punctuation and spacing affect the figures.\n\nWhy are spaces doubled between retained sentences? Leading spaces in matched chunks remain, and joining adds another space.\n\nHow do I check coverage? Read the end of the source and list any decisions or exceptions absent from the preview; add them manually when preparing a real summary.",
+				"ko": "짧음이 중간보다 길 수 있는 이유는 무엇인가요? 짧음은 최대 두 문장을 남기지만 중간은 짧은 입력에서 한 문장만 선택할 수 있습니다.\n\n새 문장을 쓰나요? 아니요. 앞쪽에서 일치한 구간을 복사합니다.\n\n단어 수는 언어학적 측정값인가요? 아니요. 공백으로 나누므로 문장부호와 띄어쓰기가 수치에 영향을 줍니다.\n\n남긴 문장 사이에 공백이 두 개 생기는 이유는 무엇인가요? 일치한 구간의 앞 공백을 유지한 상태에서 연결할 때 공백을 하나 더 넣기 때문입니다.\n\n내용을 충분히 담았는지 어떻게 확인하나요? 원문의 끝을 읽고 미리보기에 없는 결정이나 예외를 나열한 뒤, 실제 요약을 준비할 때 직접 추가하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n텍스트: The prototype passed inspection. Packaging still needs revision. Shipping awaits final approval.\n길이: 중간\n\n실제 도구 출력\nThe prototype passed inspection.\n\n---\nOriginal: 12 words | Summary: 4 words | Reduced by 67%" : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -340,5 +390,17 @@ Finally, mind the compounding problem: summaries of summaries degrade fast. Each
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/summarizer" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "텍스트 요약기 실습 읽기" : "Read the text summarizer tutorial"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+		</nav>
+	{/if}
+
 </div>

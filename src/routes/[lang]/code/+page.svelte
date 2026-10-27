@@ -256,6 +256,56 @@ None of this is much work — and the alternative, shipping code you understand 
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "The code explainer prepares a request for an explanation. It places your snippet inside a fenced code block, labels it with the selected programming language, and appends an instruction for your experience level. It does not parse, run, or debug the snippet. A useful input includes enough context to trace values: the relevant function, its inputs, and any definitions it depends on. Start with a small behavior you can check yourself before requesting an explanation of an entire unfamiliar module.",
+				"ko": "코드 설명기는 설명을 요청하는 지시문을 준비합니다. 코드 조각을 코드 블록 안에 넣고 선택한 프로그래밍 언어를 표시한 뒤 경험 수준에 맞는 지시를 붙입니다. 코드를 구문 분석하거나 실행하거나 디버깅하지는 않습니다. 유용한 입력에는 관련 함수, 입력값, 의존하는 정의처럼 값을 추적하기에 충분한 맥락이 들어 있습니다. 낯선 모듈 전체의 설명을 요청하기 전에 직접 확인할 수 있는 작은 동작부터 시작하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "Enter the JavaScript statement below and choose Intermediate. The exact output asks an assistant to explain code while assuming knowledge of variables, loops, and functions. It contains no explanation yet. For this snippet, a later explanation should connect the array values to the multiplication in the callback. You can assess that explanation by tracing each element yourself; changing the explanation level does not change the code being discussed.",
+				"ko": "아래 JavaScript 문장을 입력하고 중급을 선택하세요. 실제 출력은 변수, 반복문, 함수에 대한 지식을 가정하고 AI에게 코드를 설명해 달라고 요청합니다. 아직 설명 자체는 없습니다. 이 코드의 최종 설명은 배열 값과 콜백 안의 곱셈을 연결해야 합니다. 각 원소를 직접 추적하여 설명을 평가할 수 있습니다. 설명 수준을 바꿔도 설명 대상 코드는 바뀌지 않습니다."
+			},
+			"code": {
+				"example": "Input and selections\nCode: const doubled = [2, 4].map(n => n * 2);\nLanguage: JavaScript\nLevel: Intermediate\n\nExact tool output\nPlease explain this JavaScript code:\n\n```javascript\nconst doubled = [2, 4].map(n => n * 2);\n```\n\nExplain this code assuming I understand basic programming concepts like variables, loops, and functions."
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not use the generated request as a security review or as proof that code works. No dependencies are inspected and no runtime evidence is collected. Even Advanced only adds a request about complexity, patterns, and optimization; it does not perform those analyses. Omitted helper functions can change the meaning of a snippet. Remove credentials and confidential material before sharing code with another service, and verify any suggested changes in your own development workflow.",
+				"ko": "생성된 요청을 보안 검토나 코드가 작동한다는 증거로 사용하지 마세요. 의존성을 검사하거나 실행 근거를 수집하지 않습니다. 고급도 복잡도, 패턴, 최적화에 관한 요청을 추가할 뿐 직접 분석하지 않습니다. 생략된 보조 함수가 코드 조각의 의미를 바꿀 수 있습니다. 다른 서비스에 코드를 공유하기 전에 자격 증명과 기밀 내용을 제거하고, 제안받은 변경은 자신의 개발 절차에서 검증하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Is the language detected automatically? No. The selected language becomes the heading and code fence label.\n\nDoes Beginner simplify my source code? No. It asks for a simpler explanation while preserving the source.\n\nCan the tool execute a dangerous snippet? This page only interpolates the snippet into a string; it does not execute it.\n\nWhy might a copied code block look broken? Triple backticks inside your snippet can collide with the surrounding fence.\n\nWhat should I ask after a vague explanation? Request a trace for one concrete input and compare intermediate values with the code, rather than accepting a paraphrase of variable names.",
+				"ko": "언어가 자동으로 감지되나요? 아니요. 선택한 언어가 요청의 첫 문장과 코드 블록 라벨에 들어갑니다.\n\n초급은 소스 코드를 단순하게 바꾸나요? 아니요. 소스를 유지하면서 쉬운 설명을 요청합니다.\n\n위험한 코드 조각을 도구가 실행할 수 있나요? 이 페이지는 코드 조각을 문자열에 삽입할 뿐 실행하지 않습니다.\n\n복사한 코드 블록이 깨져 보이는 이유는 무엇인가요? 코드 안의 백틱 세 개가 바깥쪽 코드 블록 구분자와 충돌할 수 있습니다.\n\n설명이 모호하면 무엇을 물어야 하나요? 변수 이름을 바꿔 말한 설명에 만족하지 말고, 구체적인 입력 하나의 실행 흐름을 요청하여 중간값을 코드와 비교하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n코드: const doubled = [2, 4].map(n => n * 2);\n언어: JavaScript\n수준: 중급\n\n실제 도구 출력\nPlease explain this JavaScript code:\n\n```javascript\nconst doubled = [2, 4].map(n => n * 2);\n```\n\nExplain this code assuming I understand basic programming concepts like variables, loops, and functions." : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -392,5 +442,17 @@ None of this is much work — and the alternative, shipping code you understand 
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기 실습 읽기" : "Read the code explanation prompt builder tutorial"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+		</nav>
+	{/if}
+
 </div>

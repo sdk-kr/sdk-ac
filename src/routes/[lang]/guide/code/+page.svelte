@@ -4,67 +4,77 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Code Explainer Guide',
-			description: 'Learn how to use our AI-powered code explainer to understand any programming code. Get clear explanations of complex code in plain language.',
+			description: "Prepare a code explanation request, trace a small example, and verify the explanation against the source.",
 			cta: 'Try Code Explainer',
 			sections: [
 				{
-					heading: 'What is a Code Explainer?',
-					text: 'A code explainer is an AI-powered tool that analyzes programming code and provides human-readable explanations of what the code does. Whether you\'re learning to program, reviewing unfamiliar code, or trying to understand legacy systems, our code explainer breaks down complex logic into clear, understandable descriptions. The tool supports all major programming languages including Python, JavaScript, Java, C++, Go, Rust, TypeScript, Ruby, PHP, and many more. It can explain individual functions, entire files, or specific code snippets, helping developers at all skill levels understand code faster and more effectively than reading documentation alone.'
+					"heading": "Choose a behavior you can trace",
+					"text": "The page packages code for another assistant to explain. This tutorial uses an array transformation because each input and output can be checked without relying on a broad description of what the program “probably” does. No code runs in the page’s explanation function."
 				},
 				{
-					heading: 'How Our Code Explainer Works',
-					text: 'Our AI code explainer uses advanced language models trained on millions of code repositories and documentation. When you submit code, the AI parses the syntax, identifies programming patterns, recognizes library and framework usage, and traces the logic flow. It then generates explanations at your chosen detail level - from high-level summaries for quick understanding to line-by-line breakdowns for deep learning. The explainer considers context, variable naming conventions, and common programming idioms to provide accurate descriptions. It also identifies potential issues, explains why certain patterns are used, and suggests where the code might be improved.'
+					"heading": "Step 1: supply the missing input",
+					"text": "Before: “Explain map.” After: “const doubled = [2, 4].map(n => n * 2);” The revised example includes source values and the transformation. Paste the statement, select JavaScript, and choose Intermediate to request an explanation that assumes basic programming knowledge."
 				},
 				{
-					heading: 'Using the Code Explainer Tool',
-					text: 'To use our code explainer, simply paste your code into the input area. Select the programming language if auto-detection doesn\'t identify it correctly. Choose your explanation depth: "Overview" for a quick summary of what the code accomplishes, "Detailed" for function-by-function explanations, or "Line-by-line" for comprehensive analysis of every statement. You can also specify your experience level - beginner explanations use simpler terms and more analogies, while expert explanations use technical terminology and assume familiarity with programming concepts. Click explain and receive your customized code explanation within seconds.'
+					"heading": "Step 2: inspect the request",
+					"text": "Generate the exact prompt below. Confirm that the fence says javascript and the statement is unchanged. This is the after state of the tool interaction: a structured explanation request. It is not a result from executing the array transformation.",
+					"example": "Input and selections\nCode: const doubled = [2, 4].map(n => n * 2);\nLanguage: JavaScript\nLevel: Intermediate\n\nExact tool output\nPlease explain this JavaScript code:\n\n```javascript\nconst doubled = [2, 4].map(n => n * 2);\n```\n\nExplain this code assuming I understand basic programming concepts like variables, loops, and functions."
 				},
 				{
-					heading: 'Best Practices for Code Explanation',
-					text: 'For best results, provide complete code blocks rather than fragments when possible. Include import statements and dependencies to help the AI understand the full context. If the code uses custom classes or functions defined elsewhere, briefly mention what they do. For very long files, consider breaking them into logical sections and explaining each part separately. When explaining code you wrote yourself, the tool can help you document your work or identify areas that might confuse other developers. For code reviews, use the explainer to quickly understand unfamiliar code before diving into detailed analysis. Keep in mind that while our tool is highly accurate, complex or obfuscated code may require additional context.'
+					"heading": "Step 3: make your own trace",
+					"text": "Before reading an assistant’s answer, trace the callback: 2 multiplied by 2 gives 4; 4 multiplied by 2 gives 8. Your expected array is [4, 8]. This manual reasoning provides a concrete check for the later explanation rather than trusting its confident tone."
 				},
 				{
-					heading: 'Learning with Code Explanations',
-					text: 'Code explanation is a powerful learning tool. Students can paste example code from tutorials and get personalized explanations tailored to their level. Self-taught developers can understand open-source projects by having the AI explain how different components work together. When learning a new language or framework, use the explainer to understand idiomatic patterns and best practices. Compare explanations of similar functionality in different languages to understand their unique characteristics. The tool is also valuable for understanding algorithms - paste an implementation and receive a clear explanation of how it works, its time complexity, and when to use it. This active learning approach accelerates comprehension far beyond passive code reading.'
+					"heading": "Step 4: ask about one uncertainty",
+					"text": "After using the prompt elsewhere, ask how the callback result becomes an element of the new array. Compare that explanation with your trace. For code with helper functions, include their relevant definitions before expecting the same level of certainty."
 				},
 				{
-					heading: 'Common Use Cases',
-					text: 'Developers use our code explainer across many scenarios. During code reviews, quickly understand pull requests without extensive manual analysis. When debugging, paste error-prone code to understand its intended behavior. For legacy code maintenance, get explanations of undocumented systems written by former team members. Students use it to understand programming assignments and example code. Technical writers use explanations as starting points for documentation. Security researchers analyze potentially malicious code to understand its behavior. Data scientists explain complex data processing pipelines to non-technical stakeholders. The tool bridges the gap between writing code and understanding code, making it invaluable for individuals and teams working with any codebase.'
+					"heading": "Mistake 1: confusing the label with detection",
+					"text": "Selecting Python does not convert JavaScript or validate syntax. It simply changes the language name and fence label, potentially misleading the assistant receiving the prompt."
+				},
+				{
+					"heading": "Mistake 2: treating Advanced as an audit",
+					"text": "Advanced asks for complexity and optimization discussion. It does not prove correctness or security. Check any proposed change against expected behavior and your normal tests."
 				}
 			]
 		},
 		ko: {
 			title: '코드 설명 가이드',
-			description: 'AI 기반 코드 설명기를 사용하여 모든 프로그래밍 코드를 이해하는 방법을 알아보세요. 복잡한 코드를 쉬운 언어로 명확하게 설명받으세요.',
+			description: "코드 설명 요청을 준비하고 작은 예제를 추적한 뒤 설명을 소스와 대조하세요.",
 			cta: '코드 설명 사용하기',
 			sections: [
 				{
-					heading: '코드 설명기란?',
-					text: '코드 설명기는 프로그래밍 코드를 분석하고 코드가 무엇을 하는지 사람이 읽을 수 있는 설명을 제공하는 AI 기반 도구입니다. 프로그래밍을 배우고 있든, 익숙하지 않은 코드를 검토하고 있든, 레거시 시스템을 이해하려고 하든, 코드 설명기는 복잡한 로직을 명확하고 이해하기 쉬운 설명으로 분해합니다. 이 도구는 Python, JavaScript, Java, C++, Go, Rust, TypeScript, Ruby, PHP 등 모든 주요 프로그래밍 언어를 지원합니다. 개별 함수, 전체 파일 또는 특정 코드 스니펫을 설명할 수 있어 모든 기술 수준의 개발자가 문서를 읽는 것보다 더 빠르고 효과적으로 코드를 이해하도록 돕습니다.'
+					"heading": "추적할 수 있는 동작 선택하기",
+					"text": "페이지는 다른 AI가 설명할 코드를 묶어 줍니다. 이 실습은 프로그램이 아마 무엇을 할 것이라는 포괄적 설명에 의존하지 않고 각 입력과 출력을 확인할 수 있도록 배열 변환을 사용합니다. 페이지의 설명 함수는 코드를 실행하지 않습니다."
 				},
 				{
-					heading: '코드 설명기 작동 방식',
-					text: 'AI 코드 설명기는 수백만 개의 코드 저장소와 문서로 훈련된 고급 언어 모델을 사용합니다. 코드를 제출하면 AI가 구문을 파싱하고, 프로그래밍 패턴을 식별하고, 라이브러리 및 프레임워크 사용을 인식하고, 로직 흐름을 추적합니다. 그런 다음 선택한 상세 수준에서 설명을 생성합니다 - 빠른 이해를 위한 고수준 요약부터 심층 학습을 위한 라인별 분석까지. 설명기는 맥락, 변수 명명 규칙, 일반적인 프로그래밍 관용구를 고려하여 정확한 설명을 제공합니다. 또한 잠재적인 문제를 식별하고, 특정 패턴이 사용된 이유를 설명하고, 코드가 개선될 수 있는 부분을 제안합니다.'
+					"heading": "1단계: 빠진 입력 제공하기",
+					"text": "수정 전: “map을 설명해 줘.” 수정 후: “const doubled = [2, 4].map(n => n * 2);” 수정된 예제에는 원본 값과 변환이 들어 있습니다. 문장을 붙여넣고 JavaScript와 중급을 선택하여 기본 프로그래밍 지식을 가정한 설명을 요청하세요."
 				},
 				{
-					heading: '코드 설명 도구 사용법',
-					text: '코드 설명기를 사용하려면 입력 영역에 코드를 붙여넣기만 하면 됩니다. 자동 감지가 올바르게 식별하지 못하면 프로그래밍 언어를 선택합니다. 설명 깊이를 선택하세요: 코드가 수행하는 작업의 빠른 요약을 위한 "개요", 함수별 설명을 위한 "상세", 모든 문장의 포괄적 분석을 위한 "라인별". 경험 수준도 지정할 수 있습니다 - 초보자 설명은 더 간단한 용어와 더 많은 비유를 사용하고, 전문가 설명은 기술 용어를 사용하고 프로그래밍 개념에 익숙하다고 가정합니다. 설명을 클릭하면 몇 초 내에 맞춤형 코드 설명을 받습니다.'
+					"heading": "2단계: 요청 살펴보기",
+					"text": "아래 실제 프롬프트를 생성하세요. 코드 블록의 언어가 javascript인지, 문장이 그대로인지 확인하세요. 이것이 도구 사용 후의 상태인 구조화된 설명 요청입니다. 배열 변환을 실행한 결과가 아닙니다.",
+					"example": "입력 및 선택 항목\n코드: const doubled = [2, 4].map(n => n * 2);\n언어: JavaScript\n수준: 중급\n\n실제 도구 출력\nPlease explain this JavaScript code:\n\n```javascript\nconst doubled = [2, 4].map(n => n * 2);\n```\n\nExplain this code assuming I understand basic programming concepts like variables, loops, and functions."
 				},
 				{
-					heading: '코드 설명 모범 사례',
-					text: '최상의 결과를 위해 가능하면 조각보다 완전한 코드 블록을 제공하세요. AI가 전체 맥락을 이해할 수 있도록 import 문과 종속성을 포함하세요. 코드가 다른 곳에서 정의된 사용자 정의 클래스나 함수를 사용하는 경우 그것들이 무엇을 하는지 간략히 언급하세요. 매우 긴 파일의 경우 논리적 섹션으로 나누어 각 부분을 별도로 설명하는 것이 좋습니다. 직접 작성한 코드를 설명할 때 도구는 작업을 문서화하거나 다른 개발자를 혼란스럽게 할 수 있는 영역을 식별하는 데 도움이 됩니다. 코드 리뷰의 경우 상세 분석에 들어가기 전에 설명기를 사용하여 익숙하지 않은 코드를 빠르게 이해하세요.'
+					"heading": "3단계: 직접 흐름 추적하기",
+					"text": "AI의 답을 읽기 전에 콜백을 추적하세요. 2에 2를 곱하면 4이고, 4에 2를 곱하면 8입니다. 예상 배열은 [4, 8]입니다. 이런 직접 추론은 자신감 있는 말투를 믿는 대신 나중의 설명을 구체적으로 확인할 기준이 됩니다."
 				},
 				{
-					heading: '코드 설명으로 학습하기',
-					text: '코드 설명은 강력한 학습 도구입니다. 학생들은 튜토리얼의 예제 코드를 붙여넣고 자신의 수준에 맞는 맞춤형 설명을 받을 수 있습니다. 독학 개발자는 AI가 다양한 구성 요소가 어떻게 함께 작동하는지 설명하게 하여 오픈소스 프로젝트를 이해할 수 있습니다. 새로운 언어나 프레임워크를 배울 때 설명기를 사용하여 관용적 패턴과 모범 사례를 이해하세요. 다른 언어에서 유사한 기능의 설명을 비교하여 고유한 특성을 이해하세요. 이 도구는 알고리즘 이해에도 유용합니다 - 구현을 붙여넣고 작동 방식, 시간 복잡도, 사용 시기에 대한 명확한 설명을 받으세요.'
+					"heading": "4단계: 불확실한 점 하나 질문하기",
+					"text": "다른 곳에서 프롬프트를 사용한 뒤 콜백 결과가 새 배열의 원소가 되는 과정을 물어보세요. 설명을 직접 추적한 내용과 비교하세요. 보조 함수가 있는 코드라면 같은 수준의 확실성을 기대하기 전에 관련 정의를 포함하세요."
 				},
 				{
-					heading: '일반적인 사용 사례',
-					text: '개발자들은 많은 시나리오에서 코드 설명기를 사용합니다. 코드 리뷰 중에 광범위한 수동 분석 없이 풀 리퀘스트를 빠르게 이해합니다. 디버깅할 때 오류가 발생하기 쉬운 코드를 붙여넣어 의도된 동작을 이해합니다. 레거시 코드 유지보수를 위해 이전 팀원이 작성한 문서화되지 않은 시스템의 설명을 얻습니다. 학생들은 프로그래밍 과제와 예제 코드를 이해하는 데 사용합니다. 기술 작가들은 설명을 문서화의 시작점으로 사용합니다. 보안 연구자들은 잠재적으로 악성인 코드를 분석하여 동작을 이해합니다. 데이터 과학자들은 비기술 이해관계자에게 복잡한 데이터 처리 파이프라인을 설명합니다.'
+					"heading": "실수 1: 라벨을 자동 감지로 오해하기",
+					"text": "Python을 선택해도 JavaScript를 변환하거나 문법을 검증하지 않습니다. 언어 이름과 코드 블록 라벨만 바꾸므로 프롬프트를 받은 AI가 잘못 이해할 수 있습니다."
+				},
+				{
+					"heading": "실수 2: 고급을 감사 기능으로 보기",
+					"text": "고급은 복잡도와 최적화에 관한 설명을 요청합니다. 정확성이나 보안을 증명하지 않습니다. 제안된 변경은 예상 동작과 평소 사용하는 테스트로 확인하세요."
 				}
 			]
 		},
@@ -147,9 +157,19 @@
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
 				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code explanation prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/code" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

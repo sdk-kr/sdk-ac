@@ -4,31 +4,77 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string }[] };
 
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Prompt Generator Guide',
-			description: 'Learn how to create effective AI prompts for ChatGPT, Claude, and other LLMs. Master prompt engineering techniques for better AI responses.',
+			description: "Build and test a specific instruction with the prompt generator, then check an answer against your requirements.",
 			sections: [
-				{ heading: 'What is a Prompt?', text: 'A prompt is the input text you give to an AI model like ChatGPT or Claude. The quality of your prompt directly affects the quality of the AI\'s response. Well-crafted prompts lead to more accurate, relevant, and useful outputs. Think of a prompt as a set of instructions: the clearer and more detailed your instructions, the better the AI can deliver what you need. Understanding how to write prompts is one of the most valuable skills in working with modern AI tools, whether you\'re a content creator, developer, marketer, or researcher.' },
-				{ heading: 'Key Elements of Effective Prompts', text: 'Good prompts typically include: clear context, specific instructions, desired output format, examples when helpful, and constraints or limitations. The more specific you are, the better results you\'ll get. A well-structured prompt has five core components: (1) Role - telling the AI who it should act as, (2) Task - clearly defining what needs to be done, (3) Context - providing background information, (4) Format - specifying how the output should be structured, and (5) Constraints - setting boundaries like word count, tone, or style. Combining these elements creates a comprehensive prompt that guides the AI precisely.' },
-				{ heading: 'Using Our Prompt Generator', text: 'Our tool helps you structure prompts effectively. Simply describe your task, select the AI model you\'re using, choose the output style, and let our generator create an optimized prompt for you. The generator applies proven prompt engineering patterns automatically, so you don\'t need to memorize techniques. It supports multiple output styles including detailed analysis, concise summaries, creative writing, and professional documents. After generating your prompt, you can copy it directly to use with ChatGPT, Claude, Gemini, or any other LLM.' },
-				{ heading: 'Tips for Better Results', text: 'Be specific about what you want. Use clear, simple language. Break complex tasks into steps. Provide examples of desired output. Specify the tone and format you need. Iterate and refine based on results. One of the most powerful techniques is "chain of thought" prompting, where you ask the AI to think step by step before giving a final answer. Another useful approach is few-shot prompting, where you provide examples of the input-output pairs you expect. Don\'t be afraid to experiment with different phrasings until you find what works best for your specific use case.' },
-				{ heading: 'Common Use Cases', text: 'Content creation, code generation, data analysis, creative writing, research assistance, email drafting, translation, summarization, and brainstorming. Our generator supports all these and more. For content creators, prompts can help generate blog post outlines, social media captions, and marketing copy. Developers can use prompts to generate code snippets, debug errors, and write documentation. Researchers benefit from prompts that help synthesize information from multiple sources and identify key findings.' },
-				{ heading: 'Best Practices', text: 'Start with a clear goal. Test your prompts with different inputs. Save successful prompts for reuse. Adjust based on the AI model you\'re using. Remember that different models may respond differently to the same prompt. Keep a prompt library for tasks you perform frequently. Review and refine your prompts regularly as AI models improve. When working with sensitive or important content, always verify the AI\'s output against reliable sources. Consider using system prompts to set consistent behavior across multiple interactions.' }
+				{
+					"heading": "Start with an observable deliverable",
+					"text": "The generator structures a request; a separate assistant supplies the answer. This walkthrough turns a vague workshop request into a checklist instruction. Success means an answer with the required items and no invented event details, not simply a longer prompt."
+				},
+				{
+					"heading": "Step 1: replace the vague task",
+					"text": "Before: “Help with the workshop.” After: “Write a packing checklist for a drawing workshop.” The revised task identifies an artifact and an activity. Put it in Task; put “Attendees bring their own pencils.” in Context so the assistant need not guess who supplies them."
+				},
+				{
+					"heading": "Step 2: inspect the generated request",
+					"text": "For the reproducible run, use the English field values below and select Concise. Generate and compare the output character for character. The task and context remain intact. The generic closing still requests a thorough answer, so the style does not enforce a length limit.",
+					"example": "Input and selections\nTask: Write a packing checklist for a drawing workshop.\nContext: Attendees bring their own pencils.\nStyle: Concise\n\nExact tool output\nYou are an expert assistant. Be brief and to the point. Focus only on essential information.\n\nTask: Write a packing checklist for a drawing workshop.\n\nContext: Attendees bring their own pencils.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "Step 3: define a useful revision",
+					"text": "If the prompt needs a tighter boundary, revise the task to “Write a packing checklist for a drawing workshop. Use five bullets and distinguish attendee items from organizer items.” Generate again. This is a deliberate change to the request, not a claim about what an assistant will return."
+				},
+				{
+					"heading": "Step 4: evaluate the answer elsewhere",
+					"text": "Copy the request to your chosen assistant. Check that pencils are assigned to attendees and that the list respects the requested structure. If either check fails, revise that one requirement. Keep the working prompt and an example answer together for later comparison."
+				},
+				{
+					"heading": "Mistake 1: looking for a model selector",
+					"text": "There is no model selector on this page. The style buttons insert fixed sentences; they do not tune an AI model. Choose the destination service separately."
+				},
+				{
+					"heading": "Mistake 2: adding unsupported background",
+					"text": "More context is useful only if it is relevant and true. Do not add invented venue facilities to make the request sound complete; an assistant might turn those details into requirements."
+				}
 			]
 		},
 		ko: {
 			title: '프롬프트 생성기 가이드',
-			description: 'ChatGPT, Claude 및 기타 LLM을 위한 효과적인 AI 프롬프트를 만드는 방법을 알아보세요. 더 나은 AI 응답을 위한 프롬프트 엔지니어링 기법을 마스터하세요.',
+			description: "프롬프트 생성기로 구체적인 지시문을 만들고 시험한 뒤 답변이 요구 사항을 지키는지 확인하세요.",
 			sections: [
-				{ heading: '프롬프트란?', text: '프롬프트는 ChatGPT나 Claude 같은 AI 모델에 제공하는 입력 텍스트입니다. 프롬프트의 품질이 AI 응답의 품질에 직접적인 영향을 미칩니다. 잘 작성된 프롬프트는 더 정확하고 관련성 있으며 유용한 결과를 이끌어냅니다. 프롬프트를 일종의 지시서로 생각하세요. 지시가 명확하고 상세할수록 AI가 필요한 것을 더 잘 전달할 수 있습니다. 프롬프트 작성법을 이해하는 것은 콘텐츠 제작자, 개발자, 마케터, 연구자 등 현대 AI 도구를 사용하는 모든 사람에게 가장 가치 있는 기술 중 하나입니다.' },
-				{ heading: '효과적인 프롬프트의 핵심 요소', text: '좋은 프롬프트에는 일반적으로 명확한 맥락, 구체적인 지시사항, 원하는 출력 형식, 필요시 예시, 제약 조건이 포함됩니다. 구체적일수록 더 나은 결과를 얻을 수 있습니다. 잘 구조화된 프롬프트에는 5가지 핵심 요소가 있습니다: (1) 역할 - AI가 누구로 행동해야 하는지 알려주기, (2) 작업 - 무엇을 해야 하는지 명확히 정의하기, (3) 맥락 - 배경 정보 제공하기, (4) 형식 - 출력 구조 지정하기, (5) 제약 - 단어 수, 톤, 스타일 등의 경계 설정하기. 이 요소들을 결합하면 AI를 정확하게 안내하는 포괄적인 프롬프트가 됩니다.' },
-				{ heading: '프롬프트 생성기 사용법', text: '도구가 프롬프트를 효과적으로 구조화하도록 도와줍니다. 작업을 설명하고, 사용할 AI 모델을 선택하고, 출력 스타일을 선택하면 최적화된 프롬프트를 생성합니다. 생성기는 검증된 프롬프트 엔지니어링 패턴을 자동으로 적용하므로 기법을 외울 필요가 없습니다. 상세 분석, 간결한 요약, 창작 글쓰기, 전문 문서 등 다양한 출력 스타일을 지원합니다.' },
-				{ heading: '더 나은 결과를 위한 팁', text: '원하는 것을 구체적으로 설명하세요. 명확하고 간단한 언어를 사용하세요. 복잡한 작업은 단계로 나누세요. 원하는 출력의 예시를 제공하세요. 필요한 톤과 형식을 지정하세요. 가장 강력한 기법 중 하나는 "생각의 사슬" 프롬프팅으로, AI에게 최종 답변 전에 단계별로 생각하도록 요청하는 것입니다. 또 다른 유용한 접근법은 기대하는 입출력 쌍의 예시를 제공하는 "Few-shot 프롬프팅"입니다.' },
-				{ heading: '일반적인 사용 사례', text: '콘텐츠 제작, 코드 생성, 데이터 분석, 창작 글쓰기, 연구 지원, 이메일 작성, 번역, 요약, 브레인스토밍. 생성기는 이 모든 것을 지원합니다. 콘텐츠 제작자에게 프롬프트는 블로그 게시물 개요, 소셜 미디어 캡션, 마케팅 카피를 생성하는 데 도움이 됩니다. 개발자는 코드 스니펫 생성, 오류 디버깅, 문서 작성에 프롬프트를 사용할 수 있습니다.' },
-				{ heading: '모범 사례', text: '명확한 목표로 시작하세요. 다양한 입력으로 프롬프트를 테스트하세요. 성공적인 프롬프트를 재사용을 위해 저장하세요. 사용하는 AI 모델에 따라 조정하세요. 다른 모델은 같은 프롬프트에 다르게 반응할 수 있다는 것을 기억하세요. 자주 수행하는 작업에 대한 프롬프트 라이브러리를 유지하세요. AI 모델이 개선됨에 따라 프롬프트를 정기적으로 검토하고 개선하세요.' }
+				{
+					"heading": "확인할 수 있는 산출물부터 정하기",
+					"text": "생성기는 요청의 구조를 만들고 답변은 별도의 AI가 제공합니다. 이 실습에서는 모호한 워크숍 요청을 체크리스트 지시문으로 바꿉니다. 성공 기준은 단순히 긴 프롬프트가 아니라 필요한 항목을 담고 행사 세부 사항을 지어내지 않은 답변입니다."
+				},
+				{
+					"heading": "1단계: 모호한 작업 바꾸기",
+					"text": "수정 전: “워크숍을 도와줘.” 수정 후: “드로잉 워크숍의 준비물 체크리스트를 작성해 줘.” 수정된 작업에는 산출물과 활동이 드러납니다. 작업 필드에 넣고 맥락에는 “참가자는 연필을 직접 가져옵니다.”를 적어 누가 준비하는지 추측하지 않게 하세요."
+				},
+				{
+					"heading": "2단계: 생성된 요청 살펴보기",
+					"text": "재현하려면 아래 영어 필드 값을 사용하고 간결한 스타일을 선택하세요. 생성한 뒤 출력을 문자 단위로 비교하세요. 작업과 맥락이 그대로 남습니다. 일반적인 마무리 문장은 여전히 충실한 답변을 요청하므로 스타일이 길이 제한을 강제하지는 않습니다.",
+					"example": "입력 및 선택 항목\n작업: Write a packing checklist for a drawing workshop.\n맥락: Attendees bring their own pencils.\n스타일: 간결함\n\n실제 도구 출력\nYou are an expert assistant. Be brief and to the point. Focus only on essential information.\n\nTask: Write a packing checklist for a drawing workshop.\n\nContext: Attendees bring their own pencils.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "3단계: 유용한 수정 정의하기",
+					"text": "더 명확한 경계가 필요하면 작업을 “드로잉 워크숍의 준비물 체크리스트를 작성해 줘. 글머리 기호 다섯 개를 쓰고 참가자 준비물과 주최 측 준비물을 구분해 줘.”로 바꾸세요. 다시 생성하세요. 이는 요청을 의도적으로 바꾸는 것이며 AI의 반환 결과에 관한 주장은 아닙니다."
+				},
+				{
+					"heading": "4단계: 다른 곳에서 받은 답변 평가하기",
+					"text": "선택한 AI에 요청을 복사하세요. 연필이 참가자 준비물로 분류되었는지, 목록이 요청한 구조를 지키는지 확인하세요. 하나라도 실패하면 해당 요구 사항 하나를 고치세요. 작동하는 프롬프트와 답변 예시를 함께 보관하여 나중에 비교하세요."
+				},
+				{
+					"heading": "실수 1: 모델 선택 기능 찾기",
+					"text": "이 페이지에는 모델 선택 기능이 없습니다. 스타일 버튼은 고정 문장을 넣으며 AI 모델을 조정하지 않습니다. 사용할 서비스는 별도로 선택하세요."
+				},
+				{
+					"heading": "실수 2: 근거 없는 배경 추가하기",
+					"text": "맥락이 많아도 관련 있고 사실일 때만 유용합니다. 요청을 완전해 보이게 하려고 행사장 시설을 지어내지 마세요. AI가 그 내용을 요구 사항으로 바꿀 수 있습니다."
+				}
 			]
 		},
 		ja: {
@@ -84,12 +130,22 @@
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
 				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code explanation prompt builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/prompt" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-			Try Prompt Generator &rarr;
+			{lang === 'ko' ? "프롬프트 생성기 사용하기" : "Try Prompt Generator"} &rarr;
 		</a>
 	</div>
 </div>

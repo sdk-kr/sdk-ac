@@ -192,6 +192,56 @@ AI翻訳は「非常に有能な下訳」として扱ってください。社内
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "This page builds a translation request. It inserts your selected source and target languages around the original text and asks another assistant to return only a translation. It neither detects the source language nor translates the passage here. Treat the output as a handoff: the source must be clear enough that a translator can identify the intended meaning. Resolve ambiguous pronouns and product terms before generating, because the template adds no glossary, audience, or regional guidance of its own.",
+				"ko": "이 페이지는 번역 요청을 만듭니다. 선택한 원문 언어와 대상 언어를 원문 주변에 넣고 다른 AI에게 번역문만 반환하라고 요청합니다. 여기서 원문 언어를 감지하거나 글을 번역하지는 않습니다. 출력을 다른 번역 작업으로 넘길 지시문으로 보세요. 번역자가 의도한 뜻을 파악할 수 있도록 원문이 명확해야 합니다. 템플릿은 용어집, 독자, 지역에 관한 지침을 추가하지 않으므로 생성 전에 모호한 대명사와 제품 용어를 정리하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "Use the short product instruction below with English as the source and Korean as the target. The exact result is an English instruction containing the unchanged source sentence, not Korean translated prose. Copying it into another service is a separate action. When you later review a translation, check that the cover is the thing being removed and that removal happens before filter replacement. Fluent wording alone would not establish either point.",
+				"ko": "아래의 짧은 제품 안내문을 사용하고 원문 언어는 영어, 대상 언어는 한국어로 선택하세요. 실제 결과는 원문 문장이 그대로 들어간 영어 지시문이며 한국어 번역문이 아닙니다. 다른 서비스에 복사하는 일은 별도 동작입니다. 나중에 번역을 검토할 때는 분리하는 대상이 덮개인지, 필터 교체 전에 분리하는지 확인하세요. 문장이 유창하다는 사실만으로는 둘 다 확인할 수 없습니다."
+			},
+			"code": {
+				"example": "Input and selections\nText: Remove the cover before replacing the filter.\nFrom: English\nTo: Korean\n\nExact tool output\nPlease translate the following text from English to Korean:\n\n\"Remove the cover before replacing the filter.\"\n\nProvide only the translation without any explanation."
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not present this output as a finished or certified translation. There is no confidence score, terminology check, or comparison with a reference translation. The selected language names do not validate the language of the input. For publication, have someone who understands the source and target check names, negation, quantities, and sequence. If a mistaken instruction could cause harm, use an appropriate professional review process rather than relying on a generated draft.",
+				"ko": "이 출력을 완성되거나 공인된 번역으로 제시하지 마세요. 신뢰도 점수, 용어 검사, 기준 번역과의 비교 기능이 없습니다. 선택한 언어 이름으로 입력 언어를 검증하지도 않습니다. 게시할 글은 원문과 대상 언어를 이해하는 사람이 이름, 부정 표현, 수량, 순서를 확인하게 하세요. 잘못된 지시로 피해가 생길 수 있다면 생성된 초안에 의존하기보다 적절한 전문 검토 절차를 이용하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Does Swap translate the result back? No. It exchanges the language selections and rebuilds the request around the original input when output exists.\n\nCan it detect mixed-language text? No. You select the source language manually.\n\nDoes changing the page language change my target? No. The translation selectors are separate from the interface locale.\n\nCan I request a regional variant? There is no dedicated variant selector; edit the copied request to specify one.\n\nWhy does the output include quotation marks? The template surrounds your input with literal quotes. Embedded quotes remain unchanged, so inspect the boundaries before using a passage that already contains dialogue.",
+				"ko": "언어 교환을 누르면 결과를 역번역하나요? 아니요. 언어 선택을 맞바꾸고 출력이 있을 때 원래 입력을 둘러싼 요청을 다시 만듭니다.\n\n여러 언어가 섞인 글을 감지하나요? 아니요. 원문 언어는 직접 선택합니다.\n\n페이지 언어를 바꾸면 대상 언어도 바뀌나요? 아니요. 번역 선택 항목은 화면 언어와 별개입니다.\n\n지역별 표현을 요청할 수 있나요? 전용 지역 선택 항목은 없습니다. 복사한 요청을 편집하여 지정하세요.\n\n출력에 따옴표가 들어가는 이유는 무엇인가요? 템플릿이 입력을 따옴표로 감싸기 때문입니다. 입력 안의 따옴표는 그대로 남으므로 대화가 포함된 글을 사용할 때 경계를 확인하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n텍스트: Remove the cover before replacing the filter.\n원문 언어: English\n대상 언어: Korean\n\n실제 도구 출력\nPlease translate the following text from English to Korean:\n\n\"Remove the cover before replacing the filter.\"\n\nProvide only the translation without any explanation." : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -333,5 +383,17 @@ AI翻訳は「非常に有能な下訳」として扱ってください。社内
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기 실습 읽기" : "Read the translation prompt builder tutorial"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+		</nav>
+	{/if}
+
 </div>

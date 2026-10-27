@@ -222,6 +222,56 @@ Keep a hedge budget in mind when accepting suggestions, and re-read the final te
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "The writing assistant wraps your original text in an editing request. Your chosen action supplies a fixed instruction, followed by the unchanged passage and a request for the improved version without explanations. It does not edit the passage on this page. Choose the action based on the problem you can name: grammar for mechanical errors, simplify for difficult wording, or a tone change for a different audience. Broad improvement requests leave more editorial decisions to the assistant that eventually receives the prompt.",
+				"ko": "글쓰기 도우미는 원문을 편집 요청으로 감쌉니다. 선택한 작업에 따른 고정 지시 뒤에 원문을 그대로 넣고 설명 없이 개선한 글을 반환하라고 요청합니다. 이 페이지에서 글을 편집하지는 않습니다. 이름 붙일 수 있는 문제에 따라 작업을 선택하세요. 문법은 문법적 오류에, 단순화는 어려운 표현에, 어조 변경은 다른 독자를 위한 수정에 적합한 요청입니다. 포괄적인 개선 요청은 나중에 프롬프트를 받는 AI에게 더 많은 편집 판단을 맡깁니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "Use the sentence below and select Grammar. The exact output still contains the original wording, including its subject–verb agreement. That is expected: the page is preparing an editing task. When reviewing a later revision, check that the subject and its verb agree, but also confirm that “may” remains uncertain and that the condition about approval survives. A smoother sentence that changes either point would be a worse edit for this purpose.",
+				"ko": "아래 문장을 사용하고 문법을 선택하세요. 실제 출력에는 주어와 동사의 일치를 포함한 표현이 그대로 남습니다. 페이지가 편집 작업을 준비하는 것이므로 정상입니다. 나중에 수정문을 검토할 때는 주어와 동사가 일치하는지뿐 아니라 “may”의 불확실성과 승인에 관한 조건이 유지되는지도 확인하세요. 둘 중 하나라도 바뀌면 더 매끄러운 문장이라도 이 목적에서는 더 나쁜 편집입니다."
+			},
+			"code": {
+				"example": "Input and selections\nText: The team are ready, but we may postpone the launch if approval is delayed.\nAction: Grammar\n\nExact tool output\nFix all grammar, spelling, and punctuation errors in this text:\n\n\"The team are ready, but we may postpone the launch if approval is delayed.\"\n\nProvide the improved version without explanations."
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not treat this tool as a spelling checker, plagiarism detector, fact checker, or record of tracked changes. It provides none of those checks. A request to simplify can erase qualifications, and a formal rewrite can make tentative language sound definite. Preserve the original beside any revision and compare claims, conditions, and commitments before adopting it. If exact wording must be retained, identify the protected phrase explicitly when editing the copied request.",
+				"ko": "이 도구를 맞춤법 검사기, 표절 탐지기, 사실 확인기, 변경 이력으로 여기지 마세요. 그런 검사는 제공하지 않습니다. 단순화 요청은 단서 조항을 지울 수 있고, 격식 있는 문체로 바꾸면 잠정적인 표현이 확정적으로 들릴 수 있습니다. 수정문 옆에 원문을 보관하고 채택 전에 주장, 조건, 약속을 비교하세요. 정확한 문구를 유지해야 한다면 복사한 요청을 편집할 때 보호할 표현을 명시하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Will Grammar highlight individual errors? No. The output is a request for a revised passage, not inline feedback.\n\nDoes Improve guarantee the same meaning? It asks for that, but this page cannot verify a later assistant's revision.\n\nCan I see a before-and-after comparison here? No. Keep your original and compare it with the revision you obtain elsewhere.\n\nCan I combine actions automatically? There is one selected action per generated request; combined editing instructions require your own changes.\n\nHow can I learn from the revision? In the copied request, replace the no-explanations instruction with a request to explain a particular change, then judge that explanation against the original meaning.",
+				"ko": "문법을 선택하면 오류를 하나씩 강조하나요? 아니요. 출력은 본문 내 피드백이 아니라 수정문 요청입니다.\n\n개선 작업은 같은 의미를 보장하나요? 그렇게 요청하지만 이 페이지는 나중에 AI가 만든 수정문을 검증하지 못합니다.\n\n여기서 수정 전후를 비교할 수 있나요? 아니요. 원문을 보관하고 다른 곳에서 얻은 수정문과 비교하세요.\n\n여러 작업을 자동으로 결합할 수 있나요? 생성 요청마다 작업 하나를 선택합니다. 여러 편집 지시를 합치려면 직접 수정해야 합니다.\n\n수정문을 통해 어떻게 배울 수 있나요? 복사한 요청에서 설명하지 말라는 지시를 특정 변경을 설명해 달라는 요청으로 바꾸고, 그 설명을 원래 의미에 비추어 판단하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n텍스트: The team are ready, but we may postpone the launch if approval is delayed.\n작업: 문법\n\n실제 도구 출력\nFix all grammar, spelling, and punctuation errors in this text:\n\n\"The team are ready, but we may postpone the launch if approval is delayed.\"\n\nProvide the improved version without explanations." : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -339,5 +389,17 @@ Keep a hedge budget in mind when accepting suggestions, and re-read the final te
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기 실습 읽기" : "Read the writing revision prompt builder tutorial"}</a>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기" : "Email drafting prompt builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+		</nav>
+	{/if}
+
 </div>

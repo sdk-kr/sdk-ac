@@ -4,67 +4,77 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Writing Assistant Guide',
-			description: 'Discover how to improve your writing with our AI writing assistant. Get help with grammar, style, clarity, and creating compelling content.',
+			description: "Prepare an editing request and compare a revision with the original meaning, conditions, and level of certainty.",
 			cta: 'Try Writing Assistant',
 			sections: [
 				{
-					heading: 'What is an AI Writing Assistant?',
-					text: 'An AI writing assistant is a powerful tool that helps you write better content faster. Whether you\'re crafting a blog post, essay, report, creative story, or social media content, our AI analyzes your writing and provides suggestions for improvement. It goes beyond simple spell-checking to understand context, tone, and style. The assistant can help you overcome writer\'s block by generating ideas and outlines, expand on your thoughts, tighten verbose passages, and ensure your writing achieves its intended purpose. Unlike passive grammar tools, our writing assistant actively collaborates with you, offering alternatives and explanations that help you become a better writer over time while producing polished content immediately.'
+					"heading": "Name the edit you need",
+					"text": "This walkthrough fixes subject–verb agreement while preserving a conditional commitment. The page creates an editing prompt; it does not perform inline correction. A useful review checks what a revision means as well as whether it reads smoothly."
 				},
 				{
-					heading: 'Key Features and Capabilities',
-					text: 'Our writing assistant offers comprehensive support for all aspects of writing. Grammar and spelling correction catches errors that standard spell-checkers miss, including context-dependent mistakes. Style analysis ensures consistency in tone, formality, and voice throughout your document. Clarity enhancement simplifies complex sentences and eliminates jargon when appropriate. Vocabulary enrichment suggests more precise or powerful word choices. Structural feedback helps organize your ideas logically with smooth transitions. Plagiarism awareness helps you express ideas in original ways. The tool also offers specialized modes for different writing types: academic writing maintains formal rigor, creative writing preserves artistic voice, business writing emphasizes clarity and professionalism, and SEO writing optimizes for search visibility.'
+					"heading": "Step 1: identify protected meaning",
+					"text": "Before: “The team are ready, but we may postpone the launch if approval is delayed.” Identify two details to preserve: postponement is possible rather than certain, and it depends on delayed approval. Paste the exact sentence and select Grammar."
 				},
 				{
-					heading: 'How to Use the Writing Assistant',
-					text: 'Getting started is simple. Paste your text into the input area or start writing directly. Select your content type (article, essay, email, story, etc.) and target audience (general, academic, professional, casual). Choose your preferred writing style - formal, conversational, persuasive, or informative. The assistant analyzes your text in real-time, highlighting areas for improvement with explanations. You can accept suggestions individually, apply all at once, or dismiss those that don\'t fit your intent. For new content, describe what you want to write and receive an outline or draft to refine. The tool remembers your preferences and learns your style over time, providing increasingly personalized suggestions that maintain your unique voice.'
+					"heading": "Step 2: inspect the unchanged source",
+					"text": "Generate the exact request below. The output still contains “The team are ready”. This is expected because the tool wraps the text without editing it. The after state here is an editing request ready to copy, not corrected prose.",
+					"example": "Input and selections\nText: The team are ready, but we may postpone the launch if approval is delayed.\nAction: Grammar\n\nExact tool output\nFix all grammar, spelling, and punctuation errors in this text:\n\n\"The team are ready, but we may postpone the launch if approval is delayed.\"\n\nProvide the improved version without explanations."
 				},
 				{
-					heading: 'Improving Writing Quality',
-					text: 'Quality writing is clear, engaging, and purposeful. Our assistant helps achieve these goals through several mechanisms. For clarity, it identifies confusing sentence structures, passive voice overuse, and ambiguous pronouns. For engagement, it suggests varied sentence lengths, stronger verbs, and more vivid descriptions. For purpose, it ensures your main points are prominent and well-supported. The tool provides readability scores and grade-level analysis to match your target audience. It catches logical gaps in arguments and suggests where additional evidence or examples would strengthen your point. By explaining why certain changes improve your writing, the assistant serves as both an editing tool and a writing teacher, helping you internalize good writing habits.'
+					"heading": "Step 3: compare a possible revision",
+					"text": "For a context treating the team as one unit, an editor might write: “The team is ready, but we may postpone the launch if approval is delayed.” This is an editorial example, not generated output. Agreement conventions can vary with dialect and intended meaning, so choose the convention appropriate to your document."
 				},
 				{
-					heading: 'Writing for Different Purposes',
-					text: 'Different writing contexts have different requirements, and our assistant adapts accordingly. Academic writing demands formal language, proper citations, and logical argumentation - the tool helps maintain these standards while ensuring your original analysis shines. Business writing requires clarity and action orientation - the assistant helps eliminate jargon and ensure every paragraph serves a clear purpose. Creative writing balances technical correctness with artistic expression - our tool respects stylistic choices while catching genuine errors. Marketing copy needs persuasion and punch - the assistant helps craft compelling hooks and calls to action. Technical documentation requires precision - the tool ensures accuracy while improving accessibility for non-expert readers. Whatever you\'re writing, the assistant optimizes for that specific context.'
+					"heading": "Step 4: audit the commitments",
+					"text": "After getting a revision elsewhere, compare “may” and the approval condition with the original. Reject a rewrite that says “will postpone” without justification. If you then request a more formal tone, repeat this meaning check rather than assuming the earlier check still applies."
 				},
 				{
-					heading: 'Common Use Cases and Benefits',
-					text: 'Writers across all fields benefit from our assistant. Students improve their essays and research papers, learning proper academic conventions while expressing their ideas more clearly. Professionals craft polished emails, reports, and presentations that make strong impressions. Content creators produce engaging blog posts and articles more efficiently. Non-native English speakers gain confidence in their writing with grammar and idiom support. Authors and journalists refine their drafts, catching issues that fresh eyes might find. Marketers create compelling copy that converts. Even experienced writers use the tool as a first-pass editor, saving time on mechanical issues to focus on higher-level creative decisions. The assistant democratizes good writing, making professional-quality content accessible to everyone regardless of formal training or native language.'
+					"heading": "Mistake 1: expecting tracked changes",
+					"text": "The page provides no inline suggestions or change history. Save the original yourself and compare it with the later revision sentence by sentence."
+				},
+				{
+					"heading": "Mistake 2: asking for everything at once",
+					"text": "Combining grammar, simplification, and tone changes can obscure why meaning shifted. Start with the specific problem, review the result, then request another pass only if needed."
 				}
 			]
 		},
 		ko: {
 			title: '글쓰기 도우미 가이드',
-			description: 'AI 글쓰기 도우미로 글쓰기를 향상시키는 방법을 알아보세요. 문법, 스타일, 명확성 및 매력적인 콘텐츠 작성에 도움을 받으세요.',
+			description: "편집 요청을 준비하고 수정문을 원래 의미, 조건, 확실성의 정도와 비교하세요.",
 			cta: '글쓰기 도우미 사용하기',
 			sections: [
 				{
-					heading: 'AI 글쓰기 도우미란?',
-					text: 'AI 글쓰기 도우미는 더 나은 콘텐츠를 더 빠르게 작성하도록 돕는 강력한 도구입니다. 블로그 글, 에세이, 보고서, 창작 스토리, 소셜 미디어 콘텐츠를 작성하든 AI가 글을 분석하고 개선을 위한 제안을 제공합니다. 단순한 맞춤법 검사를 넘어 맥락, 어조, 스타일을 이해합니다. 도우미는 아이디어와 개요를 생성하여 작가의 블록을 극복하고, 생각을 확장하고, 장황한 구절을 조여주며, 글이 의도한 목적을 달성하도록 보장합니다. 수동적인 문법 도구와 달리 글쓰기 도우미는 적극적으로 협력하여 대안과 설명을 제공하여 시간이 지남에 따라 더 나은 작가가 되도록 돕고 즉시 세련된 콘텐츠를 생성합니다.'
+					"heading": "필요한 편집 이름 붙이기",
+					"text": "이 실습은 조건부 약속을 유지하면서 주어와 동사의 일치를 고칩니다. 페이지는 편집 프롬프트를 만들며 본문 내 교정을 수행하지 않습니다. 유용한 검토는 수정문이 매끄러운지뿐 아니라 무엇을 뜻하는지도 확인합니다."
 				},
 				{
-					heading: '주요 기능 및 역량',
-					text: '글쓰기 도우미는 글쓰기의 모든 측면에 대해 포괄적인 지원을 제공합니다. 문법 및 맞춤법 교정은 맥락 의존적 실수를 포함하여 표준 맞춤법 검사기가 놓치는 오류를 잡습니다. 스타일 분석은 문서 전체에서 어조, 격식, 목소리의 일관성을 보장합니다. 명확성 향상은 복잡한 문장을 단순화하고 적절한 경우 전문 용어를 제거합니다. 어휘 강화는 더 정확하거나 강력한 단어 선택을 제안합니다. 구조적 피드백은 매끄러운 전환과 함께 아이디어를 논리적으로 구성하도록 돕습니다. 표절 인식은 아이디어를 독창적인 방식으로 표현하도록 돕습니다. 이 도구는 또한 다양한 글쓰기 유형에 대한 전문 모드를 제공합니다: 학술적 글쓰기는 격식 있는 엄격함을 유지하고, 창작 글쓰기는 예술적 목소리를 보존하며, 비즈니스 글쓰기는 명확성과 전문성을 강조합니다.'
+					"heading": "1단계: 지켜야 할 의미 찾기",
+					"text": "수정 전 문장은 “The team are ready, but we may postpone the launch if approval is delayed.”입니다. 유지할 두 가지를 찾으세요. 연기는 확정이 아닌 가능성이며 승인 지연에 달려 있습니다. 문장을 정확히 붙여넣고 문법을 선택하세요."
 				},
 				{
-					heading: '글쓰기 도우미 사용 방법',
-					text: '시작은 간단합니다. 입력 영역에 텍스트를 붙여넣거나 직접 작성을 시작합니다. 콘텐츠 유형(기사, 에세이, 이메일, 스토리 등)과 타겟 오디언스(일반, 학술, 전문, 캐주얼)를 선택합니다. 선호하는 글쓰기 스타일 - 공식적, 대화적, 설득적, 정보적 - 을 선택합니다. 도우미가 텍스트를 실시간으로 분석하여 설명과 함께 개선이 필요한 영역을 강조합니다. 제안을 개별적으로 수락하거나, 한 번에 모두 적용하거나, 의도에 맞지 않는 것은 거부할 수 있습니다. 새로운 콘텐츠의 경우 작성하고 싶은 내용을 설명하면 다듬을 개요나 초안을 받습니다. 도구는 시간이 지남에 따라 선호도를 기억하고 스타일을 학습하여 고유한 목소리를 유지하면서 점점 더 개인화된 제안을 제공합니다.'
+					"heading": "2단계: 그대로 남은 원문 살펴보기",
+					"text": "아래 실제 요청을 생성하세요. 출력에는 “The team are ready”가 그대로 남습니다. 도구가 편집 없이 텍스트를 감싸므로 예상된 동작입니다. 여기서 사용 후 상태는 교정된 글이 아니라 복사할 준비가 된 편집 요청입니다.",
+					"example": "입력 및 선택 항목\n텍스트: The team are ready, but we may postpone the launch if approval is delayed.\n작업: 문법\n\n실제 도구 출력\nFix all grammar, spelling, and punctuation errors in this text:\n\n\"The team are ready, but we may postpone the launch if approval is delayed.\"\n\nProvide the improved version without explanations."
 				},
 				{
-					heading: '글쓰기 품질 향상',
-					text: '품질 좋은 글쓰기는 명확하고, 매력적이며, 목적이 있습니다. 도우미는 여러 메커니즘을 통해 이러한 목표를 달성하도록 돕습니다. 명확성을 위해 혼란스러운 문장 구조, 수동태 과다 사용, 모호한 대명사를 식별합니다. 참여를 위해 다양한 문장 길이, 더 강한 동사, 더 생생한 묘사를 제안합니다. 목적을 위해 주요 포인트가 두드러지고 잘 뒷받침되도록 보장합니다. 도구는 타겟 오디언스에 맞게 가독성 점수와 학년 수준 분석을 제공합니다. 논증의 논리적 공백을 잡아내고 추가 증거나 예시가 포인트를 강화할 수 있는 곳을 제안합니다. 특정 변경이 글쓰기를 개선하는 이유를 설명함으로써 도우미는 편집 도구와 글쓰기 교사 역할을 모두 수행합니다.'
+					"heading": "3단계: 가능한 수정문 비교하기",
+					"text": "팀을 하나의 단위로 보는 맥락에서 편집자는 “The team is ready, but we may postpone the launch if approval is delayed.”라고 쓸 수 있습니다. 이는 편집 예시이며 생성된 출력이 아닙니다. 일치 규칙은 언어 변종과 의도한 의미에 따라 달라질 수 있으므로 문서에 맞는 관례를 선택하세요."
 				},
 				{
-					heading: '다양한 목적의 글쓰기',
-					text: '다른 글쓰기 맥락은 다른 요구 사항이 있으며, 도우미는 그에 따라 적응합니다. 학술적 글쓰기는 격식 있는 언어, 적절한 인용, 논리적 논증을 요구합니다 - 도구는 독창적인 분석이 빛나도록 하면서 이러한 기준을 유지하도록 돕습니다. 비즈니스 글쓰기는 명확성과 행동 지향을 요구합니다 - 도우미는 전문 용어를 제거하고 모든 단락이 명확한 목적을 갖도록 돕습니다. 창작 글쓰기는 기술적 정확성과 예술적 표현의 균형을 맞춥니다 - 도구는 진정한 오류를 잡으면서 문체적 선택을 존중합니다. 마케팅 카피는 설득력과 임팩트가 필요합니다 - 도우미는 매력적인 훅과 행동 촉구를 만드는 데 도움을 줍니다. 기술 문서는 정확성을 요구합니다 - 도구는 비전문가 독자를 위한 접근성을 개선하면서 정확성을 보장합니다.'
+					"heading": "4단계: 약속의 강도 검토하기",
+					"text": "다른 곳에서 수정문을 얻은 뒤 “may”와 승인 조건을 원문과 비교하세요. 근거 없이 “will postpone”으로 바꾼 수정은 받아들이지 마세요. 이후 더 격식 있는 어조를 요청한다면 앞서 확인했으니 괜찮다고 가정하지 말고 의미 검사를 반복하세요."
 				},
 				{
-					heading: '일반적인 사용 사례 및 혜택',
-					text: '모든 분야의 작가들이 도우미의 혜택을 받습니다. 학생들은 에세이와 연구 논문을 개선하면서 적절한 학술 관례를 배우고 아이디어를 더 명확하게 표현합니다. 전문가들은 강한 인상을 주는 세련된 이메일, 보고서, 프레젠테이션을 작성합니다. 콘텐츠 제작자들은 매력적인 블로그 글과 기사를 더 효율적으로 생성합니다. 비원어민 영어 사용자들은 문법 및 관용어 지원으로 글쓰기에 자신감을 얻습니다. 작가와 저널리스트들은 새로운 눈이 발견할 수 있는 문제를 잡으면서 초안을 다듬습니다. 마케터들은 전환을 이끄는 매력적인 카피를 만듭니다. 경험 많은 작가들도 이 도구를 첫 번째 편집자로 사용하여 기계적인 문제에 시간을 절약하고 더 높은 수준의 창작 결정에 집중합니다.'
+					"heading": "실수 1: 변경 이력 기대하기",
+					"text": "페이지에는 본문 내 제안이나 변경 이력이 없습니다. 원문을 직접 보관하고 나중의 수정문과 문장별로 비교하세요."
+				},
+				{
+					"heading": "실수 2: 모든 수정을 한꺼번에 요청하기",
+					"text": "문법, 단순화, 어조 변경을 한꺼번에 요청하면 의미가 바뀐 이유를 파악하기 어렵습니다. 구체적인 문제부터 시작하고 결과를 검토한 뒤 필요한 경우에만 다음 수정을 요청하세요."
 				}
 			]
 		},
@@ -147,9 +157,19 @@
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
 				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기" : "Email drafting prompt builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/writing" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

@@ -4,31 +4,77 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string }[] };
 
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
 			title: 'Image Prompt Builder Guide',
-			description: 'Master the art of creating image prompts for Midjourney, DALL-E, and Stable Diffusion. Learn visual descriptors, styles, and techniques.',
+			description: "Build an image prompt from a concrete subject, inspect the fixed modifiers, and compare one visual change at a time.",
 			sections: [
-				{ heading: 'Understanding Image Prompts', text: 'Image prompts tell AI image generators like Midjourney, DALL-E, and Stable Diffusion what to create. Unlike text prompts, image prompts benefit from specific visual descriptors, artistic styles, and technical parameters. The way you structure an image prompt determines everything from composition and lighting to color palette and mood. Learning to write effective image prompts is both an art and a science, requiring an understanding of visual terminology, AI model behavior, and creative expression. As AI image generation technology evolves rapidly, mastering prompt writing gives you the ability to create stunning visuals for any purpose.' },
-				{ heading: 'Key Components', text: 'Effective image prompts include: subject description, artistic style, lighting conditions, camera angle, color palette, mood/atmosphere, and technical specifications like aspect ratio and quality settings. The subject should be described clearly and specifically - instead of "a dog," try "a golden retriever puppy sitting in autumn leaves." Style determines the overall aesthetic: photorealistic, digital art, oil painting, watercolor, etc. Lighting and camera angle create dramatic effects and guide the viewer\'s eye. Color palette sets the emotional tone. Quality modifiers like "highly detailed," "8K," or "professional photography" push the AI toward higher-quality outputs.' },
-				{ heading: 'Style Keywords', text: 'Popular style keywords include: photorealistic, cinematic, anime, watercolor, oil painting, digital art, concept art, 3D render, minimalist, vintage, cyberpunk, and fantasy. Combining styles can create unique results. Each style keyword triggers different visual characteristics in the AI model. Photorealistic produces lifelike images, while anime creates Japanese animation-style artwork. Cinematic gives a wide-angle, movie-quality feel. Experiment with combining unexpected styles, like "cyberpunk watercolor" or "minimalist fantasy," to discover unique aesthetics that set your images apart from generic AI art.' },
-				{ heading: 'Using Our Builder', text: 'Our Image Prompt Builder guides you through each component. Select your subject, choose a style, add modifiers, and the tool generates an optimized prompt for your preferred AI image generator. The builder includes pre-tested keyword combinations that are known to produce excellent results across different AI platforms. You can also customize the output by adding your own descriptors and adjusting the order of elements. Save your favorite prompt templates for quick reuse on future projects.' },
-				{ heading: 'Platform-Specific Tips', text: 'Midjourney responds well to artistic descriptors and --parameters like --ar 16:9 for aspect ratio, --v 6 for model version, and --s for stylization level. DALL-E prefers natural language descriptions written as complete sentences. Stable Diffusion works best with comma-separated keywords, negative prompts to exclude unwanted elements, and specific sampler settings. Understanding each platform\'s strengths helps you choose the right tool for your project: Midjourney excels at artistic and aesthetic images, DALL-E is great for realistic and conceptual illustrations, and Stable Diffusion offers the most customization and control.' },
-				{ heading: 'Common Mistakes', text: 'Avoid vague descriptions, conflicting styles, too many subjects, or overly complex prompts. Start simple and add details incrementally. Test variations to find what works best. Other common mistakes include: using contradictory lighting descriptions (like "dark shadows with bright sunlight"), cramming too many style keywords that dilute each other, ignoring aspect ratio for the intended use, and not using negative prompts to exclude unwanted elements. The best approach is to start with a clear mental image of what you want, describe the most important elements first, and then refine through iteration.' }
+				{
+					"heading": "Plan one scene before choosing a style",
+					"text": "This walkthrough prepares a reading corner illustration prompt. The builder returns text; rendering happens in a separate image service. Decide which visible elements matter before choosing aesthetic words, so you can distinguish a successful composition from an attractive but unsuitable image."
+				},
+				{
+					"heading": "Step 1: replace an abstract subject",
+					"text": "Before: “A cozy place.” After: “A reading chair beside a tall window.” Enter the revised English subject. It gives the renderer two objects and a spatial relationship. Avoid adding unrelated objects until this simple arrangement works."
+				},
+				{
+					"heading": "Step 2: generate and inspect the modifiers",
+					"text": "Choose Watercolor and Peaceful. The exact output below combines the subject with soft edges, flowing colors, and calm lighting. These are descriptive requests, not renderer settings. Read the entire prompt once to catch conflicts before copying it.",
+					"example": "Input and selections\nSubject: A reading chair beside a tall window\nStyle: Watercolor\nMood: Peaceful\n\nExact tool output\nA reading chair beside a tall window, watercolor painting, soft edges, flowing colors, artistic, delicate, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "Step 3: make a purposeful variation",
+					"text": "Keep the subject and style, but change the mood to Dramatic. Compare the two text prompts first: only the mood phrase should change. If you render both elsewhere, hold that service’s other settings stable where possible and look specifically at lighting and contrast."
+				},
+				{
+					"heading": "Step 4: check composition before decoration",
+					"text": "Inspect whether the chair is beside the window and whether both remain visible. If placement is wrong, revise the subject to specify the arrangement. Adding another quality adjective does not explain where an object belongs. Save the prompt alongside the image you selected."
+				},
+				{
+					"heading": "Mistake 1: treating quality words as controls",
+					"text": "The suffix cannot set pixel dimensions or guarantee readable text. Choose actual size controls in the destination service and inspect the exported image."
+				},
+				{
+					"heading": "Mistake 2: mixing incompatible instructions",
+					"text": "A subject demanding sharp ink outlines may compete with watercolor’s soft edges. Decide which appearance matters, then remove the opposing phrase in the copied prompt."
+				}
 			]
 		},
 		ko: {
 			title: '이미지 프롬프트 빌더 가이드',
-			description: 'Midjourney, DALL-E, Stable Diffusion을 위한 이미지 프롬프트 작성 기술을 마스터하세요. 시각적 설명자, 스타일, 기법을 배우세요.',
+			description: "구체적인 주제로 이미지 프롬프트를 만들고 고정 수식어를 살펴본 뒤 시각적 변화 하나씩 비교하세요.",
 			sections: [
-				{ heading: '이미지 프롬프트 이해하기', text: '이미지 프롬프트는 Midjourney, DALL-E, Stable Diffusion 같은 AI 이미지 생성기에게 무엇을 만들지 알려줍니다. 텍스트 프롬프트와 달리 이미지 프롬프트는 구체적인 시각적 설명, 예술 스타일, 기술 매개변수가 중요합니다. 이미지 프롬프트를 구조화하는 방식이 구도, 조명, 색상 팔레트, 분위기 등 모든 것을 결정합니다. AI 이미지 생성 기술이 빠르게 발전하면서 프롬프트 작성을 마스터하면 어떤 목적으로든 멋진 비주얼을 만들 수 있습니다.' },
-				{ heading: '핵심 구성 요소', text: '효과적인 이미지 프롬프트에는 주제 설명, 예술 스타일, 조명 조건, 카메라 앵글, 색상 팔레트, 분위기, 종횡비와 품질 설정 같은 기술 사양이 포함됩니다. 주제는 명확하고 구체적으로 설명해야 합니다. "개" 대신 "가을 낙엽 위에 앉아 있는 골든 리트리버 강아지"라고 시도해 보세요. 스타일은 전체적인 미학을 결정합니다. 조명과 카메라 앵글은 극적인 효과를 만들고 시선을 유도합니다.' },
-				{ heading: '스타일 키워드', text: '인기 있는 스타일 키워드: 사실적, 영화적, 애니메이션, 수채화, 유화, 디지털 아트, 컨셉 아트, 3D 렌더, 미니멀, 빈티지, 사이버펑크, 판타지. 스타일을 조합하면 독특한 결과를 만들 수 있습니다. 각 스타일 키워드는 AI 모델에서 다른 시각적 특성을 트리거합니다. "사이버펑크 수채화"나 "미니멀 판타지"와 같이 예상치 못한 스타일을 결합해 보세요.' },
-				{ heading: '빌더 사용법', text: '이미지 프롬프트 빌더가 각 구성 요소를 안내합니다. 주제를 선택하고, 스타일을 선택하고, 수정자를 추가하면 선호하는 AI 이미지 생성기에 최적화된 프롬프트를 생성합니다. 빌더에는 다양한 AI 플랫폼에서 우수한 결과를 내는 것으로 검증된 키워드 조합이 포함되어 있습니다.' },
-				{ heading: '플랫폼별 팁', text: 'Midjourney는 예술적 설명과 --ar 16:9(종횡비), --v 6(모델 버전), --s(스타일화 수준) 같은 매개변수에 잘 반응합니다. DALL-E는 완전한 문장으로 작성된 자연어 설명을 선호합니다. Stable Diffusion은 쉼표로 구분된 키워드, 부정 프롬프트, 특정 샘플러 설정이 효과적입니다. 각 플랫폼의 장점을 이해하면 프로젝트에 적합한 도구를 선택하는 데 도움이 됩니다.' },
-				{ heading: '흔한 실수', text: '모호한 설명, 충돌하는 스타일, 너무 많은 주제, 지나치게 복잡한 프롬프트를 피하세요. 단순하게 시작하고 세부 사항을 점진적으로 추가하세요. 변형을 테스트하여 최적의 결과를 찾으세요. 다른 흔한 실수로는 모순되는 조명 설명 사용, 서로를 희석시키는 너무 많은 스타일 키워드 사용, 용도에 맞지 않는 종횡비 무시, 부정 프롬프트를 사용하지 않는 것 등이 있습니다.' }
+				{
+					"heading": "스타일을 고르기 전에 장면 하나 계획하기",
+					"text": "이 실습에서는 독서 공간 그림의 프롬프트를 준비합니다. 빌더는 텍스트를 반환하며 렌더링은 별도의 이미지 서비스에서 이루어집니다. 미적인 표현을 고르기 전에 중요한 시각적 요소를 정하면 목적에 맞는 구도와 보기 좋지만 부적합한 이미지를 구분할 수 있습니다."
+				},
+				{
+					"heading": "1단계: 추상적인 주제 바꾸기",
+					"text": "수정 전: “아늑한 장소.” 수정 후: “높은 창문 옆의 독서용 의자.” 수정된 영어 주제를 입력하세요. 렌더링 서비스에 두 물체와 공간적 관계를 제공합니다. 이 단순한 배치가 잘 나올 때까지 관련 없는 물건을 추가하지 마세요."
+				},
+				{
+					"heading": "2단계: 생성하고 수식어 살펴보기",
+					"text": "수채화와 평화로운 분위기를 선택하세요. 아래 실제 출력은 주제에 부드러운 가장자리, 흐르는 색감, 차분한 조명을 결합합니다. 이는 묘사 요청이며 렌더링 설정이 아닙니다. 복사 전에 프롬프트 전체를 읽어 충돌을 찾으세요.",
+					"example": "입력 및 선택 항목\n주제: A reading chair beside a tall window\n스타일: 수채화\n분위기: 평화로움\n\n실제 도구 출력\nA reading chair beside a tall window, watercolor painting, soft edges, flowing colors, artistic, delicate, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "3단계: 목적이 있는 변형 만들기",
+					"text": "주제와 스타일은 유지하고 분위기만 극적으로 바꾸세요. 먼저 두 텍스트 프롬프트를 비교하면 분위기 문구만 달라져야 합니다. 다른 곳에서 둘 다 렌더링한다면 가능한 한 해당 서비스의 나머지 설정을 유지하고 조명과 대비를 구체적으로 살펴보세요."
+				},
+				{
+					"heading": "4단계: 장식보다 구도 확인하기",
+					"text": "의자가 창문 옆에 있는지, 둘 다 보이는지 살펴보세요. 위치가 틀리면 주제를 고쳐 배치를 명시하세요. 품질 형용사를 하나 더 붙여도 물체의 위치는 설명되지 않습니다. 선택한 이미지와 프롬프트를 함께 보관하세요."
+				},
+				{
+					"heading": "실수 1: 품질 표현을 제어 설정으로 보기",
+					"text": "접미 문구는 픽셀 크기를 설정하거나 읽을 수 있는 글자를 보장하지 못합니다. 대상 서비스에서 실제 크기 설정을 선택하고 내보낸 이미지를 확인하세요."
+				},
+				{
+					"heading": "실수 2: 양립하기 어려운 지시 섞기",
+					"text": "선명한 잉크 윤곽선을 요구하는 주제는 수채화의 부드러운 가장자리와 충돌할 수 있습니다. 중요한 표현 방식을 정한 뒤 복사한 프롬프트에서 반대되는 문구를 제거하세요."
+				}
 			]
 		},
 		ja: {
@@ -84,12 +130,22 @@
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
 				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더" : "Image prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag prompt builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/image" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-			Try Image Prompt Builder &rarr;
+			{lang === 'ko' ? "이미지 프롬프트 빌더 사용하기" : "Try Image Prompt Builder"} &rarr;
 		</a>
 	</div>
 </div>
