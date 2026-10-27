@@ -6,14 +6,15 @@
 
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
-	const CONTACT_EMAIL = 'contact@sdk.ac';
-	const COMPANY_NAME = 'SDK Co., Ltd.';
+	const CONTACT_EMAIL = 'contact@sdklabs.org';
+	const COMPANY_NAME = 'SDKLABS Co., Ltd.';
+	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
 	const BUSINESS_NUMBER = '871-81-03242';
 	const ECOMMERCE_NUMBER = '2024-고양일산서-1820';
-	const COMPANY_ADDRESS = '제주특별자치도 제주시 남성로 127, 4층';
-	const COMPANY_ADDRESS_EN = '4F, 127 Namseong-ro, Jeju-si, Jeju Special Self-Governing Province, Republic of Korea';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60';
+	const COMPANY_ADDRESS_EN = '60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 	const EFFECTIVE_DATE = '2025-01-15';
-	const LAST_UPDATED = '2026-07-02';
+	const LAST_UPDATED = '2026-10-28';
 
 	type TermsContent = {
 		title: string;
@@ -136,12 +137,12 @@ If the Company reasonably determines that a User has engaged in a prohibited act
 			title: '이용약관',
 			lastUpdated: `최종 수정일: ${LAST_UPDATED}`,
 			effective: `시행일: ${EFFECTIVE_DATE}`,
-			intro: `본 이용약관(이하 "약관")은 https://${SITE_DOMAIN} 에서 접속 가능한 ${SITE_NAME}(이하 "서비스")를 운영하는 ${COMPANY_NAME}(이하 "회사")와 이용자(이하 "이용자") 사이에 법적 구속력을 가지는 계약입니다. 서비스에 접속하거나 이를 이용함으로써 이용자는 본 약관과 개인정보 처리방침을 읽고 이해하였으며 이에 구속되는 데 동의함을 확인합니다. 동의하지 않는 경우 서비스 이용을 중단하여 주시기 바랍니다.`,
+			intro: `본 이용약관(이하 "약관")은 https://${SITE_DOMAIN} 에서 접속 가능한 ${SITE_NAME}(이하 "서비스")를 운영하는 ${COMPANY_NAME_KO}(이하 "회사")와 이용자(이하 "이용자") 사이에 법적 구속력을 가지는 계약입니다. 서비스에 접속하거나 이를 이용함으로써 이용자는 본 약관과 개인정보 처리방침을 읽고 이해하였으며 이에 구속되는 데 동의함을 확인합니다. 동의하지 않는 경우 서비스 이용을 중단하여 주시기 바랍니다.`,
 			sections: [
 				{ title: '제1조 (목적)', content: `본 약관은 회사가 제공하는 무료 브라우저 기반 AI 유틸리티 도구 모음인 ${SITE_NAME}의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관에서 정하지 아니한 사항은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「개인정보 보호법」 등 대한민국 관련 법령, 일반적인 상관례 및 적용 가능한 국제 법규에 따릅니다.` },
 				{ title: '제2조 (정의)', content: `본 약관에서 사용하는 용어의 정의는 다음과 같습니다.
 
-- **"회사"**란 대한민국 법률에 따라 설립된 법인 ${COMPANY_NAME}를 말합니다. 사업자등록번호 ${BUSINESS_NUMBER}, 통신판매업신고번호 ${ECOMMERCE_NUMBER}, 소재지 ${COMPANY_ADDRESS}.
+- **"회사"**란 대한민국 법률에 따라 설립된 법인 ${COMPANY_NAME_KO}를 말합니다. 사업자등록번호 ${BUSINESS_NUMBER}, 통신판매업신고번호 ${ECOMMERCE_NUMBER}, 소재지 ${COMPANY_ADDRESS}.
 - **"서비스"**란 https://${SITE_DOMAIN} 에서 호스팅되는 웹사이트, 모든 서브도메인, 그리고 회사가 이를 통해 제공하는 모든 도구, 콘텐츠, 가이드 및 관련 자료를 말합니다.
 - **"이용자"**란 서비스에 접속하거나 이를 이용하는 모든 개인 또는 단체를 말합니다. 서비스는 회원가입이 필요 없으며, 모든 방문자가 이용자입니다.
 - **"도구"**란 서비스를 통해 제공되는 AI 지원 유틸리티를 말하며, 현재 AI 번역기, 텍스트 요약기, 프롬프트 생성기, 이미지 프롬프트 빌더, 코드 설명기, 이메일 작성기, 해시태그 생성기, 글쓰기 도우미를 포함하고, 이후 추가되는 도구도 포함합니다.
@@ -232,7 +233,7 @@ If the Company reasonably determines that a User has engaged in a prohibited act
 
 ② 본 약관에 관한 문의는 ${CONTACT_EMAIL} 로 연락 주시기 바랍니다.
 
-- **상호**: ${COMPANY_NAME}
+- **상호**: ${COMPANY_NAME_KO}
 - **사업자등록번호**: ${BUSINESS_NUMBER}
 - **통신판매업신고번호**: ${ECOMMERCE_NUMBER}
 - **주소**: ${COMPANY_ADDRESS}

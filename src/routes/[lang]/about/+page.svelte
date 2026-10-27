@@ -6,12 +6,13 @@
 
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
-	const CONTACT_EMAIL = 'contact@sdk.ac';
-	const COMPANY_NAME = 'SDK Co., Ltd.';
+	const CONTACT_EMAIL = 'contact@sdklabs.org';
+	const COMPANY_NAME = 'SDKLABS Co., Ltd.';
+	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
 	const BUSINESS_NUMBER = '871-81-03242';
 	const ECOMMERCE_NUMBER = '2024-고양일산서-1820';
-	const COMPANY_ADDRESS = '제주특별자치도 제주시 남성로 127, 4층';
-	const COMPANY_ADDRESS_EN = '4F, 127 Namseong-ro, Jeju-si, Jeju Special Self-Governing Province, Republic of Korea';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60';
+	const COMPANY_ADDRESS_EN = '60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 
 	type AboutContent = {
 		title: string;
@@ -177,11 +178,11 @@
 
 			whoWeAreHeading: '운영 정보',
 			whoWeAreParagraphs: [
-				`${SITE_NAME}는 2024년 설립된 한국 소프트웨어 회사 ${COMPANY_NAME}이 운영합니다. 무료 온라인 유틸리티와 개발자 도구를 만드는 회사로, 수백만 명이 쓰는 컨슈머·개발자 웹 제품을 출시한 팀이 UX·정확성·속도에 대한 동일한 기준을 이 사이트의 모든 도구에 적용합니다.`,
+				`${SITE_NAME}는 2024년 설립된 한국 소프트웨어 회사 ${COMPANY_NAME_KO}이 운영합니다. 무료 온라인 유틸리티와 개발자 도구를 만드는 회사로, 수백만 명이 쓰는 컨슈머·개발자 웹 제품을 출시한 팀이 UX·정확성·속도에 대한 동일한 기준을 이 사이트의 모든 도구에 적용합니다.`,
 				`${SITE_NAME} 외에도 같은 팀이 SDK.is(개발자 유틸리티), JavaScript.ac(인터랙티브 JavaScript 학습), SDK.bz(금융·암호화폐 계산기), SD.gy(일상 계산기)를 운영합니다. 한 사이트에서 얻은 교훈 — 접근성 패턴, 성능 예산, 광고 밀도 임계치 — 이 모든 사이트에 적용됩니다.`
 			],
 			company: '회사',
-			companyName: COMPANY_NAME,
+			companyName: COMPANY_NAME_KO,
 			founded: '설립',
 			foundedYear: '2024',
 			focus: '주력 분야',
@@ -247,7 +248,7 @@
 			],
 
 			legalHeading: '법적·운영자 정보',
-			legalNote: `${SITE_NAME}는 대한민국 관계 기관에 등록된 한국 법인 ${COMPANY_NAME}이 운영합니다(사업자등록번호 ${BUSINESS_NUMBER}, 통신판매업 신고번호 ${ECOMMERCE_NUMBER}).`,
+			legalNote: `${SITE_NAME}는 대한민국 관계 기관에 등록된 한국 법인 ${COMPANY_NAME_KO}이 운영합니다(사업자등록번호 ${BUSINESS_NUMBER}, 통신판매업 신고번호 ${ECOMMERCE_NUMBER}).`,
 
 			linksHeading: '법적 고지',
 			linkPrivacy: '개인정보 처리방침',

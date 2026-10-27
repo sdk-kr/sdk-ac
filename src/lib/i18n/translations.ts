@@ -3,10 +3,13 @@ import type { Locale } from './index';
 export const common: Record<Locale, Record<string, string>> = {
 	en: {
 		'nav.home': 'Home',
-		'footer.copyright': '© 2025 SDK.ac - AI Creator Tools',
+		'footer.copyright': '© 2026 SDK.ac - AI Creator Tools',
 		'footer.about': 'About',
 		'footer.privacy': 'Privacy Policy',
 		'footer.terms': 'Terms of Service',
+		'footer.faq': 'FAQ',
+		'footer.contact': 'Contact',
+		'footer.operator': 'Operated by SDKLABS Co., Ltd., 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea',
 		// Home
 		'home.title': 'AI Creator Tools',
 		'home.subtitle': 'Free AI-powered tools for creators and developers',
@@ -135,10 +138,13 @@ export const common: Record<Locale, Record<string, string>> = {
 	},
 	ko: {
 		'nav.home': '홈',
-		'footer.copyright': '© 2025 SDK.ac - AI 크리에이터 도구',
+		'footer.copyright': '© 2026 SDK.ac - AI 크리에이터 도구',
 		'footer.about': '소개',
 		'footer.privacy': '개인정보 처리방침',
 		'footer.terms': '이용약관',
+		'footer.faq': '자주 묻는 질문',
+		'footer.contact': '문의',
+		'footer.operator': '운영: 주식회사 에스디케이랩스 · 서울특별시 서초구 태봉로 60',
 		// Home
 		'home.title': 'AI 크리에이터 도구',
 		'home.subtitle': '크리에이터와 개발자를 위한 무료 AI 도구',

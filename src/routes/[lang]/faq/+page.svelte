@@ -5,7 +5,7 @@
 	$: lang = ($page.params.lang || 'en') as Locale;
 
 	const SITE_NAME = 'SDK.ac';
-	const CONTACT_EMAIL = 'contact@sdk.ac';
+	const CONTACT_EMAIL = 'contact@sdklabs.org';
 
 	type FaqContent = {
 		title: string;
