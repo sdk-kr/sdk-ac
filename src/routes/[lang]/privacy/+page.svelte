@@ -70,7 +70,7 @@ We do not knowingly collect special categories of personal data (e.g., health, r
 - Google, as a third-party vendor, uses cookies — including the DoubleClick (DART) cookie — to serve ads on the Service based on your visits to this and other websites.
 - These cookies allow Google and its partners to serve personalised ads, cap ad frequency, and measure ad performance. A list of Google's advertising cookies and their lifetimes is available in Google's advertising privacy documentation.
 - **Opt-out**: You may opt out of personalised advertising by visiting Google's Ads Settings at ${ADS_OPTOUT_URL}. You may additionally opt out of many other third-party vendors' personalised ads at https://www.aboutads.info/choices.
-- Where required by law (EU, UK, Korea and other jurisdictions), a consent banner is shown before any personalised advertising cookies are set, and you may refuse or later withdraw consent through that banner.
+- For visitors in the European Economic Area, the United Kingdom and Switzerland, Google’s consent management tool is shown before personalised advertising cookies are set; you may refuse there and later change your choice through the same tool. Elsewhere, use the Google ad settings described above.
 - If you opt out, you will still see ads, but they will not be personalised to your interests.` },
 				{ title: '8. Third-Party Processors and International Transfers', content: `We share the minimum necessary information with the following processors, each acting under agreements requiring confidentiality and purpose limitation:
 
@@ -161,7 +161,7 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 - 제3자 공급업체인 Google은 DoubleClick(DART) 쿠키를 포함한 쿠키를 사용하여, 이용자의 본 사이트 및 다른 웹사이트 방문 기록을 기반으로 서비스에 광고를 게재합니다.
 - 이 쿠키들은 Google과 그 파트너가 맞춤형 광고를 게재하고, 광고 노출 빈도를 제한하며, 광고 성과를 측정할 수 있게 합니다. Google 광고 쿠키의 목록과 유효기간은 Google 광고 개인정보 문서에서 확인할 수 있습니다.
 - **거부 방법**: ${ADS_OPTOUT_URL} 의 Google 광고 설정에서 맞춤형 광고를 거부할 수 있습니다. https://www.aboutads.info/choices 에서 다른 여러 제3자 공급업체의 맞춤형 광고도 거부할 수 있습니다.
-- 법령상 요구되는 지역(EU, 영국, 한국 등)에서는 맞춤형 광고 쿠키가 설정되기 전에 동의 배너가 표시되며, 해당 배너를 통해 동의를 거부하거나 이후에 철회할 수 있습니다.
+- 유럽경제지역(EEA)·영국·스위스 방문자에게는 맞춤형 광고 쿠키가 설정되기 전에 Google 의 동의 관리 도구가 표시되며, 거기서 거부하거나 이후 같은 도구에서 선택을 바꿀 수 있습니다. 그 밖의 지역에서는 위에 설명한 Google 광고 설정을 이용하세요.
 - 거부하더라도 광고는 계속 표시되지만, 이용자의 관심사에 맞춰 개인화되지는 않습니다.` },
 				{ title: '제8조 (개인정보의 처리위탁 및 국외 이전)', content: `회사는 다음 수탁자에게 필요 최소한의 정보를 위탁하며, 각 수탁자는 기밀 유지와 목적 제한을 요구하는 계약에 따라 행위합니다:
 
