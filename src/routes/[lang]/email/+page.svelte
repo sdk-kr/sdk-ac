@@ -219,6 +219,56 @@ Full timeline attached if you want the detail.`
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "Email Prompt Builder assembles a drafting request from a message type, optional recipient, purpose, and tone. It asks for a greeting, body, closing, and signature placeholder. It does not compose or send an email here. The most useful work happens in the purpose field: state what the recipient needs to do, why you are asking, and which facts must stay unchanged. A tone selection supplies a general style instruction; it cannot decide whether a promise or apology is appropriate for your situation.",
+				"ko": "이메일 프롬프트 생성기는 메시지 유형, 선택 사항인 수신자, 목적, 어조로 초안 작성 요청을 조합합니다. 인사말, 본문, 맺음말, 서명 자리표시자를 요청합니다. 여기서 이메일을 작성하거나 발송하지는 않습니다. 가장 중요한 준비는 목적 필드에서 이루어집니다. 수신자가 무엇을 해야 하는지, 왜 요청하는지, 어떤 사실을 유지해야 하는지 적으세요. 어조 선택은 일반적인 문체 지시를 제공할 뿐, 약속이나 사과가 상황에 적절한지 판단하지 못합니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "For a room booking inquiry, use the recipient and purpose below, select Request and Formal, and generate. The output is the exact drafting prompt, including its requested structure. There is no subject line requirement unless you add one to the purpose yourself. After using the prompt elsewhere, check that any draft asks about availability without claiming the booking is confirmed. That distinction matters more than a polished greeting.",
+				"ko": "회의실 예약 문의를 위해 아래 수신자와 목적을 입력하고 요청 유형과 격식 있는 어조를 선택한 다음 생성하세요. 출력은 요청된 구성을 포함한 실제 초안 작성 프롬프트입니다. 목적에 직접 추가하지 않으면 제목을 요구하지 않습니다. 다른 곳에서 프롬프트를 사용한 뒤에는 초안이 예약 확정을 주장하지 않고 이용 가능 여부만 묻는지 확인하세요. 이 구분이 세련된 인사말보다 중요합니다."
+			},
+			"code": {
+				"example": "Input and selections\nRecipient: Facilities team\nPurpose: Ask whether a quiet meeting room is available; do not confirm a booking.\nType: Request\nTone: Formal\n\nExact tool output\nWrite a request email.\n\nRecipient: Facilities team\nTopic/Purpose: Ask whether a quiet meeting room is available; do not confirm a booking.\n\nUse formal, professional language appropriate for business communication.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not paste the output directly into an outgoing message expecting finished prose. The generated text is addressed to an assistant, not your recipient. The page cannot verify availability, attachments, prior correspondence, or authority to make commitments. It also cannot judge whether a draft reveals sensitive information. Before sending a later draft, confirm the intended recipient, factual claims, requested action, and signature. For an apology, describe only facts you are prepared to acknowledge.",
+				"ko": "완성된 글을 기대하며 출력을 발송할 메시지에 바로 붙여넣지 마세요. 생성된 텍스트의 대상은 수신자가 아니라 AI입니다. 페이지는 이용 가능 여부, 첨부파일, 이전 서신, 약속할 권한을 확인할 수 없습니다. 초안에 민감한 정보가 드러나는지도 판단하지 못합니다. 최종 초안을 보내기 전에 수신자, 사실 주장, 요청 행동, 서명을 확인하세요. 사과할 때는 자신이 인정할 준비가 된 사실만 설명하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Is a recipient required? No. An empty recipient field omits that line from the prompt.\n\nWill it include my real signature? No. The template explicitly requests a signature placeholder.\n\nDoes Formal add a subject line? No. Formal changes the tone instruction only.\n\nCan I regenerate an alternative email here? The same selections and text produce the same prompt, not a new email draft.\n\nHow do I prevent invented commitments? State the boundary in the purpose, such as asking for availability without confirming a booking, then check the eventual draft against that boundary.",
+				"ko": "수신자는 필수인가요? 아니요. 수신자 필드가 비어 있으면 프롬프트에서 해당 줄을 생략합니다.\n\n실제 서명이 들어가나요? 아니요. 템플릿은 서명 자리표시자를 명시적으로 요청합니다.\n\n격식 있는 어조를 선택하면 제목이 추가되나요? 아니요. 어조에 관한 지시만 바뀝니다.\n\n여기서 다른 이메일을 다시 생성할 수 있나요? 선택 항목과 텍스트가 같으면 새 이메일 초안이 아니라 같은 프롬프트가 나옵니다.\n\n임의의 약속을 막으려면 어떻게 하나요? 예약을 확정하지 말고 이용 가능 여부만 물으라는 식으로 목적에 경계를 적고, 최종 초안이 그 경계를 지키는지 확인하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n수신자: Facilities team\n목적: Ask whether a quiet meeting room is available; do not confirm a booking.\n유형: 요청\n어조: 격식 있음\n\n실제 도구 출력\nWrite a request email.\n\nRecipient: Facilities team\nTopic/Purpose: Ask whether a quiet meeting room is available; do not confirm a booking.\n\nUse formal, professional language appropriate for business communication.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder" : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -387,5 +437,17 @@ Full timeline attached if you want the detail.`
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기 실습 읽기" : "Read the email drafting prompt builder tutorial"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
+		</nav>
+	{/if}
+
 </div>

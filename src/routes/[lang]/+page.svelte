@@ -35,14 +35,14 @@
 			},
 			paragraphs: {
 				en: [
-					"I built sdk.ac because I was tired of sending people links to 'free' AI tools that were actually lead-capture funnels. You click Summarize and instead of a summary you get a signup wall, a three-uses-per-day counter, or a checkout page asking for a card 'to verify your identity'. The underlying AI request costs a fraction of a cent, and most of these tools are a prompt template wrapped around a text box. Charging a monthly subscription for that felt wrong, so I made the version I wanted to exist: open the page, type, get a result, leave.",
-					'Everything here is free, with no login and no usage counter. There is no account system because there is nothing worth gating behind one. There is no pro tier because these tools are deliberately simple, and a pro tier would just be padding. The site covers its costs with modest advertising and by being cheap to run — a static SvelteKit site on edge hosting costs almost nothing per visitor.',
-					'Privacy matters more here than on most sites, because what people paste into a summarizer or an email writer is often exactly the text they would never post publicly: a performance review, a half-finished apology, an internal document. We do not require an account, we do not build a profile of you, and we do not keep an archive of what you typed. The tools are designed so that your input exists for the duration of the request and then it is gone.'
+					"SDK.ac brings together seven prompt builders and one leading-sentence extraction tool. The builders combine your text and selected options with fixed instructions in your browser. They do not call an AI model, so the result is a request you can review and take to a separate assistant. The summarizer returns an excerpt from the beginning of your text instead of a prompt.",
+					"The tools are free to use without an account or usage counter. Choose the tool for the request you need, fill in its fields, and inspect the generated text. A separate AI service may have its own account requirements, limits, and charges.",
+					"Your tool input is processed in page memory. Copying a generated request to another service is a separate step you choose, and that service handles the text under its own policies. The tool pages explain their local behavior and provide examples you can reproduce."
 				],
 				ko: [
-					"sdk.ac를 만든 이유는, '무료'라고 써 있지만 실제로는 리드 수집 퍼널인 AI 도구 링크를 사람들에게 보내는 게 지긋지긋했기 때문입니다. 요약하기를 누르면 요약 대신 회원가입 벽, 하루 3회 제한 카운터, '본인 확인을 위해' 카드 정보를 요구하는 결제 페이지가 나옵니다. 실제 AI 요청 비용은 1센트의 몇 분의 일이고, 이런 도구 대부분은 텍스트 박스에 프롬프트 템플릿을 씌운 것에 불과합니다. 거기에 월 구독료를 받는 건 잘못됐다고 느꼈고, 그래서 제가 원하던 버전을 직접 만들었습니다. 페이지를 열고, 입력하고, 결과를 받고, 떠나면 됩니다.",
-					'여기 있는 모든 것은 무료이고, 로그인도 사용량 제한도 없습니다. 계정 시스템이 없는 이유는 계정 뒤에 잠가둘 만한 것이 없기 때문입니다. 프로 티어가 없는 이유는 이 도구들이 의도적으로 단순하게 만들어졌고, 프로 티어를 만들면 그냥 군더더기가 되기 때문입니다. 사이트는 절제된 광고와 낮은 운영비로 유지됩니다 — 엣지 호스팅 위의 정적 SvelteKit 사이트는 방문자당 비용이 거의 들지 않습니다.',
-					'프라이버시는 이 사이트에서 다른 곳보다 더 중요합니다. 사람들이 요약기나 이메일 작성기에 붙여넣는 텍스트는 공개적으로는 절대 올리지 않을 바로 그 텍스트인 경우가 많기 때문입니다. 인사 평가, 쓰다 만 사과문, 내부 문서 같은 것들요. 계정을 요구하지 않고, 사용자 프로필을 만들지 않고, 입력한 내용을 보관하지 않습니다. 여러분의 입력은 요청이 처리되는 동안만 존재하고 그 후에는 사라지도록 설계했습니다.'
+					"SDK.ac는 프롬프트 생성기 7개와 앞문장 추출 도구 하나를 제공합니다. 생성기는 브라우저에서 입력과 선택값을 고정 지시문과 결합합니다. AI 모델을 호출하지 않으므로 결과는 검토한 뒤 외부 AI로 가져갈 요청문입니다. 요약기는 프롬프트 대신 입력 앞부분의 발췌문을 반환합니다.",
+					"도구는 계정이나 사용 횟수 제한 없이 무료로 사용할 수 있습니다. 필요한 요청에 맞는 도구를 선택하고 필드를 채운 뒤 생성된 텍스트를 확인하세요. 외부 AI 서비스에는 별도 계정 요건, 제한, 요금이 있을 수 있습니다.",
+					"도구 입력은 페이지 메모리에서 처리됩니다. 생성된 요청을 다른 서비스로 복사하는 것은 이용자가 선택하는 별도 단계이며, 해당 서비스는 자체 방침에 따라 텍스트를 처리합니다. 도구 페이지에는 로컬 동작 설명과 재현 가능한 예제가 있습니다."
 				],
 				ja: [
 					'sdk.acを作ったのは、「無料」と書いてあるのに実際はリード獲得ファネルでしかないAIツールのリンクを人に送るのにうんざりしたからです。「要約する」を押すと、要約の代わりに会員登録の壁、1日3回までのカウンター、「本人確認のため」にカード情報を求める決済ページが出てきます。裏側のAIリクエストのコストは1セントの何分の一かで、こうしたツールの大半はテキストボックスにプロンプトのテンプレートを被せただけのものです。それに月額課金するのは違うと感じたので、自分が欲しかったバージョンを作りました。ページを開いて、入力して、結果を受け取って、立ち去る。それだけです。',
@@ -65,16 +65,16 @@
 			},
 			paragraphs: {
 				en: [
-					"The AI Translator is for translation that carries tone, not just vocabulary. Dictionary-style translation gives you technically correct sentences that read like a robot wrote them; this one lets you say 'make it polite', 'make it casual', 'this is a business email' and get a version a native speaker would actually send. The AI Summarizer is its counterpart for length instead of language: paste a long article, a meeting transcript, or a report, and get the argument in a few sentences so you can decide whether the whole thing deserves your time.",
-					"The Prompt Builder exists because the gap between a mediocre AI answer and a genuinely useful one is usually the prompt, not the model. It walks you through role, context, task, constraints, and output format, and assembles them into a structured prompt you can paste into ChatGPT, Claude, or Gemini. The Image Prompt Builder does the same for image generators like Midjourney, Stable Diffusion, and DALL-E, where the difference between 'a cat' and a usable prompt is a pile of conventions — style keywords, lighting, composition, aspect ratio — that nobody should have to memorize.",
-					"The Code Explainer takes a block of code you did not write — a regex from Stack Overflow, a shell one-liner from a CI config, a function from a codebase you just joined — and explains what it does in plain language. The Email Writer goes the other direction: you give it bullet points and a relationship ('decline politely', 'follow up on an invoice', 'ask my professor for an extension') and it drafts the message so you can edit instead of staring at a blank compose window.",
-					'The Hashtag Generator suggests tags for Instagram, TikTok, X, and the rest, mixing large generic tags with smaller specific ones — the mix that actually gets a post discovered instead of buried. The Writing Assistant is the general-purpose one: rewriting, tightening, fixing grammar, shifting tone from casual to formal or back. Eight tools, each aimed at one specific, recurring moment where a blank text box wastes ten minutes of your day.'
+					"Translation Prompt Builder inserts your source text and chosen source and target languages into a translation request. It does not translate the text or detect its language. Leading-Sentence Summarizer extracts opening chunks separated by periods, exclamation marks, or question marks. It does not identify the main argument or rank sentences by importance.",
+					"Prompt Generator combines a task, optional context, and a fixed style instruction. Put any required format or constraints in the text fields. Image Prompt Builder combines a subject with fixed style and mood phrases; it creates no images and has no separate rendering controls.",
+					"Code Explanation Prompt Builder wraps your snippet with a language label and a request suited to the selected explanation level. It does not execute or analyze code. Email Prompt Builder assembles an email drafting request from type, topic, optional recipient, and tone, followed by a fixed checklist. It does not write or send the email.",
+					"Hashtag Prompt Builder inserts your topic, platform, and requested count into a fixed request. Platform tips are stored text, not trend research. Writing Revision Prompt Builder combines existing text with one editing instruction: improvement, grammar correction, simplification, formal tone, or casual tone. The text itself remains unchanged in its output."
 				],
 				ko: [
-					"AI 번역기는 단어가 아니라 톤을 옮기는 번역을 위한 도구입니다. 사전식 번역은 기술적으로는 맞지만 로봇이 쓴 것처럼 읽히는 문장을 줍니다. 이 도구에서는 '정중하게', '캐주얼하게', '비즈니스 이메일이야'라고 지정해서 원어민이 실제로 보낼 법한 버전을 받을 수 있습니다. AI 요약기는 언어 대신 길이를 다루는 짝꿍입니다. 긴 기사, 회의록, 보고서를 붙여넣으면 핵심 논지를 몇 문장으로 받아서, 전체를 읽을 가치가 있는지 판단할 수 있습니다.",
-					"프롬프트 빌더가 존재하는 이유는, 평범한 AI 답변과 정말 유용한 답변의 차이가 보통 모델이 아니라 프롬프트에서 갈리기 때문입니다. 역할, 맥락, 작업, 제약, 출력 형식을 차례로 물어보고, ChatGPT나 Claude, Gemini에 붙여넣을 수 있는 구조화된 프롬프트로 조립해 줍니다. 이미지 프롬프트 빌더는 Midjourney, Stable Diffusion, DALL-E 같은 이미지 생성기를 위해 같은 일을 합니다. '고양이'와 쓸 만한 프롬프트의 차이는 스타일 키워드, 조명, 구도, 종횡비 같은 관례 더미인데, 그걸 아무도 외우고 다닐 필요는 없으니까요.",
-					"코드 설명기는 여러분이 직접 쓰지 않은 코드 — Stack Overflow에서 가져온 정규식, CI 설정 안의 셸 한 줄짜리, 막 합류한 코드베이스의 함수 — 를 받아서 무엇을 하는지 평이한 언어로 설명합니다. 이메일 작성기는 반대 방향입니다. 요점과 관계('정중하게 거절', '미수금 팔로업', '교수님께 기한 연장 요청')를 주면 초안을 만들어 주니, 빈 작성창을 노려보는 대신 고치기만 하면 됩니다.",
-					'해시태그 생성기는 Instagram, TikTok, X 등을 위한 태그를 제안하는데, 큰 범용 태그와 작고 구체적인 태그를 섞어 줍니다 — 게시물이 묻히지 않고 실제로 발견되게 하는 조합이죠. 글쓰기 도우미는 범용 도구입니다. 고쳐 쓰기, 압축, 문법 교정, 캐주얼과 격식 사이의 톤 전환. 여덟 개의 도구는 각각, 빈 텍스트 박스가 하루 10분을 잡아먹는 특정하고 반복적인 순간 하나를 겨냥합니다.'
+					"번역 프롬프트 생성기는 원문과 선택한 원본·대상 언어를 번역 요청에 넣습니다. 직접 번역하거나 언어를 감지하지 않습니다. 앞문장 추출 요약기는 마침표, 느낌표, 물음표로 나눈 앞쪽 구간을 추출합니다. 핵심 논지를 판별하거나 문장의 중요도를 평가하지 않습니다.",
+					"프롬프트 생성기는 작업, 선택 맥락, 고정 스타일 지시를 결합합니다. 필요한 형식이나 제약은 텍스트 필드에 적으세요. 이미지 프롬프트 생성기는 대상과 고정 스타일·분위기 문구를 결합하며, 이미지를 만들거나 별도 렌더링 설정을 제공하지 않습니다.",
+					"코드 설명 프롬프트 생성기는 코드에 언어 표시와 선택한 설명 수준의 요청을 붙입니다. 코드를 실행하거나 분석하지 않습니다. 이메일 프롬프트 생성기는 유형, 주제, 선택 수신자, 어조로 작성 요청을 조립하고 고정 목록을 덧붙입니다. 이메일을 직접 쓰거나 보내지 않습니다.",
+					"해시태그 프롬프트 생성기는 주제, 플랫폼, 요청 개수를 고정 요청에 넣습니다. 플랫폼 팁은 트렌드 조사가 아닌 저장된 문구입니다. 글쓰기 수정 프롬프트 생성기는 기존 텍스트에 개선, 문법 교정, 단순화, 격식, 편한 어조 중 하나의 지시를 결합합니다. 출력 안의 원문은 바뀌지 않습니다."
 				],
 				ja: [
 					'AI翻訳は、語彙だけでなくトーンを運ぶ翻訳のためのツールです。辞書的な翻訳は、技術的には正しいのにロボットが書いたように読める文を返します。ここでは「丁寧に」「カジュアルに」「これはビジネスメール」と指定でき、ネイティブが実際に送りそうな文面になります。AI要約はその対になるツールで、言語ではなく長さを扱います。長い記事、会議の書き起こし、レポートを貼り付ければ、要点を数文で受け取り、全文を読む価値があるか判断できます。',
@@ -99,14 +99,14 @@
 			},
 			paragraphs: {
 				en: [
-					'The site is a SvelteKit app. Each tool page is server-rendered, so what a search crawler or a reader with JavaScript disabled sees is real content, not an empty div waiting for a bundle. Svelte keeps the client-side payload small — these pages are mostly text and a form, and they should load like it.',
-					'The tools themselves are thin by design. Most of the engineering effort went into the prompts and the interfaces, not into infrastructure: figuring out which questions to ask you, in which order, so the assembled request produces consistently useful output. A tool that asks three good questions beats a tool with twenty settings you will never touch.',
-					'I add tools slowly, and only when I have personally hit the problem more than once. Every tool here started as something I or someone I know needed in an ordinary week — translating a message to a coworker, summarizing a document five minutes before a meeting, decoding a colleague\'s regex. If a tool is on this site, it earned its place; nothing here exists to inflate a tools count for search engines.'
+					"The site uses SvelteKit and TypeScript. Pages present forms and explanatory text, while the tool functions run in the browser. Generating a request is local string assembly; it does not start a conversation with an AI service.",
+					"Each preset selects a fixed instruction. The same input and options produce the same output, which makes it possible to compare the guide examples character for character. Regenerating without changing a field will not produce a different draft.",
+					"The summarizer uses a different method: it splits text at specified punctuation and selects an opening portion. Its length settings control the number of chunks retained. Review the actual output because a shorter excerpt can omit conditions that appear later in the source."
 				],
 				ko: [
-					'사이트는 SvelteKit 앱입니다. 각 도구 페이지는 서버에서 렌더링되므로, 검색 크롤러나 JavaScript를 끈 독자가 보는 것은 번들을 기다리는 빈 div가 아니라 진짜 콘텐츠입니다. Svelte 덕분에 클라이언트 페이로드가 작게 유지됩니다 — 이 페이지들은 대부분 텍스트와 폼이고, 그렇게 가볍게 로드되어야 합니다.',
-					'도구 자체는 의도적으로 얇게 만들었습니다. 엔지니어링 노력 대부분은 인프라가 아니라 프롬프트와 인터페이스에 들어갔습니다. 어떤 질문을 어떤 순서로 물어야 조립된 요청이 일관되게 유용한 출력을 내는지 알아내는 일이요. 좋은 질문 세 개를 하는 도구가, 절대 건드리지 않을 설정 스무 개짜리 도구를 이깁니다.',
-					'도구는 천천히, 제가 직접 같은 문제를 두 번 이상 겪었을 때만 추가합니다. 여기 있는 모든 도구는 저나 제 지인이 평범한 한 주 동안 실제로 필요했던 것에서 시작했습니다. 동료에게 보낼 메시지 번역, 회의 5분 전 문서 요약, 동료가 쓴 정규식 해독 같은 것들이요. 이 사이트에 있는 도구는 자기 자리를 스스로 얻어낸 것이고, 검색엔진용 도구 개수 부풀리기를 위해 존재하는 것은 없습니다.'
+					"사이트는 SvelteKit과 TypeScript를 사용합니다. 페이지는 폼과 설명문을 표시하고 도구 함수는 브라우저에서 실행됩니다. 요청 생성은 로컬 문자열 조립이며 AI 서비스와의 대화를 시작하지 않습니다.",
+					"각 사전 설정은 고정 지시문을 선택합니다. 입력과 선택값이 같으면 출력도 같으므로 가이드 예제를 문자 단위로 대조할 수 있습니다. 필드를 바꾸지 않고 다시 생성해도 다른 초안이 나오지 않습니다.",
+					"요약기는 다른 방식으로 작동합니다. 지정된 문장부호로 텍스트를 나눠 앞부분을 선택합니다. 길이 설정은 남길 구간 수를 정합니다. 짧아진 발췌문에서 원문 뒤쪽의 조건이 빠질 수 있으므로 실제 출력을 검토하세요."
 				],
 				ja: [
 					'サイトはSvelteKitアプリです。各ツールページはサーバーでレンダリングされるので、検索クローラーやJavaScriptを切った読者が見るのは、バンドルを待つ空のdivではなく本物のコンテンツです。Svelteのおかげでクライアント側のペイロードは小さく保たれます。これらのページはほとんどがテキストとフォームであり、そのように軽く読み込まれるべきです。',
@@ -129,14 +129,14 @@
 			},
 			paragraphs: {
 				en: [
-					'AI output is a draft, not a verdict. Language models produce fluent, confident text whether or not the underlying claim is true, and a wrong answer reads exactly as smoothly as a right one. Summaries can drop the one caveat that mattered. Translations can miss sarcasm, honorifics, or culturally loaded phrasing. The Code Explainer can describe what code usually does while missing what your code actually does in an edge case. Treat every output as a starting point that you — the person who understands the context — review before using.',
-					'Some jobs are wrong for these tools regardless of quality. Do not rely on AI translation for contracts, medical instructions, immigration paperwork, or anything where a mistranslated clause has real consequences — pay a professional translator. Do not treat a summary as a substitute for reading a document you will be held accountable for. Do not paste passwords, API keys, or other secrets into any AI tool, including this one; the safest secret is the one that never leaves your machine.',
-					'And AI text has a texture. If you send AI-drafted emails unedited, the people receiving them will eventually notice, and it will cost you more credibility than the drafts saved you in time. The tools here are built to give you a good first 80 percent. The last 20 percent — the judgment, the specifics, the voice — has to be yours, and honestly, that is the part worth doing.'
+					"Distinguish the request you build here from an answer you obtain elsewhere. The builders preserve your inputs inside fixed wording, so an incorrect date or an ambiguous instruction remains incorrect or ambiguous. Review the assembled text before copying it.",
+					"An external assistant may return a translation, email draft, code explanation, or edited paragraph, but those results are not generated or verified by SDK.ac. Compare names, numbers, conditions, and claims with your source material before using them.",
+					"For the local summarizer, compare the excerpt directly with the full original. The displayed reduction measures whitespace-separated tokens rather than meaning preserved. For consequential documents, an opening excerpt is not a substitute for reading the complete text."
 				],
 				ko: [
-					"AI 출력은 초안이지 판결이 아닙니다. 언어 모델은 주장이 사실이든 아니든 유창하고 자신감 있는 텍스트를 만들어내고, 틀린 답도 맞는 답과 똑같이 매끄럽게 읽힙니다. 요약은 정작 중요했던 단서 하나를 빠뜨릴 수 있습니다. 번역은 빈정거림, 경어, 문화적으로 민감한 표현을 놓칠 수 있습니다. 코드 설명기는 코드가 '보통' 하는 일을 설명하면서 여러분의 코드가 엣지 케이스에서 '실제로' 하는 일을 놓칠 수 있습니다. 모든 출력을, 맥락을 아는 사람인 여러분이 사용 전에 검토하는 출발점으로 취급하세요.",
-					'품질과 무관하게 이 도구들에 맡기면 안 되는 일도 있습니다. 계약서, 의료 지침, 이민 서류처럼 오역된 조항 하나가 실제 결과를 낳는 문서는 AI 번역에 의존하지 말고 전문 번역가에게 맡기세요. 책임져야 할 문서라면 요약을 정독의 대체물로 삼지 마세요. 비밀번호, API 키, 기타 비밀은 이 사이트를 포함한 어떤 AI 도구에도 붙여넣지 마세요. 가장 안전한 비밀은 여러분의 기계를 떠나지 않은 비밀입니다.',
-					'그리고 AI 텍스트에는 특유의 질감이 있습니다. AI가 쓴 이메일을 고치지 않고 그대로 보내면 받는 사람들은 결국 알아차리고, 그때 잃는 신뢰는 초안이 아껴준 시간보다 비쌉니다. 여기 있는 도구들은 괜찮은 첫 80퍼센트를 주도록 만들어졌습니다. 마지막 20퍼센트 — 판단, 구체성, 목소리 — 는 여러분의 몫이어야 하고, 솔직히 그게 할 가치가 있는 부분입니다.'
+					"여기서 만든 요청과 다른 곳에서 얻은 답변을 구분하세요. 생성기는 입력을 고정 문구 안에 유지하므로 잘못된 날짜나 모호한 지시도 그대로 남습니다. 복사하기 전에 조립된 텍스트를 검토하세요.",
+					"외부 AI가 번역, 이메일 초안, 코드 설명, 수정문을 반환할 수 있지만 SDK.ac가 생성하거나 검증한 결과는 아닙니다. 사용하기 전에 이름, 숫자, 조건, 주장을 원자료와 대조하세요.",
+					"로컬 요약기의 발췌문은 원문 전체와 직접 비교하세요. 표시된 감소율은 의미 보존이 아니라 공백으로 나눈 토큰을 기준으로 합니다. 중요한 문서에서는 앞부분 발췌가 전체 읽기를 대신하지 못합니다."
 				],
 				ja: [
 					'AIの出力は下書きであって、判決ではありません。言語モデルは、主張が事実かどうかに関係なく流暢で自信に満ちたテキストを生成し、間違った答えも正しい答えとまったく同じくらい滑らかに読めます。要約は、一番重要だった但し書きを落とすことがあります。翻訳は、皮肉、敬語、文化的に繊細な言い回しを取りこぼすことがあります。コード解説は、コードが「普通」することを説明しながら、あなたのコードがエッジケースで「実際に」することを見落とすかもしれません。すべての出力を、文脈を理解しているあなた自身が使う前に確認する出発点として扱ってください。',
@@ -189,7 +189,11 @@
 		name: 'SDK.ac',
 		url: 'https://sdk.ac',
 		description:
-			'Free AI-powered tools: translator, summarizer, prompt builder, image prompt builder, code explainer, email writer, hashtag generator, and writing assistant.',
+			lang === 'ko'
+				? '브라우저에서 실행되는 프롬프트 생성기 7개와 앞문장 추출 요약기. AI 모델을 호출하지 않습니다.'
+				: lang === 'en'
+					? 'Seven browser-based prompt builders and a leading-sentence summarizer. No AI model calls.'
+					: 'Free AI-powered tools: translator, summarizer, prompt builder, image prompt builder, code explainer, email writer, hashtag generator, and writing assistant.',
 		inLanguage: ['en', 'ko', 'ja', 'zh'],
 		publisher: { '@id': 'https://sdk.ac/#organization' }
 	})}</` + `script>`}
@@ -257,7 +261,7 @@
 					</svg>
 				</div>
 				<h3 class="text-lg font-semibold text-gray-900 dark:text-dark-100 mb-2">Fast & Free</h3>
-				<p class="text-gray-600 dark:text-dark-400 text-sm">All tools are completely free to use with instant results</p>
+				<p class="text-gray-600 dark:text-dark-400 text-sm">{lang === 'ko' ? '무료로 요청문을 조립하거나 원문 앞부분을 추출하세요' : lang === 'en' ? 'Build requests or extract opening text locally, free of charge' : 'All tools are completely free to use with instant results'}</p>
 			</div>
 			<div class="p-6">
 				<div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">

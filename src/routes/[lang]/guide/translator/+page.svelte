@@ -4,67 +4,139 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'AI Translator Guide',
-			description: 'Discover how to translate text accurately using our AI-powered translator. Support for multiple languages with context-aware translations.',
-			cta: 'Try AI Translator',
+			title: "Translation Prompt Builder Guide",
+			description: "Prepare a translation request and review its source wording, language direction, and eventual translation.",
+			cta: "Try Translation Prompt Builder",
 			sections: [
 				{
-					heading: 'What is AI Translation?',
-					text: 'AI translation uses advanced machine learning models to convert text from one language to another while preserving meaning, tone, and context. Unlike traditional rule-based translation systems, AI translators understand the nuances of language, including idioms, cultural references, and contextual meanings. Our translator leverages state-of-the-art language models that have been trained on billions of multilingual text samples, enabling it to produce translations that sound natural and accurate. The technology continuously improves as it processes more content, learning from patterns and linguistic structures across dozens of languages to deliver increasingly refined results.'
+					"heading": "Translate a clear instruction",
+					"text": "This walkthrough prepares a product instruction for translation from English to Korean. The page generates a prompt, so the translation itself must be obtained separately. Decide what the instruction means before judging whether a translated sentence sounds natural."
 				},
 				{
-					heading: 'Supported Languages and Features',
-					text: 'Our AI translator supports over 100 languages, including major world languages like English, Spanish, Mandarin Chinese, Arabic, French, German, Japanese, Korean, Portuguese, Russian, and Hindi, as well as many regional and less common languages. The translator offers several specialized modes: formal translation for business documents, casual translation for everyday communication, technical translation that preserves industry-specific terminology, and literary translation that maintains stylistic elements. You can also specify the regional variant you need, such as Brazilian Portuguese vs. European Portuguese, or simplified vs. traditional Chinese characters.'
+					"heading": "Step 1: remove an ambiguous pronoun",
+					"text": "Before: “Remove it before replacing the filter.” After: “Remove the cover before replacing the filter.” The revision names the object being removed. Enter the revised English sentence, then select English as the source and Korean as the target."
 				},
 				{
-					heading: 'How to Use the AI Translator',
-					text: 'Using our translator is simple and intuitive. Enter or paste your text in the source field, select the source language (or use auto-detect), and choose your target language. For best results, you can specify the context or domain of your content, such as medical, legal, technical, or casual conversation. Click translate and receive your result within seconds. The output includes the translated text along with confidence indicators for complex phrases. You can also toggle between multiple translation alternatives for certain phrases, allowing you to choose the version that best fits your needs. Copy the result directly or download it as a text file.'
+					"heading": "Step 2: inspect the handoff",
+					"text": "Generate and read the exact result below. The original text remains inside quotation marks, and the language direction appears in the first sentence. The output is not the Korean translation. Confirm both language names before copying it to another assistant.",
+					"example": "Input and selections\nText: Remove the cover before replacing the filter.\nFrom: English\nTo: Korean\n\nExact tool output\nPlease translate the following text from English to Korean:\n\n\"Remove the cover before replacing the filter.\"\n\nProvide only the translation without any explanation."
 				},
 				{
-					heading: 'Translation Quality and Accuracy',
-					text: 'Our AI translator achieves high accuracy rates across most language pairs, particularly for common languages and standard content types. The system excels at maintaining contextual meaning, handling complex sentence structures, and preserving formatting. However, like all machine translation systems, it may occasionally struggle with highly specialized jargon, creative wordplay, or cultural references that don\'t have direct equivalents. For critical documents like legal contracts or medical records, we recommend having a human translator review the output. The translator provides confidence scores to help you identify passages that may benefit from additional review or manual adjustment.'
+					"heading": "Step 3: specify missing terminology",
+					"text": "If “cover” has a specific approved product term, add that instruction to the copied prompt outside the quoted source. The page has no glossary field. Keep translation instructions separate from the passage so they are not accidentally treated as content to translate."
 				},
 				{
-					heading: 'Best Practices for Translation',
-					text: 'To achieve optimal translation results, write clear and grammatically correct source text. Ambiguous or poorly written content is harder for AI to translate accurately. Break long paragraphs into shorter sentences when possible. Avoid slang, abbreviations, and cultural references that may not translate well unless you provide context. For technical content, consider providing a glossary of key terms. When translating between languages with different grammatical structures (like English to Japanese), expect some reorganization of sentence elements. Review translations for tone and formality level, as these can vary significantly between cultures. For important projects, translate a sample first to assess quality before processing the entire document.'
+					"heading": "Step 4: review meaning before fluency",
+					"text": "An editor’s reference rendering is “필터를 교체하기 전에 덮개를 분리하세요.” This is a human-written example, not output from this tool. Compare the eventual translation for the object, action, and order. Ask a reader familiar with the product whether the instruction is unambiguous."
 				},
 				{
-					heading: 'Common Use Cases',
-					text: 'Our AI translator serves diverse needs across many fields. Business professionals use it for international correspondence, contract drafts, and marketing materials. Students and researchers translate academic papers and foreign language sources. Travelers rely on it for real-time communication and understanding signs, menus, and local content. E-commerce businesses translate product descriptions and customer reviews for global markets. Content creators localize their work for international audiences. Customer support teams handle multilingual inquiries efficiently. Legal professionals get quick translations of foreign documents for preliminary review. Medical professionals access research published in other languages. The versatility of AI translation makes it an essential tool for our interconnected global community.'
+					"heading": "Mistake 1: using Swap as back translation",
+					"text": "Swap changes the selected languages but leaves the original input in place. For a separate reverse-translation exercise, paste the actual translated passage yourself and set the direction deliberately."
+				},
+				{
+					"heading": "Mistake 2: treating fluency as verification",
+					"text": "A smooth sentence can reverse an action or omit a condition. Check those details directly; the page provides no confidence score or independent translation review."
+				},
+				{
+					"heading": "Worked example: a library reminder",
+					"text": "Choose English and Spanish for the library reminder. The language names appear in the first sentence, and the source text appears inside quotation marks. The closing requests only a translation without explanation. None of the Spanish translation is supplied here; the exact output demonstrates the request that you would take to an external assistant.",
+					"example": "Input and selections\ninput: Please return the library books by Friday.\nfromLang: English\ntoLang: Spanish\n\nExact tool output\nPlease translate the following text from English to Spanish:\n\n\"Please return the library books by Friday.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "Worked example: a Korean meeting message",
+					"text": "For the second example, use Korean as the source and English as the target. The Korean input remains unchanged inside the same English template. Interface language does not choose the translation direction for you. Check both selectors before copying, especially if your previous task used the opposite direction or you recently pressed Swap.",
+					"example": "Input and selections\ninput: 회의는 오후 세 시에 시작합니다.\nfromLang: Korean\ntoLang: English\n\nExact tool output\nPlease translate the following text from Korean to English:\n\n\"회의는 오후 세 시에 시작합니다.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "Mistake 3: expecting automatic language detection",
+					"text": "The function trusts the selected language names. It does not inspect the input to identify its language, so a mismatched source selection produces a mismatched request."
+				},
+				{
+					"heading": "Mistake 4: expecting a terminology field",
+					"text": "There are no separate glossary, formality, or audience controls. If those constraints matter, edit the copied request explicitly before asking another service to translate."
+				},
+				{
+					"heading": "Mistake 5: assuming Swap translates the input",
+					"text": "Swap exchanges the language selectors and regenerates an existing request, but leaves the source text intact. Replace the input yourself before using the reversed direction."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Use explicit names when a pronoun could refer to several people.",
+						"Check source and target labels in the generated first sentence.",
+						"Keep any instructions separate from the quoted source when editing the copied request, because the generator does not distinguish them inside the input field."
+					]
 				}
 			]
 		},
 		ko: {
-			title: 'AI 번역기 가이드',
-			description: 'AI 기반 번역기를 사용하여 텍스트를 정확하게 번역하는 방법을 알아보세요. 문맥 인식 번역으로 다국어를 지원합니다.',
-			cta: 'AI 번역기 사용하기',
+			title: "번역 프롬프트 생성기 가이드",
+			description: "번역 요청을 준비하고 원문 표현, 언어 방향, 최종 번역을 검토하세요.",
+			cta: "번역 프롬프트 생성기 사용하기",
 			sections: [
 				{
-					heading: 'AI 번역이란?',
-					text: 'AI 번역은 고급 기계 학습 모델을 사용하여 의미, 어조, 문맥을 유지하면서 텍스트를 한 언어에서 다른 언어로 변환합니다. 전통적인 규칙 기반 번역 시스템과 달리 AI 번역기는 관용구, 문화적 참조, 문맥적 의미를 포함한 언어의 뉘앙스를 이해합니다. 우리의 번역기는 수십억 개의 다국어 텍스트 샘플로 훈련된 최첨단 언어 모델을 활용하여 자연스럽고 정확한 번역을 생성합니다. 이 기술은 더 많은 콘텐츠를 처리하면서 지속적으로 개선되며, 수십 개 언어의 패턴과 언어 구조에서 학습하여 점점 더 정제된 결과를 제공합니다.'
+					"heading": "명확한 안내문 번역 준비하기",
+					"text": "이 실습에서는 제품 안내문을 영어에서 한국어로 번역할 준비를 합니다. 페이지는 프롬프트를 생성하므로 번역문 자체는 별도로 얻어야 합니다. 번역된 문장이 자연스러운지 판단하기 전에 안내문의 뜻을 정하세요."
 				},
 				{
-					heading: '지원 언어 및 기능',
-					text: 'AI 번역기는 영어, 스페인어, 중국어, 아랍어, 프랑스어, 독일어, 일본어, 한국어, 포르투갈어, 러시아어, 힌디어 등 주요 세계 언어와 많은 지역 및 희귀 언어를 포함하여 100개 이상의 언어를 지원합니다. 번역기는 비즈니스 문서용 공식 번역, 일상 커뮤니케이션용 비공식 번역, 산업별 용어를 보존하는 기술 번역, 문체적 요소를 유지하는 문학 번역 등 여러 전문 모드를 제공합니다. 브라질 포르투갈어 vs 유럽 포르투갈어, 간체 vs 번체 중국어 문자와 같이 필요한 지역 변형을 지정할 수도 있습니다.'
+					"heading": "1단계: 모호한 대명사 없애기",
+					"text": "수정 전: “필터를 교체하기 전에 그것을 분리하세요.” 수정 후: “필터를 교체하기 전에 덮개를 분리하세요.” 수정문은 분리할 대상을 명시합니다. 수정된 영어 문장을 입력하고 원문은 영어, 대상은 한국어로 선택하세요."
 				},
 				{
-					heading: 'AI 번역기 사용 방법',
-					text: '번역기 사용은 간단하고 직관적입니다. 원본 필드에 텍스트를 입력하거나 붙여넣고, 원본 언어를 선택(또는 자동 감지 사용)한 다음 대상 언어를 선택합니다. 최상의 결과를 위해 의료, 법률, 기술, 일상 대화 등 콘텐츠의 맥락이나 도메인을 지정할 수 있습니다. 번역을 클릭하면 몇 초 내에 결과를 받습니다. 출력에는 복잡한 구문에 대한 신뢰도 지표와 함께 번역된 텍스트가 포함됩니다. 특정 구문에 대해 여러 번역 대안 사이를 전환하여 필요에 가장 적합한 버전을 선택할 수도 있습니다.'
+					"heading": "2단계: 넘겨줄 지시문 살펴보기",
+					"text": "생성한 뒤 아래 실제 결과를 읽으세요. 원문은 따옴표 안에 남고 언어 방향은 첫 문장에 나타납니다. 출력은 한국어 번역문이 아닙니다. 다른 AI에 복사하기 전에 두 언어 이름을 확인하세요.",
+					"example": "입력 및 선택 항목\n텍스트: Remove the cover before replacing the filter.\n원문 언어: English\n대상 언어: Korean\n\n실제 도구 출력\nPlease translate the following text from English to Korean:\n\n\"Remove the cover before replacing the filter.\"\n\nProvide only the translation without any explanation."
 				},
 				{
-					heading: '번역 품질과 정확도',
-					text: 'AI 번역기는 대부분의 언어 쌍, 특히 일반적인 언어와 표준 콘텐츠 유형에서 높은 정확도를 달성합니다. 시스템은 문맥적 의미 유지, 복잡한 문장 구조 처리, 서식 보존에 탁월합니다. 그러나 모든 기계 번역 시스템과 마찬가지로 고도로 전문화된 용어, 창의적인 언어유희, 직접적인 등가물이 없는 문화적 참조에서는 가끔 어려움을 겪을 수 있습니다. 법적 계약서나 의료 기록과 같은 중요한 문서의 경우 인간 번역가가 출력을 검토하도록 권장합니다. 번역기는 추가 검토나 수동 조정이 필요할 수 있는 구절을 식별하는 데 도움이 되는 신뢰도 점수를 제공합니다.'
+					"heading": "3단계: 빠진 용어 지침 명시하기",
+					"text": "“cover”에 승인된 특정 제품 용어가 있다면 복사한 프롬프트의 인용 원문 바깥에 지시를 추가하세요. 페이지에는 용어집 필드가 없습니다. 번역 지시가 번역할 내용으로 취급되지 않도록 원문과 분리하세요."
 				},
 				{
-					heading: '번역 모범 사례',
-					text: '최적의 번역 결과를 얻으려면 명확하고 문법적으로 올바른 원본 텍스트를 작성하세요. 모호하거나 잘못 작성된 콘텐츠는 AI가 정확하게 번역하기 어렵습니다. 가능하면 긴 단락을 짧은 문장으로 나누세요. 문맥을 제공하지 않는 한 잘 번역되지 않을 수 있는 속어, 약어, 문화적 참조는 피하세요. 기술 콘텐츠의 경우 핵심 용어 용어집 제공을 고려하세요. 문법 구조가 다른 언어 간 번역(예: 영어에서 일본어로)할 때는 문장 요소의 일부 재구성을 예상하세요. 번역의 어조와 격식 수준을 검토하세요. 중요한 프로젝트의 경우 전체 문서를 처리하기 전에 먼저 샘플을 번역하여 품질을 평가하세요.'
+					"heading": "4단계: 유창함보다 의미 검토하기",
+					"text": "편집자가 작성한 참고 번역은 “필터를 교체하기 전에 덮개를 분리하세요.”입니다. 사람이 작성한 예시이며 이 도구의 출력이 아닙니다. 최종 번역에서 대상, 동작, 순서를 비교하세요. 제품을 아는 독자에게 지시가 명확한지 확인하세요."
 				},
 				{
-					heading: '일반적인 사용 사례',
-					text: 'AI 번역기는 많은 분야에서 다양한 요구를 충족합니다. 비즈니스 전문가들은 국제 서신, 계약 초안, 마케팅 자료에 사용합니다. 학생과 연구자들은 학술 논문과 외국어 소스를 번역합니다. 여행자들은 실시간 커뮤니케이션과 표지판, 메뉴, 현지 콘텐츠 이해에 의존합니다. 전자상거래 기업은 글로벌 시장을 위해 제품 설명과 고객 리뷰를 번역합니다. 콘텐츠 제작자들은 국제 청중을 위해 작품을 현지화합니다. 고객 지원 팀은 다국어 문의를 효율적으로 처리합니다. AI 번역의 다양성은 상호 연결된 글로벌 커뮤니티에 필수적인 도구입니다.'
+					"heading": "실수 1: 언어 교환을 역번역으로 사용하기",
+					"text": "언어 교환은 선택한 언어를 바꾸지만 원래 입력은 그대로 둡니다. 별도의 역번역 연습을 하려면 실제 번역문을 직접 붙여넣고 방향을 의도적으로 설정하세요."
+				},
+				{
+					"heading": "실수 2: 유창함을 검증으로 보기",
+					"text": "매끄러운 문장도 동작을 뒤집거나 조건을 빠뜨릴 수 있습니다. 그 내용을 직접 확인하세요. 페이지에는 신뢰도 점수나 독립적인 번역 검토가 없습니다."
+				},
+				{
+					"heading": "추가 예제: 도서관 반납 안내",
+					"text": "도서관 안내에는 English와 Spanish를 선택하세요. 언어 이름은 첫 문장에, 원문은 따옴표 안에 들어갑니다. 마무리는 설명 없이 번역만 요청합니다. 여기서는 스페인어 번역을 제공하지 않으며, 정확한 출력은 외부 AI로 가져갈 요청문을 보여 줍니다.",
+					"example": "입력과 선택값\ninput: Please return the library books by Friday.\nfromLang: English\ntoLang: Spanish\n\n정확한 도구 출력\nPlease translate the following text from English to Spanish:\n\n\"Please return the library books by Friday.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "추가 예제: 한국어 회의 메시지",
+					"text": "두 번째 예제에서는 원본을 Korean, 번역을 English로 선택하세요. 한국어 입력은 같은 영어 템플릿 안에 그대로 남습니다. 화면 언어가 번역 방향을 대신 선택하지는 않습니다. 특히 이전 작업의 방향이 반대였거나 최근 바꾸기를 눌렀다면 복사 전에 두 선택값을 확인하세요.",
+					"example": "입력과 선택값\ninput: 회의는 오후 세 시에 시작합니다.\nfromLang: Korean\ntoLang: English\n\n정확한 도구 출력\nPlease translate the following text from Korean to English:\n\n\"회의는 오후 세 시에 시작합니다.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "실수 3: 자동 언어 감지 기대하기",
+					"text": "함수는 선택된 언어 이름을 그대로 사용합니다. 입력 언어를 판별하지 않으므로 원본 선택이 잘못되면 요청문도 잘못됩니다."
+				},
+				{
+					"heading": "실수 4: 용어 필드 기대하기",
+					"text": "별도의 용어집, 격식, 독자 설정은 없습니다. 그런 조건이 중요하면 다른 서비스에 번역을 요청하기 전에 복사한 요청문을 직접 수정하세요."
+				},
+				{
+					"heading": "실수 5: 바꾸기가 입력도 번역한다고 생각하기",
+					"text": "바꾸기는 언어 선택값을 교환하고 기존 요청을 다시 만들지만 원문은 유지합니다. 반대 방향을 사용하려면 입력을 직접 바꾸세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"대명사가 여러 사람을 가리킬 수 있다면 이름을 명확히 쓰세요.",
+						"생성된 첫 문장에서 원본과 대상 언어를 확인하세요.",
+						"복사한 요청을 편집할 때 지시는 인용된 원문과 분리하세요. 생성기는 입력 필드 안에서 둘을 구분하지 않습니다."
+					]
 				}
 			]
 		},
@@ -146,10 +218,29 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/translator" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

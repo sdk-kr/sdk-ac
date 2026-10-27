@@ -4,67 +4,139 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Text Summarizer Guide',
-			description: 'Learn how to effectively summarize any text using AI. Our text summarizer helps you condense long documents, articles, and content into concise summaries.',
-			cta: 'Try Text Summarizer',
+			title: "Leading-Sentence Summarizer Guide",
+			description: "Audit the summarizer’s opening-sentence extraction with a reproducible example and check what the preview leaves out.",
+			cta: "Try Leading-Sentence Summarizer",
 			sections: [
 				{
-					heading: 'What is Text Summarization?',
-					text: 'Text summarization is the process of condensing a longer piece of text into a shorter version while preserving the key information and main ideas. Our AI-powered summarizer analyzes your content, identifies the most important points, and generates a coherent summary that captures the essence of the original text. Whether you\'re dealing with research papers, news articles, business reports, or any other lengthy documents, our tool can help you save time and quickly grasp the core message. The technology uses advanced natural language processing to understand context, recognize important concepts, and produce summaries that maintain the original meaning while significantly reducing length.'
+					"heading": "Know what the preview can tell you",
+					"text": "This tool keeps opening sentences; it does not rank their importance or write an abstractive summary. The walkthrough uses a short project note so that you can inspect every omission. The goal is to decide whether an opening excerpt is sufficient for your reader."
 				},
 				{
-					heading: 'Key Features of Our Summarizer',
-					text: 'Our text summarizer offers multiple summarization modes to fit your needs. You can choose extractive summarization, which selects and combines the most important sentences from the original text, or abstractive summarization, which generates new sentences that capture the main ideas. The tool supports various summary lengths from brief one-paragraph overviews to detailed multi-paragraph summaries. You can also specify the focus area if you want the summary to emphasize certain aspects of the content. Additional features include bullet point summaries for quick scanning, keyword extraction, and the ability to maintain specific terminology or technical language when summarizing specialized content.'
+					"heading": "Step 1: read the complete source",
+					"text": "Before shortening, read: “The prototype passed inspection. Packaging still needs revision. Shipping awaits final approval.” Mark the unresolved work and the approval condition. They matter even though they occur after the opening sentence. Paste that exact English text into the input."
 				},
 				{
-					heading: 'How to Use the Text Summarizer',
-					text: 'Using our summarizer is straightforward. First, paste your text into the input field or upload a document. Next, select your preferred summary length - short (1-2 sentences), medium (a paragraph), or detailed (multiple paragraphs). Choose whether you want extractive or abstractive summarization based on your needs. Click the summarize button and wait a few seconds for the AI to process your content. The generated summary will appear in the output area, which you can then copy, edit, or regenerate if needed. For best results with very long documents, consider breaking them into logical sections and summarizing each part separately, then combining the results.'
+					"heading": "Step 2: compare before and after",
+					"text": "Select Medium and summarize. Before: all three sentences. After: only “The prototype passed inspection.” plus the displayed statistics. The output below is exact. Medium rounds thirty percent of three sentences up to one; it does not decide that the other sentences are unimportant.",
+					"example": "Input and selections\nText: The prototype passed inspection. Packaging still needs revision. Shipping awaits final approval.\nLength: Medium\n\nExact tool output\nThe prototype passed inspection.\n\n---\nOriginal: 12 words | Summary: 4 words | Reduced by 67%"
 				},
 				{
-					heading: 'Best Use Cases for Summarization',
-					text: 'Text summarization excels in numerous scenarios. Students can use it to quickly understand research papers and academic articles, creating study notes efficiently. Professionals can summarize meeting transcripts, lengthy emails, or industry reports to save time. Content creators can use summaries to create article abstracts, social media posts, or newsletter snippets. Researchers can quickly scan large volumes of literature to identify relevant papers. Business analysts can condense market research and competitor analysis into actionable insights. Legal professionals can summarize contracts and case documents. The tool is also valuable for creating executive summaries of business proposals and condensing technical documentation for different audiences.'
+					"heading": "Step 3: test the length behavior",
+					"text": "Switch to Short and run again. It retains the first two sentences, so it is longer than Medium for this input. Long also retains two here. These settings express different extraction rules, not guaranteed relative lengths or a target word budget."
 				},
 				{
-					heading: 'Tips for Better Summaries',
-					text: 'To get the best results from our summarizer, ensure your input text is clean and well-formatted. Remove unnecessary headers, footers, and formatting artifacts that might confuse the AI. For technical content, specify if you want to maintain technical terms or translate them into simpler language. When summarizing multiple related documents, consider providing context about how they relate to each other. If the initial summary doesn\'t meet your expectations, try adjusting the length setting or switching between extractive and abstractive modes. For very long texts, breaking them into thematic sections often produces better results than summarizing everything at once. Review and lightly edit the generated summary to ensure it accurately represents the source material.'
+					"heading": "Step 4: prepare an honest summary",
+					"text": "For a hand-edited summary, write: “The prototype passed inspection, but packaging needs revision and shipping still requires approval.” This is an editorial example, not tool output. It preserves the unresolved conditions. Compare your own summary with the complete source before sharing it."
 				},
 				{
-					heading: 'Understanding Summary Quality',
-					text: 'A good summary should be accurate, coherent, and concise. Accuracy means the summary faithfully represents the main ideas without introducing errors or misinterpretations. Coherence ensures the summary reads smoothly as a standalone piece of text with logical flow between ideas. Conciseness means including only essential information without redundancy. Our AI strives to balance these qualities, but it\'s always good practice to review summaries, especially for important documents. The tool works best with well-written source material that has clear structure and logical organization. Technical jargon, ambiguous language, or poorly organized content may result in less accurate summaries. For critical applications, use the summary as a starting point and verify key points against the original text.'
+					"heading": "Mistake 1: trusting the reduction figure",
+					"text": "A shorter excerpt can omit the decision the reader needs. The reduction percentage measures whitespace-token reduction, not coverage, accuracy, or usefulness."
+				},
+				{
+					"heading": "Mistake 2: ignoring sentence boundaries",
+					"text": "Periods inside abbreviations can split text, and an unfinished final sentence can be omitted when other sentences match. Compare the last source sentence with the preview rather than assuming all input was considered."
+				},
+				{
+					"heading": "Worked example: a notice loses a condition",
+					"text": "With four punctuated sentences and Long selected, the tool keeps the first two chunks. The exact output therefore omits the closed side entrance and volunteer arrival instruction. It reports a reduction in whitespace-separated tokens, not retained meaning. Before sharing this excerpt, compare the omitted sentences with what your audience needs to do.",
+					"example": "Input and selections\ninput: Doors open at nine. Bring your ticket. The side entrance is closed. Volunteers arrive early.\nlength: long\n\nExact tool output\nDoors open at nine.  Bring your ticket.\n\n---\nOriginal: 15 words | Summary: 7 words | Reduced by 53%"
+				},
+				{
+					"heading": "Worked example: no sentence-ending punctuation",
+					"text": "The notebook reminder has no period, exclamation mark, or question mark. No chunks match the regular expression, so the entire input becomes the fallback chunk. Medium therefore returns the complete reminder with zero percent reduction. This case explains why changing length cannot shorten every input and why the interface is better understood as an opening excerpt tool.",
+					"example": "Input and selections\ninput: Bring a notebook and a pencil\nlength: medium\n\nExact tool output\nBring a notebook and a pencil\n\n---\nOriginal: 6 words | Summary: 6 words | Reduced by 0%"
+				},
+				{
+					"heading": "Mistake 3: trusting length labels as an ordering",
+					"text": "Short keeps up to two chunks, while Medium takes thirty percent rounded up. On a short document, Medium can retain fewer chunks than Short; inspect the actual excerpt."
+				},
+				{
+					"heading": "Mistake 4: forgetting an unfinished final sentence",
+					"text": "When earlier chunks have punctuation, an unpunctuated tail does not match and can disappear. Finish the source sentences before deciding whether the excerpt is useful."
+				},
+				{
+					"heading": "Mistake 5: assuming linguistic sentence detection",
+					"text": "A period inside an abbreviation or decimal can split a chunk. The function does not understand grammar, so technical notes and numbered data need especially careful comparison."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Use source text whose opening already states the main point.",
+						"Compare conditions and exceptions against the complete original.",
+						"Preserve the displayed spacing when reproducing an example; Copy removes the statistics footer, so it is not the entire displayed output."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '텍스트 요약 가이드',
-			description: 'AI를 사용하여 모든 텍스트를 효과적으로 요약하는 방법을 알아보세요. 텍스트 요약기는 긴 문서, 기사, 콘텐츠를 간결한 요약으로 압축합니다.',
-			cta: '텍스트 요약 사용하기',
+			title: "앞문장 추출 요약기 가이드",
+			description: "재현 가능한 예제로 요약기의 앞 문장 추출을 검토하고 미리보기에서 빠진 내용을 확인하세요.",
+			cta: "앞문장 추출 요약기 사용하기",
 			sections: [
 				{
-					heading: '텍스트 요약이란?',
-					text: '텍스트 요약은 핵심 정보와 주요 아이디어를 보존하면서 긴 텍스트를 짧은 버전으로 압축하는 과정입니다. AI 기반 요약기는 콘텐츠를 분석하고 가장 중요한 포인트를 식별하여 원문의 본질을 담은 일관된 요약을 생성합니다. 연구 논문, 뉴스 기사, 비즈니스 보고서 또는 기타 긴 문서를 다루든, 이 도구는 시간을 절약하고 핵심 메시지를 빠르게 파악하는 데 도움을 줍니다. 이 기술은 고급 자연어 처리를 사용하여 맥락을 이해하고, 중요한 개념을 인식하며, 길이를 크게 줄이면서도 원래 의미를 유지하는 요약을 생성합니다.'
+					"heading": "미리보기로 알 수 있는 범위 파악하기",
+					"text": "이 도구는 앞 문장을 남기며 중요도를 매기거나 새로운 표현으로 요약하지 않습니다. 이 실습은 누락된 내용을 모두 살펴볼 수 있도록 짧은 프로젝트 메모를 사용합니다. 목표는 앞부분 발췌만으로 독자에게 충분한지 판단하는 것입니다."
 				},
 				{
-					heading: '요약기의 주요 기능',
-					text: '텍스트 요약기는 필요에 맞는 여러 요약 모드를 제공합니다. 원문에서 가장 중요한 문장을 선택하여 결합하는 추출적 요약, 또는 주요 아이디어를 담은 새로운 문장을 생성하는 추상적 요약을 선택할 수 있습니다. 이 도구는 간단한 한 문단 개요부터 상세한 여러 문단 요약까지 다양한 요약 길이를 지원합니다. 요약이 콘텐츠의 특정 측면을 강조하도록 초점 영역을 지정할 수도 있습니다. 추가 기능으로는 빠른 스캔을 위한 글머리 기호 요약, 키워드 추출, 전문 콘텐츠 요약 시 특정 용어나 기술 언어를 유지하는 기능이 있습니다.'
+					"heading": "1단계: 원문 전체 읽기",
+					"text": "줄이기 전에 원문을 읽으세요. “시제품은 검사를 통과했습니다. 포장은 아직 수정이 필요합니다. 배송은 최종 승인을 기다립니다.” 미완료 작업과 승인 조건을 표시하세요. 도입 문장 뒤에 있어도 중요합니다. 아래에 제시한 영어 원문을 정확히 입력하세요."
 				},
 				{
-					heading: '텍스트 요약기 사용 방법',
-					text: '요약기 사용은 간단합니다. 먼저 입력 필드에 텍스트를 붙여넣거나 문서를 업로드합니다. 다음으로 원하는 요약 길이를 선택합니다 - 짧음(1-2문장), 중간(한 문단), 상세(여러 문단). 필요에 따라 추출적 또는 추상적 요약을 선택합니다. 요약 버튼을 클릭하고 AI가 콘텐츠를 처리하는 동안 몇 초 기다립니다. 생성된 요약은 출력 영역에 나타나며, 복사하거나 편집하거나 필요하면 다시 생성할 수 있습니다. 매우 긴 문서의 경우 논리적 섹션으로 나누어 각 부분을 별도로 요약한 다음 결과를 결합하는 것이 좋습니다.'
+					"heading": "2단계: 전후 비교하기",
+					"text": "중간을 선택하고 요약하세요. 이전에는 세 문장 전체가 있었지만 이후에는 “The prototype passed inspection.”과 표시된 통계만 남습니다. 아래는 실제 출력입니다. 중간은 세 문장의 30%를 올림하여 한 문장으로 계산할 뿐 나머지 문장이 중요하지 않다고 판단하지 않습니다.",
+					"example": "입력 및 선택 항목\n텍스트: The prototype passed inspection. Packaging still needs revision. Shipping awaits final approval.\n길이: 중간\n\n실제 도구 출력\nThe prototype passed inspection.\n\n---\nOriginal: 12 words | Summary: 4 words | Reduced by 67%"
 				},
 				{
-					heading: '요약의 최적 활용 사례',
-					text: '텍스트 요약은 다양한 시나리오에서 뛰어납니다. 학생들은 연구 논문과 학술 기사를 빠르게 이해하고 효율적으로 학습 노트를 만들 수 있습니다. 전문가들은 회의 기록, 긴 이메일, 업계 보고서를 요약하여 시간을 절약할 수 있습니다. 콘텐츠 제작자는 요약을 사용하여 기사 초록, 소셜 미디어 게시물, 뉴스레터 스니펫을 만들 수 있습니다. 연구자들은 대량의 문헌을 빠르게 스캔하여 관련 논문을 식별할 수 있습니다. 비즈니스 분석가는 시장 조사와 경쟁사 분석을 실행 가능한 인사이트로 압축할 수 있습니다. 법률 전문가는 계약서와 사건 문서를 요약할 수 있습니다.'
+					"heading": "3단계: 길이 동작 시험하기",
+					"text": "짧음으로 바꾸고 다시 실행하세요. 앞 두 문장을 남기므로 이 입력에서는 중간보다 깁니다. 김도 여기서는 두 문장을 남깁니다. 이 설정은 서로 다른 추출 규칙이며 길이의 상대적 순서나 목표 단어 수를 보장하지 않습니다."
 				},
 				{
-					heading: '더 나은 요약을 위한 팁',
-					text: '요약기에서 최상의 결과를 얻으려면 입력 텍스트가 깨끗하고 잘 포맷되어 있는지 확인하세요. AI를 혼란스럽게 할 수 있는 불필요한 머리글, 바닥글, 서식 아티팩트를 제거하세요. 기술적 콘텐츠의 경우 기술 용어를 유지할지 더 간단한 언어로 번역할지 지정하세요. 여러 관련 문서를 요약할 때는 문서들이 서로 어떻게 관련되는지 맥락을 제공하는 것이 좋습니다. 초기 요약이 기대에 미치지 못하면 길이 설정을 조정하거나 추출적 모드와 추상적 모드 사이를 전환해 보세요. 매우 긴 텍스트의 경우 주제별 섹션으로 나누면 종종 더 나은 결과를 얻습니다.'
+					"heading": "4단계: 내용을 충실히 담은 요약 준비하기",
+					"text": "직접 편집한 요약 예시는 “시제품은 검사를 통과했지만 포장은 수정이 필요하고 배송에는 아직 승인이 필요합니다.”입니다. 이는 편집 예시이며 도구 출력이 아닙니다. 미해결 조건을 유지합니다. 공유 전에 직접 만든 요약과 원문 전체를 비교하세요."
 				},
 				{
-					heading: '요약 품질 이해하기',
-					text: '좋은 요약은 정확하고, 일관성 있으며, 간결해야 합니다. 정확성은 요약이 오류나 오해 없이 주요 아이디어를 충실히 나타낸다는 것을 의미합니다. 일관성은 요약이 아이디어 간 논리적 흐름을 가진 독립적인 텍스트로 매끄럽게 읽힌다는 것을 보장합니다. 간결성은 중복 없이 필수 정보만 포함하는 것을 의미합니다. AI는 이러한 품질의 균형을 맞추기 위해 노력하지만, 특히 중요한 문서의 경우 요약을 검토하는 것이 좋습니다. 이 도구는 명확한 구조와 논리적 구성을 가진 잘 작성된 원본 자료에서 가장 잘 작동합니다.'
+					"heading": "실수 1: 감소율만 믿기",
+					"text": "짧아진 발췌문은 독자에게 필요한 결정을 빠뜨릴 수 있습니다. 감소율은 공백 토큰 수의 감소를 측정하며 내용 포함 범위, 정확도, 유용성을 측정하지 않습니다."
+				},
+				{
+					"heading": "실수 2: 문장 경계 무시하기",
+					"text": "약어 안의 마침표가 텍스트를 나눌 수 있고, 다른 문장들이 일치하면 끝 문장부호가 없는 마지막 문장은 빠질 수 있습니다. 입력 전체가 고려되었다고 가정하지 말고 원문의 마지막 문장과 미리보기를 비교하세요."
+				},
+				{
+					"heading": "추가 예제: 안내문에서 조건 누락",
+					"text": "문장부호가 있는 네 문장에 길게를 선택하면 처음 두 구간을 유지합니다. 따라서 정확한 출력에는 옆문 폐쇄와 봉사자 조기 도착 안내가 빠집니다. 표시되는 감소율은 공백으로 나눈 토큰 기준이지 의미 보존율이 아닙니다. 이 발췌문을 공유하기 전에 빠진 문장과 독자가 해야 할 일을 대조하세요.",
+					"example": "입력과 선택값\ninput: Doors open at nine. Bring your ticket. The side entrance is closed. Volunteers arrive early.\nlength: long\n\n정확한 도구 출력\nDoors open at nine.  Bring your ticket.\n\n---\nOriginal: 15 words | Summary: 7 words | Reduced by 53%"
+				},
+				{
+					"heading": "추가 예제: 문장 종결 부호가 없는 입력",
+					"text": "공책 안내에는 마침표, 느낌표, 물음표가 없습니다. 정규식에 맞는 구간이 없어 전체 입력을 대체 구간으로 사용합니다. 따라서 중간은 안내 전체와 감소율 0%를 반환합니다. 이 예제는 길이 변경으로 모든 입력을 줄일 수 없는 이유와 이 도구를 앞부분 발췌 도구로 이해해야 하는 이유를 보여 줍니다.",
+					"example": "입력과 선택값\ninput: Bring a notebook and a pencil\nlength: medium\n\n정확한 도구 출력\nBring a notebook and a pencil\n\n---\nOriginal: 6 words | Summary: 6 words | Reduced by 0%"
+				},
+				{
+					"heading": "실수 3: 길이 이름을 순서로 믿기",
+					"text": "짧게는 최대 두 구간을, 중간은 30%를 올림한 수만큼 유지합니다. 짧은 글에서는 중간이 짧게보다 적게 남길 수 있으니 실제 발췌문을 확인하세요."
+				},
+				{
+					"heading": "실수 4: 미완결 끝 문장 놓치기",
+					"text": "앞 구간에 문장부호가 있으면 부호 없는 끝부분은 일치하지 않아 사라질 수 있습니다. 원문의 문장을 완결한 뒤 발췌문이 유용한지 판단하세요."
+				},
+				{
+					"heading": "실수 5: 언어적 문장 판별 기대하기",
+					"text": "약어나 소수 안의 마침표도 구간을 나눌 수 있습니다. 함수는 문법을 이해하지 않으므로 기술 메모와 숫자 자료는 특히 신중하게 비교해야 합니다."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"첫 부분에 이미 핵심이 있는 원문을 사용하세요.",
+						"조건과 예외를 원문 전체와 대조하세요.",
+						"예제를 재현할 때 표시된 공백을 유지하세요. 복사는 통계 꼬리말을 제거하므로 화면 출력 전체를 복사하지 않습니다."
+					]
 				}
 			]
 		},
@@ -146,10 +218,29 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/summarizer" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "앞문장 추출 요약기" : "Leading-Sentence Summarizer"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/summarizer" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

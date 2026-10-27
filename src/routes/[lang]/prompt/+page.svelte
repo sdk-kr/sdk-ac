@@ -241,6 +241,56 @@ Knowing these boundaries is itself a prompting skill: the best practitioners spe
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "Prompt Generator assembles an instruction; it does not answer your question. It joins your task, optional context, and one fixed style sentence, then adds a closing request. The same fields produce the same text. Use the task to define a deliverable and the context to supply facts the eventual assistant would otherwise have to assume. A style choice changes wording, not model settings. Before copying, check whether a reader could tell what a successful answer must contain. If not, improve the task before adding more background.",
+				"ko": "프롬프트 생성기는 지시문을 조합하며 질문에 답하지 않습니다. 작업, 선택 사항인 맥락, 고정된 스타일 문장을 연결한 다음 마무리 요청을 붙입니다. 같은 필드는 같은 텍스트를 만듭니다. 작업에는 원하는 산출물을 정의하고, 맥락에는 나중에 답할 AI가 추측해야 할 사실을 제공하세요. 스타일 선택은 문구를 바꾸며 모델 설정을 바꾸지는 않습니다. 복사하기 전에 읽는 사람이 성공적인 답변의 필수 내용을 알 수 있는지 확인하세요. 알 수 없다면 배경을 더 넣기 전에 작업부터 다듬으세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "Suppose a workshop organizer needs a packing checklist. Enter the task and context shown below and choose Concise. The output is reproduced exactly, including blank lines. Notice that the closing sentence still asks for a thorough response: this is part of the fixed template. If brevity matters, put a concrete limit in the task. The generator does not resolve conflicting instructions or produce the checklist itself.",
+				"ko": "워크숍 담당자가 준비물 체크리스트를 필요로 한다고 가정해 보겠습니다. 아래 작업과 맥락을 입력하고 간결한 스타일을 선택하세요. 빈 줄까지 실제 출력 그대로 제시했습니다. 마무리 문장은 여전히 충실한 답변을 요청합니다. 이는 고정 템플릿의 일부입니다. 짧은 답변이 중요하다면 작업에 구체적인 제한을 적으세요. 생성기는 충돌하는 지시를 해결하거나 체크리스트 자체를 만들지 않습니다."
+			},
+			"code": {
+				"example": "Input and selections\nTask: Write a packing checklist for a drawing workshop.\nContext: Attendees bring their own pencils.\nStyle: Concise\n\nExact tool output\nYou are an expert assistant. Be brief and to the point. Focus only on essential information.\n\nTask: Write a packing checklist for a drawing workshop.\n\nContext: Attendees bring their own pencils.\n\nPlease provide a thorough and helpful response."
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not use the result as evidence that a task was completed. No sources are retrieved, facts checked, or instructions tested against a model here. A role description cannot supply missing expertise. For requests that depend on private documents, first decide which facts can be shared with the service where you will paste the prompt. Keep the original requirements beside any eventual answer and check each requirement yourself.",
+				"ko": "이 결과를 작업이 완료되었다는 증거로 사용하지 마세요. 여기서는 자료를 검색하거나 사실을 확인하거나 모델에 지시를 시험하지 않습니다. 역할 설명으로 부족한 전문 지식을 채울 수는 없습니다. 비공개 문서가 필요한 요청이라면 프롬프트를 붙여넣을 서비스에 어떤 사실을 공유할 수 있는지 먼저 판단하세요. 최종 답변 옆에 원래 요구 사항을 두고 항목별로 직접 확인하세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Does choosing Concise enforce a word limit? No. It inserts a request for brevity; put your limit in the task.\n\nCan I leave context empty? Yes. The context line is omitted when that field contains only whitespace.\n\nDoes the site choose an AI model? No. This page has no model selector or model invocation.\n\nWhy does regeneration give the same prompt? The generator uses fixed strings and your fields, with no randomness.\n\nWhat should I revise after a poor answer? Identify one mismatch, such as missing checklist items, and revise the relevant task requirement before trying again.",
+				"ko": "간결한 스타일을 고르면 단어 수가 제한되나요? 아니요. 간결하게 답하라는 요청을 넣을 뿐이므로 원하는 제한은 작업에 적으세요.\n\n맥락을 비워도 되나요? 네. 공백만 입력하면 맥락 줄을 생략합니다.\n\n사이트가 AI 모델을 고르나요? 아니요. 이 페이지에는 모델 선택이나 모델 호출 기능이 없습니다.\n\n다시 생성해도 왜 같은 프롬프트가 나오나요? 고정 문자열과 입력 필드를 사용하며 무작위 요소가 없기 때문입니다.\n\n답변이 좋지 않으면 무엇을 고쳐야 하나요? 체크리스트 항목 누락처럼 어긋난 점 하나를 찾고, 해당 작업 요구 사항을 고친 다음 다시 시도하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n작업: Write a packing checklist for a drawing workshop.\n맥락: Attendees bring their own pencils.\n스타일: 간결함\n\n실제 도구 출력\nYou are an expert assistant. Be brief and to the point. Focus only on essential information.\n\nTask: Write a packing checklist for a drawing workshop.\n\nContext: Attendees bring their own pencils.\n\nPlease provide a thorough and helpful response." : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -380,5 +430,17 @@ Knowing these boundaries is itself a prompting skill: the best practitioners spe
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기 실습 읽기" : "Read the prompt generator tutorial"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code Explanation Prompt Builder"}</a>
+		</nav>
+	{/if}
+
 </div>

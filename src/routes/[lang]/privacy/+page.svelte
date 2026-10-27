@@ -42,9 +42,9 @@
 - **Communication Data**: When you contact us by e-mail, we receive your e-mail address, the content of your message, and any attachments you choose to send.
 
 We do not knowingly collect special categories of personal data (e.g., health, religion, biometrics), government identifiers, payment-card numbers, or precise geolocation.` },
-				{ title: '3. How Text You Submit to Our AI Tools Is Processed', content: `This section addresses the question users most often ask us: what happens to the text I type into a tool?
+				{ title: '3. How Text You Submit to Our Tools Is Processed', content: `This section addresses the question users most often ask us: what happens to the text I type into a tool?
 
-- **Processing happens on your device.** Our tools (AI translator, text summarizer, prompt generator, image prompt builder, code explainer, email writer, hashtag generator, writing assistant) run their logic in your browser. The text you enter is used transiently in your device's memory to produce the output, and is discarded when you clear the input or leave the page.
+- **Processing happens on your device.** Our tools (Prompt Generator, Image Prompt Builder, Leading-Sentence Summarizer, Translation Prompt Builder, Code Explanation Prompt Builder, Email Prompt Builder, Hashtag Prompt Builder, Writing Revision Prompt Builder) run their logic in your browser. The text you enter is used transiently in your device's memory to produce the output, and is discarded when you clear the input or leave the page.
 - **We do not store your text.** No tool input is transmitted to, logged by, or stored permanently on our servers. There is no server-side database of user text.
 - **We do not train on your text.** Your inputs are never used to train, fine-tune, or evaluate any machine-learning model, by us or on our behalf.
 - **Third-party AI services are your choice.** Where a tool generates a prompt intended for an external AI assistant, the prompt leaves your device only when you yourself copy it and paste it into that assistant. From that point, the processing of the text — including any transmission to an AI model API and any retention — is governed by the third-party provider's terms and privacy policy, not this one. If we ever introduce a tool that sends your text to an AI model API directly, we will say so clearly on the tool page before you submit anything, transmit the text over encrypted connections solely to generate your result, and not store it permanently.` },
@@ -70,7 +70,7 @@ We do not knowingly collect special categories of personal data (e.g., health, r
 - Google, as a third-party vendor, uses cookies — including the DoubleClick (DART) cookie — to serve ads on the Service based on your visits to this and other websites.
 - These cookies allow Google and its partners to serve personalised ads, cap ad frequency, and measure ad performance. A list of Google's advertising cookies and their lifetimes is available in Google's advertising privacy documentation.
 - **Opt-out**: You may opt out of personalised advertising by visiting Google's Ads Settings at ${ADS_OPTOUT_URL}. You may additionally opt out of many other third-party vendors' personalised ads at https://www.aboutads.info/choices.
-- Where required by law (EU, UK, Korea and other jurisdictions), a consent banner is shown before any personalised advertising cookies are set, and you may refuse or later withdraw consent through that banner.
+- For visitors in the European Economic Area, the United Kingdom and Switzerland, Google’s consent management tool is shown before personalised advertising cookies are set; you may refuse there and later change your choice through the same tool. Elsewhere, use the Google ad settings described above.
 - If you opt out, you will still see ads, but they will not be personalised to your interests.` },
 				{ title: '8. Third-Party Processors and International Transfers', content: `We share the minimum necessary information with the following processors, each acting under agreements requiring confidentiality and purpose limitation:
 
@@ -98,17 +98,18 @@ When a statutory retention period under Korean law applies (e.g., records of con
 - **Withdraw consent** at any time, without affecting the lawfulness of processing before withdrawal;
 - **Lodge a complaint** with a supervisory authority — in Korea, the Personal Information Protection Commission (privacy.go.kr) or the Korea Internet & Security Agency (KISA, 118); in the EU, your national data protection authority.
 
-Because we deliberately hold almost no personal data, most requests can be satisfied instantly: tool inputs and preferences exist only in your own browser, and clearing your browser's site data removes them completely. For anything else (e.g., deletion of e-mail correspondence), contact us as described in Section 11. We respond to verified requests within the timeframes required by GDPR (one month) and PIPA (10 days for access requests), free of charge except where requests are manifestly unfounded or excessive.` },
-				{ title: '11. Privacy Officer and Contact', content: `The Company has designated a privacy officer (개인정보 보호책임자) responsible for handling personal-data inquiries, complaints, and remedies:
+Because we deliberately hold almost no personal data, most requests can be satisfied instantly: tool inputs and preferences exist only in your own browser, and clearing your browser's site data removes them completely. For anything else (e.g., deletion of e-mail correspondence), contact us as described in Section 12. We respond to verified requests within the timeframes required by GDPR (one month) and PIPA (10 days for access requests), free of charge except where requests are manifestly unfounded or excessive.` },
+				{ title: "11. US State Privacy Rights (CCPA/CPRA and similar laws)", content: "Depending on the law that applies to you, US state privacy rights may include requesting access to, correction of, or deletion of personal information, and opting out of certain advertising uses. SDK.ac does not require an account or maintain account records. Its tool inputs are processed in your browser; there is no account profile or stored tool history to retrieve from the tool pages.\n\nThe site uses Google AdSense advertising, which involves advertising cookies and similar identifiers. Residents of certain US states can opt out of the sale or sharing of personal information through the Google privacy message shown on the site; the choice is applied to advertising on this site by Google. You can also manage personalized advertising through Google’s advertising settings, as described in Section 7. The site’s own cookie notice is informational: it records only that you have seen the notice and does not itself change how advertising cookies are set.\n\nFor questions about these rights, advertising choices, or a “Do Not Sell or Share” request, contact SDKLabs Co., Ltd., Seoul, Republic of Korea, at contact@sdklabs.org. Describe the request and the relevant interaction with the site; do not include passwords or tool contents that are unnecessary to explain it. If the request concerns an email you sent, identify that correspondence so the request can be understood. Contact details also appear in Section 12." },
+				{ title: '12. Privacy Officer and Contact', content: `The Company has designated a privacy officer (개인정보 보호책임자) responsible for handling personal-data inquiries, complaints, and remedies:
 
 - **Privacy Officer**: Privacy Team, ${COMPANY_NAME}
 - **E-mail**: ${CONTACT_EMAIL} (include "Legal" or "Privacy" in the subject line)
 - **Address**: ${COMPANY_ADDRESS_EN}
 
 We will confirm receipt of privacy inquiries promptly and provide a substantive response within the statutory deadlines. If you believe your inquiry has not been handled adequately, you may contact the Personal Information Protection Commission of Korea (privacy.go.kr / 국번없이 182) or, in the EU, your local supervisory authority.` },
-				{ title: '12. Children\'s Privacy', content: `The Service is a general-audience website and is not directed at children under 14 (Korea) or under 16 (EU). We do not knowingly collect personal data from children. Because the Service requires no account and stores no tool inputs, the risk of collecting a child's personal data is inherently minimal. If you believe a child has nevertheless provided us with personal data by e-mail, contact us at ${CONTACT_EMAIL} and we will delete it promptly.` },
-				{ title: '13. Security Measures', content: `We take administrative, technical, and physical measures appropriate to the low volume and low sensitivity of the data we handle: all traffic is encrypted with TLS; there is no server-side database of user content that could be breached; internal access to analytics and correspondence is limited to authorised personnel on a need-to-know basis; and our infrastructure providers (Cloudflare, Google) maintain industry-standard certifications including ISO 27001 and SOC 2. No method of transmission over the Internet is 100% secure, but our architecture minimises risk by minimising the data that exists in the first place.` },
-				{ title: '14. Changes to this Policy', content: `We may update this Policy to reflect changes in law, technology, or our practices. When we make material changes, we will post the updated Policy on this page at least seven (7) days before it takes effect (thirty (30) days for changes that materially affect your rights), and update the "Last Updated" date at the top. Your continued use of the Service after the effective date of an updated Policy constitutes acknowledgement of the changes. Previous versions are available on request at ${CONTACT_EMAIL}.
+				{ title: '13. Children\'s Privacy', content: `The Service is a general-audience website and is not directed at children under 14 (Korea) or under 16 (EU). We do not knowingly collect personal data from children. Because the Service requires no account and stores no tool inputs, the risk of collecting a child's personal data is inherently minimal. If you believe a child has nevertheless provided us with personal data by e-mail, contact us at ${CONTACT_EMAIL} and we will delete it promptly.` },
+				{ title: '14. Security Measures', content: `We take administrative, technical, and physical measures appropriate to the low volume and low sensitivity of the data we handle: all traffic is encrypted with TLS; there is no server-side database of user content that could be breached; internal access to analytics and correspondence is limited to authorised personnel on a need-to-know basis; and our infrastructure providers (Cloudflare, Google) maintain industry-standard certifications including ISO 27001 and SOC 2. No method of transmission over the Internet is 100% secure, but our architecture minimises risk by minimising the data that exists in the first place.` },
+				{ title: '15. Changes to this Policy', content: `We may update this Policy to reflect changes in law, technology, or our practices. When we make material changes, we will post the updated Policy on this page at least seven (7) days before it takes effect (thirty (30) days for changes that materially affect your rights), and update the "Last Updated" date at the top. Your continued use of the Service after the effective date of an updated Policy constitutes acknowledgement of the changes. Previous versions are available on request at ${CONTACT_EMAIL}.
 
 This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_UPDATED}.` }
 			]
@@ -132,9 +133,9 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 - **커뮤니케이션 데이터**: 이메일로 문의하시는 경우 이메일 주소, 메시지 내용, 첨부파일을 수신합니다.
 
 회사는 민감정보(건강, 종교, 생체정보 등), 고유식별정보, 결제카드 번호, 정밀 위치정보를 수집하지 않습니다.` },
-				{ title: '제3조 (AI 도구에 입력한 텍스트의 처리)', content: `이용자가 가장 자주 묻는 질문 — "도구에 입력한 텍스트는 어떻게 되나요?" — 에 대한 조항입니다.
+				{ title: '제3조 (도구에 입력한 텍스트의 처리)', content: `이용자가 가장 자주 묻는 질문 — "도구에 입력한 텍스트는 어떻게 되나요?" — 에 대한 조항입니다.
 
-- **처리는 이용자의 기기에서 이루어집니다.** 당사의 도구(AI 번역기, 텍스트 요약기, 프롬프트 생성기, 이미지 프롬프트 빌더, 코드 설명기, 이메일 작성기, 해시태그 생성기, 글쓰기 도우미)는 로직을 이용자의 브라우저에서 실행합니다. 입력한 텍스트는 결과 생성을 위해 기기 메모리에서 일시적으로만 사용되며, 입력을 지우거나 페이지를 떠나면 사라집니다.
+- **처리는 이용자의 기기에서 이루어집니다.** 당사의 도구(프롬프트 생성기, 이미지 프롬프트 생성기, 앞문장 추출 요약기, 번역 프롬프트 생성기, 코드 설명 프롬프트 생성기, 이메일 프롬프트 생성기, 해시태그 프롬프트 생성기, 글쓰기 수정 프롬프트 생성기)는 로직을 이용자의 브라우저에서 실행합니다. 입력한 텍스트는 결과 생성을 위해 기기 메모리에서 일시적으로만 사용되며, 입력을 지우거나 페이지를 떠나면 사라집니다.
 - **회사는 텍스트를 저장하지 않습니다.** 어떤 도구 입력값도 회사 서버로 전송·기록되거나 영구 저장되지 않습니다. 이용자 텍스트의 서버측 데이터베이스는 존재하지 않습니다.
 - **텍스트를 학습에 사용하지 않습니다.** 이용자의 입력은 회사에 의해서든 회사를 대신해서든 어떠한 기계학습 모델의 학습·미세조정·평가에도 사용되지 않습니다.
 - **제3자 AI 서비스는 이용자의 선택입니다.** 도구가 외부 AI 어시스턴트용 프롬프트를 생성하는 경우, 그 프롬프트는 이용자 본인이 직접 복사하여 붙여넣을 때에만 기기를 떠납니다. 그 시점부터 텍스트의 처리 — AI 모델 API로의 전송 및 보관을 포함 — 는 본 방침이 아니라 해당 제3자 사업자의 약관과 개인정보처리방침의 적용을 받습니다. 향후 회사가 이용자의 텍스트를 AI 모델 API로 직접 전송하는 도구를 도입하는 경우, 제출 전에 도구 페이지에 이를 명확히 표시하고, 결과 생성 목적으로만 암호화된 연결을 통해 전송하며, 영구 저장하지 않을 것입니다.` },
@@ -160,7 +161,7 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 - 제3자 공급업체인 Google은 DoubleClick(DART) 쿠키를 포함한 쿠키를 사용하여, 이용자의 본 사이트 및 다른 웹사이트 방문 기록을 기반으로 서비스에 광고를 게재합니다.
 - 이 쿠키들은 Google과 그 파트너가 맞춤형 광고를 게재하고, 광고 노출 빈도를 제한하며, 광고 성과를 측정할 수 있게 합니다. Google 광고 쿠키의 목록과 유효기간은 Google 광고 개인정보 문서에서 확인할 수 있습니다.
 - **거부 방법**: ${ADS_OPTOUT_URL} 의 Google 광고 설정에서 맞춤형 광고를 거부할 수 있습니다. https://www.aboutads.info/choices 에서 다른 여러 제3자 공급업체의 맞춤형 광고도 거부할 수 있습니다.
-- 법령상 요구되는 지역(EU, 영국, 한국 등)에서는 맞춤형 광고 쿠키가 설정되기 전에 동의 배너가 표시되며, 해당 배너를 통해 동의를 거부하거나 이후에 철회할 수 있습니다.
+- 유럽경제지역(EEA)·영국·스위스 방문자에게는 맞춤형 광고 쿠키가 설정되기 전에 Google 의 동의 관리 도구가 표시되며, 거기서 거부하거나 이후 같은 도구에서 선택을 바꿀 수 있습니다. 그 밖의 지역에서는 위에 설명한 Google 광고 설정을 이용하세요.
 - 거부하더라도 광고는 계속 표시되지만, 이용자의 관심사에 맞춰 개인화되지는 않습니다.` },
 				{ title: '제8조 (개인정보의 처리위탁 및 국외 이전)', content: `회사는 다음 수탁자에게 필요 최소한의 정보를 위탁하며, 각 수탁자는 기밀 유지와 목적 제한을 요구하는 계약에 따라 행위합니다:
 
@@ -188,17 +189,18 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 - 언제든지 **동의 철회** (철회 전 처리의 적법성에는 영향 없음);
 - 감독기관에 대한 **불만 제기** — 한국은 개인정보보호위원회(privacy.go.kr) 또는 한국인터넷진흥원(KISA, 118), EU는 각국 개인정보 감독기구.
 
-회사는 의도적으로 개인정보를 거의 보유하지 않으므로 대부분의 요청은 즉시 해결됩니다. 도구 입력값과 환경설정은 이용자 본인의 브라우저에만 존재하며, 브라우저의 사이트 데이터를 지우면 완전히 삭제됩니다. 그 밖의 요청(예: 이메일 서신 삭제)은 제11조에 따라 문의해 주세요. 회사는 GDPR(1개월) 및 개인정보 보호법(열람 요구 10일)이 정한 기한 내에 확인된 요청에 무료로 응답합니다. 다만 명백히 근거가 없거나 과도한 요청은 예외입니다.` },
-				{ title: '제11조 (개인정보 보호책임자 및 연락처)', content: `회사는 개인정보 관련 문의, 불만 처리, 피해 구제를 담당하는 개인정보 보호책임자를 지정하고 있습니다:
+회사는 의도적으로 개인정보를 거의 보유하지 않으므로 대부분의 요청은 즉시 해결됩니다. 도구 입력값과 환경설정은 이용자 본인의 브라우저에만 존재하며, 브라우저의 사이트 데이터를 지우면 완전히 삭제됩니다. 그 밖의 요청(예: 이메일 서신 삭제)은 제12조에 따라 문의해 주세요. 회사는 GDPR(1개월) 및 개인정보 보호법(열람 요구 10일)이 정한 기한 내에 확인된 요청에 무료로 응답합니다. 다만 명백히 근거가 없거나 과도한 요청은 예외입니다.` },
+				{ title: "제11조 (미국 주 개인정보 권리: CCPA/CPRA 및 유사 법률)", content: "적용되는 법률에 따라 미국 주 개인정보 권리에는 개인정보 열람·정정·삭제 요청과 특정 광고 목적의 이용 거부가 포함될 수 있습니다. SDK.ac는 계정을 요구하거나 계정 기록을 보유하지 않습니다. 도구 입력은 이용자의 브라우저에서 처리되므로 도구 페이지에서 조회할 계정 프로필이나 저장된 도구 사용 이력이 없습니다.\n\n사이트는 광고 쿠키와 유사 식별자가 사용되는 Google AdSense 광고를 이용합니다. 미국 일부 주 이용자는 사이트에 표시되는 Google 개인정보 메시지에서 개인정보 판매·공유 거부를 선택할 수 있으며, 그 선택은 Google 이 이 사이트의 광고에 적용합니다. 맞춤형 광고는 제7조에 설명된 Google 광고 설정에서도 관리할 수 있습니다. 사이트 자체의 쿠키 안내는 정보 제공용으로, 안내를 확인했다는 사실만 기록하며 광고 쿠키 설정 자체를 바꾸지는 않습니다.\n\n이러한 권리, 광고 선택, “판매 또는 공유 거부(Do Not Sell or Share)” 요청에 관한 문의는 대한민국 서울 소재 주식회사 에스디케이랩스에 contact@sdklabs.org로 보내세요. 요청과 관련된 사이트 이용 내용을 설명하되, 설명에 필요하지 않은 비밀번호나 도구 입력 내용은 포함하지 마세요. 보낸 이메일에 관한 요청이라면 어떤 서신인지 밝혀 요청을 이해할 수 있도록 해주세요. 연락처는 제12조에도 있습니다." },
+				{ title: '제12조 (개인정보 보호책임자 및 연락처)', content: `회사는 개인정보 관련 문의, 불만 처리, 피해 구제를 담당하는 개인정보 보호책임자를 지정하고 있습니다:
 
 - **개인정보 보호책임자**: ${COMPANY_NAME_KO} 개인정보보호팀
 - **이메일**: ${CONTACT_EMAIL} (제목에 "Legal" 또는 "Privacy" 표기)
 - **주소**: ${COMPANY_ADDRESS}
 
 개인정보 관련 문의의 수신을 신속히 확인하고 법정 기한 내에 실질적인 답변을 제공합니다. 문의가 적절히 처리되지 않았다고 판단되면 개인정보보호위원회(privacy.go.kr / 국번없이 182), 개인정보침해신고센터(privacy.kisa.or.kr / 국번없이 118), 또는 EU의 경우 해당 지역 감독기구에 문의할 수 있습니다.` },
-				{ title: '제12조 (아동의 개인정보)', content: `서비스는 일반 이용자 대상 웹사이트로서 만 14세 미만(한국) 또는 16세 미만(EU) 아동을 대상으로 하지 않습니다. 회사는 아동의 개인정보를 고의로 수집하지 않습니다. 서비스는 계정이 필요 없고 도구 입력값을 저장하지 않으므로 아동의 개인정보를 수집할 위험이 본질적으로 최소화되어 있습니다. 아동이 이메일로 개인정보를 제공했다고 판단되는 경우 ${CONTACT_EMAIL} 로 연락 주시면 지체 없이 삭제하겠습니다.` },
-				{ title: '제13조 (개인정보의 안전성 확보 조치)', content: `회사는 취급하는 데이터의 적은 양과 낮은 민감도에 상응하는 관리적·기술적·물리적 조치를 취합니다. 모든 트래픽은 TLS로 암호화되고, 침해될 수 있는 이용자 콘텐츠의 서버측 데이터베이스가 존재하지 않으며, 분석 데이터와 서신에 대한 내부 접근은 필요 최소한의 권한 있는 인원으로 제한되고, 인프라 제공업체(Cloudflare, Google)는 ISO 27001, SOC 2 등 업계 표준 인증을 유지합니다. 인터넷 전송 방식 중 100% 안전한 것은 없지만, 당사의 아키텍처는 애초에 존재하는 데이터를 최소화함으로써 위험을 최소화합니다.` },
-				{ title: '제14조 (개인정보 처리방침의 변경)', content: `회사는 법령, 기술, 처리 관행의 변화를 반영하여 본 방침을 갱신할 수 있습니다. 중요한 변경이 있는 경우 시행 최소 7일 전(이용자 권리에 중대한 영향을 미치는 변경은 30일 전)에 본 페이지에 갱신된 방침을 게시하고 상단의 "최종 수정일"을 업데이트합니다. 갱신된 방침 시행일 이후 서비스를 계속 이용하는 것은 변경 사항을 인지했음을 의미합니다. 이전 버전은 ${CONTACT_EMAIL} 로 요청하시면 제공됩니다.
+				{ title: '제13조 (아동의 개인정보)', content: `서비스는 일반 이용자 대상 웹사이트로서 만 14세 미만(한국) 또는 16세 미만(EU) 아동을 대상으로 하지 않습니다. 회사는 아동의 개인정보를 고의로 수집하지 않습니다. 서비스는 계정이 필요 없고 도구 입력값을 저장하지 않으므로 아동의 개인정보를 수집할 위험이 본질적으로 최소화되어 있습니다. 아동이 이메일로 개인정보를 제공했다고 판단되는 경우 ${CONTACT_EMAIL} 로 연락 주시면 지체 없이 삭제하겠습니다.` },
+				{ title: '제14조 (개인정보의 안전성 확보 조치)', content: `회사는 취급하는 데이터의 적은 양과 낮은 민감도에 상응하는 관리적·기술적·물리적 조치를 취합니다. 모든 트래픽은 TLS로 암호화되고, 침해될 수 있는 이용자 콘텐츠의 서버측 데이터베이스가 존재하지 않으며, 분석 데이터와 서신에 대한 내부 접근은 필요 최소한의 권한 있는 인원으로 제한되고, 인프라 제공업체(Cloudflare, Google)는 ISO 27001, SOC 2 등 업계 표준 인증을 유지합니다. 인터넷 전송 방식 중 100% 안전한 것은 없지만, 당사의 아키텍처는 애초에 존재하는 데이터를 최소화함으로써 위험을 최소화합니다.` },
+				{ title: '제15조 (개인정보 처리방침의 변경)', content: `회사는 법령, 기술, 처리 관행의 변화를 반영하여 본 방침을 갱신할 수 있습니다. 중요한 변경이 있는 경우 시행 최소 7일 전(이용자 권리에 중대한 영향을 미치는 변경은 30일 전)에 본 페이지에 갱신된 방침을 게시하고 상단의 "최종 수정일"을 업데이트합니다. 갱신된 방침 시행일 이후 서비스를 계속 이용하는 것은 변경 사항을 인지했음을 의미합니다. 이전 버전은 ${CONTACT_EMAIL} 로 요청하시면 제공됩니다.
 
 본 방침은 ${EFFECTIVE_DATE}부터 시행되며, ${LAST_UPDATED}에 최종 수정되었습니다.` }
 			]

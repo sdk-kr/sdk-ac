@@ -4,67 +4,139 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Email Writer Guide',
-			description: 'Learn how to write professional emails effortlessly with our AI email writer. Create clear, effective emails for any situation in seconds.',
-			cta: 'Try Email Writer',
+			title: "Email Prompt Builder Guide",
+			description: "Turn a vague email purpose into a bounded drafting request and review the eventual message before sending.",
+			cta: "Try Email Prompt Builder",
 			sections: [
 				{
-					heading: 'What is an AI Email Writer?',
-					text: 'An AI email writer is a powerful tool that helps you compose professional, clear, and effective emails in seconds. Whether you need to write a formal business proposal, a friendly follow-up, a customer service response, or a cold outreach message, our AI understands the nuances of email communication and generates appropriate content for any situation. The tool considers factors like recipient relationship, purpose, tone, and industry context to create emails that feel natural and achieve your communication goals. Instead of staring at a blank screen wondering how to start, you can describe your intent and receive a polished draft ready for sending or refinement.'
+					"heading": "Define the action before the tone",
+					"text": "This tutorial prepares a room availability inquiry. The page returns a drafting prompt, not a finished email, and has no sending function. Decide what answer you need from the recipient before choosing how formal the message should sound."
 				},
 				{
-					heading: 'Key Features and Capabilities',
-					text: 'Our email writer offers extensive customization to match your needs. Choose from multiple tone options including formal, professional, friendly, casual, apologetic, assertive, or persuasive. Select the email type such as introduction, follow-up, thank you, complaint, request, announcement, or rejection. Specify the length from brief (2-3 sentences) to comprehensive (multiple paragraphs). The tool can generate subject lines, opening hooks, clear body content, and appropriate closings. It handles sensitive situations with care, suggests alternatives for potentially problematic phrasing, and ensures your message is culturally appropriate for international communication. You can also provide your own email signature and preferences for consistent branding.'
+					"heading": "Step 1: separate inquiry from commitment",
+					"text": "Before: “Book a room.” After: “Ask whether a quiet meeting room is available; do not confirm a booking.” Enter the revised purpose and “Facilities team” as recipient. This wording gives the eventual assistant a useful boundary: request information without promising a reservation."
 				},
 				{
-					heading: 'How to Use the Email Writer',
-					text: 'Using our email writer is straightforward. Start by describing the purpose of your email and who you\'re writing to. Provide key points you want to cover - the AI will organize them logically. Select your preferred tone and formality level. Choose whether you need a subject line generated. Specify any constraints like word count or specific phrases to include. Click generate and receive your draft email within seconds. Review the output and make any personal adjustments. The tool allows you to regenerate with different parameters if the first draft doesn\'t match your vision. You can also provide feedback on specific sections to refine just those parts while keeping the rest intact.'
+					"heading": "Step 2: generate the drafting brief",
+					"text": "Use the English field values below, select Request and Formal, then generate. Read the exact prompt, especially the purpose and signature placeholder requirement. No actual email body has been written yet. Add a subject-line requirement to the purpose if your workflow needs one.",
+					"example": "Input and selections\nRecipient: Facilities team\nPurpose: Ask whether a quiet meeting room is available; do not confirm a booking.\nType: Request\nTone: Formal\n\nExact tool output\nWrite a request email.\n\nRecipient: Facilities team\nTopic/Purpose: Ask whether a quiet meeting room is available; do not confirm a booking.\n\nUse formal, professional language appropriate for business communication.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
 				},
 				{
-					heading: 'Writing Effective Business Emails',
-					text: 'Professional business emails require careful attention to tone, clarity, and structure. Our AI helps you craft emails that make a strong impression. It starts with clear subject lines that indicate the email\'s purpose and urgency. The opening establishes context and captures attention. The body presents information in a logical flow with appropriate paragraph breaks. Action items and deadlines are highlighted clearly. The closing reinforces the main message and includes a clear call to action when needed. The tool avoids common business email mistakes like being too verbose, using jargon inappropriately, or sounding impersonal. It also helps maintain consistency across your team\'s communications when you establish shared templates.'
+					"heading": "Step 3: evaluate a draft elsewhere",
+					"text": "After using the prompt with an assistant, compare the draft with a simple editorial benchmark: “Could you confirm whether a quiet meeting room is available? Please do not reserve it yet.” This hand-written example is not tool output. It makes the desired distinction visible."
 				},
 				{
-					heading: 'Email Etiquette and Best Practices',
-					text: 'Our email writer is trained on email etiquette best practices across cultures and industries. It knows when to use formal salutations versus casual greetings, how to address people you haven\'t met, and when certain phrases might come across as too demanding or too passive. The AI helps you avoid common pitfalls like writing in all caps, using excessive exclamation marks, or including unnecessary recipients. It suggests appropriate sign-offs based on your relationship with the recipient and the email\'s tone. For sensitive topics like delivering bad news, making complaints, or negotiating, the tool provides diplomatic language that maintains relationships while still being clear about your position.'
+					"heading": "Step 4: perform the sending review",
+					"text": "Check the recipient, requested action, and any claims about availability. Replace the signature placeholder yourself. If you need to include scheduling details, provide only confirmed information before sending through your own email application."
 				},
 				{
-					heading: 'Common Email Scenarios',
-					text: 'Our email writer excels across diverse situations. For job seekers, it crafts compelling cover letters and follow-up emails that stand out. Sales professionals use it for persuasive outreach and proposal emails. Managers write clear instructions, feedback, and team announcements. Customer service representatives respond to complaints with empathy and solutions. Project managers send status updates that are informative but concise. HR professionals compose sensitive communications about policies, feedback, or organizational changes. Freelancers write proposals and negotiate terms professionally. Students reach out to professors and potential mentors appropriately. Whatever your email needs, the AI helps you communicate clearly and professionally while saving valuable time.'
+					"heading": "Mistake 1: copying the instructions as the email",
+					"text": "The output begins by telling an assistant what to write. It is an intermediate request; sending it to the intended recipient would expose your drafting instructions instead of communicating the inquiry."
+				},
+				{
+					"heading": "Mistake 2: relying on tone to set boundaries",
+					"text": "Formal wording does not prevent an invented promise. Put the boundary in the purpose and verify that the eventual draft preserves it."
+				},
+				{
+					"heading": "Worked example: follow up without assuming a date",
+					"text": "The timetable example uses Follow-up and Friendly, with a named recipient role. Notice the exact Topic/Purpose line: the instruction not to assume a date is preserved alongside the request. The builder does not consult a calendar or check whether a timetable exists. A later draft should ask for information rather than announce an invented schedule.",
+					"example": "Input and selections\nemailType: followup\nrecipient: Workshop coordinator\ntopic: Ask whether the revised timetable is available. Do not assume a date.\ntone: friendly\n\nExact tool output\nWrite a follow-up email.\n\nRecipient: Workshop coordinator\nTopic/Purpose: Ask whether the revised timetable is available. Do not assume a date.\n\nUse a warm, friendly but still professional tone.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "Worked example: leave the recipient unspecified",
+					"text": "For a volunteer thank-you, leave Recipient empty and choose Casual. The recipient line disappears, but the fixed checklist still asks for a professional closing and a signature placeholder. Casual therefore changes one tone sentence, not the whole structure. Supply the greeting and sender details when reviewing a draft from another service; this output is only its writing request.",
+					"example": "Input and selections\nemailType: thankyou\nrecipient: (empty)\ntopic: Thank the volunteers for sorting donated books on Saturday.\ntone: casual\n\nExact tool output\nWrite a thank you email.\n\nTopic/Purpose: Thank the volunteers for sorting donated books on Saturday.\n\nUse a relaxed, conversational tone while remaining respectful.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "Mistake 3: expecting delivery or attachments",
+					"text": "The page has no sending or attachment workflow. Mentioning a file in Topic/Purpose only places that statement in the request; verify the actual attachment when composing your email."
+				},
+				{
+					"heading": "Mistake 4: treating whitespace as an empty recipient",
+					"text": "Recipient uses a simple truthiness check, unlike the trimmed topic check. Spaces can still produce a recipient line. Clear the field completely when you want to omit it."
+				},
+				{
+					"heading": "Mistake 5: expecting automatic cultural adaptation",
+					"text": "The presets contain generic English instructions. They do not infer titles, hierarchy, or regional email conventions from a recipient name; add necessary context yourself."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Put the request and any prohibited commitments together in Topic/Purpose.",
+						"Inspect the type and tone sentences as well as your own input.",
+						"Review every requested checklist item in the eventual draft, particularly the signature placeholder, before sending it through your email application."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '이메일 작성 가이드',
-			description: 'AI 이메일 작성기로 전문적인 이메일을 손쉽게 작성하는 방법을 알아보세요. 어떤 상황에서도 몇 초 만에 명확하고 효과적인 이메일을 작성하세요.',
-			cta: '이메일 작성 사용하기',
+			title: "이메일 프롬프트 생성기 가이드",
+			description: "모호한 이메일 목적을 범위가 명확한 초안 요청으로 바꾸고 발송 전에 최종 메시지를 검토하세요.",
+			cta: "이메일 프롬프트 생성기 사용하기",
 			sections: [
 				{
-					heading: 'AI 이메일 작성기란?',
-					text: 'AI 이메일 작성기는 몇 초 만에 전문적이고 명확하며 효과적인 이메일을 작성하도록 도와주는 강력한 도구입니다. 공식적인 비즈니스 제안서, 친근한 후속 메일, 고객 서비스 응답, 콜드 아웃리치 메시지 등 무엇을 작성해야 하든 AI는 이메일 커뮤니케이션의 뉘앙스를 이해하고 모든 상황에 적절한 콘텐츠를 생성합니다. 이 도구는 수신자 관계, 목적, 어조, 산업 맥락과 같은 요소를 고려하여 자연스럽고 커뮤니케이션 목표를 달성하는 이메일을 만듭니다. 어떻게 시작할지 고민하며 빈 화면을 바라보는 대신 의도를 설명하고 전송하거나 다듬을 준비가 된 세련된 초안을 받으세요.'
+					"heading": "어조보다 행동 먼저 정하기",
+					"text": "이 실습에서는 회의실 이용 가능 여부 문의를 준비합니다. 페이지는 완성된 이메일이 아닌 초안 작성 프롬프트를 반환하며 발송 기능이 없습니다. 메시지의 격식을 고르기 전에 수신자로부터 필요한 답을 정하세요."
 				},
 				{
-					heading: '주요 기능 및 역량',
-					text: '이메일 작성기는 필요에 맞는 광범위한 커스터마이제이션을 제공합니다. 공식적, 전문적, 친근한, 캐주얼, 사과, 단호한, 설득력 있는 등 여러 톤 옵션 중에서 선택하세요. 소개, 후속, 감사, 불만, 요청, 공지, 거절 등 이메일 유형을 선택하세요. 짧음(2-3문장)부터 종합적(여러 문단)까지 길이를 지정하세요. 이 도구는 제목, 오프닝 훅, 명확한 본문 내용, 적절한 맺음말을 생성할 수 있습니다. 민감한 상황을 신중하게 처리하고, 문제가 될 수 있는 표현에 대한 대안을 제안하며, 국제 커뮤니케이션에 문화적으로 적절한 메시지를 보장합니다.'
+					"heading": "1단계: 문의와 확약 구분하기",
+					"text": "수정 전: “방을 예약해 줘.” 수정 후: “조용한 회의실을 이용할 수 있는지 묻고 예약을 확정하지 마세요.” 수정된 목적과 수신자 “시설 관리팀”을 입력하세요. 이 표현은 나중에 답할 AI에게 예약을 약속하지 않고 정보를 요청한다는 유용한 경계를 줍니다."
 				},
 				{
-					heading: '이메일 작성기 사용 방법',
-					text: '이메일 작성기 사용은 간단합니다. 이메일의 목적과 누구에게 쓰는지 설명하는 것으로 시작하세요. 다루고 싶은 핵심 포인트를 제공하세요 - AI가 논리적으로 구성합니다. 선호하는 톤과 격식 수준을 선택하세요. 제목을 생성할지 여부를 선택하세요. 단어 수나 포함할 특정 문구와 같은 제약 조건을 지정하세요. 생성을 클릭하면 몇 초 내에 초안 이메일을 받습니다. 출력을 검토하고 개인적인 조정을 하세요. 첫 번째 초안이 비전과 맞지 않으면 다른 매개변수로 다시 생성할 수 있습니다. 특정 섹션에 대한 피드백을 제공하여 나머지는 유지하면서 해당 부분만 다듬을 수도 있습니다.'
+					"heading": "2단계: 초안 작성 지시 생성하기",
+					"text": "아래 영어 필드 값을 사용하고 요청 유형과 격식 있는 어조를 선택한 뒤 생성하세요. 실제 프롬프트에서 특히 목적과 서명 자리표시자 요구를 읽으세요. 아직 실제 이메일 본문은 작성되지 않았습니다. 작업에 제목이 필요하다면 목적에 제목 요구를 추가하세요.",
+					"example": "입력 및 선택 항목\n수신자: Facilities team\n목적: Ask whether a quiet meeting room is available; do not confirm a booking.\n유형: 요청\n어조: 격식 있음\n\n실제 도구 출력\nWrite a request email.\n\nRecipient: Facilities team\nTopic/Purpose: Ask whether a quiet meeting room is available; do not confirm a booking.\n\nUse formal, professional language appropriate for business communication.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
 				},
 				{
-					heading: '효과적인 비즈니스 이메일 작성',
-					text: '전문적인 비즈니스 이메일은 톤, 명확성, 구조에 세심한 주의가 필요합니다. AI는 강한 인상을 남기는 이메일을 작성하도록 도와줍니다. 이메일의 목적과 긴급성을 나타내는 명확한 제목으로 시작합니다. 오프닝은 맥락을 설정하고 주의를 끕니다. 본문은 적절한 단락 구분과 함께 논리적 흐름으로 정보를 제시합니다. 실행 항목과 마감일이 명확하게 강조됩니다. 맺음말은 주요 메시지를 강화하고 필요할 때 명확한 행동 촉구를 포함합니다. 이 도구는 너무 장황하거나, 전문 용어를 부적절하게 사용하거나, 비인간적으로 들리는 등 일반적인 비즈니스 이메일 실수를 피합니다.'
+					"heading": "3단계: 다른 곳에서 만든 초안 평가하기",
+					"text": "AI에 프롬프트를 사용한 뒤 초안을 간단한 편집 기준 문장과 비교하세요. “조용한 회의실을 이용할 수 있는지 확인해 주시겠어요? 아직 예약하지 말아 주세요.” 사람이 작성한 이 예시는 도구 출력이 아닙니다. 원하는 구분을 명확하게 보여줍니다."
 				},
 				{
-					heading: '이메일 에티켓 및 모범 사례',
-					text: '이메일 작성기는 문화와 산업 전반에 걸친 이메일 에티켓 모범 사례로 훈련되었습니다. 공식적인 인사말과 캐주얼한 인사를 언제 사용할지, 만난 적 없는 사람을 어떻게 부를지, 특정 문구가 너무 요구적이거나 너무 수동적으로 들릴 수 있는 때를 알고 있습니다. AI는 모두 대문자로 쓰기, 과도한 느낌표 사용, 불필요한 수신자 포함 등 일반적인 함정을 피하도록 도와줍니다. 수신자와의 관계와 이메일 톤에 따라 적절한 맺음말을 제안합니다. 나쁜 소식 전달, 불만 제기, 협상 등 민감한 주제의 경우 관계를 유지하면서도 입장을 명확히 하는 외교적 언어를 제공합니다.'
+					"heading": "4단계: 발송 전 검토하기",
+					"text": "수신자, 요청한 행동, 이용 가능 여부에 관한 주장을 확인하세요. 서명 자리표시자는 직접 바꾸세요. 일정 세부 사항을 넣어야 한다면 확인된 정보만 제공한 뒤 자신의 이메일 앱에서 발송하세요."
 				},
 				{
-					heading: '일반적인 이메일 시나리오',
-					text: '이메일 작성기는 다양한 상황에서 뛰어납니다. 구직자를 위해 눈에 띄는 설득력 있는 자기소개서와 후속 이메일을 작성합니다. 영업 전문가들은 설득력 있는 아웃리치와 제안 이메일에 사용합니다. 관리자들은 명확한 지시, 피드백, 팀 공지를 작성합니다. 고객 서비스 담당자들은 공감과 해결책으로 불만에 응답합니다. 프로젝트 관리자들은 유익하면서도 간결한 상태 업데이트를 보냅니다. HR 전문가들은 정책, 피드백, 조직 변경에 관한 민감한 커뮤니케이션을 작성합니다. 프리랜서들은 제안서를 작성하고 조건을 전문적으로 협상합니다. 학생들은 교수와 잠재적 멘토에게 적절하게 연락합니다.'
+					"heading": "실수 1: 지시문을 이메일로 복사하기",
+					"text": "출력은 AI에게 무엇을 쓰라고 지시하며 시작합니다. 중간 요청이므로 의도한 수신자에게 보내면 문의를 전달하는 대신 초안 작성 지시를 보여주게 됩니다."
+				},
+				{
+					"heading": "실수 2: 어조가 경계를 정해준다고 기대하기",
+					"text": "격식 있는 표현만으로 임의의 약속을 막을 수는 없습니다. 목적에 경계를 적고 최종 초안이 이를 유지하는지 확인하세요."
+				},
+				{
+					"heading": "추가 예제: 날짜를 추측하지 않고 후속 문의",
+					"text": "시간표 예제는 후속 연락과 친근하게를 선택하고 수신자 역할을 적습니다. 정확한 Topic/Purpose 줄에는 날짜를 추측하지 말라는 지시가 요청과 함께 유지됩니다. 생성기는 달력을 보거나 시간표 존재 여부를 확인하지 않습니다. 이후 초안은 일정을 지어내 알리기보다 정보를 요청해야 합니다.",
+					"example": "입력과 선택값\nemailType: followup\nrecipient: Workshop coordinator\ntopic: Ask whether the revised timetable is available. Do not assume a date.\ntone: friendly\n\n정확한 도구 출력\nWrite a follow-up email.\n\nRecipient: Workshop coordinator\nTopic/Purpose: Ask whether the revised timetable is available. Do not assume a date.\n\nUse a warm, friendly but still professional tone.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "추가 예제: 수신자를 지정하지 않기",
+					"text": "봉사자 감사문은 수신자를 비우고 캐주얼을 선택하세요. 수신자 줄은 사라지지만 고정 목록은 여전히 전문적인 마무리와 서명 자리표시자를 요구합니다. 캐주얼은 구조 전체가 아니라 어조 문장 하나를 바꿉니다. 다른 서비스의 초안을 검토할 때 인사말과 발신자 정보를 채우세요. 이 출력은 그 초안을 위한 작성 요청일 뿐입니다.",
+					"example": "입력과 선택값\nemailType: thankyou\nrecipient: (empty)\ntopic: Thank the volunteers for sorting donated books on Saturday.\ntone: casual\n\n정확한 도구 출력\nWrite a thank you email.\n\nTopic/Purpose: Thank the volunteers for sorting donated books on Saturday.\n\nUse a relaxed, conversational tone while remaining respectful.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "실수 3: 발송이나 첨부 기대하기",
+					"text": "이 페이지에는 발송이나 첨부 기능이 없습니다. 주제/목적에서 파일을 언급해도 요청문에 그 문장만 들어갑니다. 실제 이메일 작성 시 첨부를 확인하세요."
+				},
+				{
+					"heading": "실수 4: 공백 수신자를 빈 값으로 보기",
+					"text": "수신자는 공백을 제거해 검사하는 주제와 달리 값의 참 여부만 확인합니다. 공백도 수신자 줄을 만들 수 있으므로 생략하려면 필드를 완전히 비우세요."
+				},
+				{
+					"heading": "실수 5: 문화적 자동 조정 기대하기",
+					"text": "사전 설정에는 일반적인 영어 지시가 들어 있습니다. 수신자 이름에서 직함, 위계, 지역별 이메일 관례를 추론하지 않으므로 필요한 맥락을 직접 추가하세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"주제/목적에 요청과 금지할 약속을 함께 적으세요.",
+						"직접 입력한 내용뿐 아니라 유형과 어조 문장도 확인하세요.",
+						"이메일 앱에서 발송하기 전에 최종 초안의 목록 항목, 특히 서명 자리표시자를 모두 확인하세요."
+					]
 				}
 			]
 		},
@@ -146,10 +218,29 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 프롬프트 생성기" : "Email Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/email" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

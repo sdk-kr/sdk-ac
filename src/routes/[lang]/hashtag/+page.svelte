@@ -211,6 +211,56 @@ AI生成タグについて正直な注意を2つ。第一に、モデルは今�
 		}
 	];
 
+	const editorialSections = [
+		{
+			"heading": {
+				"en": "How it works",
+				"ko": "작동 방식"
+			},
+			"body": {
+				"en": "Hashtag Prompt Builder prepares a request for another assistant. It combines your topic, chosen platform, requested count, and a fixed platform tip. It does not search a social network or return live tag measurements. Describe the actual post before asking for tags: a concrete subject and audience help distinguish relevant terms from generic ones. The platform choice changes a sentence in the request, not a connection to that platform. Your next job is to review suggested tags against what the post actually contains.",
+				"ko": "해시태그 프롬프트 생성기는 다른 AI에게 보낼 요청을 준비합니다. 주제, 선택한 플랫폼, 요청 개수, 고정된 플랫폼 팁을 조합합니다. 소셜 네트워크를 검색하거나 실시간 태그 측정값을 반환하지 않습니다. 태그를 요청하기 전에 실제 게시물을 설명하세요. 구체적인 주제와 독자는 관련 용어와 일반적인 용어를 구분하는 데 도움이 됩니다. 플랫폼 선택은 요청의 문장 하나를 바꾸며 해당 플랫폼에 연결하지 않습니다. 다음 할 일은 제안된 태그가 실제 게시물 내용과 맞는지 검토하는 것입니다."
+			}
+		},
+		{
+			"heading": {
+				"en": "Worked example",
+				"ko": "실제 예제"
+			},
+			"body": {
+				"en": "For a repair tutorial, enter the topic below, choose LinkedIn, and request five tags. The exact output is a prompt, not five finished hashtags. Its platform tip is copied from a fixed table. The words “popular” and “high volume” ask another assistant for suggestions; they are not findings from research performed here. If the eventual list includes a product or profession absent from the post, remove that tag even if it sounds relevant to the broader industry.",
+				"ko": "수리 안내 게시물에 아래 주제를 입력하고 LinkedIn과 태그 다섯 개를 선택하세요. 실제 출력은 완성된 해시태그 다섯 개가 아니라 프롬프트입니다. 플랫폼 팁은 고정된 표에서 복사합니다. “popular”와 “high volume”은 다른 AI에게 제안을 요청하는 표현이며 여기서 수행한 조사 결과가 아닙니다. 나중에 받은 목록에 게시물에 없는 제품이나 직업이 포함되어 있다면, 더 넓은 업계와 관련 있어 보여도 그 태그를 제거하세요."
+			},
+			"code": {
+				"example": "Input and selections\nTopic: A tutorial on repairing a loose chair joint\nPlatform: LinkedIn\nCount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for LinkedIn about: \"A tutorial on repairing a loose chair joint\"\n\nRequirements:\n- Keep it professional. Use 3-5 industry-relevant hashtags.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+			}
+		},
+		{
+			"heading": {
+				"en": "Limitations and when not to use it",
+				"ko": "한계와 사용하면 안 되는 경우"
+			},
+			"body": {
+				"en": "Do not use the output as evidence of trend status, reach, permitted usage, or likely engagement. The page has no popularity lookup or prohibited-tag filter. Its fixed tips can conflict with the count you request, and they should not be treated as current platform policy. Resolve conflicting count instructions in the copied prompt. Before publication, inspect each candidate on the destination platform and keep only tags whose meaning fits your content and intended readers.",
+				"ko": "출력을 유행 여부, 도달 범위, 사용 허용 여부, 예상 참여도의 근거로 사용하지 마세요. 페이지에는 인기도 조회나 금지 태그 필터가 없습니다. 고정된 팁은 요청 개수와 충돌할 수 있으며 현재 플랫폼 정책으로 받아들여서는 안 됩니다. 복사한 프롬프트에서 개수 지시의 충돌을 해결하세요. 게시 전에 대상 플랫폼에서 후보를 하나씩 살펴보고 내용과 의도한 독자에 뜻이 맞는 태그만 남기세요."
+			}
+		},
+		{
+			"heading": {
+				"en": "FAQ",
+				"ko": "자주 묻는 질문"
+			},
+			"body": {
+				"en": "Does it generate the hashtags on this page? No. It generates instructions to request them elsewhere.\n\nCan the count contradict a platform tip? Yes. The requested number and the fixed advice are inserted independently.\n\nAre suggested tags checked for restrictions? No. The tool does not query platform rules or tag status.\n\nWhy is the output identical on another attempt? It uses a fixed template without randomness.\n\nShould I keep every tag returned later? No. Treat the list as candidates, remove duplicates and misleading terms, and check whether each remaining tag describes something a reader will actually find in the post.",
+				"ko": "이 페이지에서 해시태그가 생성되나요? 아니요. 다른 곳에서 요청할 지시문을 생성합니다.\n\n개수가 플랫폼 팁과 충돌할 수 있나요? 네. 요청 개수와 고정 안내를 서로 독립적으로 넣습니다.\n\n제안된 태그의 제한 여부를 검사하나요? 아니요. 도구는 플랫폼 규칙이나 태그 상태를 조회하지 않습니다.\n\n다시 시도해도 출력이 같은 이유는 무엇인가요? 무작위 요소 없이 고정 템플릿을 사용하기 때문입니다.\n\n나중에 반환된 태그를 전부 유지해야 하나요? 아니요. 후보로 보고 중복과 오해를 부르는 용어를 제거한 뒤, 남은 각 태그가 독자가 게시물에서 실제로 찾을 내용을 설명하는지 확인하세요."
+			}
+		}
+	];
+
+	$: localizedEditorialSections = editorialSections.map((section, index) => index === 1
+		? { ...section, code: { example: lang === 'ko' ? "입력 및 선택 항목\n주제: A tutorial on repairing a loose chair joint\n플랫폼: LinkedIn\n개수: 5\n\n실제 도구 출력\nGenerate 5 relevant hashtags for LinkedIn about: \"A tutorial on repairing a loose chair joint\"\n\nRequirements:\n- Keep it professional. Use 3-5 industry-relevant hashtags.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations." : section.code!.example } }
+		: section);
+
 	$: lang = ($page.params.lang || 'en') as Locale;
 	$: t = (key: string) => common[lang]?.[key] || common['en'][key] || key;
 
@@ -301,6 +351,9 @@ Please provide the hashtags only, no explanations.`;
 				{/each}
 			</div>
 			<p class="mt-2 text-xs text-gray-500 dark:text-dark-500">{platformTips[platform]}</p>
+			{#if lang === 'en' || lang === 'ko'}
+				<p class="mt-2 text-xs text-gray-500 dark:text-dark-500">{lang === 'ko' ? '위 문구는 요청에 삽입되는 고정 템플릿입니다. 현재 트렌드나 도달 효과를 검증한 안내가 아니며, 선택한 개수와 충돌할 수 있습니다.' : 'The text above is a fixed template inserted into the request. It is not verified trend or reach guidance and may conflict with your selected count.'}</p>
+			{/if}
 		</div>
 
 		<!-- Count Selection -->
@@ -360,5 +413,17 @@ Please provide the hashtags only, no explanations.`;
 		{/if}
 	</div>
 
+	{#if lang === 'en' || lang === 'ko'}
+		<ToolGuide {lang} sections={localizedEditorialSections} />
+	{/if}
+
 	<ToolGuide {lang} sections={guideSections} />
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/guide/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기 실습 읽기" : "Read the hashtag prompt builder tutorial"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 생성기" : "Image Prompt Builder"}</a>
+		</nav>
+	{/if}
+
 </div>

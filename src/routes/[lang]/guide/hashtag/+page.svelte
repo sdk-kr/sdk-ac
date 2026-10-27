@@ -4,67 +4,139 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Hashtag Generator Guide',
-			description: 'Learn how to generate effective hashtags for social media using AI. Boost your content visibility with optimized hashtags for Instagram, Twitter, TikTok and more.',
-			cta: 'Try Hashtag Generator',
+			title: "Hashtag Prompt Builder Guide",
+			description: "Create a hashtag request from a specific post and screen the resulting candidates for relevance.",
+			cta: "Try Hashtag Prompt Builder",
 			sections: [
 				{
-					heading: 'What is a Hashtag Generator?',
-					text: 'A hashtag generator is an AI-powered tool that creates relevant, trending, and effective hashtags for your social media content. Hashtags are essential for content discovery on platforms like Instagram, Twitter, TikTok, LinkedIn, and Facebook. Our generator analyzes your content, understands its context and theme, and produces a curated list of hashtags designed to maximize your reach and engagement. Instead of guessing which tags might work or spending time researching trending topics, you can instantly generate optimized hashtags tailored to your specific content and target audience. The tool considers factors like hashtag popularity, competition level, and relevance to help your posts get discovered by the right people.'
+					"heading": "Describe the post before its promotion",
+					"text": "This walkthrough prepares tags for a repair tutorial. The page generates a request rather than researched hashtags. Start with what a reader will actually see, because relevance can be checked against the post while popularity cannot be established by this tool."
 				},
 				{
-					heading: 'How the Hashtag Generator Works',
-					text: 'Our AI hashtag generator uses advanced natural language processing to understand your content deeply. When you provide a description, caption, or topic, the AI identifies key themes, related concepts, and current trends. It then generates hashtags across different categories: highly popular tags for broad reach, medium-competition tags for balanced exposure, niche-specific tags for targeted audiences, and trending tags for timely relevance. The generator considers platform-specific best practices - Instagram posts perform well with 20-30 hashtags, while Twitter benefits from 2-5 focused tags. You receive a strategic mix designed to optimize your content\'s visibility while avoiding overused or banned hashtags that could hurt your reach.'
+					"heading": "Step 1: replace the broad topic",
+					"text": "Before: “Sustainability.” After: “A tutorial on repairing a loose chair joint.” The revised topic identifies an activity and an object. Enter it in English and select LinkedIn. A broad environmental theme alone could invite tags unrelated to the actual repair steps."
 				},
 				{
-					heading: 'Using the Hashtag Generator Tool',
-					text: 'Getting started is simple. Enter your content description, caption, or topic into the input field. Select your target platform (Instagram, Twitter, TikTok, LinkedIn, etc.) as hashtag strategies differ by platform. Choose your content category such as travel, food, fashion, fitness, business, or technology. Specify your preferred hashtag count and mix (popular vs niche ratio). Click generate and receive your customized hashtag set within seconds. The output includes hashtag groupings by popularity level, estimated reach metrics, and suggestions for hashtag placement. You can copy the entire set or select individual hashtags. Regenerate with different parameters to explore various combinations until you find the perfect mix.'
+					"heading": "Step 2: inspect the requested count",
+					"text": "Request five tags and generate the prompt below. The count and the fixed LinkedIn advice are compatible in this example. The output asks for hashtags on separate lines; it does not supply tags or supporting reach measurements.",
+					"example": "Input and selections\nTopic: A tutorial on repairing a loose chair joint\nPlatform: LinkedIn\nCount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for LinkedIn about: \"A tutorial on repairing a loose chair joint\"\n\nRequirements:\n- Keep it professional. Use 3-5 industry-relevant hashtags.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
 				},
 				{
-					heading: 'Hashtag Strategy Best Practices',
-					text: 'Effective hashtag strategy goes beyond just adding popular tags. Mix hashtag sizes: use some high-volume hashtags (1M+ posts) for broad exposure, medium-volume (100K-1M posts) for competitive visibility, and low-volume (under 100K) for niche communities where you can stand out. Keep hashtags relevant - irrelevant tags can hurt engagement and may trigger platform penalties. Rotate your hashtags between posts to avoid appearing spammy. Create branded hashtags for campaigns and encourage user-generated content. Research competitor hashtags to understand what works in your industry. Avoid banned or shadowbanned hashtags that can limit your reach. Our generator automatically filters problematic tags and provides a balanced mix for optimal performance.'
+					"heading": "Step 3: screen candidate wording",
+					"text": "Use the prompt elsewhere, then compare each returned term with the tutorial. As an editorial example, “#ChairRepair” describes this subject more directly than “#EverythingGreen”. These are illustrative candidates, not tool output or verified recommendations for platform performance."
 				},
 				{
-					heading: 'Platform-Specific Tips',
-					text: 'Each social platform has unique hashtag dynamics. Instagram allows up to 30 hashtags and rewards strategic use with increased discoverability in the Explore page and hashtag feeds. Twitter is more conservative - 2-5 relevant hashtags work best to maintain readability while boosting engagement. TikTok hashtags help your videos appear on the For You page; mix trending sounds/challenges with niche tags. LinkedIn hashtags (3-5 recommended) help professional content reach industry audiences. Facebook hashtags are less impactful but can still help with discoverability. YouTube hashtags (3-5 above the video title) improve search visibility. Our generator tailors recommendations based on your selected platform to maximize effectiveness.'
+					"heading": "Step 4: inspect usage before posting",
+					"text": "Check the surviving candidates on the destination platform to understand their surrounding content. Remove duplicates, unrelated meanings, and terms that imply a product shown nowhere in the tutorial. Keep a smaller accurate set if some candidates fail; filling a quota is not the goal."
 				},
 				{
-					heading: 'Common Use Cases',
-					text: 'Content creators use our hashtag generator to grow their following and increase engagement on every post. Businesses generate hashtags for product launches, campaigns, and brand awareness initiatives. Social media managers save hours of research time by generating optimized hashtags for multiple client accounts. Influencers find trending tags to stay relevant and reach new audiences. E-commerce stores use product-specific hashtags to drive traffic and sales. Event organizers create unique event hashtags and related discovery tags. Travel bloggers find location-specific and travel-niche hashtags. Food content creators discover foodie communities and trending culinary tags. Whatever your niche, our AI understands your content and generates hashtags that connect you with your target audience effectively.'
+					"heading": "Mistake 1: assuming live trend research",
+					"text": "The platform tip is fixed text. Words such as “popular” are instructions to another assistant, not observations made by this page."
+				},
+				{
+					"heading": "Mistake 2: leaving conflicting counts",
+					"text": "A different platform tip may recommend a range that disagrees with your selected count. Resolve the conflict in the copied request before asking for candidates."
+				},
+				{
+					"heading": "Worked example: expose a count conflict",
+					"text": "The tote repair request asks for five Instagram hashtags, but the inserted platform tip still says to use twenty to thirty. Both statements appear in the exact output. The builder does not reconcile them. Edit the copied request to state one desired count before asking an outside assistant for candidates; the example does not endorse the tip's reach claim.",
+					"example": "Input and selections\ntopic: Repairing a torn canvas tote bag at home\nplatform: Instagram\ncount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for Instagram about: \"Repairing a torn canvas tote bag at home\"\n\nRequirements:\n- Mix popular and niche hashtags. Use 20-30 for maximum reach.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "Worked example: change the platform",
+					"text": "The basil video request selects YouTube and keeps the count at five. The opening platform name and fixed tip change, while the remaining requirements keep the same structure. The function still asks for hashtags on separate lines. It does not inspect the video, distinguish platform metadata fields, or retrieve search traffic and current popularity measurements.",
+					"example": "Input and selections\ntopic: A short video showing how to repot a basil plant\nplatform: YouTube\ncount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for YouTube about: \"A short video showing how to repot a basil plant\"\n\nRequirements:\n- Tags help SEO. Include variations and related terms.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "Mistake 3: reading preset tips as live evidence",
+					"text": "Platform tips are stored strings. Words such as trending or maximum reach do not mean the page checked current usage, platform rules, or engagement data."
+				},
+				{
+					"heading": "Mistake 4: expecting moderation of candidates",
+					"text": "This page produces no candidate tags to screen. Review suggestions from another service for meaning and relevance yourself; no banned-tag or appropriateness filter runs here."
+				},
+				{
+					"heading": "Mistake 5: treating the topic as researched context",
+					"text": "The topic is copied inside quotation marks. A broad phrase such as gardening stays broad; the generator does not infer the actual plant, activity, or audience."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Describe the visible activity and specific subject in the topic.",
+						"Compare the requested count with any numbers in the inserted tip.",
+						"Remove unsupported popularity requirements from the copied prompt when relevance is your goal, then assess candidates against the actual post."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '해시태그 생성 가이드',
-			description: 'AI를 사용하여 소셜 미디어에 효과적인 해시태그를 생성하는 방법을 알아보세요. Instagram, Twitter, TikTok 등에 최적화된 해시태그로 콘텐츠 가시성을 높이세요.',
-			cta: '해시태그 생성 사용하기',
+			title: "해시태그 프롬프트 생성기 가이드",
+			description: "구체적인 게시물로 해시태그 요청을 만들고 결과 후보의 관련성을 검토하세요.",
+			cta: "해시태그 프롬프트 생성기 사용하기",
 			sections: [
 				{
-					heading: '해시태그 생성기란?',
-					text: '해시태그 생성기는 소셜 미디어 콘텐츠에 관련성 있고, 트렌디하며, 효과적인 해시태그를 만드는 AI 기반 도구입니다. 해시태그는 Instagram, Twitter, TikTok, LinkedIn, Facebook과 같은 플랫폼에서 콘텐츠 발견에 필수적입니다. 생성기는 콘텐츠를 분석하고 맥락과 테마를 이해하며 도달 범위와 참여를 극대화하도록 설계된 해시태그 목록을 생성합니다. 어떤 태그가 효과가 있을지 추측하거나 트렌드 주제를 조사하는 데 시간을 쓰는 대신 특정 콘텐츠와 타겟 오디언스에 맞춤화된 최적화된 해시태그를 즉시 생성할 수 있습니다. 이 도구는 해시태그 인기도, 경쟁 수준, 관련성과 같은 요소를 고려하여 게시물이 적합한 사람들에게 발견되도록 돕습니다.'
+					"heading": "홍보보다 게시물 내용 먼저 설명하기",
+					"text": "이 실습에서는 수리 안내 게시물의 태그를 준비합니다. 페이지는 조사된 해시태그가 아니라 요청을 생성합니다. 이 도구는 인기도를 확인할 수 없지만 관련성은 게시물과 대조할 수 있으므로 독자가 실제로 볼 내용부터 시작하세요."
 				},
 				{
-					heading: '해시태그 생성기 작동 방식',
-					text: 'AI 해시태그 생성기는 고급 자연어 처리를 사용하여 콘텐츠를 깊이 이해합니다. 설명, 캡션 또는 주제를 제공하면 AI가 핵심 테마, 관련 개념, 현재 트렌드를 식별합니다. 그런 다음 다양한 카테고리의 해시태그를 생성합니다: 광범위한 도달을 위한 인기 태그, 균형 잡힌 노출을 위한 중간 경쟁 태그, 타겟 오디언스를 위한 니치 특정 태그, 시의적절한 관련성을 위한 트렌드 태그. 생성기는 플랫폼별 모범 사례를 고려합니다 - Instagram 게시물은 20-30개의 해시태그로 잘 작동하고, Twitter는 2-5개의 집중된 태그가 좋습니다. 도달 범위를 해칠 수 있는 과도하게 사용되거나 금지된 해시태그를 피하면서 콘텐츠 가시성을 최적화하도록 설계된 전략적 믹스를 받습니다.'
+					"heading": "1단계: 넓은 주제 좁히기",
+					"text": "수정 전: “지속 가능성.” 수정 후: “헐거운 의자 연결부를 수리하는 안내.” 수정한 주제에는 활동과 물체가 드러납니다. 영어로 입력하고 LinkedIn을 선택하세요. 넓은 환경 주제만으로는 실제 수리 단계와 무관한 태그를 유도할 수 있습니다."
 				},
 				{
-					heading: '해시태그 생성 도구 사용법',
-					text: '시작은 간단합니다. 입력 필드에 콘텐츠 설명, 캡션 또는 주제를 입력합니다. 해시태그 전략이 플랫폼마다 다르므로 타겟 플랫폼(Instagram, Twitter, TikTok, LinkedIn 등)을 선택합니다. 여행, 음식, 패션, 피트니스, 비즈니스, 기술 등 콘텐츠 카테고리를 선택합니다. 선호하는 해시태그 수와 믹스(인기 vs 니치 비율)를 지정합니다. 생성을 클릭하면 몇 초 내에 맞춤형 해시태그 세트를 받습니다. 출력에는 인기도 수준별 해시태그 그룹, 예상 도달 메트릭, 해시태그 배치 제안이 포함됩니다. 전체 세트를 복사하거나 개별 해시태그를 선택할 수 있습니다. 완벽한 믹스를 찾을 때까지 다른 매개변수로 다시 생성하세요.'
+					"heading": "2단계: 요청 개수 살펴보기",
+					"text": "태그 다섯 개를 요청하고 아래 프롬프트를 생성하세요. 이 예제에서는 개수와 고정된 LinkedIn 안내가 양립합니다. 출력은 해시태그를 한 줄에 하나씩 요청하며 태그나 이를 뒷받침하는 도달 범위 측정값을 제공하지 않습니다.",
+					"example": "입력 및 선택 항목\n주제: A tutorial on repairing a loose chair joint\n플랫폼: LinkedIn\n개수: 5\n\n실제 도구 출력\nGenerate 5 relevant hashtags for LinkedIn about: \"A tutorial on repairing a loose chair joint\"\n\nRequirements:\n- Keep it professional. Use 3-5 industry-relevant hashtags.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
 				},
 				{
-					heading: '해시태그 전략 모범 사례',
-					text: '효과적인 해시태그 전략은 단순히 인기 태그를 추가하는 것 이상입니다. 해시태그 크기를 혼합하세요: 광범위한 노출을 위해 고용량 해시태그(100만+ 게시물), 경쟁력 있는 가시성을 위해 중간 용량(10만-100만 게시물), 눈에 띌 수 있는 니치 커뮤니티를 위해 저용량(10만 미만)을 사용합니다. 해시태그를 관련성 있게 유지하세요 - 관련 없는 태그는 참여를 해치고 플랫폼 페널티를 유발할 수 있습니다. 스팸처럼 보이지 않도록 게시물 간에 해시태그를 교체하세요. 캠페인용 브랜드 해시태그를 만들고 사용자 생성 콘텐츠를 장려하세요. 경쟁사 해시태그를 조사하여 업계에서 무엇이 효과적인지 이해하세요. 도달 범위를 제한할 수 있는 금지되거나 쉐도우밴된 해시태그를 피하세요.'
+					"heading": "3단계: 후보 표현 검토하기",
+					"text": "다른 곳에서 프롬프트를 사용한 뒤 반환된 각 용어를 안내 내용과 비교하세요. 편집 예시로 “#ChairRepair”는 “#EverythingGreen”보다 이 주제를 더 직접적으로 설명합니다. 이는 설명용 후보이며 도구 출력이나 플랫폼 성과가 검증된 추천이 아닙니다."
 				},
 				{
-					heading: '플랫폼별 팁',
-					text: '각 소셜 플랫폼은 고유한 해시태그 역학을 가지고 있습니다. Instagram은 최대 30개의 해시태그를 허용하며 탐색 페이지와 해시태그 피드에서 발견 가능성 증가로 전략적 사용에 보상합니다. Twitter는 더 보수적입니다 - 가독성을 유지하면서 참여를 높이기 위해 2-5개의 관련 해시태그가 가장 잘 작동합니다. TikTok 해시태그는 비디오가 For You 페이지에 나타나도록 도와줍니다; 트렌드 사운드/챌린지와 니치 태그를 혼합하세요. LinkedIn 해시태그(3-5개 권장)는 전문 콘텐츠가 업계 오디언스에게 도달하도록 돕습니다. Facebook 해시태그는 영향력이 적지만 여전히 발견 가능성에 도움이 될 수 있습니다. YouTube 해시태그(비디오 제목 위에 3-5개)는 검색 가시성을 향상시킵니다.'
+					"heading": "4단계: 게시 전 사용 맥락 살펴보기",
+					"text": "대상 플랫폼에서 남은 후보를 확인하여 함께 쓰이는 내용의 맥락을 파악하세요. 중복, 무관한 뜻, 안내에 나오지 않는 제품을 암시하는 용어를 제거하세요. 일부 후보가 탈락하면 정확한 소수만 남기세요. 개수를 채우는 것이 목표는 아닙니다."
 				},
 				{
-					heading: '일반적인 사용 사례',
-					text: '콘텐츠 제작자들은 해시태그 생성기를 사용하여 팔로워를 늘리고 모든 게시물에서 참여를 높입니다. 기업은 제품 출시, 캠페인, 브랜드 인지도 이니셔티브를 위한 해시태그를 생성합니다. 소셜 미디어 매니저는 여러 고객 계정에 대해 최적화된 해시태그를 생성하여 수시간의 조사 시간을 절약합니다. 인플루언서는 관련성을 유지하고 새로운 오디언스에게 도달하기 위해 트렌드 태그를 찾습니다. 전자상거래 상점은 제품별 해시태그를 사용하여 트래픽과 판매를 유도합니다. 이벤트 주최자는 고유한 이벤트 해시태그와 관련 발견 태그를 만듭니다. 여행 블로거는 위치별 및 여행 니치 해시태그를 찾습니다. 음식 콘텐츠 제작자는 푸디 커뮤니티와 트렌드 요리 태그를 발견합니다.'
+					"heading": "실수 1: 실시간 유행 조사로 오해하기",
+					"text": "플랫폼 팁은 고정 텍스트입니다. “popular” 같은 단어는 다른 AI에게 보내는 지시이며 이 페이지에서 관찰한 결과가 아닙니다."
+				},
+				{
+					"heading": "실수 2: 충돌하는 개수 방치하기",
+					"text": "다른 플랫폼 팁은 선택한 개수와 다른 범위를 권할 수 있습니다. 후보를 요청하기 전에 복사한 요청의 충돌을 해결하세요."
+				},
+				{
+					"heading": "추가 예제: 개수 충돌 확인",
+					"text": "가방 수선 요청은 Instagram 해시태그 다섯 개를 요구하지만 삽입된 플랫폼 팁은 여전히 20~30개를 쓰라고 합니다. 정확한 출력에는 두 문장이 모두 나옵니다. 생성기는 이를 조정하지 않습니다. 외부 AI에 후보를 요청하기 전에 복사한 요청에 원하는 개수를 하나로 명시하세요. 이 예제는 팁의 도달 효과 주장을 지지하지 않습니다.",
+					"example": "입력과 선택값\ntopic: Repairing a torn canvas tote bag at home\nplatform: Instagram\ncount: 5\n\n정확한 도구 출력\nGenerate 5 relevant hashtags for Instagram about: \"Repairing a torn canvas tote bag at home\"\n\nRequirements:\n- Mix popular and niche hashtags. Use 20-30 for maximum reach.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "추가 예제: 플랫폼 바꾸기",
+					"text": "바질 영상 요청은 YouTube를 선택하고 개수는 다섯 개로 유지합니다. 첫 부분의 플랫폼 이름과 고정 팁은 바뀌지만 나머지 요구 사항 구조는 같습니다. 함수는 여전히 해시태그를 한 줄에 하나씩 요청합니다. 영상을 살피거나 플랫폼 메타데이터 필드를 구분하거나 검색량과 현재 인기 수치를 가져오지는 않습니다.",
+					"example": "입력과 선택값\ntopic: A short video showing how to repot a basil plant\nplatform: YouTube\ncount: 5\n\n정확한 도구 출력\nGenerate 5 relevant hashtags for YouTube about: \"A short video showing how to repot a basil plant\"\n\nRequirements:\n- Tags help SEO. Include variations and related terms.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "실수 3: 사전 팁을 실시간 근거로 보기",
+					"text": "플랫폼 팁은 저장된 문자열입니다. trending이나 maximum reach라는 표현은 현재 사용량, 플랫폼 규칙, 참여 데이터를 확인했다는 뜻이 아닙니다."
+				},
+				{
+					"heading": "실수 4: 후보 검수 기대하기",
+					"text": "이 페이지는 검수할 태그 후보 자체를 만들지 않습니다. 다른 서비스가 제안한 태그의 의미와 관련성을 직접 검토하세요. 금지 태그나 적절성 필터는 실행되지 않습니다."
+				},
+				{
+					"heading": "실수 5: 주제를 조사된 맥락으로 보기",
+					"text": "주제는 따옴표 안에 복사됩니다. gardening 같은 넓은 표현은 그대로 남으며 생성기는 실제 식물, 활동, 독자를 추론하지 않습니다."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"주제에 보이는 활동과 구체적인 대상을 적으세요.",
+						"요청한 개수와 삽입된 팁의 숫자를 비교하세요.",
+						"관련성이 목표라면 복사한 요청에서 근거 없는 인기 요구를 제거하고, 후보를 실제 게시물과 대조하세요."
+					]
 				}
 			]
 		},
@@ -146,10 +218,29 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
+				{#if section.example}
+					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
+				{/if}
 			</div>
 		{/each}
 	</div>
+	{#if lang === 'en' || lang === 'ko'}
+		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 생성기" : "Image Prompt Builder"}</a>
+		</nav>
+	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/hashtag" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
 			{t.cta} →

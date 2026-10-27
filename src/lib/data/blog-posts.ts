@@ -45,7 +45,7 @@ A good prompt often includes:
 3. Missing context
 4. Ambiguous instructions
 
-Use our Prompt Generator for optimized prompts.`, ko: `효과적인 프롬프트 작성은 유용한 AI 응답을 얻는 핵심입니다.
+Use Prompt Generator to assemble a task, optional context, and a fixed style instruction.`, ko: `효과적인 프롬프트 작성은 유용한 AI 응답을 얻는 핵심입니다.
 
 ## 기본 원칙
 
@@ -63,7 +63,7 @@ Use our Prompt Generator for optimized prompts.`, ko: `효과적인 프롬프트
 - 형식: "글머리 기호로..."
 - 제약: "200단어 이내로..."
 
-프롬프트 생성기를 사용하여 최적화된 프롬프트를 만드세요.`, ja: `効果的なプロンプトの作成は、有用なAI応答を得る鍵です。
+프롬프트 생성기로 작업, 선택 맥락, 고정 스타일 지시를 조립하세요.`, ja: `効果的なプロンプトの作成は、有用なAI応答を得る鍵です。
 
 プロンプトジェネレーターを使って最適化されたプロンプトを作成しましょう。`, zh: `编写有效的提示词是获得有用AI响应的关键。
 
@@ -104,7 +104,7 @@ Use our Prompt Generator for optimized prompts.`, ko: `효과적인 프롬프트
 - May hallucinate facts
 - Limited context window
 
-Use our AI tools to enhance your workflow.`, ko: `이 팁들로 ChatGPT 사용을 극대화하세요.
+Use our browser-based prompt builders to prepare requests for a separate assistant.`, ko: `이 팁들로 ChatGPT 사용을 극대화하세요.
 
 ## 대화 기법
 
@@ -120,7 +120,7 @@ Use our AI tools to enhance your workflow.`, ko: `이 팁들로 ChatGPT 사용�
 - **Few-shot 학습** - 예시 제공
 - **생각의 사슬** - "단계별로 생각해"라고 요청
 
-AI 도구를 사용하여 워크플로우를 향상시키세요.`, ja: `これらのヒントでChatGPTの使用を最大化しましょう。
+브라우저 프롬프트 생성기로 외부 AI에 보낼 요청을 준비하세요.`, ja: `これらのヒントでChatGPTの使用を最大化しましょう。
 
 AIツールを使ってワークフローを強化しましょう。`, zh: `用这些技巧最大化您的ChatGPT使用效果。
 
@@ -170,7 +170,7 @@ AIツールを使ってワークフローを強化しましょう。`, zh: `用�
 3. Overloading with keywords
 4. Ignoring aspect ratio
 
-Use our Image Prompt Generator for better results.`, ko: `멋진 AI 이미지 생성은 좋은 프롬프트에서 시작합니다.
+Use Image Prompt Builder to combine a subject with fixed style and mood phrases.`, ko: `멋진 AI 이미지 생성은 좋은 프롬프트에서 시작합니다.
 
 ## 프롬프트 구조
 
@@ -185,7 +185,7 @@ Use our Image Prompt Generator for better results.`, ko: `멋진 AI 이미지 �
 
 "웅장한 사자, 디지털 아트, 골든 아워 조명, 매우 상세함, 4K"
 
-이미지 프롬프트 생성기를 사용하여 더 나은 결과를 얻으세요.`, ja: `素晴らしいAI画像の作成は、素晴らしいプロンプトから始まります。
+이미지 프롬프트 생성기로 대상과 고정 스타일·분위기 문구를 결합하세요.`, ja: `素晴らしいAI画像の作成は、素晴らしいプロンプトから始まります。
 
 画像プロンプトジェネレーターを使ってより良い結果を得ましょう。`, zh: `创建出色的AI图像从出色的提示词开始。
 
@@ -231,7 +231,7 @@ Use our Image Prompt Generator for better results.`, ko: `멋진 AI 이미지 �
 3. Verify numbers and dates
 4. Confirm technical terms
 
-Use our Translation Tools for accurate results.`, ko: `AI 번역이 크게 개선되었습니다. 최상의 결과를 얻는 방법입니다.
+Use Translation Prompt Builder to prepare a request; obtain and review a translation separately.`, ko: `AI 번역이 크게 개선되었습니다. 최상의 결과를 얻는 방법입니다.
 
 ## 준비 팁
 
@@ -240,7 +240,7 @@ Use our Translation Tools for accurate results.`, ko: `AI 번역이 크게 개�
 3. **어조 지정** - 공식적, 캐주얼, 기술적
 4. **독자 언급** - "일본어 원어민을 위해..."
 
-번역 도구를 사용하여 정확한 결과를 얻으세요.`, ja: `AI翻訳は劇的に改善されました。最良の結果を得る方法をご紹介します。
+번역 프롬프트 생성기로 요청을 준비하고, 번역은 별도로 받아 검토하세요.`, ja: `AI翻訳は劇的に改善されました。最良の結果を得る方法をご紹介します。
 
 翻訳ツールを使って正確な結果を得ましょう。`, zh: `AI翻译已经有了显著改善。以下是获得最佳结果的方法。
 
@@ -282,7 +282,7 @@ Use our Translation Tools for accurate results.`, ko: `AI 번역이 크게 개�
 - Legal documents
 - Technical documentation
 
-Use our Summarizer Tool for quick results.`, ko: `AI는 핵심 정보를 유지하면서 긴 텍스트를 빠르게 요약할 수 있습니다.
+Use Leading-Sentence Summarizer for an opening excerpt. It does not identify key points.`, ko: `AI는 핵심 정보를 유지하면서 긴 텍스트를 빠르게 요약할 수 있습니다.
 
 ## 요약 유형
 
@@ -291,7 +291,7 @@ Use our Summarizer Tool for quick results.`, ko: `AI는 핵심 정보를 유지�
 3. **핵심 포인트** - 글머리 기호 요약
 4. **TL;DR** - 초단축 요약
 
-요약 도구를 사용하여 빠른 결과를 얻으세요.`, ja: `AIは重要な情報を保持しながら長いテキストを素早く要約できます。
+앞문장 추출 요약기로 앞부분을 발췌하세요. 핵심 포인트를 판별하지는 않습니다.`, ja: `AIは重要な情報を保持しながら長いテキストを素早く要約できます。
 
 要約ツールを使って素早い結果を得ましょう。`, zh: `AI可以在保留关键信息的同时快速摘要长文本。
 
@@ -336,7 +336,7 @@ Use our Summarizer Tool for quick results.`, ko: `AI는 핵심 정보를 유지�
 - Social media
 - Marketing copy
 
-Use our Writing Tools to enhance your content.`, ko: `AI는 글쓰기 과정의 모든 단계에서 도움을 줄 수 있습니다.
+Use Writing Revision Prompt Builder to prepare an editing request for existing text.`, ko: `AI는 글쓰기 과정의 모든 단계에서 도움을 줄 수 있습니다.
 
 ## AI가 도울 수 있는 글쓰기 작업
 
@@ -346,7 +346,7 @@ Use our Writing Tools to enhance your content.`, ko: `AI는 글쓰기 과정의 
 4. **편집** - 문법, 스타일, 명확성
 5. **재작성** - 어조 조정
 
-글쓰기 도구를 사용하여 콘텐츠를 향상시키세요.`, ja: `AIは執筆プロセスのあらゆる段階で助けになります。
+글쓰기 수정 프롬프트 생성기로 기존 글의 편집 요청을 준비하세요.`, ja: `AIは執筆プロセスのあらゆる段階で助けになります。
 
 ライティングツールを使ってコンテンツを強化しましょう。`, zh: `AI可以帮助写作过程的每个阶段。
 
@@ -396,7 +396,7 @@ Provide examples before the task
 - Customer support
 - Creative writing
 
-Use our Prompt Tools to optimize your prompts.`, ko: `프롬프트 엔지니어링은 원하는 AI 출력을 얻기 위해 입력을 만드는 기술입니다.
+Use Prompt Generator to assemble and inspect a request with fixed style wording.`, ko: `프롬프트 엔지니어링은 원하는 AI 출력을 얻기 위해 입력을 만드는 기술입니다.
 
 ## 핵심 개념
 
@@ -419,7 +419,7 @@ Use our Prompt Tools to optimize your prompts.`, ko: `프롬프트 엔지니어�
 ### 역할 플레이
 "시니어 개발자로서 행동해..."
 
-프롬프트 도구를 사용하여 프롬프트를 최적화하세요.`, ja: `プロンプトエンジニアリングは、望ましいAI出力を得るための入力を作成する技術です。
+프롬프트 생성기로 고정 스타일 문구를 포함한 요청을 조립하고 확인하세요.`, ja: `プロンプトエンジニアリングは、望ましいAI出力を得るための入力を作成する技術です。
 
 プロンプトツールを使ってプロンプトを最適化しましょう。`, zh: `提示词工程是制作输入以获得所需AI输出的艺术。
 
@@ -463,7 +463,7 @@ Use our Prompt Tools to optimize your prompts.`, ko: `프롬프트 엔지니어�
 - Security vulnerabilities possible
 - Doesn't understand full context
 
-Use our Code Tools for development assistance.`, ko: `AI는 올바르게 사용하면 코딩 생산성을 크게 높일 수 있습니다.
+Use Code Explanation Prompt Builder to prepare an explanation request; it does not analyze code.`, ko: `AI는 올바르게 사용하면 코딩 생산성을 크게 높일 수 있습니다.
 
 ## AI 코딩 작업
 
@@ -473,7 +473,7 @@ Use our Code Tools for development assistance.`, ko: `AI는 올바르게 사용�
 4. **리팩토링** - 코드 품질 개선
 5. **테스팅** - 테스트 케이스 생성
 
-코드 도구를 사용하여 개발 지원을 받으세요.`, ja: `AIは正しく使えばコーディングの生産性を大幅に向上させることができます。
+코드 설명 프롬프트 생성기로 설명 요청을 준비하세요. 직접 코드를 분석하지는 않습니다.`, ja: `AIは正しく使えばコーディングの生産性を大幅に向上させることができます。
 
 コードツールを使って開発支援を受けましょう。`, zh: `正确使用AI可以显著提高编码效率。
 
@@ -516,7 +516,7 @@ Use our Code Tools for development assistance.`, ko: `AI는 올바르게 사용�
 3. Multiple passes if needed
 4. Combine with traditional tools
 
-Use our AI Image Tools for quick editing.`, ko: `AI는 강력한 새 기능으로 이미지 편집에 혁명을 일으켰습니다.
+Image Prompt Builder assembles text for a separate image service; it does not edit images.`, ko: `AI는 강력한 새 기능으로 이미지 편집에 혁명을 일으켰습니다.
 
 ## AI 이미지 편집 기능
 
@@ -526,7 +526,7 @@ Use our AI Image Tools for quick editing.`, ko: `AI는 강력한 새 기능으�
 4. **컬러화** - 흑백 사진에 색상 추가
 5. **스타일 변환** - 예술적 스타일 적용
 
-AI 이미지 도구를 사용하여 빠르게 편집하세요.`, ja: `AIは強力な新機能で画像編集に革命を起こしました。
+이미지 프롬프트 생성기는 외부 이미지 서비스용 텍스트를 조립하며 이미지를 편집하지 않습니다.`, ja: `AIは強力な新機能で画像編集に革命を起こしました。
 
 AI画像ツールを使って素早く編集しましょう。`, zh: `AI以强大的新功能革新了图像编辑。
 
@@ -571,7 +571,7 @@ AI画像ツールを使って素早く編集しましょう。`, zh: `AI以强�
 | Communication | Response suggestions |
 | Planning | Schedule optimization |
 
-Use our Productivity Tools to work smarter.`, ko: `AI는 많은 일상 작업을 자동화하고 가속화할 수 있습니다.
+Our prompt builders prepare requests locally; they do not automate external tasks.`, ko: `AI는 많은 일상 작업을 자동화하고 가속화할 수 있습니다.
 
 ## 생산성 사용 사례
 
@@ -581,7 +581,7 @@ Use our Productivity Tools to work smarter.`, ko: `AI는 많은 일상 작업을
 4. **일정 관리** - 시간 관리 최적화
 5. **문서 작성** - 템플릿 및 초안
 
-생산성 도구를 사용하여 더 스마트하게 일하세요.`, ja: `AIは多くの日常タスクを自動化し、加速させることができます。
+프롬프트 생성기는 요청을 로컬에서 준비하며 외부 작업을 자동화하지 않습니다.`, ja: `AIは多くの日常タスクを自動化し、加速させることができます。
 
 生産性ツールを使ってよりスマートに働きましょう。`, zh: `AI可以自动化和加速许多日常任务。
 
@@ -672,7 +672,7 @@ Create a test suite of diverse questions and edge cases. Run them through your s
 - Does it handle edge cases gracefully?
 - Is the tone appropriate throughout?
 
-Use our Prompt Generator tool to experiment with system prompt structures and find what works best for your use case.`,
+Use Prompt Generator to combine task and context with fixed wording. It creates plain text, not a separate system-message configuration.`,
 			ko: `시스템 프롬프트는 전체 대화에서 ChatGPT가 어떻게 작동하는지를 형성하는 숨겨진 지시사항입니다. 일반 사용자 프롬프트와 달리, 시스템 프롬프트는 AI의 성격, 전문성 수준, 응답 형식, 경계에 대한 기초를 설정합니다. 효과적인 시스템 프롬프트 작성법을 이해하는 것은 AI 기반 애플리케이션, 챗봇, 워크플로우를 구축하는 모든 사람에게 필수적입니다.
 
 ## 시스템 프롬프트란?
@@ -726,7 +726,7 @@ AI가 어떻게 상호작용해야 하는지 지정하세요:
 4. **엣지 케이스 무시** - 비정상적인 입력이나 질문에 대한 계획
 5. **테스트 안 함** - 항상 다양한 시나리오로 테스트
 
-프롬프트 생성기 도구를 사용하여 시스템 프롬프트 구조를 실험하고 사용 사례에 가장 적합한 것을 찾으세요.`,
+프롬프트 생성기로 작업과 맥락을 고정 문구와 결합하세요. 별도 시스템 메시지 설정이 아닌 일반 텍스트를 만듭니다.`,
 			ja: `システムプロンプトは、会話全体を通じてChatGPTの動作を形作る隠された指示です。通常のユーザープロンプトとは異なり、システムプロンプトはAIの性格、専門レベル、応答形式、境界の基盤を設定します。効果的なシステムプロンプトの書き方を理解することは、AI搭載アプリケーション、チャットボット、ワークフローを構築するすべての人にとって不可欠です。
 
 ## システムプロンプトとは？
@@ -941,7 +941,7 @@ DALL-E prefers natural language descriptions written as complete sentences:
 
 Regardless of platform, great image prompts share common principles: clear subject description, consistent style direction, appropriate mood setting, and quality modifiers. Start with a simple concept and gradually add complexity.
 
-Use our Image Prompt Builder to generate optimized prompts for both Midjourney and DALL-E automatically.`,
+Use Image Prompt Builder to assemble a subject with fixed style and mood phrases, then adapt the text for your chosen image service.`,
 			ko: `Midjourney와 DALL-E는 가장 인기 있는 AI 이미지 생성기 중 두 가지이지만, 근본적으로 다른 프롬프팅 접근 방식이 필요합니다. 이러한 차이점을 이해하는 것이 각 플랫폼에서 최상의 결과를 얻는 열쇠입니다.
 
 ## 플랫폼 개요
@@ -993,7 +993,7 @@ DALL-E는 완전한 문장으로 작성된 자연어 설명을 선호합니다:
 4. 키워드 목록보다 완전한 문장 사용
 5. 이전 프롬프트에 세부 사항을 추가하여 반복
 
-이미지 프롬프트 빌더를 사용하여 Midjourney와 DALL-E 모두에 최적화된 프롬프트를 자동으로 생성하세요.`,
+이미지 프롬프트 생성기로 대상과 고정 스타일·분위기 문구를 조립한 뒤 선택한 이미지 서비스에 맞게 텍스트를 조정하세요.`,
 			ja: `MidjourneyとDALL-Eは最も人気のあるAI画像生成ツールの2つですが、根本的に異なるプロンプティングアプローチが必要です。これらの違いを理解することが、各プラットフォームから最良の結果を得る鍵です。
 
 ## プラットフォーム概要
@@ -1187,7 +1187,7 @@ For critical documents, compare the translation segment by segment against the s
 6. Cultural references are appropriate
 7. Technical terms are accurate and consistent
 
-Use our AI Translator tool for quick, context-aware translations with built-in quality checks.`,
+Use our Translation Prompt Builder to assemble a request from your text and selected source and target languages. It does not translate or perform quality checks; review any translation obtained from a separate service.`,
 			ko: `AI 번역은 놀라운 진보를 이루었지만, 일관되게 정확한 결과를 얻으려면 그 강점과 한계를 이해해야 합니다. 번역 품질을 극대화하기 위한 전문가 수준의 팁을 소개합니다.
 
 ## AI 번역의 한계 이해
@@ -1229,7 +1229,7 @@ AI 번역기는 맥락이 있을 때 더 잘 수행합니다:
 ### 세그먼트별 비교
 중요한 문서의 경우 번역을 원본과 세그먼트별로 비교하세요. 정보가 추가, 생략 또는 변경되지 않았는지 확인합니다.
 
-AI 번역기 도구를 사용하여 내장 품질 검사가 포함된 빠르고 맥락 인식 번역을 받으세요.`,
+번역 프롬프트 생성기로 원문과 선택한 원본·대상 언어를 담은 요청문을 만드세요. 이 도구는 번역이나 품질 검사를 수행하지 않으므로 외부 서비스에서 받은 번역은 직접 검토하세요.`,
 			ja: `AI翻訳は目覚ましい進歩を遂げましたが、一貫して正確な結果を得るには、その強みと限界を理解する必要があります。翻訳品質を最大化するための専門家レベルのヒントをご紹介します。
 
 ## AI翻訳の限界を理解する
@@ -1413,7 +1413,7 @@ Set up AI review as part of your CI/CD pipeline:
 - Memory leaks from event listeners
 - Off-by-one errors in loops
 
-Use our Code Explainer tool to understand complex code before reviewing it.`,
+Use Code Explanation Prompt Builder to request an explanation from a separate assistant, then check that explanation against the code.`,
 			ko: `AI 기반 코드 리뷰가 개발 팀의 코드 품질 유지 방식을 변혁하고 있습니다. 인간의 전문성과 AI 분석을 결합함으로써 팀은 버그를 더 빨리 잡고, 코딩 표준을 적용하며, 전반적인 코드 건강을 개선할 수 있습니다.
 
 ## AI 코드 리뷰를 사용해야 하는 이유
@@ -1453,7 +1453,7 @@ AI 도구를 코드 리뷰에 사용할 때 프롬프트를 구조화하세요: 
 - 팀 특정 관습
 - 코드가 존재하는 이유에 대한 맥락적 이해
 
-코드 설명 도구를 사용하여 리뷰하기 전에 복잡한 코드를 이해하세요.`,
+코드 설명 프롬프트 생성기로 외부 AI에 설명을 요청한 뒤 설명을 코드와 대조하세요.`,
 			ja: `AI搭載のコードレビューは、開発チームがコード品質を維持する方法を変革しています。人間の専門知識とAI分析を組み合わせることで、チームはバグをより早く発見し、コーディング標準を適用し、全体的なコードの健全性を向上させることができます。
 
 ## AIコードレビューを使う理由
@@ -1607,17 +1607,9 @@ When emailing international contacts, AI can help adapt your message for cultura
 7. **Inappropriate humor** - When in doubt, leave it out
 8. **Forgetting time zones** - Specify time zones for international meetings
 
-## AI-Powered Email Templates
+## Email Drafting Requests
 
-Our Email Writer tool provides templates for common scenarios:
-- Introduction emails to new contacts
-- Follow-up after meetings
-- Requesting information or favors
-- Delivering difficult news
-- Thank you and appreciation messages
-- Cold outreach for business development
-
-Use our Email Writer tool to generate professionally crafted emails that follow all etiquette guidelines automatically.`,
+Email Prompt Builder combines a type, topic, optional recipient, and tone with a fixed checklist. Its types are business inquiry, follow-up, apology, thank you, request, and introduction. It does not draft or send an email. Review the message you obtain from another service for the situation and recipient.`,
 			ko: `전문적인 이메일 커뮤니케이션은 비즈니스 관계를 만들거나 깰 수 있습니다. AI 작문 도우미는 세련되고, 문화적으로 적절하며, 효과적인 이메일을 작성하도록 도와줍니다.
 
 ## 전문적인 이메일의 구조
@@ -1662,7 +1654,7 @@ AI 도구는 적절한 톤에 맞게 메시지를 변환할 수 있습니다. �
 ### 문법과 스타일
 AI는 문법 오류를 잡고, 더 전문적인 표현을 제안하며, 이메일이 매끄럽게 읽히도록 합니다.
 
-이메일 작성 도구를 사용하여 모든 에티켓 가이드라인을 자동으로 따르는 전문적으로 작성된 이메일을 생성하세요.`,
+이메일 프롬프트 생성기는 유형, 주제, 선택 수신자, 어조와 고정 목록을 결합합니다. 유형은 비즈니스 문의, 후속 연락, 사과, 감사, 요청, 소개입니다. 직접 이메일을 쓰거나 보내지 않습니다. 외부 서비스에서 받은 메시지가 상황과 수신자에 맞는지 검토하세요.`,
 			ja: `プロフェッショナルなメールコミュニケーションはビジネス関係を左右します。AIライティングアシスタントは、洗練された、文化的に適切で効果的なメールを作成するお手伝いをします。
 
 ## プロフェッショナルメールの構造
@@ -1804,7 +1796,7 @@ LinkedIn hashtags are more professional and topic-focused. Use 3-5 relevant hash
 ## How to Research Effective Hashtags
 
 1. **Analyze competitors** - Check what successful accounts in your niche use
-2. **Use hashtag tools** - Platforms like our Hashtag Generator find related tags
+2. **Prepare a request** - Hashtag Prompt Builder assembles a topic, platform, and count into instructions; obtain and evaluate suggestions separately.
 3. **Check engagement rates** - High-volume hashtags aren't always best
 4. **Monitor trending tags** - Jump on relevant trends early
 5. **Track performance** - Measure which hashtags drive the most engagement
@@ -1839,7 +1831,7 @@ Track these metrics for each hashtag:
 - Follower growth attributed to hashtag discovery
 - Click-through rate on profile from hashtag searches
 
-Use our Hashtag Generator to find optimized hashtags for any topic or platform.`,
+Use Hashtag Prompt Builder to prepare a request with fixed platform tips. It does not find tags or measure popularity.`,
 			ko: `해시태그는 소셜 미디어에서 유기적 성장을 위한 가장 강력한 도구 중 하나로 남아 있습니다. 잘 계획된 해시태그 전략은 콘텐츠의 가시성을 극적으로 높이고, 타겟 팔로워를 유치하며, 커뮤니티 참여를 구축할 수 있습니다.
 
 ## 해시태그 메커니즘 이해
@@ -1881,7 +1873,7 @@ LinkedIn 해시태그는 더 전문적이고 주제 중심적입니다. 3-5개�
 4. 관련 없는 해시태그
 5. 결과를 추적하지 않음
 
-해시태그 생성기를 사용하여 모든 주제나 플랫폼에 최적화된 해시태그를 찾으세요.`,
+해시태그 프롬프트 생성기로 고정 플랫폼 팁을 포함한 요청을 준비하세요. 태그를 찾거나 인기를 측정하지는 않습니다.`,
 			ja: `ハッシュタグはソーシャルメディアでのオーガニックな成長のための最も強力なツールの一つです。よく計画されたハッシュタグ戦略は、コンテンツの可視性を劇的に高めます。
 
 ## プラットフォーム別戦略
@@ -2041,7 +2033,7 @@ Maintain your authentic voice. AI should enhance your writing, not replace your 
 
 The future isn't AI OR human writing - it's AI AND human writing working together. As AI tools improve, the most successful writers will be those who learn to leverage AI for efficiency while contributing uniquely human qualities like creativity, emotion, and strategic thinking.
 
-Use our Writing Assistant to find the perfect balance between AI efficiency and human creativity.`,
+Use Writing Revision Prompt Builder to assemble an editing request, then review any revision produced by a separate assistant.`,
 			ko: `AI 글쓰기 도구의 부상은 근본적인 논쟁을 불러일으켰습니다: AI가 인간 작가를 대체할 수 있을까? 답은 미묘합니다. AI와 인간 글쓰기는 각각 뚜렷한 강점을 가지고 있으며, 최고의 콘텐츠는 종종 둘을 결합합니다.
 
 ## AI 글쓰기가 뛰어난 부분
@@ -2082,7 +2074,7 @@ AI를 사용하여 정보를 수집하고 정리한 다음, 인간 작가가 독
 ### 사실 확인
 AI는 그럴듯하지만 부정확한 정보를 생성할 수 있습니다. 항상 사실을 확인하세요.
 
-글쓰기 도우미를 사용하여 AI 효율성과 인간 창의성 사이의 완벽한 균형을 찾으세요.`,
+글쓰기 수정 프롬프트 생성기로 편집 요청을 조립한 뒤 외부 AI가 만든 수정문을 검토하세요.`,
 			ja: `AIライティングツールの台頭は、根本的な議論を引き起こしました。AIは人間のライターに取って代わることができるのでしょうか？答えはニュアンスに富んでいます。
 
 ## AIライティングが優れる点
@@ -2499,15 +2491,15 @@ Content creators report 40-60% time savings when properly integrating AI tools:
 
 ## Getting Started
 
-Start with our free SDK.ac tools:
-- **Prompt Generator** for optimized AI interactions
-- **Image Prompt Builder** for visual content
-- **Writing Assistant** for polished text
-- **Hashtag Generator** for social media reach
-- **Email Writer** for marketing campaigns
-- **Text Summarizer** for research and content repurposing
+SDK.ac provides local request builders and opening-text extraction:
+- **Prompt Generator** assembles a task and optional context with a style instruction.
+- **Image Prompt Builder** combines a subject with fixed style and mood phrases.
+- **Writing Revision Prompt Builder** requests an edit without changing the input itself.
+- **Hashtag Prompt Builder** prepares a request without researching tags.
+- **Email Prompt Builder** prepares a drafting request without writing or sending mail.
+- **Leading-Sentence Summarizer** extracts opening chunks without ranking importance.
 
-Build your AI content toolkit today and transform your creative workflow.`,
+Use a separate service for model-generated content and review its results.`,
 			ko: `AI 도구가 콘텐츠 제작에 혁명을 일으켰습니다. 아이디어 생성부터 최종 초안 다듬기까지, AI는 창작 과정의 모든 단계를 지원합니다.
 
 ## 글쓰기 도구
@@ -2540,7 +2532,7 @@ Build your AI content toolkit today and transform your creative workflow.`,
 5. 배포 단계: 각 플랫폼 최적화, 게시 시간 제안
 6. 분석 단계: 성과 추적, 패턴 식별, 개선 제안
 
-SDK.ac의 무료 도구들로 AI 콘텐츠 툴킷을 시작하세요.`,
+SDK.ac의 로컬 도구에서 프롬프트 생성기는 작업·맥락·스타일 지시를, 이미지 프롬프트 생성기는 대상·고정 스타일·분위기를 조립합니다. 글쓰기 수정 프롬프트 생성기는 원문을 바꾸지 않고 편집을 요청하며, 해시태그 프롬프트 생성기는 태그 조사 없이 요청을 준비합니다. 이메일 프롬프트 생성기는 작성·발송 없이 요청을 만들고, 앞문장 추출 요약기는 중요도 평가 없이 앞쪽 구간을 추출합니다. 모델 생성 콘텐츠는 별도 서비스에서 받아 검토하세요.`,
 			ja: `AIツールはコンテンツ制作に革命を起こしました。アイデアの生成から最終稿の仕上げまで、AIは創造プロセスのあらゆる段階を支援します。
 
 ## ライティングツール
@@ -2696,7 +2688,7 @@ Have AI identify weaknesses: "What methodological concerns or gaps exist across 
 - Disclose AI tool usage in your methodology section when required
 - Remember that AI may misinterpret specialized terminology
 
-Use our Text Summarizer for quick, accurate summarization of academic papers and research articles.`,
+Leading-Sentence Summarizer extracts opening text without identifying findings or methods. It cannot perform the model-based research workflow described above.`,
 			ko: `학술 연구는 방대한 양의 문헌을 읽는 것을 포함합니다. AI 요약 도구는 핵심 발견과 방법론을 파악하면서 논문 검토에 필요한 시간을 극적으로 줄일 수 있습니다.
 
 ## 학술 읽기의 도전
@@ -2725,7 +2717,7 @@ Use our Text Summarizer for quick, accurate summarization of academic papers and
 4. AI가 너무 단순화할 수 있는 방법론 세부사항을 기록하세요
 5. 인용을 추적하세요
 
-텍스트 요약 도구를 사용하여 학술 논문과 연구 기사를 빠르고 정확하게 요약하세요.`,
+앞문장 추출 요약기는 연구 결과나 방법을 판별하지 않고 텍스트 앞부분을 추출합니다. 위에서 설명한 모델 기반 연구 절차를 수행하지 못합니다.`,
 			ja: `学術研究では膨大な量の文献を読む必要があります。AI要約ツールは、重要な発見と方法論を把握しながら、論文レビューに必要な時間を劇的に短縮できます。
 
 ## AI論文要約の構造化されたアプローチ
@@ -2896,7 +2888,7 @@ Begin with one area of your workflow:
 4. Track time saved
 5. Expand to the next area
 
-Use SDK.ac's suite of free AI tools as the foundation of your productivity workflow.`,
+SDK.ac offers free local prompt builders and opening-text extraction. These tools do not run AI models or connect external services into workflows.`,
 			ko: `AI를 일상 워크플로우에 통합하는 것은 기술을 대체하는 것이 아니라 증폭시키는 것입니다. 잘 설계된 AI 워크플로우는 하루에 2-4시간을 절약하면서 출력 품질을 향상시킬 수 있습니다.
 
 ## AI 생산성 스택
@@ -2934,7 +2926,7 @@ AI 도구를 시퀀스로 연결하세요.
 ### 5단계: 품질 관리
 항상 인간 검토 체크포인트를 포함하세요.
 
-SDK.ac의 무료 AI 도구 모음을 생산성 워크플로우의 기초로 사용하세요.`,
+SDK.ac는 무료 로컬 프롬프트 생성기와 텍스트 앞부분 추출 도구를 제공합니다. AI 모델을 실행하거나 외부 서비스를 워크플로우로 연결하지는 않습니다.`,
 			ja: `AIを日常のワークフローに統合することは、スキルを置き換えることではなく、増幅させることです。
 
 ## AI生産性スタック
@@ -3102,7 +3094,7 @@ Remember:
 - Your experiences and emotions make writing meaningful
 - The best creative work blends AI efficiency with human soul
 
-Use our Prompt Generator and Writing Assistant to kickstart your creative writing journey.`,
+Use Prompt Generator or Writing Revision Prompt Builder to prepare a request for a separate assistant. Neither writes the story here.`,
 			ko: `작가의 막힘은 모든 창작 작가의 적입니다. AI 도구는 강력한 해결책을 제공합니다: 무한한 창작 글쓰기 프롬프트를 생성하고, 캐릭터를 개발하고, 세계를 구축하도록 도울 수 있습니다.
 
 ## AI를 창작 파트너로 활용하기
@@ -3131,7 +3123,7 @@ AI는 창작 작가를 대체하는 것이 아니라 아이디어가 바닥나�
 ### 장르 매시업
 "[장르 1]과 [장르 2]의 요소를 결합하여 독특한 이야기 전제를 만드세요"
 
-프롬프트 생성기와 글쓰기 도우미를 사용하여 창작 글쓰기 여정을 시작하세요.`,
+프롬프트 생성기나 글쓰기 수정 프롬프트 생성기로 외부 AI에 보낼 요청을 준비하세요. 두 도구 모두 여기서 이야기를 쓰지는 않습니다.`,
 			ja: `ライターズブロックはすべてのクリエイティブライターの天敵です。AIツールは強力な解決策を提供します。
 
 ## AIをクリエイティブパートナーとして使う
