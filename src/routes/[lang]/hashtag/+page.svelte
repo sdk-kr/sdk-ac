@@ -218,8 +218,8 @@ AI生成タグについて正直な注意を2つ。第一に、モデルは今�
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "The hashtag generator prepares a request for another assistant. It combines your topic, chosen platform, requested count, and a fixed platform tip. It does not search a social network or return live tag measurements. Describe the actual post before asking for tags: a concrete subject and audience help distinguish relevant terms from generic ones. The platform choice changes a sentence in the request, not a connection to that platform. Your next job is to review suggested tags against what the post actually contains.",
-				"ko": "해시태그 생성기는 다른 AI에게 보낼 요청을 준비합니다. 주제, 선택한 플랫폼, 요청 개수, 고정된 플랫폼 팁을 조합합니다. 소셜 네트워크를 검색하거나 실시간 태그 측정값을 반환하지 않습니다. 태그를 요청하기 전에 실제 게시물을 설명하세요. 구체적인 주제와 독자는 관련 용어와 일반적인 용어를 구분하는 데 도움이 됩니다. 플랫폼 선택은 요청의 문장 하나를 바꾸며 해당 플랫폼에 연결하지 않습니다. 다음 할 일은 제안된 태그가 실제 게시물 내용과 맞는지 검토하는 것입니다."
+				"en": "Hashtag Prompt Builder prepares a request for another assistant. It combines your topic, chosen platform, requested count, and a fixed platform tip. It does not search a social network or return live tag measurements. Describe the actual post before asking for tags: a concrete subject and audience help distinguish relevant terms from generic ones. The platform choice changes a sentence in the request, not a connection to that platform. Your next job is to review suggested tags against what the post actually contains.",
+				"ko": "해시태그 프롬프트 생성기는 다른 AI에게 보낼 요청을 준비합니다. 주제, 선택한 플랫폼, 요청 개수, 고정된 플랫폼 팁을 조합합니다. 소셜 네트워크를 검색하거나 실시간 태그 측정값을 반환하지 않습니다. 태그를 요청하기 전에 실제 게시물을 설명하세요. 구체적인 주제와 독자는 관련 용어와 일반적인 용어를 구분하는 데 도움이 됩니다. 플랫폼 선택은 요청의 문장 하나를 바꾸며 해당 플랫폼에 연결하지 않습니다. 다음 할 일은 제안된 태그가 실제 게시물 내용과 맞는지 검토하는 것입니다."
 			}
 		},
 		{
@@ -351,6 +351,9 @@ Please provide the hashtags only, no explanations.`;
 				{/each}
 			</div>
 			<p class="mt-2 text-xs text-gray-500 dark:text-dark-500">{platformTips[platform]}</p>
+			{#if lang === 'en' || lang === 'ko'}
+				<p class="mt-2 text-xs text-gray-500 dark:text-dark-500">{lang === 'ko' ? '위 문구는 요청에 삽입되는 고정 템플릿입니다. 현재 트렌드나 도달 효과를 검증한 안내가 아니며, 선택한 개수와 충돌할 수 있습니다.' : 'The text above is a fixed template inserted into the request. It is not verified trend or reach guidance and may conflict with your selected count.'}</p>
+			{/if}
 		</div>
 
 		<!-- Count Selection -->
@@ -418,8 +421,8 @@ Please provide the hashtags only, no explanations.`;
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기 실습 읽기" : "Read the hashtag prompt builder tutorial"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더" : "Image prompt builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 생성기" : "Image Prompt Builder"}</a>
 		</nav>
 	{/if}
 

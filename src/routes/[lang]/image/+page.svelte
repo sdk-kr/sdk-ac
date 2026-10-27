@@ -248,8 +248,8 @@ Two verification notes worth taking seriously. Style tokens borrowed from a buil
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "The builder produces a text prompt for an image service. It appends a fixed style phrase, a fixed mood phrase, and a quality suffix to your subject. It does not render an image or inspect whether the phrases agree. Put visible decisions in the subject: what occupies the frame, where it sits, and what should remain empty. This gives you something concrete to evaluate later. Choosing a mood supplies descriptive words; it does not set exposure, lighting equipment, or any other image service parameter.",
-				"ko": "이 빌더는 이미지 서비스용 텍스트 프롬프트를 만듭니다. 주제 뒤에 고정된 스타일 문구, 분위기 문구, 품질 수식어를 붙입니다. 이미지를 렌더링하거나 문구들이 서로 맞는지 검사하지 않습니다. 프레임에 무엇을 담고 어디에 놓으며 어느 부분을 비워둘지처럼 눈으로 확인할 결정을 주제에 적으세요. 그래야 나중에 구체적으로 평가할 수 있습니다. 분위기 선택은 묘사하는 단어를 제공하며 노출, 조명 장비 등 이미지 서비스의 매개변수를 설정하지 않습니다."
+				"en": "Image Prompt Builder produces a text prompt for an image service. It appends a fixed style phrase, a fixed mood phrase, and a quality suffix to your subject. It does not render an image or inspect whether the phrases agree. Put visible decisions in the subject: what occupies the frame, where it sits, and what should remain empty. This gives you something concrete to evaluate later. Choosing a mood supplies descriptive words; it does not set exposure, lighting equipment, or any other image service parameter.",
+				"ko": "이미지 프롬프트 생성기는 이미지 서비스용 텍스트 프롬프트를 만듭니다. 주제 뒤에 고정된 스타일 문구, 분위기 문구, 품질 수식어를 붙입니다. 이미지를 렌더링하거나 문구들이 서로 맞는지 검사하지 않습니다. 프레임에 무엇을 담고 어디에 놓으며 어느 부분을 비워둘지처럼 눈으로 확인할 결정을 주제에 적으세요. 그래야 나중에 구체적으로 평가할 수 있습니다. 분위기 선택은 묘사하는 단어를 제공하며 노출, 조명 장비 등 이미지 서비스의 매개변수를 설정하지 않습니다."
 			}
 		},
 		{
@@ -446,8 +446,8 @@ Two verification notes worth taking seriously. Style tokens borrowed from a buil
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더 실습 읽기" : "Read the image prompt builder tutorial"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
-			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag Prompt Builder"}</a>
 		</nav>
 	{/if}
 

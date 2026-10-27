@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Email Writer Guide',
+			title: "Email Prompt Builder Guide",
 			description: "Turn a vague email purpose into a bounded drafting request and review the eventual message before sending.",
-			cta: 'Try Email Writer',
+			cta: "Try Email Prompt Builder",
 			sections: [
 				{
 					"heading": "Define the action before the tone",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: relying on tone to set boundaries",
 					"text": "Formal wording does not prevent an invented promise. Put the boundary in the purpose and verify that the eventual draft preserves it."
+				},
+				{
+					"heading": "Worked example: follow up without assuming a date",
+					"text": "The timetable example uses Follow-up and Friendly, with a named recipient role. Notice the exact Topic/Purpose line: the instruction not to assume a date is preserved alongside the request. The builder does not consult a calendar or check whether a timetable exists. A later draft should ask for information rather than announce an invented schedule.",
+					"example": "Input and selections\nemailType: followup\nrecipient: Workshop coordinator\ntopic: Ask whether the revised timetable is available. Do not assume a date.\ntone: friendly\n\nExact tool output\nWrite a follow-up email.\n\nRecipient: Workshop coordinator\nTopic/Purpose: Ask whether the revised timetable is available. Do not assume a date.\n\nUse a warm, friendly but still professional tone.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "Worked example: leave the recipient unspecified",
+					"text": "For a volunteer thank-you, leave Recipient empty and choose Casual. The recipient line disappears, but the fixed checklist still asks for a professional closing and a signature placeholder. Casual therefore changes one tone sentence, not the whole structure. Supply the greeting and sender details when reviewing a draft from another service; this output is only its writing request.",
+					"example": "Input and selections\nemailType: thankyou\nrecipient: (empty)\ntopic: Thank the volunteers for sorting donated books on Saturday.\ntone: casual\n\nExact tool output\nWrite a thank you email.\n\nTopic/Purpose: Thank the volunteers for sorting donated books on Saturday.\n\nUse a relaxed, conversational tone while remaining respectful.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "Mistake 3: expecting delivery or attachments",
+					"text": "The page has no sending or attachment workflow. Mentioning a file in Topic/Purpose only places that statement in the request; verify the actual attachment when composing your email."
+				},
+				{
+					"heading": "Mistake 4: treating whitespace as an empty recipient",
+					"text": "Recipient uses a simple truthiness check, unlike the trimmed topic check. Spaces can still produce a recipient line. Clear the field completely when you want to omit it."
+				},
+				{
+					"heading": "Mistake 5: expecting automatic cultural adaptation",
+					"text": "The presets contain generic English instructions. They do not infer titles, hierarchy, or regional email conventions from a recipient name; add necessary context yourself."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Put the request and any prohibited commitments together in Topic/Purpose.",
+						"Inspect the type and tone sentences as well as your own input.",
+						"Review every requested checklist item in the eventual draft, particularly the signature placeholder, before sending it through your email application."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '이메일 작성 가이드',
+			title: "이메일 프롬프트 생성기 가이드",
 			description: "모호한 이메일 목적을 범위가 명확한 초안 요청으로 바꾸고 발송 전에 최종 메시지를 검토하세요.",
-			cta: '이메일 작성 사용하기',
+			cta: "이메일 프롬프트 생성기 사용하기",
 			sections: [
 				{
 					"heading": "어조보다 행동 먼저 정하기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 어조가 경계를 정해준다고 기대하기",
 					"text": "격식 있는 표현만으로 임의의 약속을 막을 수는 없습니다. 목적에 경계를 적고 최종 초안이 이를 유지하는지 확인하세요."
+				},
+				{
+					"heading": "추가 예제: 날짜를 추측하지 않고 후속 문의",
+					"text": "시간표 예제는 후속 연락과 친근하게를 선택하고 수신자 역할을 적습니다. 정확한 Topic/Purpose 줄에는 날짜를 추측하지 말라는 지시가 요청과 함께 유지됩니다. 생성기는 달력을 보거나 시간표 존재 여부를 확인하지 않습니다. 이후 초안은 일정을 지어내 알리기보다 정보를 요청해야 합니다.",
+					"example": "입력과 선택값\nemailType: followup\nrecipient: Workshop coordinator\ntopic: Ask whether the revised timetable is available. Do not assume a date.\ntone: friendly\n\n정확한 도구 출력\nWrite a follow-up email.\n\nRecipient: Workshop coordinator\nTopic/Purpose: Ask whether the revised timetable is available. Do not assume a date.\n\nUse a warm, friendly but still professional tone.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "추가 예제: 수신자를 지정하지 않기",
+					"text": "봉사자 감사문은 수신자를 비우고 캐주얼을 선택하세요. 수신자 줄은 사라지지만 고정 목록은 여전히 전문적인 마무리와 서명 자리표시자를 요구합니다. 캐주얼은 구조 전체가 아니라 어조 문장 하나를 바꿉니다. 다른 서비스의 초안을 검토할 때 인사말과 발신자 정보를 채우세요. 이 출력은 그 초안을 위한 작성 요청일 뿐입니다.",
+					"example": "입력과 선택값\nemailType: thankyou\nrecipient: (empty)\ntopic: Thank the volunteers for sorting donated books on Saturday.\ntone: casual\n\n정확한 도구 출력\nWrite a thank you email.\n\nTopic/Purpose: Thank the volunteers for sorting donated books on Saturday.\n\nUse a relaxed, conversational tone while remaining respectful.\n\nInclude:\n- Appropriate greeting\n- Clear body with the main message\n- Professional closing\n- Signature placeholder"
+				},
+				{
+					"heading": "실수 3: 발송이나 첨부 기대하기",
+					"text": "이 페이지에는 발송이나 첨부 기능이 없습니다. 주제/목적에서 파일을 언급해도 요청문에 그 문장만 들어갑니다. 실제 이메일 작성 시 첨부를 확인하세요."
+				},
+				{
+					"heading": "실수 4: 공백 수신자를 빈 값으로 보기",
+					"text": "수신자는 공백을 제거해 검사하는 주제와 달리 값의 참 여부만 확인합니다. 공백도 수신자 줄을 만들 수 있으므로 생략하려면 필드를 완전히 비우세요."
+				},
+				{
+					"heading": "실수 5: 문화적 자동 조정 기대하기",
+					"text": "사전 설정에는 일반적인 영어 지시가 들어 있습니다. 수신자 이름에서 직함, 위계, 지역별 이메일 관례를 추론하지 않으므로 필요한 맥락을 직접 추가하세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"주제/목적에 요청과 금지할 약속을 함께 적으세요.",
+						"직접 입력한 내용뿐 아니라 유형과 어조 문장도 확인하세요.",
+						"이메일 앱에서 발송하기 전에 최종 초안의 목록 항목, 특히 서명 자리표시자를 모두 확인하세요."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기" : "Email drafting prompt builder"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 프롬프트 생성기" : "Email Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

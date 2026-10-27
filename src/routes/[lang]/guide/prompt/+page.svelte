@@ -4,11 +4,11 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Prompt Generator Guide',
+			title: "Prompt Generator Guide",
 			description: "Build and test a specific instruction with the prompt generator, then check an answer against your requirements.",
 			sections: [
 				{
@@ -39,11 +39,42 @@
 				{
 					"heading": "Mistake 2: adding unsupported background",
 					"text": "More context is useful only if it is relevant and true. Do not add invented venue facilities to make the request sound complete; an assistant might turn those details into requirements."
+				},
+				{
+					"heading": "Worked example: omit optional context",
+					"text": "This orientation request uses Professional and leaves Context empty. The generator omits the entire Context line instead of filling it with a guess. Notice that the requested three questions remain part of Task; the style adds only its fixed business tone sentence. The output is still a request, so no actual orientation questions appear here.",
+					"example": "Input and selections\ntask: List three questions for a volunteer orientation.\ncontext: (empty)\nstyle: professional\n\nExact tool output\nYou are an expert assistant. Use formal language and maintain a business-appropriate tone.\n\nTask: List three questions for a volunteer orientation.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "Worked example: bound a creative task",
+					"text": "For a seed exchange, Creative changes the opening instruction while Context carries a restriction on claims. Compare the two generated requests: neither the role sentence nor the closing is tailored to the topic. If an outside assistant suggests an exaggerated name, strengthen the task or context yourself; generating again with unchanged fields will not add new safeguards.",
+					"example": "Input and selections\ntask: Suggest two names for a neighborhood seed exchange.\ncontext: Avoid promises about crop yields.\nstyle: creative\n\nExact tool output\nYou are an expert assistant. Think outside the box. Provide innovative and unique perspectives.\n\nTask: Suggest two names for a neighborhood seed exchange.\n\nContext: Avoid promises about crop yields.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "Mistake 3: expecting a separate format setting",
+					"text": "There is no dedicated output format control. Put a table, bullet count, or required fields into Task or Context; the generator simply preserves those words in its template."
+				},
+				{
+					"heading": "Mistake 4: leaving the task blank",
+					"text": "Context alone does not trigger generation. A blank or whitespace-only task returns immediately, so make sure the deliverable is in Task before interpreting a displayed result as current."
+				},
+				{
+					"heading": "Mistake 5: treating regeneration as variation",
+					"text": "The same inputs and style produce the same string. To compare alternatives, change a field deliberately and keep a record of which requirement changed."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Put the deliverable first because Task appears before Context.",
+						"Use Context for facts that qualify the task, and leave it empty when unnecessary.",
+						"Read the fixed style sentence and closing together before copying the assembled request."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '프롬프트 생성기 가이드',
+			title: "프롬프트 생성기 가이드",
 			description: "프롬프트 생성기로 구체적인 지시문을 만들고 시험한 뒤 답변이 요구 사항을 지키는지 확인하세요.",
 			sections: [
 				{
@@ -74,6 +105,37 @@
 				{
 					"heading": "실수 2: 근거 없는 배경 추가하기",
 					"text": "맥락이 많아도 관련 있고 사실일 때만 유용합니다. 요청을 완전해 보이게 하려고 행사장 시설을 지어내지 마세요. AI가 그 내용을 요구 사항으로 바꿀 수 있습니다."
+				},
+				{
+					"heading": "추가 예제: 선택 맥락 생략",
+					"text": "이 오리엔테이션 요청은 전문적으로를 선택하고 맥락을 비웁니다. 생성기는 맥락을 추측해서 채우지 않고 맥락 줄 전체를 생략합니다. 질문 세 개라는 요구는 작업에 그대로 남고, 스타일은 업무 어조를 요청하는 고정 문장만 추가합니다. 출력은 여전히 요청문이므로 실제 오리엔테이션 질문은 여기에 나오지 않습니다.",
+					"example": "입력과 선택값\ntask: List three questions for a volunteer orientation.\ncontext: (empty)\nstyle: professional\n\n정확한 도구 출력\nYou are an expert assistant. Use formal language and maintain a business-appropriate tone.\n\nTask: List three questions for a volunteer orientation.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "추가 예제: 창의적 작업의 범위 지정",
+					"text": "씨앗 교환 행사에서는 창의적으로가 첫 지시를 바꾸고 맥락이 과장된 주장에 대한 제한을 담습니다. 두 요청문을 비교하면 역할 문장과 마무리는 주제에 맞춰 바뀌지 않습니다. 외부 AI가 과장된 이름을 제안한다면 작업이나 맥락을 직접 보완하세요. 같은 필드로 다시 생성해도 새로운 제한이 추가되지는 않습니다.",
+					"example": "입력과 선택값\ntask: Suggest two names for a neighborhood seed exchange.\ncontext: Avoid promises about crop yields.\nstyle: creative\n\n정확한 도구 출력\nYou are an expert assistant. Think outside the box. Provide innovative and unique perspectives.\n\nTask: Suggest two names for a neighborhood seed exchange.\n\nContext: Avoid promises about crop yields.\n\nPlease provide a thorough and helpful response."
+				},
+				{
+					"heading": "실수 3: 별도 형식 설정 기대하기",
+					"text": "별도의 출력 형식 설정은 없습니다. 표, 불릿 수, 필수 항목은 작업이나 맥락에 적으세요. 생성기는 그 내용을 템플릿에 그대로 넣습니다."
+				},
+				{
+					"heading": "실수 4: 작업 비우기",
+					"text": "맥락만으로는 생성되지 않습니다. 작업이 비었거나 공백뿐이면 함수가 즉시 돌아가므로, 표시된 결과를 최신 결과로 보기 전에 작업에 산출물을 적었는지 확인하세요."
+				},
+				{
+					"heading": "실수 5: 재생성을 변형으로 생각하기",
+					"text": "같은 입력과 스타일은 같은 문자열을 만듭니다. 대안을 비교하려면 필드를 의도적으로 바꾸고 어떤 요구를 바꿨는지 기록하세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"작업이 맥락보다 먼저 나오므로 원하는 산출물을 작업 앞부분에 적으세요.",
+						"맥락에는 작업의 조건이 되는 사실을 적고, 필요 없으면 비워 두세요.",
+						"조립된 요청을 복사하기 전에 고정 스타일 문장과 마무리를 함께 읽으세요."
+					]
 				}
 			]
 		},
@@ -129,7 +191,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -138,9 +209,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code explanation prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code Explanation Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

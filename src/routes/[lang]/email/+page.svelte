@@ -226,8 +226,8 @@ Full timeline attached if you want the detail.`
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "The email writer assembles a drafting request from a message type, optional recipient, purpose, and tone. It asks for a greeting, body, closing, and signature placeholder. It does not compose or send an email here. The most useful work happens in the purpose field: state what the recipient needs to do, why you are asking, and which facts must stay unchanged. A tone selection supplies a general style instruction; it cannot decide whether a promise or apology is appropriate for your situation.",
-				"ko": "이메일 작성기는 메시지 유형, 선택 사항인 수신자, 목적, 어조로 초안 작성 요청을 조합합니다. 인사말, 본문, 맺음말, 서명 자리표시자를 요청합니다. 여기서 이메일을 작성하거나 발송하지는 않습니다. 가장 중요한 준비는 목적 필드에서 이루어집니다. 수신자가 무엇을 해야 하는지, 왜 요청하는지, 어떤 사실을 유지해야 하는지 적으세요. 어조 선택은 일반적인 문체 지시를 제공할 뿐, 약속이나 사과가 상황에 적절한지 판단하지 못합니다."
+				"en": "Email Prompt Builder assembles a drafting request from a message type, optional recipient, purpose, and tone. It asks for a greeting, body, closing, and signature placeholder. It does not compose or send an email here. The most useful work happens in the purpose field: state what the recipient needs to do, why you are asking, and which facts must stay unchanged. A tone selection supplies a general style instruction; it cannot decide whether a promise or apology is appropriate for your situation.",
+				"ko": "이메일 프롬프트 생성기는 메시지 유형, 선택 사항인 수신자, 목적, 어조로 초안 작성 요청을 조합합니다. 인사말, 본문, 맺음말, 서명 자리표시자를 요청합니다. 여기서 이메일을 작성하거나 발송하지는 않습니다. 가장 중요한 준비는 목적 필드에서 이루어집니다. 수신자가 무엇을 해야 하는지, 왜 요청하는지, 어떤 사실을 유지해야 하는지 적으세요. 어조 선택은 일반적인 문체 지시를 제공할 뿐, 약속이나 사과가 상황에 적절한지 판단하지 못합니다."
 			}
 		},
 		{
@@ -445,8 +445,8 @@ Full timeline attached if you want the detail.`
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기 실습 읽기" : "Read the email drafting prompt builder tutorial"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
 		</nav>
 	{/if}
 

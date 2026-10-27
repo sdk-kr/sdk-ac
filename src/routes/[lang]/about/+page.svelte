@@ -58,14 +58,13 @@
 	const content: Partial<Record<Locale, AboutContent>> & { en: AboutContent } = {
 		en: {
 			title: `About ${SITE_NAME}`,
-			subtitle: 'Free AI writing and prompt tools — no login, no upsell, and your text stays on your device.',
+			subtitle: "Free browser-based prompt builders and opening-text extraction",
 
 			storyHeading: 'Our Story',
 			storyParagraphs: [
-				`I started ${SITE_NAME} because I got tired of what "free AI tool" has come to mean on the web. Search for a free AI translator or a text summarizer and you land on the same three experiences: a login wall before you can type a single word, a tool that works once and then nags you to "upgrade for unlimited generations," or — worst of all — a site whose business model is quietly harvesting the text you paste in. I have pasted client emails, half-finished blog drafts, and snippets of proprietary code into sites like that before reading their privacy policies. Most people do. That is a problem.`,
-				`What I actually wanted was embarrassingly simple: a page where you paste text in, press one button, and get a useful result out. No account, no credit counter, no "you have 2 free uses left today," no dark-pattern cookie banner between you and the textarea. So in 2024 I built the first version of ${SITE_NAME} — a single prompt generator with one input and one button — and kept adding tools whenever I hit a real need in my own work: a translator prompt tool when I was localising a product into four languages, a code explainer when I was onboarding a junior developer, an email writer when I realised I was rewriting the same three business emails every week.`,
-				`Today ${SITE_NAME} hosts eight AI-focused tools, and every one of them follows the same rule the first one did: the tool must be usable within two seconds of the page loading, and your text must never be silently sent anywhere. Most of our tools are prompt builders — they take your input and your options and assemble a carefully structured, battle-tested prompt that you can paste into ChatGPT, Claude, Gemini, or whichever AI assistant you already use. The summarizer runs its extraction logic entirely in your browser. Nothing you type is transmitted to our servers, logged, or stored.`,
-				`We keep the lights on with display advertising, and we are deliberate about it: the ad density stays well below the industry average, and no ad is ever placed between you and the tool you came to use. If an ad ever makes a tool worse, the ad moves or the ad goes. That is the deal, and it is why ${SITE_NAME} can stay free without a "Pro" tier.`
+				"SDK.ac provides simple browser tools for preparing requests and extracting opening text. Seven tools assemble prompts using your input and fixed options. The eighth, Leading-Sentence Summarizer, selects the first punctuation-delimited chunks of a text without judging their importance.",
+				"You can inspect each result before using it. A prompt must be taken to a separate assistant to obtain a translation, email draft, code explanation, image, hashtag list, or revised passage. SDK.ac does not call a model or verify those external results.",
+				"All eight tool functions process inputs locally in the browser. The guides show exact outputs for specified inputs, explain the fixed templates, and identify limitations such as conflicting instructions or omitted sentences."
 			],
 
 			missionHeading: 'Our Mission',
@@ -85,23 +84,23 @@
 			founded: 'Founded',
 			foundedYear: '2025',
 			focus: 'Focus',
-			focusArea: 'AI tools, prompt utilities, free web tools',
+			focusArea: "Prompt and text utilities, free web tools",
 			businessNumberLabel: 'Business Registration',
 			businessNumberValue: BUSINESS_NUMBER,
 			addressLabel: 'Address',
 			addressValue: COMPANY_ADDRESS_EN,
 
 			catalogHeading: `What You'll Find on ${SITE_NAME}`,
-			catalogIntro: `${SITE_NAME} currently ships eight AI tools. All of them are free, none of them require an account, and all of them process your input on your own device.`,
+			catalogIntro: "All eight tools are free and process inputs in your browser without an account. Seven assemble requests; one extracts opening text.",
 			catalogItems: [
-				{ icon: '文A', title: 'AI Translator', description: 'Builds a precise, context-aware translation prompt for any pair of twelve major languages. Instead of a generic "translate this," you get a prompt engineered to preserve tone, register, and formatting — which produces dramatically better output from ChatGPT, Claude, or Gemini than a bare request.' },
-				{ icon: 'TL;DR', title: 'Text Summarizer', description: 'Condenses long articles, reports, or transcripts into their key sentences. The extraction runs entirely in your browser — your document is never uploaded — making it safe for internal memos and confidential drafts.' },
-				{ icon: '>', title: 'AI Prompt Generator', description: 'Turns a rough idea ("write a product launch post") into a structured prompt with role, context, constraints, and output format. The difference between a lazy prompt and a structured one is usually the difference between a rewrite and a keeper.' },
-				{ icon: 'IMG', title: 'Image Prompt Builder', description: 'Assembles detailed prompts for Midjourney, DALL·E, and Stable Diffusion from your subject, style, lighting, composition, and mood choices. Great for designers who know what they want visually but not how image models want to hear it.' },
-				{ icon: '{ }', title: 'Code Explainer', description: 'Wraps any code snippet in an explanation prompt tuned to your experience level — from "explain like I am new to programming" to "give me a senior-level review." Supports all common languages and never transmits your code anywhere.' },
-				{ icon: '@', title: 'Email Writer', description: 'Generates professional email prompts from a purpose, tone, and a few bullet points. Covers follow-ups, cold outreach, apologies, negotiations, and the other emails everyone rewrites five times before sending.' },
-				{ icon: '#', title: 'Hashtag Generator', description: 'Produces platform-appropriate hashtag prompts for Instagram, X, TikTok, and LinkedIn from your topic and audience, balancing reach tags with niche tags instead of dumping thirty generic ones.' },
-				{ icon: '✎', title: 'Writing Assistant', description: 'One-click prompts to improve, shorten, expand, formalise, or simplify any passage of text. Ideal for polishing a paragraph without re-explaining the whole context to an AI chat from scratch.' }
+				{ icon: '文A', title: "Translation Prompt Builder", description: "Build a translation request from your text and selected languages. Does not translate it." },
+				{ icon: 'TL;DR', title: "Leading-Sentence Summarizer", description: "Extract the first punctuation-delimited chunks locally. No importance ranking or model is used." },
+				{ icon: '>', title: "Prompt Generator", description: "Assemble a request from your task, optional context, and a fixed style instruction. No model is called." },
+				{ icon: 'IMG', title: "Image Prompt Builder", description: "Combine a subject with fixed style and mood phrases. Produces text, not an image." },
+				{ icon: '{ }', title: "Code Explanation Prompt Builder", description: "Wrap code with its language label and a fixed explanation request. Does not run or analyze it." },
+				{ icon: '@', title: "Email Prompt Builder", description: "Build an email drafting request from type, topic, recipient, and tone. Does not draft or send email." },
+				{ icon: '#', title: "Hashtag Prompt Builder", description: "Build a hashtag request from topic, platform, and count. Does not fetch trends or generate tags." },
+				{ icon: '✎', title: "Writing Revision Prompt Builder", description: "Combine your text with a fixed revision instruction. Does not edit or correct the text itself." }
 			],
 
 			principlesHeading: 'Our Principles',
@@ -154,14 +153,13 @@
 
 		ko: {
 			title: `${SITE_NAME} 소개`,
-			subtitle: '무료 AI 글쓰기·프롬프트 도구 — 로그인 없음, 업셀 없음, 입력한 텍스트는 기기 안에만.',
+			subtitle: "무료 브라우저 프롬프트 생성기와 앞문장 추출 도구",
 
 			storyHeading: '운영자 이야기',
 			storyParagraphs: [
-				`${SITE_NAME}는 웹에서 "무료 AI 도구"라는 말이 어떤 의미로 변질됐는지에 지쳐서 시작했습니다. 무료 AI 번역기나 텍스트 요약기를 검색하면 결국 세 가지 중 하나를 만나게 됩니다. 한 글자도 입력하기 전에 나타나는 로그인 벽, 한 번 쓰고 나면 "무제한 생성을 위해 업그레이드하세요"라고 조르는 도구, 그리고 최악으로는 — 붙여넣은 텍스트를 조용히 수집하는 것이 비즈니스 모델인 사이트. 저 역시 개인정보처리방침을 읽기도 전에 고객 이메일, 쓰다 만 블로그 초안, 사내 코드 조각을 그런 사이트에 붙여넣은 적이 있습니다. 대부분의 사람이 그렇게 합니다. 그것이 문제입니다.`,
-				`제가 원했던 것은 민망할 만큼 단순했습니다. 텍스트를 붙여넣고, 버튼 하나를 누르면, 쓸 만한 결과가 나오는 페이지. 계정도, 크레딧 카운터도, "오늘 무료 사용 2회 남음"도, 텍스트 입력창 앞을 가로막는 다크 패턴 쿠키 배너도 없이. 그래서 2024년에 ${SITE_NAME}의 첫 버전 — 입력창 하나와 버튼 하나뿐인 프롬프트 생성기 — 을 만들었고, 제 일에서 실제 필요가 생길 때마다 도구를 추가했습니다. 제품을 4개 언어로 현지화할 때 번역 프롬프트 도구를, 주니어 개발자를 온보딩할 때 코드 설명기를, 매주 같은 비즈니스 이메일 세 통을 다시 쓰고 있다는 걸 깨달았을 때 이메일 작성기를.`,
-				`오늘 ${SITE_NAME}에는 8개의 AI 도구가 있고, 모든 도구가 첫 번째 도구와 같은 규칙을 따릅니다. 페이지 로드 후 2초 안에 사용할 수 있어야 하고, 입력한 텍스트가 어디로도 몰래 전송되어서는 안 된다는 것. 도구 대부분은 프롬프트 빌더입니다 — 입력과 옵션을 받아 정교하게 구조화된, 검증된 프롬프트를 조립해 주며, 이를 ChatGPT, Claude, Gemini 등 이미 쓰고 계신 AI 어시스턴트에 붙여넣으면 됩니다. 요약기는 추출 로직 전체가 브라우저 안에서 실행됩니다. 입력한 내용은 우리 서버로 전송되지도, 기록되지도, 저장되지도 않습니다.`,
-				`운영비는 디스플레이 광고로 충당하며, 여기에도 원칙이 있습니다. 광고 밀도는 업계 평균보다 훨씬 낮게 유지하고, 이용자와 도구 사이에는 절대 광고를 두지 않습니다. 광고가 도구를 더 나쁘게 만든다면 광고를 옮기거나 없앱니다. 이것이 우리의 약속이고, ${SITE_NAME}가 "Pro 티어" 없이 무료로 유지될 수 있는 이유입니다.`
+				"SDK.ac는 요청문 준비와 텍스트 앞부분 추출을 위한 간단한 브라우저 도구를 제공합니다. 7개 도구는 입력과 고정 선택값으로 프롬프트를 조립합니다. 나머지 하나인 앞문장 추출 요약기는 중요도 판단 없이 문장부호로 나눈 첫 구간들을 선택합니다.",
+				"결과는 사용하기 전에 확인할 수 있습니다. 번역, 이메일 초안, 코드 설명, 이미지, 해시태그 목록, 수정문을 얻으려면 프롬프트를 외부 AI로 가져가야 합니다. SDK.ac는 모델을 호출하거나 외부 결과를 검증하지 않습니다.",
+				"8개 도구 함수 모두 브라우저에서 입력을 로컬 처리합니다. 가이드는 지정 입력의 정확한 출력과 고정 템플릿을 보여 주고, 지시 충돌이나 문장 누락 같은 한계를 설명합니다."
 			],
 
 			missionHeading: '미션',
@@ -181,23 +179,23 @@
 			founded: '설립',
 			foundedYear: '2025',
 			focus: '주력 분야',
-			focusArea: 'AI 도구, 프롬프트 유틸리티, 무료 웹 도구',
+			focusArea: "프롬프트·텍스트 유틸리티, 무료 웹 도구",
 			businessNumberLabel: '사업자등록번호',
 			businessNumberValue: BUSINESS_NUMBER,
 			addressLabel: '주소',
 			addressValue: COMPANY_ADDRESS,
 
 			catalogHeading: `${SITE_NAME}에서 만나는 것`,
-			catalogIntro: `${SITE_NAME}는 현재 8개의 AI 도구를 제공합니다. 모두 무료이고, 계정이 필요 없으며, 입력은 전부 이용자의 기기에서 처리됩니다.`,
+			catalogIntro: "8개 도구는 모두 무료이며 계정 없이 브라우저에서 입력을 처리합니다. 7개는 요청문을 조립하고 하나는 텍스트 앞부분을 추출합니다.",
 			catalogItems: [
-				{ icon: '文A', title: 'AI 번역기', description: '12개 주요 언어의 어떤 조합이든 문맥을 고려한 정밀 번역 프롬프트를 만들어 줍니다. 밋밋한 "이거 번역해 줘" 대신 어조·격식·서식을 보존하도록 설계된 프롬프트를 얻게 되며, ChatGPT·Claude·Gemini에서 훨씬 나은 결과를 끌어냅니다.' },
-				{ icon: 'TL;DR', title: '텍스트 요약기', description: '긴 기사, 보고서, 회의록을 핵심 문장으로 압축합니다. 추출 로직이 전부 브라우저에서 실행되어 문서가 업로드되지 않으므로, 사내 메모나 기밀 초안에도 안심하고 쓸 수 있습니다.' },
-				{ icon: '>', title: 'AI 프롬프트 생성기', description: '대략적인 아이디어("제품 출시 글 써 줘")를 역할·맥락·제약·출력 형식이 갖춰진 구조화된 프롬프트로 바꿔 줍니다. 게으른 프롬프트와 구조화된 프롬프트의 차이는 보통 "다시 써야 하는 결과"와 "바로 쓰는 결과"의 차이입니다.' },
-				{ icon: 'IMG', title: '이미지 프롬프트 빌더', description: '주제·스타일·조명·구도·분위기 선택으로 Midjourney, DALL·E, Stable Diffusion용 상세 프롬프트를 조립합니다. 원하는 그림은 머릿속에 있는데 이미지 모델이 알아듣는 언어를 모르는 디자이너에게 특히 유용합니다.' },
-				{ icon: '{ }', title: '코드 설명기', description: '어떤 코드 조각이든 경험 수준에 맞춘 설명 프롬프트로 감싸 줍니다 — "프로그래밍이 처음인 사람에게 설명"부터 "시니어 수준 리뷰"까지. 주요 언어를 모두 지원하며 코드는 어디로도 전송되지 않습니다.' },
-				{ icon: '@', title: '이메일 작성기', description: '목적, 어조, 몇 개의 요점만으로 프로페셔널한 이메일 프롬프트를 생성합니다. 후속 메일, 콜드 아웃리치, 사과, 협상 등 누구나 보내기 전에 다섯 번씩 고쳐 쓰는 이메일들을 다룹니다.' },
-				{ icon: '#', title: '해시태그 생성기', description: '주제와 타깃에서 Instagram, X, TikTok, LinkedIn에 맞는 해시태그 프롬프트를 만듭니다. 범용 태그 30개를 쏟아내는 대신 도달용 태그와 니치 태그의 균형을 잡아 줍니다.' },
-				{ icon: '✎', title: '글쓰기 도우미', description: '어떤 문단이든 원클릭으로 개선·축약·확장·격식화·단순화하는 프롬프트를 제공합니다. AI 채팅에 맥락을 처음부터 다시 설명하지 않고 한 문단만 다듬고 싶을 때 이상적입니다.' }
+				{ icon: '文A', title: "번역 프롬프트 생성기", description: "텍스트와 선택 언어로 번역 요청문을 만듭니다. 직접 번역하지 않습니다." },
+				{ icon: 'TL;DR', title: "앞문장 추출 요약기", description: "문장부호로 나눈 앞쪽 구간을 로컬에서 추출합니다. 중요도 평가나 모델을 사용하지 않습니다." },
+				{ icon: '>', title: "프롬프트 생성기", description: "작업, 선택 맥락, 고정 스타일 지시를 조립해 요청문을 만듭니다. 모델은 호출하지 않습니다." },
+				{ icon: 'IMG', title: "이미지 프롬프트 생성기", description: "대상에 고정 스타일·분위기 문구를 결합합니다. 이미지가 아닌 텍스트를 만듭니다." },
+				{ icon: '{ }', title: "코드 설명 프롬프트 생성기", description: "코드에 언어 표시와 고정 설명 요청을 붙입니다. 실행하거나 분석하지 않습니다." },
+				{ icon: '@', title: "이메일 프롬프트 생성기", description: "유형, 주제, 수신자, 어조로 이메일 작성 요청을 만듭니다. 직접 작성하거나 발송하지 않습니다." },
+				{ icon: '#', title: "해시태그 프롬프트 생성기", description: "주제, 플랫폼, 개수로 해시태그 요청문을 만듭니다. 트렌드를 조회하거나 태그를 직접 만들지 않습니다." },
+				{ icon: '✎', title: "글쓰기 수정 프롬프트 생성기", description: "텍스트에 고정 수정 지시를 결합합니다. 텍스트를 직접 편집하거나 교정하지 않습니다." }
 			],
 
 			principlesHeading: '운영 원칙',

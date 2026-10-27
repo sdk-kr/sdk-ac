@@ -42,9 +42,9 @@
 - **Communication Data**: When you contact us by e-mail, we receive your e-mail address, the content of your message, and any attachments you choose to send.
 
 We do not knowingly collect special categories of personal data (e.g., health, religion, biometrics), government identifiers, payment-card numbers, or precise geolocation.` },
-				{ title: '3. How Text You Submit to Our AI Tools Is Processed', content: `This section addresses the question users most often ask us: what happens to the text I type into a tool?
+				{ title: '3. How Text You Submit to Our Tools Is Processed', content: `This section addresses the question users most often ask us: what happens to the text I type into a tool?
 
-- **Processing happens on your device.** Our tools (AI translator, text summarizer, prompt generator, image prompt builder, code explainer, email writer, hashtag generator, writing assistant) run their logic in your browser. The text you enter is used transiently in your device's memory to produce the output, and is discarded when you clear the input or leave the page.
+- **Processing happens on your device.** Our tools (Prompt Generator, Image Prompt Builder, Leading-Sentence Summarizer, Translation Prompt Builder, Code Explanation Prompt Builder, Email Prompt Builder, Hashtag Prompt Builder, Writing Revision Prompt Builder) run their logic in your browser. The text you enter is used transiently in your device's memory to produce the output, and is discarded when you clear the input or leave the page.
 - **We do not store your text.** No tool input is transmitted to, logged by, or stored permanently on our servers. There is no server-side database of user text.
 - **We do not train on your text.** Your inputs are never used to train, fine-tune, or evaluate any machine-learning model, by us or on our behalf.
 - **Third-party AI services are your choice.** Where a tool generates a prompt intended for an external AI assistant, the prompt leaves your device only when you yourself copy it and paste it into that assistant. From that point, the processing of the text — including any transmission to an AI model API and any retention — is governed by the third-party provider's terms and privacy policy, not this one. If we ever introduce a tool that sends your text to an AI model API directly, we will say so clearly on the tool page before you submit anything, transmit the text over encrypted connections solely to generate your result, and not store it permanently.` },
@@ -133,9 +133,9 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 - **커뮤니케이션 데이터**: 이메일로 문의하시는 경우 이메일 주소, 메시지 내용, 첨부파일을 수신합니다.
 
 회사는 민감정보(건강, 종교, 생체정보 등), 고유식별정보, 결제카드 번호, 정밀 위치정보를 수집하지 않습니다.` },
-				{ title: '제3조 (AI 도구에 입력한 텍스트의 처리)', content: `이용자가 가장 자주 묻는 질문 — "도구에 입력한 텍스트는 어떻게 되나요?" — 에 대한 조항입니다.
+				{ title: '제3조 (도구에 입력한 텍스트의 처리)', content: `이용자가 가장 자주 묻는 질문 — "도구에 입력한 텍스트는 어떻게 되나요?" — 에 대한 조항입니다.
 
-- **처리는 이용자의 기기에서 이루어집니다.** 당사의 도구(AI 번역기, 텍스트 요약기, 프롬프트 생성기, 이미지 프롬프트 빌더, 코드 설명기, 이메일 작성기, 해시태그 생성기, 글쓰기 도우미)는 로직을 이용자의 브라우저에서 실행합니다. 입력한 텍스트는 결과 생성을 위해 기기 메모리에서 일시적으로만 사용되며, 입력을 지우거나 페이지를 떠나면 사라집니다.
+- **처리는 이용자의 기기에서 이루어집니다.** 당사의 도구(프롬프트 생성기, 이미지 프롬프트 생성기, 앞문장 추출 요약기, 번역 프롬프트 생성기, 코드 설명 프롬프트 생성기, 이메일 프롬프트 생성기, 해시태그 프롬프트 생성기, 글쓰기 수정 프롬프트 생성기)는 로직을 이용자의 브라우저에서 실행합니다. 입력한 텍스트는 결과 생성을 위해 기기 메모리에서 일시적으로만 사용되며, 입력을 지우거나 페이지를 떠나면 사라집니다.
 - **회사는 텍스트를 저장하지 않습니다.** 어떤 도구 입력값도 회사 서버로 전송·기록되거나 영구 저장되지 않습니다. 이용자 텍스트의 서버측 데이터베이스는 존재하지 않습니다.
 - **텍스트를 학습에 사용하지 않습니다.** 이용자의 입력은 회사에 의해서든 회사를 대신해서든 어떠한 기계학습 모델의 학습·미세조정·평가에도 사용되지 않습니다.
 - **제3자 AI 서비스는 이용자의 선택입니다.** 도구가 외부 AI 어시스턴트용 프롬프트를 생성하는 경우, 그 프롬프트는 이용자 본인이 직접 복사하여 붙여넣을 때에만 기기를 떠납니다. 그 시점부터 텍스트의 처리 — AI 모델 API로의 전송 및 보관을 포함 — 는 본 방침이 아니라 해당 제3자 사업자의 약관과 개인정보처리방침의 적용을 받습니다. 향후 회사가 이용자의 텍스트를 AI 모델 API로 직접 전송하는 도구를 도입하는 경우, 제출 전에 도구 페이지에 이를 명확히 표시하고, 결과 생성 목적으로만 암호화된 연결을 통해 전송하며, 영구 저장하지 않을 것입니다.` },

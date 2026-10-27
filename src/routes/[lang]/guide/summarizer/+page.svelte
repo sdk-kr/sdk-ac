@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Text Summarizer Guide',
+			title: "Leading-Sentence Summarizer Guide",
 			description: "Audit the summarizer’s opening-sentence extraction with a reproducible example and check what the preview leaves out.",
-			cta: 'Try Text Summarizer',
+			cta: "Try Leading-Sentence Summarizer",
 			sections: [
 				{
 					"heading": "Know what the preview can tell you",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: ignoring sentence boundaries",
 					"text": "Periods inside abbreviations can split text, and an unfinished final sentence can be omitted when other sentences match. Compare the last source sentence with the preview rather than assuming all input was considered."
+				},
+				{
+					"heading": "Worked example: a notice loses a condition",
+					"text": "With four punctuated sentences and Long selected, the tool keeps the first two chunks. The exact output therefore omits the closed side entrance and volunteer arrival instruction. It reports a reduction in whitespace-separated tokens, not retained meaning. Before sharing this excerpt, compare the omitted sentences with what your audience needs to do.",
+					"example": "Input and selections\ninput: Doors open at nine. Bring your ticket. The side entrance is closed. Volunteers arrive early.\nlength: long\n\nExact tool output\nDoors open at nine.  Bring your ticket.\n\n---\nOriginal: 15 words | Summary: 7 words | Reduced by 53%"
+				},
+				{
+					"heading": "Worked example: no sentence-ending punctuation",
+					"text": "The notebook reminder has no period, exclamation mark, or question mark. No chunks match the regular expression, so the entire input becomes the fallback chunk. Medium therefore returns the complete reminder with zero percent reduction. This case explains why changing length cannot shorten every input and why the interface is better understood as an opening excerpt tool.",
+					"example": "Input and selections\ninput: Bring a notebook and a pencil\nlength: medium\n\nExact tool output\nBring a notebook and a pencil\n\n---\nOriginal: 6 words | Summary: 6 words | Reduced by 0%"
+				},
+				{
+					"heading": "Mistake 3: trusting length labels as an ordering",
+					"text": "Short keeps up to two chunks, while Medium takes thirty percent rounded up. On a short document, Medium can retain fewer chunks than Short; inspect the actual excerpt."
+				},
+				{
+					"heading": "Mistake 4: forgetting an unfinished final sentence",
+					"text": "When earlier chunks have punctuation, an unpunctuated tail does not match and can disappear. Finish the source sentences before deciding whether the excerpt is useful."
+				},
+				{
+					"heading": "Mistake 5: assuming linguistic sentence detection",
+					"text": "A period inside an abbreviation or decimal can split a chunk. The function does not understand grammar, so technical notes and numbered data need especially careful comparison."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Use source text whose opening already states the main point.",
+						"Compare conditions and exceptions against the complete original.",
+						"Preserve the displayed spacing when reproducing an example; Copy removes the statistics footer, so it is not the entire displayed output."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '텍스트 요약 가이드',
+			title: "앞문장 추출 요약기 가이드",
 			description: "재현 가능한 예제로 요약기의 앞 문장 추출을 검토하고 미리보기에서 빠진 내용을 확인하세요.",
-			cta: '텍스트 요약 사용하기',
+			cta: "앞문장 추출 요약기 사용하기",
 			sections: [
 				{
 					"heading": "미리보기로 알 수 있는 범위 파악하기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 문장 경계 무시하기",
 					"text": "약어 안의 마침표가 텍스트를 나눌 수 있고, 다른 문장들이 일치하면 끝 문장부호가 없는 마지막 문장은 빠질 수 있습니다. 입력 전체가 고려되었다고 가정하지 말고 원문의 마지막 문장과 미리보기를 비교하세요."
+				},
+				{
+					"heading": "추가 예제: 안내문에서 조건 누락",
+					"text": "문장부호가 있는 네 문장에 길게를 선택하면 처음 두 구간을 유지합니다. 따라서 정확한 출력에는 옆문 폐쇄와 봉사자 조기 도착 안내가 빠집니다. 표시되는 감소율은 공백으로 나눈 토큰 기준이지 의미 보존율이 아닙니다. 이 발췌문을 공유하기 전에 빠진 문장과 독자가 해야 할 일을 대조하세요.",
+					"example": "입력과 선택값\ninput: Doors open at nine. Bring your ticket. The side entrance is closed. Volunteers arrive early.\nlength: long\n\n정확한 도구 출력\nDoors open at nine.  Bring your ticket.\n\n---\nOriginal: 15 words | Summary: 7 words | Reduced by 53%"
+				},
+				{
+					"heading": "추가 예제: 문장 종결 부호가 없는 입력",
+					"text": "공책 안내에는 마침표, 느낌표, 물음표가 없습니다. 정규식에 맞는 구간이 없어 전체 입력을 대체 구간으로 사용합니다. 따라서 중간은 안내 전체와 감소율 0%를 반환합니다. 이 예제는 길이 변경으로 모든 입력을 줄일 수 없는 이유와 이 도구를 앞부분 발췌 도구로 이해해야 하는 이유를 보여 줍니다.",
+					"example": "입력과 선택값\ninput: Bring a notebook and a pencil\nlength: medium\n\n정확한 도구 출력\nBring a notebook and a pencil\n\n---\nOriginal: 6 words | Summary: 6 words | Reduced by 0%"
+				},
+				{
+					"heading": "실수 3: 길이 이름을 순서로 믿기",
+					"text": "짧게는 최대 두 구간을, 중간은 30%를 올림한 수만큼 유지합니다. 짧은 글에서는 중간이 짧게보다 적게 남길 수 있으니 실제 발췌문을 확인하세요."
+				},
+				{
+					"heading": "실수 4: 미완결 끝 문장 놓치기",
+					"text": "앞 구간에 문장부호가 있으면 부호 없는 끝부분은 일치하지 않아 사라질 수 있습니다. 원문의 문장을 완결한 뒤 발췌문이 유용한지 판단하세요."
+				},
+				{
+					"heading": "실수 5: 언어적 문장 판별 기대하기",
+					"text": "약어나 소수 안의 마침표도 구간을 나눌 수 있습니다. 함수는 문법을 이해하지 않으므로 기술 메모와 숫자 자료는 특히 신중하게 비교해야 합니다."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"첫 부분에 이미 핵심이 있는 원문을 사용하세요.",
+						"조건과 예외를 원문 전체와 대조하세요.",
+						"예제를 재현할 때 표시된 공백을 유지하세요. 복사는 통계 꼬리말을 제거하므로 화면 출력 전체를 복사하지 않습니다."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/summarizer" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "텍스트 요약기" : "Text summarizer"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/summarizer" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "앞문장 추출 요약기" : "Leading-Sentence Summarizer"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Code Explainer Guide',
+			title: "Code Explanation Prompt Builder Guide",
 			description: "Prepare a code explanation request, trace a small example, and verify the explanation against the source.",
-			cta: 'Try Code Explainer',
+			cta: "Try Code Explanation Prompt Builder",
 			sections: [
 				{
 					"heading": "Choose a behavior you can trace",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: treating Advanced as an audit",
 					"text": "Advanced asks for complexity and optimization discussion. It does not prove correctness or security. Check any proposed change against expected behavior and your normal tests."
+				},
+				{
+					"heading": "Worked example: explain a small Python total",
+					"text": "The Python example includes concrete prices and selects Beginner. The builder surrounds the snippet with a language-labelled code fence and asks for simple analogies. It does not calculate the total or run Python. An explanation obtained elsewhere should distinguish the stored list from the printed sum; use the actual code as the reference when checking that explanation.",
+					"example": "Input and selections\ncode: prices = [12, 8, 5]\nprint(sum(prices))\nlanguage: Python\nlevel: beginner\n\nExact tool output\nPlease explain this Python code:\n\n```python\nprices = [12, 8, 5]\nprint(sum(prices))\n```\n\nExplain this code as if I am a complete beginner with no programming experience. Use simple analogies and avoid technical jargon."
+				},
+				{
+					"heading": "Worked example: request an advanced explanation",
+					"text": "For the duplicate-number example, Advanced appends requests for complexity, design patterns, and potential optimizations. Those are topics requested from another assistant, not findings produced by this page. The snippet itself is copied unchanged. Check whether an eventual explanation answers those topics accurately instead of assuming the extra technical vocabulary makes it correct.",
+					"example": "Input and selections\ncode: const unique = [...new Set([2, 2, 5])];\nlanguage: JavaScript\nlevel: advanced\n\nExact tool output\nPlease explain this JavaScript code:\n\n```javascript\nconst unique = [...new Set([2, 2, 5])];\n```\n\nProvide a technical explanation including time/space complexity, design patterns used, and potential optimizations."
+				},
+				{
+					"heading": "Mistake 3: relying on automatic language detection",
+					"text": "The selected language supplies both the opening label and the lowercase fence tag. A Python snippet labelled JavaScript stays mismatched; the builder does not correct the selection."
+				},
+				{
+					"heading": "Mistake 4: omitting the relevant caller",
+					"text": "A function name alone rarely shows its inputs or surrounding assumptions. Include a small representative call when it matters; the builder cannot retrieve the missing project context."
+				},
+				{
+					"heading": "Mistake 5: nesting fences without inspection",
+					"text": "Triple backticks inside the snippet are copied literally and can disrupt the surrounding fence. Inspect the request before pasting it into an assistant that interprets Markdown."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Choose the language explicitly and keep the example self-contained.",
+						"Change only the explanation level when comparing the preset instructions.",
+						"Separate expected behavior from observed behavior in your later discussion; this page supplies neither execution results nor a verified diagnosis."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '코드 설명 가이드',
+			title: "코드 설명 프롬프트 생성기 가이드",
 			description: "코드 설명 요청을 준비하고 작은 예제를 추적한 뒤 설명을 소스와 대조하세요.",
-			cta: '코드 설명 사용하기',
+			cta: "코드 설명 프롬프트 생성기 사용하기",
 			sections: [
 				{
 					"heading": "추적할 수 있는 동작 선택하기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 고급을 감사 기능으로 보기",
 					"text": "고급은 복잡도와 최적화에 관한 설명을 요청합니다. 정확성이나 보안을 증명하지 않습니다. 제안된 변경은 예상 동작과 평소 사용하는 테스트로 확인하세요."
+				},
+				{
+					"heading": "추가 예제: 작은 Python 합계 설명",
+					"text": "Python 예제는 구체적인 가격을 넣고 초급을 선택합니다. 생성기는 언어 표시가 있는 코드 블록으로 코드를 감싸고 쉬운 비유를 요청합니다. 합계를 계산하거나 Python을 실행하지는 않습니다. 다른 곳에서 받은 설명이 저장된 목록과 출력되는 합계를 구분하는지 실제 코드를 기준으로 확인하세요.",
+					"example": "입력과 선택값\ncode: prices = [12, 8, 5]\nprint(sum(prices))\nlanguage: Python\nlevel: beginner\n\n정확한 도구 출력\nPlease explain this Python code:\n\n```python\nprices = [12, 8, 5]\nprint(sum(prices))\n```\n\nExplain this code as if I am a complete beginner with no programming experience. Use simple analogies and avoid technical jargon."
+				},
+				{
+					"heading": "추가 예제: 고급 설명 요청",
+					"text": "중복 숫자 예제에서 고급은 복잡도, 설계 패턴, 개선 가능성에 대한 요청을 추가합니다. 이는 다른 AI에 요청하는 항목이지 이 페이지가 발견한 결과가 아닙니다. 코드는 그대로 복사됩니다. 기술 용어가 많다고 정확하다고 생각하지 말고, 나중에 받은 설명이 해당 항목에 정확히 답하는지 확인하세요.",
+					"example": "입력과 선택값\ncode: const unique = [...new Set([2, 2, 5])];\nlanguage: JavaScript\nlevel: advanced\n\n정확한 도구 출력\nPlease explain this JavaScript code:\n\n```javascript\nconst unique = [...new Set([2, 2, 5])];\n```\n\nProvide a technical explanation including time/space complexity, design patterns used, and potential optimizations."
+				},
+				{
+					"heading": "실수 3: 자동 언어 감지에 의존하기",
+					"text": "선택한 언어는 첫 문장의 표시와 소문자 코드 블록 태그에 쓰입니다. Python 코드를 JavaScript로 표시해도 생성기는 선택을 고치지 않습니다."
+				},
+				{
+					"heading": "실수 4: 관련 호출부 생략하기",
+					"text": "함수 이름만으로는 입력이나 주변 가정이 드러나지 않습니다. 필요하면 대표적인 호출 예를 작게 포함하세요. 생성기는 빠진 프로젝트 맥락을 가져오지 못합니다."
+				},
+				{
+					"heading": "실수 5: 중첩 코드 블록을 확인하지 않기",
+					"text": "코드 안의 백틱 세 개도 그대로 복사되어 바깥 코드 블록을 깨뜨릴 수 있습니다. Markdown을 해석하는 AI에 붙여넣기 전에 요청문을 확인하세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"언어를 명시적으로 선택하고 예제에 필요한 내용을 함께 넣으세요.",
+						"사전 설정 지시를 비교할 때는 설명 수준만 바꾸세요.",
+						"이후 논의에서 예상 동작과 관찰한 동작을 구분하세요. 이 페이지는 실행 결과나 검증된 진단을 제공하지 않습니다."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code explanation prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code Explanation Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

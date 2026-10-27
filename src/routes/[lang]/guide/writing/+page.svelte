@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Writing Assistant Guide',
+			title: "Writing Revision Prompt Builder Guide",
 			description: "Prepare an editing request and compare a revision with the original meaning, conditions, and level of certainty.",
-			cta: 'Try Writing Assistant',
+			cta: "Try Writing Revision Prompt Builder",
 			sections: [
 				{
 					"heading": "Name the edit you need",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: asking for everything at once",
 					"text": "Combining grammar, simplification, and tone changes can obscure why meaning shifted. Start with the specific problem, review the result, then request another pass only if needed."
+				},
+				{
+					"heading": "Worked example: preserve a conditional reopening",
+					"text": "Simplify adds an instruction to use accessible language while keeping the main ideas. The reading room sentence is copied unchanged, including may and the repair condition. The builder does not decide which words are essential. When a separate assistant returns a revision, check that a possible Monday reopening has not become an unconditional announcement.",
+					"example": "Input and selections\ninput: We may reopen the reading room on Monday if repairs finish.\naction: simplify\n\nExact tool output\nSimplify this text using clearer, more accessible language while keeping the main ideas:\n\n\"We may reopen the reading room on Monday if repairs finish.\"\n\nProvide the improved version without explanations."
+				},
+				{
+					"heading": "Worked example: request a formal tone",
+					"text": "The poster message uses Make formal. Compare the input with the quoted section of the output: the informal greeting has not been rewritten yet. Only the instruction before it changes. An eventual revision should preserve who needs to send edits and the before-lunch timing; a formal tone should not introduce a different deadline or additional approval step.",
+					"example": "Input and selections\ninput: Hey team, please send the poster edits before lunch.\naction: formal\n\nExact tool output\nRewrite this text in a formal, professional tone suitable for business communication:\n\n\"Hey team, please send the poster edits before lunch.\"\n\nProvide the improved version without explanations."
+				},
+				{
+					"heading": "Mistake 3: expecting tracked corrections",
+					"text": "The result contains a request, not inline edits or a change history. Keep the source separately if you want to compare it with a revision produced elsewhere."
+				},
+				{
+					"heading": "Mistake 4: expecting multiple actions at once",
+					"text": "One selected action supplies one opening instruction. Choosing Formal after Grammar replaces the requested operation; it does not create a remembered sequence of editing passes."
+				},
+				{
+					"heading": "Mistake 5: confusing brevity with preservation",
+					"text": "Simplify asks to keep main ideas, but defines no word limit and checks no facts. If a particular caveat must survive, add that requirement to the copied request."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Start with a short passage that has enough context to stand alone.",
+						"Compare actions using the same source so the changed instruction is visible.",
+						"Read the fixed no-explanations closing; edit it yourself if you want a separate assistant to explain its proposed changes."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '글쓰기 도우미 가이드',
+			title: "글쓰기 수정 프롬프트 생성기 가이드",
 			description: "편집 요청을 준비하고 수정문을 원래 의미, 조건, 확실성의 정도와 비교하세요.",
-			cta: '글쓰기 도우미 사용하기',
+			cta: "글쓰기 수정 프롬프트 생성기 사용하기",
 			sections: [
 				{
 					"heading": "필요한 편집 이름 붙이기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 모든 수정을 한꺼번에 요청하기",
 					"text": "문법, 단순화, 어조 변경을 한꺼번에 요청하면 의미가 바뀐 이유를 파악하기 어렵습니다. 구체적인 문제부터 시작하고 결과를 검토한 뒤 필요한 경우에만 다음 수정을 요청하세요."
+				},
+				{
+					"heading": "추가 예제: 조건부 재개관 유지",
+					"text": "단순화는 주요 내용을 유지하면서 쉬운 표현을 쓰라는 지시를 추가합니다. 열람실 문장은 may와 수리 조건을 포함해 그대로 복사됩니다. 생성기는 어떤 단어가 필수인지 판단하지 않습니다. 외부 AI의 수정문에서 월요일 재개관 가능성이 무조건적인 공지로 바뀌지 않았는지 확인하세요.",
+					"example": "입력과 선택값\ninput: We may reopen the reading room on Monday if repairs finish.\naction: simplify\n\n정확한 도구 출력\nSimplify this text using clearer, more accessible language while keeping the main ideas:\n\n\"We may reopen the reading room on Monday if repairs finish.\"\n\nProvide the improved version without explanations."
+				},
+				{
+					"heading": "추가 예제: 격식 있는 어조 요청",
+					"text": "포스터 메시지는 격식 있게를 선택합니다. 입력과 출력의 인용 부분을 비교하면 편한 인사말이 아직 수정되지 않은 것을 알 수 있습니다. 앞의 지시만 바뀝니다. 이후 수정문도 누가 수정사항을 보내야 하는지와 점심 전이라는 시점을 유지해야 하며, 격식 있는 어조 때문에 다른 기한이나 승인 절차를 추가해서는 안 됩니다.",
+					"example": "입력과 선택값\ninput: Hey team, please send the poster edits before lunch.\naction: formal\n\n정확한 도구 출력\nRewrite this text in a formal, professional tone suitable for business communication:\n\n\"Hey team, please send the poster edits before lunch.\"\n\nProvide the improved version without explanations."
+				},
+				{
+					"heading": "실수 3: 변경 추적 기대하기",
+					"text": "결과에는 인라인 수정이나 변경 이력이 아니라 요청문이 들어 있습니다. 외부 수정문과 비교하려면 원문을 따로 보관하세요."
+				},
+				{
+					"heading": "실수 4: 여러 작업이 누적된다고 생각하기",
+					"text": "선택한 작업 하나가 첫 지시 하나를 제공합니다. 문법 다음에 격식을 선택하면 요청 작업이 바뀌며, 기억된 편집 단계가 누적되지 않습니다."
+				},
+				{
+					"heading": "실수 5: 간결함과 보존을 혼동하기",
+					"text": "단순화는 주요 내용을 유지하라고 하지만 단어 수를 제한하거나 사실을 확인하지 않습니다. 반드시 남아야 할 단서가 있으면 복사한 요청에 조건을 추가하세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"독립적으로 이해할 맥락이 있는 짧은 글로 시작하세요.",
+						"같은 원문으로 작업을 비교해 바뀐 지시를 확인하세요.",
+						"설명을 생략하라는 고정 마무리를 읽고, 외부 AI가 수정 이유를 설명해야 한다면 직접 바꾸세요."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기" : "Email drafting prompt builder"}</a>
-			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 프롬프트 생성기" : "Email Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

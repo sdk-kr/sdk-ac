@@ -263,8 +263,8 @@ None of this is much work — and the alternative, shipping code you understand 
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "The code explainer prepares a request for an explanation. It places your snippet inside a fenced code block, labels it with the selected programming language, and appends an instruction for your experience level. It does not parse, run, or debug the snippet. A useful input includes enough context to trace values: the relevant function, its inputs, and any definitions it depends on. Start with a small behavior you can check yourself before requesting an explanation of an entire unfamiliar module.",
-				"ko": "코드 설명기는 설명을 요청하는 지시문을 준비합니다. 코드 조각을 코드 블록 안에 넣고 선택한 프로그래밍 언어를 표시한 뒤 경험 수준에 맞는 지시를 붙입니다. 코드를 구문 분석하거나 실행하거나 디버깅하지는 않습니다. 유용한 입력에는 관련 함수, 입력값, 의존하는 정의처럼 값을 추적하기에 충분한 맥락이 들어 있습니다. 낯선 모듈 전체의 설명을 요청하기 전에 직접 확인할 수 있는 작은 동작부터 시작하세요."
+				"en": "Code Explanation Prompt Builder prepares a request for an explanation. It places your snippet inside a fenced code block, labels it with the selected programming language, and appends an instruction for your experience level. It does not parse, run, or debug the snippet. A useful input includes enough context to trace values: the relevant function, its inputs, and any definitions it depends on. Start with a small behavior you can check yourself before requesting an explanation of an entire unfamiliar module.",
+				"ko": "코드 설명 프롬프트 생성기는 설명을 요청하는 지시문을 준비합니다. 코드 조각을 코드 블록 안에 넣고 선택한 프로그래밍 언어를 표시한 뒤 경험 수준에 맞는 지시를 붙입니다. 코드를 구문 분석하거나 실행하거나 디버깅하지는 않습니다. 유용한 입력에는 관련 함수, 입력값, 의존하는 정의처럼 값을 추적하기에 충분한 맥락이 들어 있습니다. 낯선 모듈 전체의 설명을 요청하기 전에 직접 확인할 수 있는 작은 동작부터 시작하세요."
 			}
 		},
 		{
@@ -450,8 +450,8 @@ None of this is much work — and the alternative, shipping code you understand 
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기 실습 읽기" : "Read the code explanation prompt builder tutorial"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
 		</nav>
 	{/if}
 

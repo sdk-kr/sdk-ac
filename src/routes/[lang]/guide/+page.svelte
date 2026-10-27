@@ -9,30 +9,30 @@
 	const content: Partial<Record<Locale, GuideIndex>> & { en: GuideIndex } = {
 		en: {
 			title: 'Guides & Tutorials',
-			subtitle: 'Learn how to use SDK.ac AI tools effectively',
+			subtitle: "Learn prompt assembly and opening-sentence extraction with worked examples",
 			guides: [
-				{ title: 'Prompt Generator Guide', desc: 'Learn how to create effective AI prompts for ChatGPT, Claude, and other LLMs', href: '/guide/prompt' },
-				{ title: 'Image Prompt Builder Guide', desc: 'Master the art of creating detailed prompts for Midjourney, DALL-E, and Stable Diffusion', href: '/guide/image' },
-				{ title: 'Text Summarizer Guide', desc: 'Efficiently summarize long articles, documents, and research papers', href: '/guide/summarizer' },
-				{ title: 'AI Translator Guide', desc: 'Get accurate translations while preserving context and nuance', href: '/guide/translator' },
-				{ title: 'Code Explainer Guide', desc: 'Understand complex code with AI-powered explanations', href: '/guide/code' },
-				{ title: 'Email Writer Guide', desc: 'Write professional emails quickly with AI assistance', href: '/guide/email' },
-				{ title: 'Hashtag Generator Guide', desc: 'Boost your social media reach with optimized hashtags', href: '/guide/hashtag' },
-				{ title: 'Writing Assistant Guide', desc: 'Improve your writing with AI-powered suggestions', href: '/guide/writing' }
+				{ title: "Prompt Generator Guide", desc: "Assemble a request from your task, optional context, and a fixed style instruction. No model is called.", href: '/guide/prompt' },
+				{ title: "Image Prompt Builder Guide", desc: "Combine a subject with fixed style and mood phrases. Produces text, not an image.", href: '/guide/image' },
+				{ title: "Leading-Sentence Summarizer Guide", desc: "Extract the first punctuation-delimited chunks locally. No importance ranking or model is used.", href: '/guide/summarizer' },
+				{ title: "Translation Prompt Builder Guide", desc: "Build a translation request from your text and selected languages. Does not translate it.", href: '/guide/translator' },
+				{ title: "Code Explanation Prompt Builder Guide", desc: "Wrap code with its language label and a fixed explanation request. Does not run or analyze it.", href: '/guide/code' },
+				{ title: "Email Prompt Builder Guide", desc: "Build an email drafting request from type, topic, recipient, and tone. Does not draft or send email.", href: '/guide/email' },
+				{ title: "Hashtag Prompt Builder Guide", desc: "Build a hashtag request from topic, platform, and count. Does not fetch trends or generate tags.", href: '/guide/hashtag' },
+				{ title: "Writing Revision Prompt Builder Guide", desc: "Combine your text with a fixed revision instruction. Does not edit or correct the text itself.", href: '/guide/writing' }
 			]
 		},
 		ko: {
 			title: '가이드 & 튜토리얼',
-			subtitle: 'SDK.ac AI 도구를 효과적으로 사용하는 방법',
+			subtitle: "프롬프트 생성과 앞문장 추출을 실제 예제로 배우세요",
 			guides: [
-				{ title: '프롬프트 생성기 가이드', desc: 'ChatGPT, Claude 및 기타 LLM을 위한 효과적인 AI 프롬프트 만들기', href: '/guide/prompt' },
-				{ title: '이미지 프롬프트 빌더 가이드', desc: 'Midjourney, DALL-E, Stable Diffusion을 위한 상세 프롬프트 작성법', href: '/guide/image' },
-				{ title: '텍스트 요약기 가이드', desc: '긴 기사, 문서, 연구 논문을 효율적으로 요약하기', href: '/guide/summarizer' },
-				{ title: 'AI 번역기 가이드', desc: '맥락과 뉘앙스를 유지하면서 정확한 번역 얻기', href: '/guide/translator' },
-				{ title: '코드 설명기 가이드', desc: 'AI 기반 설명으로 복잡한 코드 이해하기', href: '/guide/code' },
-				{ title: '이메일 작성기 가이드', desc: 'AI 도움으로 전문적인 이메일 빠르게 작성하기', href: '/guide/email' },
-				{ title: '해시태그 생성기 가이드', desc: '최적화된 해시태그로 소셜 미디어 도달률 높이기', href: '/guide/hashtag' },
-				{ title: '글쓰기 도우미 가이드', desc: 'AI 기반 제안으로 글쓰기 실력 향상하기', href: '/guide/writing' }
+				{ title: "프롬프트 생성기 가이드", desc: "작업, 선택 맥락, 고정 스타일 지시를 조립해 요청문을 만듭니다. 모델은 호출하지 않습니다.", href: '/guide/prompt' },
+				{ title: "이미지 프롬프트 생성기 가이드", desc: "대상에 고정 스타일·분위기 문구를 결합합니다. 이미지가 아닌 텍스트를 만듭니다.", href: '/guide/image' },
+				{ title: "앞문장 추출 요약기 가이드", desc: "문장부호로 나눈 앞쪽 구간을 로컬에서 추출합니다. 중요도 평가나 모델을 사용하지 않습니다.", href: '/guide/summarizer' },
+				{ title: "번역 프롬프트 생성기 가이드", desc: "텍스트와 선택 언어로 번역 요청문을 만듭니다. 직접 번역하지 않습니다.", href: '/guide/translator' },
+				{ title: "코드 설명 프롬프트 생성기 가이드", desc: "코드에 언어 표시와 고정 설명 요청을 붙입니다. 실행하거나 분석하지 않습니다.", href: '/guide/code' },
+				{ title: "이메일 프롬프트 생성기 가이드", desc: "유형, 주제, 수신자, 어조로 이메일 작성 요청을 만듭니다. 직접 작성하거나 발송하지 않습니다.", href: '/guide/email' },
+				{ title: "해시태그 프롬프트 생성기 가이드", desc: "주제, 플랫폼, 개수로 해시태그 요청문을 만듭니다. 트렌드를 조회하거나 태그를 직접 만들지 않습니다.", href: '/guide/hashtag' },
+				{ title: "글쓰기 수정 프롬프트 생성기 가이드", desc: "텍스트에 고정 수정 지시를 결합합니다. 텍스트를 직접 편집하거나 교정하지 않습니다.", href: '/guide/writing' }
 			]
 		},
 		ja: {

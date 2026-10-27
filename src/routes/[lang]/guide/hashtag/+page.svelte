@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Hashtag Generator Guide',
+			title: "Hashtag Prompt Builder Guide",
 			description: "Create a hashtag request from a specific post and screen the resulting candidates for relevance.",
-			cta: 'Try Hashtag Generator',
+			cta: "Try Hashtag Prompt Builder",
 			sections: [
 				{
 					"heading": "Describe the post before its promotion",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: leaving conflicting counts",
 					"text": "A different platform tip may recommend a range that disagrees with your selected count. Resolve the conflict in the copied request before asking for candidates."
+				},
+				{
+					"heading": "Worked example: expose a count conflict",
+					"text": "The tote repair request asks for five Instagram hashtags, but the inserted platform tip still says to use twenty to thirty. Both statements appear in the exact output. The builder does not reconcile them. Edit the copied request to state one desired count before asking an outside assistant for candidates; the example does not endorse the tip's reach claim.",
+					"example": "Input and selections\ntopic: Repairing a torn canvas tote bag at home\nplatform: Instagram\ncount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for Instagram about: \"Repairing a torn canvas tote bag at home\"\n\nRequirements:\n- Mix popular and niche hashtags. Use 20-30 for maximum reach.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "Worked example: change the platform",
+					"text": "The basil video request selects YouTube and keeps the count at five. The opening platform name and fixed tip change, while the remaining requirements keep the same structure. The function still asks for hashtags on separate lines. It does not inspect the video, distinguish platform metadata fields, or retrieve search traffic and current popularity measurements.",
+					"example": "Input and selections\ntopic: A short video showing how to repot a basil plant\nplatform: YouTube\ncount: 5\n\nExact tool output\nGenerate 5 relevant hashtags for YouTube about: \"A short video showing how to repot a basil plant\"\n\nRequirements:\n- Tags help SEO. Include variations and related terms.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "Mistake 3: reading preset tips as live evidence",
+					"text": "Platform tips are stored strings. Words such as trending or maximum reach do not mean the page checked current usage, platform rules, or engagement data."
+				},
+				{
+					"heading": "Mistake 4: expecting moderation of candidates",
+					"text": "This page produces no candidate tags to screen. Review suggestions from another service for meaning and relevance yourself; no banned-tag or appropriateness filter runs here."
+				},
+				{
+					"heading": "Mistake 5: treating the topic as researched context",
+					"text": "The topic is copied inside quotation marks. A broad phrase such as gardening stays broad; the generator does not infer the actual plant, activity, or audience."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Describe the visible activity and specific subject in the topic.",
+						"Compare the requested count with any numbers in the inserted tip.",
+						"Remove unsupported popularity requirements from the copied prompt when relevance is your goal, then assess candidates against the actual post."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '해시태그 생성 가이드',
+			title: "해시태그 프롬프트 생성기 가이드",
 			description: "구체적인 게시물로 해시태그 요청을 만들고 결과 후보의 관련성을 검토하세요.",
-			cta: '해시태그 생성 사용하기',
+			cta: "해시태그 프롬프트 생성기 사용하기",
 			sections: [
 				{
 					"heading": "홍보보다 게시물 내용 먼저 설명하기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 충돌하는 개수 방치하기",
 					"text": "다른 플랫폼 팁은 선택한 개수와 다른 범위를 권할 수 있습니다. 후보를 요청하기 전에 복사한 요청의 충돌을 해결하세요."
+				},
+				{
+					"heading": "추가 예제: 개수 충돌 확인",
+					"text": "가방 수선 요청은 Instagram 해시태그 다섯 개를 요구하지만 삽입된 플랫폼 팁은 여전히 20~30개를 쓰라고 합니다. 정확한 출력에는 두 문장이 모두 나옵니다. 생성기는 이를 조정하지 않습니다. 외부 AI에 후보를 요청하기 전에 복사한 요청에 원하는 개수를 하나로 명시하세요. 이 예제는 팁의 도달 효과 주장을 지지하지 않습니다.",
+					"example": "입력과 선택값\ntopic: Repairing a torn canvas tote bag at home\nplatform: Instagram\ncount: 5\n\n정확한 도구 출력\nGenerate 5 relevant hashtags for Instagram about: \"Repairing a torn canvas tote bag at home\"\n\nRequirements:\n- Mix popular and niche hashtags. Use 20-30 for maximum reach.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "추가 예제: 플랫폼 바꾸기",
+					"text": "바질 영상 요청은 YouTube를 선택하고 개수는 다섯 개로 유지합니다. 첫 부분의 플랫폼 이름과 고정 팁은 바뀌지만 나머지 요구 사항 구조는 같습니다. 함수는 여전히 해시태그를 한 줄에 하나씩 요청합니다. 영상을 살피거나 플랫폼 메타데이터 필드를 구분하거나 검색량과 현재 인기 수치를 가져오지는 않습니다.",
+					"example": "입력과 선택값\ntopic: A short video showing how to repot a basil plant\nplatform: YouTube\ncount: 5\n\n정확한 도구 출력\nGenerate 5 relevant hashtags for YouTube about: \"A short video showing how to repot a basil plant\"\n\nRequirements:\n- Tags help SEO. Include variations and related terms.\n- Include a mix of popular (high volume) and niche (specific) hashtags\n- Make them relevant to the topic\n- Format: List each hashtag on a new line, starting with #\n\nPlease provide the hashtags only, no explanations."
+				},
+				{
+					"heading": "실수 3: 사전 팁을 실시간 근거로 보기",
+					"text": "플랫폼 팁은 저장된 문자열입니다. trending이나 maximum reach라는 표현은 현재 사용량, 플랫폼 규칙, 참여 데이터를 확인했다는 뜻이 아닙니다."
+				},
+				{
+					"heading": "실수 4: 후보 검수 기대하기",
+					"text": "이 페이지는 검수할 태그 후보 자체를 만들지 않습니다. 다른 서비스가 제안한 태그의 의미와 관련성을 직접 검토하세요. 금지 태그나 적절성 필터는 실행되지 않습니다."
+				},
+				{
+					"heading": "실수 5: 주제를 조사된 맥락으로 보기",
+					"text": "주제는 따옴표 안에 복사됩니다. gardening 같은 넓은 표현은 그대로 남으며 생성기는 실제 식물, 활동, 독자를 추론하지 않습니다."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"주제에 보이는 활동과 구체적인 대상을 적으세요.",
+						"요청한 개수와 삽입된 팁의 숫자를 비교하세요.",
+						"관련성이 목표라면 복사한 요청에서 근거 없는 인기 요구를 제거하고, 후보를 실제 게시물과 대조하세요."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag prompt builder"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더" : "Image prompt builder"}</a>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 생성기" : "Image Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

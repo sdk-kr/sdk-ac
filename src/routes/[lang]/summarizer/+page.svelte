@@ -218,8 +218,8 @@ Finally, mind the compounding problem: summaries of summaries degrade fast. Each
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "This is an extractive preview of the beginning of your text. The function finds chunks ending in a period, exclamation mark, or question mark, then keeps the first chunks rather than ranking their importance. Short keeps up to two; Medium keeps thirty percent rounded up, capped at five; Long keeps half rounded up, capped at ten. At least one chunk is kept. The useful question is therefore whether your opening already contains the information a reader needs.",
-				"ko": "이 도구는 텍스트의 앞부분을 추출해 보여줍니다. 함수는 마침표, 느낌표, 물음표로 끝나는 구간을 찾고 중요도를 매기는 대신 앞 구간을 남깁니다. 짧음은 최대 두 구간, 중간은 전체의 30%를 올림하여 최대 다섯 구간, 김은 절반을 올림하여 최대 열 구간을 남깁니다. 적어도 한 구간은 유지합니다. 따라서 중요한 질문은 도입부에 독자가 필요한 정보가 이미 들어 있는지입니다."
+				"en": "Leading-Sentence Summarizer provides an extractive preview of the beginning of your text. The function finds chunks ending in a period, exclamation mark, or question mark, then keeps the first chunks rather than ranking their importance. Short keeps up to two; Medium keeps thirty percent rounded up, capped at five; Long keeps half rounded up, capped at ten. At least one chunk is kept. The useful question is therefore whether your opening already contains the information a reader needs.",
+				"ko": "앞문장 추출 요약기는 텍스트의 앞부분을 추출해 보여줍니다. 함수는 마침표, 느낌표, 물음표로 끝나는 구간을 찾고 중요도를 매기는 대신 앞 구간을 남깁니다. 짧음은 최대 두 구간, 중간은 전체의 30%를 올림하여 최대 다섯 구간, 김은 절반을 올림하여 최대 열 구간을 남깁니다. 적어도 한 구간은 유지합니다. 따라서 중요한 질문은 도입부에 독자가 필요한 정보가 이미 들어 있는지입니다."
 			}
 		},
 		{
@@ -398,8 +398,8 @@ Finally, mind the compounding problem: summaries of summaries degrade fast. Each
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/summarizer" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "텍스트 요약기 실습 읽기" : "Read the text summarizer tutorial"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
 		</nav>
 	{/if}
 

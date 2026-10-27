@@ -199,8 +199,8 @@ AI翻訳は「非常に有能な下訳」として扱ってください。社内
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "This page builds a translation request. It inserts your selected source and target languages around the original text and asks another assistant to return only a translation. It neither detects the source language nor translates the passage here. Treat the output as a handoff: the source must be clear enough that a translator can identify the intended meaning. Resolve ambiguous pronouns and product terms before generating, because the template adds no glossary, audience, or regional guidance of its own.",
-				"ko": "이 페이지는 번역 요청을 만듭니다. 선택한 원문 언어와 대상 언어를 원문 주변에 넣고 다른 AI에게 번역문만 반환하라고 요청합니다. 여기서 원문 언어를 감지하거나 글을 번역하지는 않습니다. 출력을 다른 번역 작업으로 넘길 지시문으로 보세요. 번역자가 의도한 뜻을 파악할 수 있도록 원문이 명확해야 합니다. 템플릿은 용어집, 독자, 지역에 관한 지침을 추가하지 않으므로 생성 전에 모호한 대명사와 제품 용어를 정리하세요."
+				"en": "Translation Prompt Builder builds a translation request. It inserts your selected source and target languages around the original text and asks another assistant to return only a translation. It neither detects the source language nor translates the passage here. Treat the output as a handoff: the source must be clear enough that a translator can identify the intended meaning. Resolve ambiguous pronouns and product terms before generating, because the template adds no glossary, audience, or regional guidance of its own.",
+				"ko": "번역 프롬프트 생성기는 번역 요청을 만듭니다. 선택한 원문 언어와 대상 언어를 원문 주변에 넣고 다른 AI에게 번역문만 반환하라고 요청합니다. 여기서 원문 언어를 감지하거나 글을 번역하지는 않습니다. 출력을 다른 번역 작업으로 넘길 지시문으로 보세요. 번역자가 의도한 뜻을 파악할 수 있도록 원문이 명확해야 합니다. 템플릿은 용어집, 독자, 지역에 관한 지침을 추가하지 않으므로 생성 전에 모호한 대명사와 제품 용어를 정리하세요."
 			}
 		},
 		{
@@ -391,8 +391,8 @@ AI翻訳は「非常に有能な下訳」として扱ってください。社内
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기 실습 읽기" : "Read the translation prompt builder tutorial"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
 		</nav>
 	{/if}
 

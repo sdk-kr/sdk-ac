@@ -4,12 +4,12 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; cta: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'AI Translator Guide',
+			title: "Translation Prompt Builder Guide",
 			description: "Prepare a translation request and review its source wording, language direction, and eventual translation.",
-			cta: 'Try AI Translator',
+			cta: "Try Translation Prompt Builder",
 			sections: [
 				{
 					"heading": "Translate a clear instruction",
@@ -39,13 +39,44 @@
 				{
 					"heading": "Mistake 2: treating fluency as verification",
 					"text": "A smooth sentence can reverse an action or omit a condition. Check those details directly; the page provides no confidence score or independent translation review."
+				},
+				{
+					"heading": "Worked example: a library reminder",
+					"text": "Choose English and Spanish for the library reminder. The language names appear in the first sentence, and the source text appears inside quotation marks. The closing requests only a translation without explanation. None of the Spanish translation is supplied here; the exact output demonstrates the request that you would take to an external assistant.",
+					"example": "Input and selections\ninput: Please return the library books by Friday.\nfromLang: English\ntoLang: Spanish\n\nExact tool output\nPlease translate the following text from English to Spanish:\n\n\"Please return the library books by Friday.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "Worked example: a Korean meeting message",
+					"text": "For the second example, use Korean as the source and English as the target. The Korean input remains unchanged inside the same English template. Interface language does not choose the translation direction for you. Check both selectors before copying, especially if your previous task used the opposite direction or you recently pressed Swap.",
+					"example": "Input and selections\ninput: 회의는 오후 세 시에 시작합니다.\nfromLang: Korean\ntoLang: English\n\nExact tool output\nPlease translate the following text from Korean to English:\n\n\"회의는 오후 세 시에 시작합니다.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "Mistake 3: expecting automatic language detection",
+					"text": "The function trusts the selected language names. It does not inspect the input to identify its language, so a mismatched source selection produces a mismatched request."
+				},
+				{
+					"heading": "Mistake 4: expecting a terminology field",
+					"text": "There are no separate glossary, formality, or audience controls. If those constraints matter, edit the copied request explicitly before asking another service to translate."
+				},
+				{
+					"heading": "Mistake 5: assuming Swap translates the input",
+					"text": "Swap exchanges the language selectors and regenerates an existing request, but leaves the source text intact. Replace the input yourself before using the reversed direction."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Use explicit names when a pronoun could refer to several people.",
+						"Check source and target labels in the generated first sentence.",
+						"Keep any instructions separate from the quoted source when editing the copied request, because the generator does not distinguish them inside the input field."
+					]
 				}
 			]
 		},
 		ko: {
-			title: 'AI 번역기 가이드',
+			title: "번역 프롬프트 생성기 가이드",
 			description: "번역 요청을 준비하고 원문 표현, 언어 방향, 최종 번역을 검토하세요.",
-			cta: 'AI 번역기 사용하기',
+			cta: "번역 프롬프트 생성기 사용하기",
 			sections: [
 				{
 					"heading": "명확한 안내문 번역 준비하기",
@@ -75,6 +106,37 @@
 				{
 					"heading": "실수 2: 유창함을 검증으로 보기",
 					"text": "매끄러운 문장도 동작을 뒤집거나 조건을 빠뜨릴 수 있습니다. 그 내용을 직접 확인하세요. 페이지에는 신뢰도 점수나 독립적인 번역 검토가 없습니다."
+				},
+				{
+					"heading": "추가 예제: 도서관 반납 안내",
+					"text": "도서관 안내에는 English와 Spanish를 선택하세요. 언어 이름은 첫 문장에, 원문은 따옴표 안에 들어갑니다. 마무리는 설명 없이 번역만 요청합니다. 여기서는 스페인어 번역을 제공하지 않으며, 정확한 출력은 외부 AI로 가져갈 요청문을 보여 줍니다.",
+					"example": "입력과 선택값\ninput: Please return the library books by Friday.\nfromLang: English\ntoLang: Spanish\n\n정확한 도구 출력\nPlease translate the following text from English to Spanish:\n\n\"Please return the library books by Friday.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "추가 예제: 한국어 회의 메시지",
+					"text": "두 번째 예제에서는 원본을 Korean, 번역을 English로 선택하세요. 한국어 입력은 같은 영어 템플릿 안에 그대로 남습니다. 화면 언어가 번역 방향을 대신 선택하지는 않습니다. 특히 이전 작업의 방향이 반대였거나 최근 바꾸기를 눌렀다면 복사 전에 두 선택값을 확인하세요.",
+					"example": "입력과 선택값\ninput: 회의는 오후 세 시에 시작합니다.\nfromLang: Korean\ntoLang: English\n\n정확한 도구 출력\nPlease translate the following text from Korean to English:\n\n\"회의는 오후 세 시에 시작합니다.\"\n\nProvide only the translation without any explanation."
+				},
+				{
+					"heading": "실수 3: 자동 언어 감지 기대하기",
+					"text": "함수는 선택된 언어 이름을 그대로 사용합니다. 입력 언어를 판별하지 않으므로 원본 선택이 잘못되면 요청문도 잘못됩니다."
+				},
+				{
+					"heading": "실수 4: 용어 필드 기대하기",
+					"text": "별도의 용어집, 격식, 독자 설정은 없습니다. 그런 조건이 중요하면 다른 서비스에 번역을 요청하기 전에 복사한 요청문을 직접 수정하세요."
+				},
+				{
+					"heading": "실수 5: 바꾸기가 입력도 번역한다고 생각하기",
+					"text": "바꾸기는 언어 선택값을 교환하고 기존 요청을 다시 만들지만 원문은 유지합니다. 반대 방향을 사용하려면 입력을 직접 바꾸세요."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"대명사가 여러 사람을 가리킬 수 있다면 이름을 명확히 쓰세요.",
+						"생성된 첫 문장에서 원본과 대상 언어를 확인하세요.",
+						"복사한 요청을 편집할 때 지시는 인용된 원문과 분리하세요. 생성기는 입력 필드 안에서 둘을 구분하지 않습니다."
+					]
 				}
 			]
 		},
@@ -156,7 +218,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -165,9 +236,9 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">

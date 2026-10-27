@@ -4,11 +4,11 @@
 
 	$: lang = ($page.params.lang || 'en') as Locale;
 
-	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string }[] };
+	type GuideContent = { title: string; description: string; sections: { heading: string; text: string; example?: string; tips?: string[] }[] };
 
 	const content: Partial<Record<Locale, GuideContent>> & { en: GuideContent } = {
 		en: {
-			title: 'Image Prompt Builder Guide',
+			title: "Image Prompt Builder Guide",
 			description: "Build an image prompt from a concrete subject, inspect the fixed modifiers, and compare one visual change at a time.",
 			sections: [
 				{
@@ -39,11 +39,42 @@
 				{
 					"heading": "Mistake 2: mixing incompatible instructions",
 					"text": "A subject demanding sharp ink outlines may compete with watercolor’s soft edges. Decide which appearance matters, then remove the opposing phrase in the copied prompt."
+				},
+				{
+					"heading": "Worked example: describe a product scene",
+					"text": "The mug example places objects in relation to one another before any preset words are added. Photorealistic supplies camera and resolution vocabulary, and Peaceful adds lighting and atmosphere terms. Those words are part of the copied prompt; they do not set an image size, operate a camera, or produce a photograph on this page.",
+					"example": "Input and selections\nsubject: A ceramic mug beside a folded blue napkin on a wooden table\nstyle: photorealistic\nmood: peaceful\n\nExact tool output\nA ceramic mug beside a folded blue napkin on a wooden table, ultra realistic, high resolution, 8k, photograph, DSLR, professional photography, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "Worked example: inspect repeated modifiers",
+					"text": "The greenhouse example combines Oil Painting with Mysterious. Read the exact output and notice that masterpiece appears twice: once in the oil preset and once in the common suffix. The builder does not remove duplicates or reconcile competing descriptions. You can edit the copied prompt before using it elsewhere, keeping the subject and spatial relationship clear.",
+					"example": "Input and selections\nsubject: An abandoned greenhouse behind a stone wall\nstyle: oil\nmood: mysterious\n\nExact tool output\nAn abandoned greenhouse behind a stone wall, oil painting, classical art style, painterly, textured canvas, masterpiece, dark and moody, foggy, enigmatic, shadowy, ethereal, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "Mistake 3: assuming quality words are settings",
+					"text": "Terms such as 8k and best quality are literal text. They do not enforce resolution or quality in a separate renderer, whose controls you must inspect yourself."
+				},
+				{
+					"heading": "Mistake 4: hiding the main object",
+					"text": "A long list of abstract adjectives can obscure what should be visible. Name the object, location, and relationship in Subject before adding decorative details."
+				},
+				{
+					"heading": "Mistake 5: expecting negative prompt controls",
+					"text": "There is no separate negative prompt field. An exclusion typed into Subject is copied into the same string and is not converted into renderer-specific syntax."
+				},
+				{
+					"heading": "Tips for better results",
+					"text": "",
+					"tips": [
+						"Keep the subject stable while comparing one style or mood change.",
+						"Check the final suffix for repetition with your own wording.",
+						"Treat preset names as text choices; configure dimensions and other rendering controls in the image service you use."
+					]
 				}
 			]
 		},
 		ko: {
-			title: '이미지 프롬프트 빌더 가이드',
+			title: "이미지 프롬프트 생성기 가이드",
 			description: "구체적인 주제로 이미지 프롬프트를 만들고 고정 수식어를 살펴본 뒤 시각적 변화 하나씩 비교하세요.",
 			sections: [
 				{
@@ -74,6 +105,37 @@
 				{
 					"heading": "실수 2: 양립하기 어려운 지시 섞기",
 					"text": "선명한 잉크 윤곽선을 요구하는 주제는 수채화의 부드러운 가장자리와 충돌할 수 있습니다. 중요한 표현 방식을 정한 뒤 복사한 프롬프트에서 반대되는 문구를 제거하세요."
+				},
+				{
+					"heading": "추가 예제: 제품 장면 묘사",
+					"text": "머그잔 예제는 사전 설정 문구가 붙기 전에 물체 사이의 위치 관계를 정합니다. 포토리얼리스틱은 카메라와 해상도 어휘를, 평화로운은 조명과 분위기 표현을 추가합니다. 이 단어들은 복사할 프롬프트의 일부이며, 이미지 크기를 설정하거나 카메라를 조작하거나 이 페이지에서 사진을 만들지는 않습니다.",
+					"example": "입력과 선택값\nsubject: A ceramic mug beside a folded blue napkin on a wooden table\nstyle: photorealistic\nmood: peaceful\n\n정확한 도구 출력\nA ceramic mug beside a folded blue napkin on a wooden table, ultra realistic, high resolution, 8k, photograph, DSLR, professional photography, calm, serene, soft lighting, gentle, harmonious, tranquil, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "추가 예제: 반복 수식어 확인",
+					"text": "온실 예제는 유화와 신비로운을 조합합니다. 정확한 출력에서 masterpiece가 유화 설정과 공통 접미 문구에 각각 한 번씩 나오는 것을 확인하세요. 생성기는 중복을 제거하거나 충돌하는 묘사를 조정하지 않습니다. 다른 곳에서 사용하기 전에 복사한 프롬프트를 편집하되 대상과 위치 관계는 명확하게 유지하세요.",
+					"example": "입력과 선택값\nsubject: An abandoned greenhouse behind a stone wall\nstyle: oil\nmood: mysterious\n\n정확한 도구 출력\nAn abandoned greenhouse behind a stone wall, oil painting, classical art style, painterly, textured canvas, masterpiece, dark and moody, foggy, enigmatic, shadowy, ethereal, highly detailed, masterpiece, best quality"
+				},
+				{
+					"heading": "실수 3: 품질 단어를 설정으로 보기",
+					"text": "8k와 best quality는 문자 그대로의 텍스트입니다. 외부 생성기의 해상도나 품질을 강제하지 않으므로 해당 생성기의 설정을 직접 확인해야 합니다."
+				},
+				{
+					"heading": "실수 4: 주된 대상을 흐리기",
+					"text": "추상적인 형용사를 길게 나열하면 무엇이 보여야 하는지 흐려집니다. 장식적인 세부사항보다 먼저 주요 대상에 물체, 장소, 관계를 적으세요."
+				},
+				{
+					"heading": "실수 5: 네거티브 프롬프트 설정 기대하기",
+					"text": "별도의 네거티브 프롬프트 필드는 없습니다. 주요 대상에 적은 제외 조건은 같은 문자열로 복사되며 생성기 전용 문법으로 변환되지 않습니다."
+				},
+				{
+					"heading": "더 나은 결과를 위한 팁",
+					"text": "",
+					"tips": [
+						"스타일이나 분위기 하나를 바꿔 비교할 때 주요 대상은 유지하세요.",
+						"마지막 접미 문구가 직접 쓴 표현과 반복되는지 확인하세요.",
+						"사전 설정은 문구 선택으로 보고, 크기 등 렌더링 설정은 이용하는 이미지 서비스에서 지정하세요."
+					]
 				}
 			]
 		},
@@ -129,7 +191,16 @@
 		{#each t.sections as section}
 			<div>
 				<h2 class="text-xl font-semibold text-gray-800 dark:text-dark-200 mb-3">{section.heading}</h2>
-				<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{#if section.text}
+					<p class="text-gray-600 dark:text-dark-400 leading-relaxed">{section.text}</p>
+				{/if}
+				{#if section.tips}
+					<ul class="list-disc pl-6 mt-3 space-y-2 text-gray-600 dark:text-dark-400 leading-relaxed">
+						{#each section.tips as tip}
+							<li>{tip}</li>
+						{/each}
+					</ul>
+				{/if}
 				{#if section.example}
 					<pre class="bg-gray-100 dark:bg-dark-900 p-4 rounded-lg overflow-x-auto text-sm mt-3 text-gray-800 dark:text-dark-200"><code>{section.example}</code></pre>
 				{/if}
@@ -138,14 +209,14 @@
 	</div>
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
-			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 빌더" : "Image prompt builder"}</a>
-			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt generator"}</a>
-			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag prompt builder"}</a>
+			<a href="/{lang}/image" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이미지 프롬프트 생성기" : "Image Prompt Builder"}</a>
+			<a href="/{lang}/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기" : "Prompt Generator"}</a>
+			<a href="/{lang}/hashtag" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "해시태그 프롬프트 생성기" : "Hashtag Prompt Builder"}</a>
 		</nav>
 	{/if}
 	<div class="mt-12">
 		<a href="/{lang}/image" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-			{lang === 'ko' ? "이미지 프롬프트 빌더 사용하기" : "Try Image Prompt Builder"} &rarr;
+			{lang === 'ko' ? "이미지 프롬프트 생성기 사용하기" : "Try Image Prompt Builder"} &rarr;
 		</a>
 	</div>
 </div>

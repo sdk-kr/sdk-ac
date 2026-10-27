@@ -229,8 +229,8 @@ Keep a hedge budget in mind when accepting suggestions, and re-read the final te
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "The writing assistant wraps your original text in an editing request. Your chosen action supplies a fixed instruction, followed by the unchanged passage and a request for the improved version without explanations. It does not edit the passage on this page. Choose the action based on the problem you can name: grammar for mechanical errors, simplify for difficult wording, or a tone change for a different audience. Broad improvement requests leave more editorial decisions to the assistant that eventually receives the prompt.",
-				"ko": "글쓰기 도우미는 원문을 편집 요청으로 감쌉니다. 선택한 작업에 따른 고정 지시 뒤에 원문을 그대로 넣고 설명 없이 개선한 글을 반환하라고 요청합니다. 이 페이지에서 글을 편집하지는 않습니다. 이름 붙일 수 있는 문제에 따라 작업을 선택하세요. 문법은 문법적 오류에, 단순화는 어려운 표현에, 어조 변경은 다른 독자를 위한 수정에 적합한 요청입니다. 포괄적인 개선 요청은 나중에 프롬프트를 받는 AI에게 더 많은 편집 판단을 맡깁니다."
+				"en": "Writing Revision Prompt Builder wraps your original text in an editing request. Your chosen action supplies a fixed instruction, followed by the unchanged passage and a request for the improved version without explanations. It does not edit the passage on this page. Choose the action based on the problem you can name: grammar for mechanical errors, simplify for difficult wording, or a tone change for a different audience. Broad improvement requests leave more editorial decisions to the assistant that eventually receives the prompt.",
+				"ko": "글쓰기 수정 프롬프트 생성기는 원문을 편집 요청으로 감쌉니다. 선택한 작업에 따른 고정 지시 뒤에 원문을 그대로 넣고 설명 없이 개선한 글을 반환하라고 요청합니다. 이 페이지에서 글을 편집하지는 않습니다. 이름 붙일 수 있는 문제에 따라 작업을 선택하세요. 문법은 문법적 오류에, 단순화는 어려운 표현에, 어조 변경은 다른 독자를 위한 수정에 적합한 요청입니다. 포괄적인 개선 요청은 나중에 프롬프트를 받는 AI에게 더 많은 편집 판단을 맡깁니다."
 			}
 		},
 		{
@@ -397,8 +397,8 @@ Keep a hedge budget in mind when accepting suggestions, and re-read the final te
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기 실습 읽기" : "Read the writing revision prompt builder tutorial"}</a>
-			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 초안 프롬프트 생성기" : "Email drafting prompt builder"}</a>
-			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation prompt builder"}</a>
+			<a href="/{lang}/email" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "이메일 프롬프트 생성기" : "Email Prompt Builder"}</a>
+			<a href="/{lang}/translator" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "번역 프롬프트 생성기" : "Translation Prompt Builder"}</a>
 		</nav>
 	{/if}
 

@@ -248,8 +248,8 @@ Knowing these boundaries is itself a prompting skill: the best practitioners spe
 				"ko": "작동 방식"
 			},
 			"body": {
-				"en": "This generator assembles an instruction; it does not answer your question. It joins your task, optional context, and one fixed style sentence, then adds a closing request. The same fields produce the same text. Use the task to define a deliverable and the context to supply facts the eventual assistant would otherwise have to assume. A style choice changes wording, not model settings. Before copying, check whether a reader could tell what a successful answer must contain. If not, improve the task before adding more background.",
-				"ko": "이 생성기는 지시문을 조합하며 질문에 답하지 않습니다. 작업, 선택 사항인 맥락, 고정된 스타일 문장을 연결한 다음 마무리 요청을 붙입니다. 같은 필드는 같은 텍스트를 만듭니다. 작업에는 원하는 산출물을 정의하고, 맥락에는 나중에 답할 AI가 추측해야 할 사실을 제공하세요. 스타일 선택은 문구를 바꾸며 모델 설정을 바꾸지는 않습니다. 복사하기 전에 읽는 사람이 성공적인 답변의 필수 내용을 알 수 있는지 확인하세요. 알 수 없다면 배경을 더 넣기 전에 작업부터 다듬으세요."
+				"en": "Prompt Generator assembles an instruction; it does not answer your question. It joins your task, optional context, and one fixed style sentence, then adds a closing request. The same fields produce the same text. Use the task to define a deliverable and the context to supply facts the eventual assistant would otherwise have to assume. A style choice changes wording, not model settings. Before copying, check whether a reader could tell what a successful answer must contain. If not, improve the task before adding more background.",
+				"ko": "프롬프트 생성기는 지시문을 조합하며 질문에 답하지 않습니다. 작업, 선택 사항인 맥락, 고정된 스타일 문장을 연결한 다음 마무리 요청을 붙입니다. 같은 필드는 같은 텍스트를 만듭니다. 작업에는 원하는 산출물을 정의하고, 맥락에는 나중에 답할 AI가 추측해야 할 사실을 제공하세요. 스타일 선택은 문구를 바꾸며 모델 설정을 바꾸지는 않습니다. 복사하기 전에 읽는 사람이 성공적인 답변의 필수 내용을 알 수 있는지 확인하세요. 알 수 없다면 배경을 더 넣기 전에 작업부터 다듬으세요."
 			}
 		},
 		{
@@ -438,8 +438,8 @@ Knowing these boundaries is itself a prompting skill: the best practitioners spe
 	{#if lang === 'en' || lang === 'ko'}
 		<nav class="mt-8 space-y-3 text-sm" aria-label={lang === 'ko' ? '관련 도구와 가이드' : 'Related tools and guides'}>
 			<a href="/{lang}/guide/prompt" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "프롬프트 생성기 실습 읽기" : "Read the prompt generator tutorial"}</a>
-			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing revision prompt builder"}</a>
-			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code explanation prompt builder"}</a>
+			<a href="/{lang}/writing" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "글쓰기 수정 프롬프트 생성기" : "Writing Revision Prompt Builder"}</a>
+			<a href="/{lang}/code" class="block text-primary-500 hover:text-primary-400 underline">{lang === 'ko' ? "코드 설명 프롬프트 생성기" : "Code Explanation Prompt Builder"}</a>
 		</nav>
 	{/if}
 
