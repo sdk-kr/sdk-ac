@@ -6,13 +6,14 @@
 
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
-	const CONTACT_EMAIL = 'contact@sdk.ac';
-	const COMPANY_NAME = 'SDK Co., Ltd.';
-	const COMPANY_ADDRESS = '제주특별자치도 제주시 남성로 127, 4층';
-	const COMPANY_ADDRESS_EN = '4F, 127 Namseong-ro, Jeju-si, Jeju Special Self-Governing Province, Republic of Korea';
+	const CONTACT_EMAIL = 'contact@sdklabs.org';
+	const COMPANY_NAME = 'SDKLabs Co., Ltd.';
+	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60, 542호(우면동, 황금빌딩)';
+	const COMPANY_ADDRESS_EN = 'Suite 542, 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 	const ADS_OPTOUT_URL = 'https://www.google.com/settings/ads';
 	const EFFECTIVE_DATE = '2025-01-15';
-	const LAST_UPDATED = '2026-07-02';
+	const LAST_UPDATED = '2026-10-28';
 
 	type PrivacyContent = {
 		title: string;
@@ -117,7 +118,7 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 			title: '개인정보 처리방침',
 			lastUpdated: `최종 수정일: ${LAST_UPDATED}`,
 			effective: `시행일: ${EFFECTIVE_DATE}`,
-			intro: `${SITE_NAME}(이하 "서비스")를 운영하는 ${COMPANY_NAME}(이하 "회사")는 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」(PIPA), EU 「일반 개인정보 보호규정」(GDPR) 등 관련 법령을 준수하여 개인정보를 적법하고 공정하며 투명하게 처리합니다. 본 개인정보 처리방침은 회사가 수집하는 정보, 이용 목적, 제3자 제공, 이용자의 권리와 행사 방법을 규정합니다. ${SITE_NAME}에 접속하거나 이를 이용함으로써 이용자는 본 방침을 읽고 이해하였음을 확인합니다.`,
+			intro: `${SITE_NAME}(이하 "서비스")를 운영하는 ${COMPANY_NAME_KO}(이하 "회사")는 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」(PIPA), EU 「일반 개인정보 보호규정」(GDPR) 등 관련 법령을 준수하여 개인정보를 적법하고 공정하며 투명하게 처리합니다. 본 개인정보 처리방침은 회사가 수집하는 정보, 이용 목적, 제3자 제공, 이용자의 권리와 행사 방법을 규정합니다. ${SITE_NAME}에 접속하거나 이를 이용함으로써 이용자는 본 방침을 읽고 이해하였음을 확인합니다.`,
 			sections: [
 				{ title: '제1조 (적용 범위)', content: `본 방침은 https://${SITE_DOMAIN} 에서 호스팅되는 웹사이트, 모든 서브도메인 및 회사가 운영하는 관련 서비스(이하 통칭하여 "서비스")에 적용됩니다. 서비스에서 링크되거나 서비스에 게재되는 광고에 나타날 수 있는 제3자 웹사이트, AI 어시스턴트, 광고주에는 적용되지 않습니다. 특히 이용자가 당사 도구가 생성한 프롬프트를 복사하여 제3자 AI 서비스(ChatGPT, Claude, Gemini 등)에 붙여넣는 경우, 해당 서비스 이용에는 해당 사업자의 개인정보처리방침만이 적용됩니다. 제3자에게 개인정보를 제공하기 전에 해당 사업자의 방침을 확인하시기 바랍니다.` },
 				{ title: '제2조 (수집하는 개인정보 항목)', content: `회사는 ${SITE_NAME}를 가능한 한 적은 개인정보를 수집하도록 의도적으로 설계했습니다. 구체적으로:
@@ -190,7 +191,7 @@ This Policy is effective as of ${EFFECTIVE_DATE} and was last updated on ${LAST_
 회사는 의도적으로 개인정보를 거의 보유하지 않으므로 대부분의 요청은 즉시 해결됩니다. 도구 입력값과 환경설정은 이용자 본인의 브라우저에만 존재하며, 브라우저의 사이트 데이터를 지우면 완전히 삭제됩니다. 그 밖의 요청(예: 이메일 서신 삭제)은 제11조에 따라 문의해 주세요. 회사는 GDPR(1개월) 및 개인정보 보호법(열람 요구 10일)이 정한 기한 내에 확인된 요청에 무료로 응답합니다. 다만 명백히 근거가 없거나 과도한 요청은 예외입니다.` },
 				{ title: '제11조 (개인정보 보호책임자 및 연락처)', content: `회사는 개인정보 관련 문의, 불만 처리, 피해 구제를 담당하는 개인정보 보호책임자를 지정하고 있습니다:
 
-- **개인정보 보호책임자**: ${COMPANY_NAME} 개인정보보호팀
+- **개인정보 보호책임자**: ${COMPANY_NAME_KO} 개인정보보호팀
 - **이메일**: ${CONTACT_EMAIL} (제목에 "Legal" 또는 "Privacy" 표기)
 - **주소**: ${COMPANY_ADDRESS}
 

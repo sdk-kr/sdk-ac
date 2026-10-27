@@ -52,6 +52,11 @@
 </script>
 
 <svelte:head>
+	<!-- Google AdSense: load only on real content pages. Error pages (404/500) carry no
+	     publisher content, so advertising must not be requested there (AdSense policy). -->
+	{#if !$page.error}
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456249131797827" crossorigin="anonymous"></script>
+	{/if}
 	<!-- Canonical -->
 	<link rel="canonical" href="https://sdk.ac{$page.url.pathname}" />
 	{#if isNoindexLang || isNoindexSection}
@@ -77,7 +82,7 @@
 			{
 				"@type": "Organization",
 				"@id": "https://sdk.ac/#organization",
-				"name": "SDKLABS",
+				"name": "SDKLabs",
 				"url": "https://sdk.ac",
 				"sameAs": ["https://javascript.ac", "https://sd.gy"]
 			},
@@ -102,6 +107,7 @@
 
 			<div class="flex items-center gap-4">
 				<a href="{basePath}/blog" class="text-gray-600 dark:text-dark-300 hover:text-primary-500 transition-colors text-sm">Blog</a>
+				<a href="{basePath}/contact" class="text-gray-600 dark:text-dark-300 hover:text-primary-500 transition-colors text-sm">{t('footer.contact')}</a>
 				<!-- 테마 토글 -->
 				<button
 					on:click={() => theme.toggle()}
@@ -156,8 +162,11 @@
 	<footer class="bg-white dark:bg-dark-900 border-t border-gray-200 dark:border-dark-700 px-4 py-8 transition-colors">
 		<div class="max-w-7xl mx-auto">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-4">
-				<p class="text-gray-500 dark:text-dark-400 text-sm">{t('footer.copyright')}</p>
-				<div class="flex items-center gap-6 text-sm">
+				<div class="text-gray-500 dark:text-dark-400 text-sm text-center md:text-left">
+					<p>{t('footer.copyright')}</p>
+					<p class="mt-1">{t('footer.operator')} · <a href="mailto:contact@sdklabs.org" class="hover:text-gray-700 dark:hover:text-dark-200">contact@sdklabs.org</a></p>
+				</div>
+				<div class="flex flex-wrap items-center justify-center gap-6 text-sm">
 					<a href="{basePath}/about" class="text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200 transition-colors">
 						{t('footer.about')}
 					</a>
@@ -166,6 +175,12 @@
 					</a>
 					<a href="{basePath}/terms" class="text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200 transition-colors">
 						{t('footer.terms')}
+					</a>
+					<a href="{basePath}/faq" class="text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200 transition-colors">
+						{t('footer.faq')}
+					</a>
+					<a href="{basePath}/contact" class="text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200 transition-colors">
+						{t('footer.contact')}
 					</a>
 				</div>
 			</div>

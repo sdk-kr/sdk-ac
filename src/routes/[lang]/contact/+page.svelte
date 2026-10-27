@@ -6,12 +6,12 @@
 
 	const SITE_NAME = 'SDK.ac';
 	const SITE_DOMAIN = 'sdk.ac';
-	const CONTACT_EMAIL = 'contact@sdk.ac';
-	const COMPANY_NAME = 'SDK Co., Ltd.';
-	const BUSINESS_NUMBER = '871-81-03242';
-	const ECOMMERCE_NUMBER = '2024-고양일산서-1820';
-	const COMPANY_ADDRESS = '제주특별자치도 제주시 남성로 127, 4층';
-	const COMPANY_ADDRESS_EN = '4F, 127 Namseong-ro, Jeju-si, Jeju Special Self-Governing Province, Republic of Korea';
+	const CONTACT_EMAIL = 'contact@sdklabs.org';
+	const COMPANY_NAME = 'SDKLabs Co., Ltd.';
+	const COMPANY_NAME_KO = '주식회사 에스디케이랩스';
+	const BUSINESS_NUMBER = '424-86-03401';
+	const COMPANY_ADDRESS = '서울특별시 서초구 태봉로 60, 542호(우면동, 황금빌딩)';
+	const COMPANY_ADDRESS_EN = 'Suite 542, 60 Taebong-ro, Seocho-gu, Seoul, Republic of Korea';
 
 	type ContactContent = {
 		title: string;
@@ -91,7 +91,6 @@
 			companyDetails: [
 				{ label: 'Operator', value: COMPANY_NAME },
 				{ label: 'Business Registration Number', value: BUSINESS_NUMBER },
-				{ label: 'E-Commerce Registration Number', value: ECOMMERCE_NUMBER },
 				{ label: 'Address', value: COMPANY_ADDRESS_EN },
 				{ label: 'Address (Korean)', value: COMPANY_ADDRESS },
 				{ label: 'Contact', value: CONTACT_EMAIL },
@@ -151,12 +150,12 @@
 
 			companyHeading: '회사 정보',
 			companyParagraphs: [
-				`${SITE_NAME}는 한국 소프트웨어 회사 ${COMPANY_NAME}이 운영합니다. 아래 법적 정보는 한국 전자상거래 규정에 따라 요구되며 투명성을 위해 제공됩니다.`
+				`${SITE_NAME}는 한국 소프트웨어 회사 ${COMPANY_NAME_KO}이 운영합니다. 아래 법적 정보는 한국 전자상거래 규정에 따라 요구되며 투명성을 위해 제공됩니다.`
 			],
 			companyDetails: [
-				{ label: '운영자', value: COMPANY_NAME },
+				{ label: '운영자', value: COMPANY_NAME_KO },
+				{ label: '대표', value: '김선도' },
 				{ label: '사업자등록번호', value: BUSINESS_NUMBER },
-				{ label: '통신판매업 신고번호', value: ECOMMERCE_NUMBER },
 				{ label: '주소', value: COMPANY_ADDRESS },
 				{ label: '주소 (영문)', value: COMPANY_ADDRESS_EN },
 				{ label: '연락처', value: CONTACT_EMAIL },
@@ -221,7 +220,6 @@
 			companyDetails: [
 				{ label: '運営者', value: COMPANY_NAME },
 				{ label: '事業者登録番号', value: BUSINESS_NUMBER },
-				{ label: '通信販売業申告番号', value: ECOMMERCE_NUMBER },
 				{ label: '住所', value: COMPANY_ADDRESS },
 				{ label: '住所（英語）', value: COMPANY_ADDRESS_EN },
 				{ label: '連絡先', value: CONTACT_EMAIL },
@@ -286,7 +284,6 @@
 			companyDetails: [
 				{ label: '运营者', value: COMPANY_NAME },
 				{ label: '营业执照编号', value: BUSINESS_NUMBER },
-				{ label: '电子商务备案编号', value: ECOMMERCE_NUMBER },
 				{ label: '地址', value: COMPANY_ADDRESS },
 				{ label: '地址（英文）', value: COMPANY_ADDRESS_EN },
 				{ label: '联系方式', value: CONTACT_EMAIL },

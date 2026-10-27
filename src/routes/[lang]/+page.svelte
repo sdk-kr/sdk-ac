@@ -197,7 +197,7 @@
 		'@context': 'https://schema.org',
 		'@type': 'Organization',
 		'@id': 'https://sdk.ac/#organization',
-		name: 'SDKLABS',
+		name: 'SDKLabs',
 		url: 'https://sdk.ac',
 		sameAs: ['https://sdk.is', 'https://javascript.ac', 'https://sd.gy']
 	})}</` + `script>`}

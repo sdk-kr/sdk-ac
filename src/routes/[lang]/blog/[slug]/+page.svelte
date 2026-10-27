@@ -23,8 +23,8 @@
 			"headline": post.title[lang] || post.title.en,
 			"description": post.description[lang] || post.description.en,
 			"datePublished": post.date,
-			"author": { "@type": "Organization", "name": "SDKLABS" },
-			"publisher": { "@type": "Organization", "name": "SDKLABS" },
+			"author": { "@type": "Organization", "name": "SDKLabs" },
+			"publisher": { "@type": "Organization", "name": "SDKLabs" },
 			"mainEntityOfPage": { "@type": "WebPage", "@id": `https://sdk.ac/${lang}/blog/${slug}` }
 		})}</script>`}
 		{@html `<script type="application/ld+json">${JSON.stringify({
