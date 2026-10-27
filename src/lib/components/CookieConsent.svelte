@@ -5,45 +5,31 @@
 
 	let show = false;
 
-	const texts: Record<string, Record<Locale, string>> = {
+	const texts: Record<string, Partial<Record<Locale, string>>> = {
 		message: {
-			en: 'We use cookies to improve your experience and for analytics. By continuing to use this site, you agree to our use of cookies.',
-			ko: '더 나은 경험과 분석을 위해 쿠키를 사용합니다. 사이트를 계속 이용하시면 쿠키 사용에 동의하는 것으로 간주됩니다.',
-			ja: 'より良い体験と分析のためにCookieを使用しています。サイトの利用を続けることで、Cookieの使用に同意したものとみなされます。',
-			zh: '我们使用Cookie来改善您的体验并进行分析。继续使用本网站即表示您同意我们使用Cookie。',
-			es: 'Usamos cookies para mejorar su experiencia y para análisis. Al continuar usando este sitio, acepta nuestro uso de cookies.',
-			pt: 'Usamos cookies para melhorar sua experiência e para análise. Ao continuar usando este site, você concorda com nosso uso de cookies.',
-			de: 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und für Analysen. Durch die weitere Nutzung dieser Website stimmen Sie der Verwendung von Cookies zu.',
-			fr: 'Nous utilisons des cookies pour améliorer votre expérience et à des fins d\'analyse. En continuant à utiliser ce site, vous acceptez notre utilisation des cookies.',
-			hi: 'हम आपके अनुभव को बेहतर बनाने और विश्लेषण के लिए कुकीज़ का उपयोग करते हैं। इस साइट का उपयोग जारी रखकर, आप हमारे कुकीज़ के उपयोग से सहमत हैं।'
+			en: 'This site uses cookies set by Google Analytics and Google AdSense. There are no accounts, and the text you enter into a tool stays in your browser. Ad personalization can be managed in your Google ad settings or through the consent tool shown by our advertising partner where it applies. See the Privacy Policy for details.',
+			ko: '이 사이트는 Google Analytics 와 Google AdSense 가 설정하는 쿠키를 사용합니다. 계정은 없으며 도구에 입력한 텍스트는 브라우저 안에만 머무릅니다. 맞춤 광고는 Google 광고 설정에서, 또는 해당 지역에 표시되는 광고 파트너의 동의 도구에서 관리할 수 있습니다. 자세한 내용은 개인정보 처리방침을 참고하세요.'
 		},
 		accept: {
-			en: 'Accept', ko: '동의', ja: '同意', zh: '接受',
-			es: 'Aceptar', pt: 'Aceitar', de: 'Akzeptieren', fr: 'Accepter', hi: 'स्वीकार करें'
+			en: 'OK', ko: '확인', ja: 'OK', zh: '确定',
+			es: 'Aceptar', pt: 'OK', de: 'OK', fr: 'OK', hi: 'ठीक है'
 		},
-		decline: {
-			en: 'Decline', ko: '거부', ja: '拒否', zh: '拒绝',
-			es: 'Rechazar', pt: 'Recusar', de: 'Ablehnen', fr: 'Refuser', hi: 'अस्वीकार करें'
-		}
 	};
 
 	$: t = (key: string) => texts[key]?.[$locale] || texts[key]?.en || key;
 
 	onMount(() => {
 		if (!safeGetItem('cookie_consent')) {
+			// Informational notice only: it records that the notice was seen and does not gate any script.
 			show = true;
 		}
 	});
 
 	function accept() {
-		safeSetItem('cookie_consent', 'accepted');
+		safeSetItem('cookie_consent', 'seen');
 		show = false;
 	}
 
-	function decline() {
-		safeSetItem('cookie_consent', 'declined');
-		show = false;
-	}
 </script>
 
 {#if show}
@@ -51,12 +37,6 @@
 		<div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-4">
 			<p class="text-sm text-gray-600 dark:text-dark-300 flex-1">{t('message')}</p>
 			<div class="flex gap-3 shrink-0">
-				<button
-					on:click={decline}
-					class="px-4 py-2 text-sm text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200 border border-gray-300 dark:border-dark-600 rounded-lg transition-colors"
-				>
-					{t('decline')}
-				</button>
 				<button
 					on:click={accept}
 					class="px-4 py-2 text-sm bg-primary-500 hover:bg-primary-400 text-white font-medium rounded-lg transition-colors"
